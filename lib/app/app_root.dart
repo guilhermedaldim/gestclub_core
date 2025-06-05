@@ -5,8 +5,14 @@ import 'package:uniclub_core/uniclub_core.dart';
 class AppRoot extends StatelessWidget {
   final String clientId;
   final String clientName;
+  final FeatureFlags featureFlags;
 
-  const AppRoot({super.key, required this.clientId, required this.clientName});
+  const AppRoot({
+    super.key,
+    required this.clientId,
+    required this.clientName,
+    required this.featureFlags,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +21,7 @@ class AppRoot extends StatelessWidget {
       routerConfig: AppRouter(
         clientId: clientId,
         clientName: clientName,
+        flags: featureFlags,
       ).router,
       localizationsDelegates: const [
         AppLocalizations.delegate,

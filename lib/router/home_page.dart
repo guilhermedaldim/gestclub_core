@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:uniclub_core/l10n/app_localizations.dart';
+import 'package:uniclub_core/uniclub_core.dart';
 
 class HomePage extends StatelessWidget {
   final String clientId;
   final String clientName;
+  final FeatureFlags flags;
 
-  const HomePage({super.key, required this.clientId, required this.clientName});
+  const HomePage({
+    super.key,
+    required this.clientId,
+    required this.clientName,
+    required this.flags,
+  });
 
   @override
   Widget build(BuildContext context) {
