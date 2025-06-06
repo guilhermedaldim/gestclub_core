@@ -1,5 +1,5 @@
-name: uniclub_core
-description: "Uniclub Core - Gerenciador de clubes."
+name: gestclub_core
+description: "GestClub Core - Gerenciador de clubes."
 version: 0.0.1
 homepage:
 resolution: workspace

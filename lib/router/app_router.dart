@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:uniclub_core/uniclub_core.dart';
+import 'package:uniclub_core/gestclub_core.dart';
 
 class AppRouter {
   final String clientId;

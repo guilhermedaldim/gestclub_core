@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:uniclub_core/uniclub_core.dart';
+import 'package:uniclub_core/gestclub_core.dart';
 
 class AppRoot extends StatelessWidget {
   final String clientId;
