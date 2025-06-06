@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uniclub_core/gestclub_core.dart';
+import 'package:gestclub_core/gestclub_core.dart';
 
 class HomePage extends StatelessWidget {
   final String clientId;
