@@ -45,38 +45,6 @@ $AuthEventCopyWith(AuthEvent _, $Res Function(AuthEvent) __);
 /// @nodoc
 
 
-class Initial implements AuthEvent {
-  const Initial();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Initial);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'AuthEvent.initial()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
 class SignIn implements AuthEvent {
   const SignIn({required this.email, required this.password});
   
