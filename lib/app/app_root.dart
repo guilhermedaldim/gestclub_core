@@ -17,7 +17,7 @@ class AppRoot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'UniClub',
+      title: 'GestClub',
       routerConfig: AppRouter(
         clientId: clientId,
         clientName: clientName,

@@ -1,4 +1,4 @@
-import '../../domain/entities/user_entity.dart';
+import 'package:gestclub_core/gestclub_core.dart';
 
 abstract class AuthDatabase {
   Future<UserEntity?> signIn({required String email, required String password});

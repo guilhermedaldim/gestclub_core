@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:gestclub_core/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:gestclub_core/gestclub_core.dart';
 import 'package:get_it/get_it.dart';
 
@@ -23,12 +22,15 @@ class AuthInjection {
   static void register() {
     final getIt = GetIt.instance;
 
-    //Firebase Auth
-    getIt.registerLazySingleton<FirebaseAuth>(() => FirebaseAuth.instance);
+    //Firebase Services
+    getIt.registerLazySingleton<FirebaseServices>(
+      () => FirebaseServicesImpl(firebaseAuth: FirebaseAuth.instance),
+    );
 
     //Databases
     getIt.registerLazySingleton<AuthDatabase>(
-      () => AuthFirebaseDatabaseImpl(firebaseAuth: getIt<FirebaseAuth>()),
+      () =>
+          AuthFirebaseDatabaseImpl(firebaseServices: getIt<FirebaseServices>()),
     );
 
     //Repositories

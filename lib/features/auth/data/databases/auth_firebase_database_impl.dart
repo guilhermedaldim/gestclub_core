@@ -1,24 +1,13 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:gestclub_core/features/auth/auth.dart';
-
-//TODO verificar necessidade do model
+import 'package:gestclub_core/gestclub_core.dart';
 
 class AuthFirebaseDatabaseImpl implements AuthDatabase {
-  final FirebaseAuth firebaseAuth;
+  final FirebaseServices firebaseServices;
 
-  AuthFirebaseDatabaseImpl({required this.firebaseAuth});
+  AuthFirebaseDatabaseImpl({required this.firebaseServices});
 
   @override
   Future<UserEntity?> currentUser() async {
-    final user = firebaseAuth.currentUser;
-
-    if (user == null) return null;
-
-    return UserEntity(
-      id: user.uid,
-      email: user.email ?? '',
-      name: user.displayName ?? '',
-    );
+    return await firebaseServices.currentUser();
   }
 
   @override
@@ -26,23 +15,11 @@ class AuthFirebaseDatabaseImpl implements AuthDatabase {
     required String email,
     required String password,
   }) async {
-    final credentials = await firebaseAuth.signInWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
-
-    final user = credentials.user;
-    if (user == null) return null;
-
-    return UserEntity(
-      id: user.uid,
-      email: user.email ?? '',
-      name: user.displayName ?? '',
-    );
+    return await firebaseServices.signIn(email: email, password: password);
   }
 
   @override
   Future<void> signOut() async {
-    return await firebaseAuth.signOut();
+    return await firebaseServices.signOut();
   }
 }
