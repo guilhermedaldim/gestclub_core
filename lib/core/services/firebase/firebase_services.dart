@@ -1,7 +1,11 @@
+import 'package:dartz/dartz.dart';
 import 'package:gestclub_core/gestclub_core.dart';
 
 abstract class FirebaseServices {
-  Future<UserEntity?> signIn({required String email, required String password});
-  Future<void> signOut();
-  Future<UserEntity?> currentUser();
+  Future<Either<AuthFailure, UserEntity?>> currentUser();
+  Future<Either<AuthFailure, UserEntity?>> signIn({
+    required String email,
+    required String password,
+  });
+  Future<Either<AuthFailure, void>> signOut();
 }

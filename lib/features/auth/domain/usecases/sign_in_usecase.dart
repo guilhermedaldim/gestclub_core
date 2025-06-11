@@ -11,8 +11,9 @@ class SignInUsecase {
     required String password,
   }) async {
     try {
-      final user = await repository.signIn(email: email, password: password);
-      return right(user);
+      final result = await repository.signIn(email: email, password: password);
+
+      return result.fold((error) => left(error), (user) => right(user));
     } catch (e) {
       return left(AuthFailure(message: e.toString()));
     }

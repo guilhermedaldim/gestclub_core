@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gestclub_core/gestclub_core.dart';
 
@@ -7,40 +8,67 @@ class FirebaseServicesImpl implements FirebaseServices {
   FirebaseServicesImpl({required this.firebaseAuth});
 
   @override
-  Future<UserEntity?> currentUser() async {
-    final user = firebaseAuth.currentUser;
+  Future<Either<AuthFailure, UserEntity?>> currentUser() async {
+    try {
+      final user = firebaseAuth.currentUser;
 
-    if (user == null) return null;
+      if (user == null) {
+        return left(AuthFailure(message: 'Usuário não identificado'));
+      }
 
-    return UserEntity(
-      id: user.uid,
-      email: user.email ?? '',
-      name: user.displayName ?? '',
-    );
+      return right(
+        UserEntity(
+          id: user.uid,
+          email: user.email ?? '',
+          name: user.displayName ?? '',
+        ),
+      );
+    } on FirebaseAuthException catch (e) {
+      return left(AuthFailure(message: mapFirebaseAuthError(e.code)));
+    } catch (_) {
+      return left(AuthFailure(message: 'Erro desconhecido.'));
+    }
   }
 
   @override
-  Future<UserEntity?> signIn({
+  Future<Either<AuthFailure, UserEntity?>> signIn({
     required String email,
     required String password,
   }) async {
-    final credentials = await firebaseAuth.signInWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
+    try {
+      final credentials = await firebaseAuth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
 
-    final user = credentials.user;
-    if (user == null) return null;
+      final user = credentials.user;
 
-    return UserEntity(
-      id: user.uid,
-      email: user.email ?? '',
-      name: user.displayName ?? '',
-    );
+      if (user == null) {
+        return left(AuthFailure(message: 'Usuário não identificado'));
+      }
+
+      return right(
+        UserEntity(
+          id: user.uid,
+          email: user.email ?? '',
+          name: user.displayName ?? '',
+        ),
+      );
+    } on FirebaseAuthException catch (e) {
+      return left(AuthFailure(message: mapFirebaseAuthError(e.code)));
+    } catch (_) {
+      return left(AuthFailure(message: 'Erro desconhecido.'));
+    }
   }
 
   @override
-  Future<void> signOut() async {
-    return await firebaseAuth.signOut();
+  Future<Either<AuthFailure, void>> signOut() async {
+    try {
+      return right(firebaseAuth.signOut());
+    } on FirebaseAuthException catch (e) {
+      return left(AuthFailure(message: mapFirebaseAuthError(e.code)));
+    } catch (_) {
+      return left(AuthFailure(message: 'Erro desconhecido.'));
+    }
   }
 }

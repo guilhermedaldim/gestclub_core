@@ -47,9 +47,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             (error) => emit(AuthState.error(error: error.message)),
             (user) => emit(AuthState.success(user: user)),
           );
-
-        default:
-          const AuthState.initial();
       }
     });
   }

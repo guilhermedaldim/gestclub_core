@@ -1,4 +1,5 @@
-import 'package:gestclub_core/features/auth/auth.dart';
+import 'package:dartz/dartz.dart';
+import 'package:gestclub_core/gestclub_core.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthDatabase database;
@@ -6,12 +7,12 @@ class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl({required this.database});
 
   @override
-  Future<UserEntity?> currentUser() async {
+  Future<Either<Failure, UserEntity?>> currentUser() async {
     return await database.currentUser();
   }
 
   @override
-  Future<UserEntity?> signIn({
+  Future<Either<Failure, UserEntity?>> signIn({
     required String email,
     required String password,
   }) {
@@ -19,7 +20,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<void> signOut() {
-    return database.signOut();
+  Future<Either<Failure, void>> signOut() async {
+    return await database.signOut();
   }
 }

@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:gestclub_core/gestclub_core.dart';
 
 class AuthFirebaseDatabaseImpl implements AuthDatabase {
@@ -6,12 +7,12 @@ class AuthFirebaseDatabaseImpl implements AuthDatabase {
   AuthFirebaseDatabaseImpl({required this.firebaseServices});
 
   @override
-  Future<UserEntity?> currentUser() async {
+  Future<Either<Failure, UserEntity?>> currentUser() async {
     return await firebaseServices.currentUser();
   }
 
   @override
-  Future<UserEntity?> signIn({
+  Future<Either<Failure, UserEntity?>> signIn({
     required String email,
     required String password,
   }) async {
@@ -19,7 +20,7 @@ class AuthFirebaseDatabaseImpl implements AuthDatabase {
   }
 
   @override
-  Future<void> signOut() async {
+  Future<Either<Failure, void>> signOut() async {
     return await firebaseServices.signOut();
   }
 }

@@ -8,8 +8,9 @@ class CurrentUserUsecase {
 
   Future<Either<Failure, UserEntity?>> call() async {
     try {
-      final user = await repository.currentUser();
-      return right(user);
+      final result = await repository.currentUser();
+
+      return result.fold((error) => left(error), (user) => right(user));
     } catch (e) {
       return left(AuthFailure(message: e.toString()));
     }
