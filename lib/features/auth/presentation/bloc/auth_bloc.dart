@@ -10,11 +10,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final SignInUsecase signInUsecase;
   final SignOutUsecase signOutUsecase;
   final CurrentUserUsecase currentUserUsecase;
+  final SendPasswordResetEmailUseCase sendPasswordResetEmailUseCase;
 
   AuthBloc({
     required this.signInUsecase,
     required this.signOutUsecase,
     required this.currentUserUsecase,
+    required this.sendPasswordResetEmailUseCase,
   }) : super(const AuthState.initial()) {
     on<AuthEvent>((event, emit) async {
       switch (event) {
@@ -46,6 +48,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           result.fold(
             (error) => emit(AuthState.error(error: error.message)),
             (user) => emit(AuthState.success(user: user)),
+          );
+
+        case ForgotPasswordRequested():
+          emit(const AuthState.loading());
+
+          final result = await sendPasswordResetEmailUseCase.call(
+            email: event.email,
+          );
+
+          result.fold(
+            (error) => emit(AuthState.error(error: error.message)),
+            (_) => emit(AuthState.forgotPasswordSuccess()),
           );
       }
     });

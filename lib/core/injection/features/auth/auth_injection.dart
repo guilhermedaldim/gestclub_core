@@ -48,6 +48,9 @@ class AuthInjection {
     getIt.registerLazySingleton<SignOutUsecase>(
       () => SignOutUsecase(repository: getIt<AuthRepository>()),
     );
+    getIt.registerLazySingleton<SendPasswordResetEmailUseCase>(
+      () => SendPasswordResetEmailUseCase(repository: getIt<AuthRepository>()),
+    );
 
     //Bloc
     getIt.registerLazySingleton<AuthBloc>(
@@ -55,6 +58,7 @@ class AuthInjection {
         signInUsecase: getIt<SignInUsecase>(),
         signOutUsecase: getIt<SignOutUsecase>(),
         currentUserUsecase: getIt<CurrentUserUsecase>(),
+        sendPasswordResetEmailUseCase: getIt<SendPasswordResetEmailUseCase>(),
       ),
     );
   }

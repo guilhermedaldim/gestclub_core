@@ -8,8 +8,7 @@ class SignOutUsecase {
 
   Future<Either<Failure, void>> call() async {
     try {
-      await repository.signOut();
-      return right(null);
+      return await repository.signOut();
     } catch (e) {
       return left(AuthFailure(message: e.toString()));
     }

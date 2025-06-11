@@ -175,6 +175,72 @@ String toString() {
 
 
 /// @nodoc
+
+
+class ForgotPasswordRequested implements AuthEvent {
+  const ForgotPasswordRequested({required this.email});
+  
+
+ final  String email;
+
+/// Create a copy of AuthEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ForgotPasswordRequestedCopyWith<ForgotPasswordRequested> get copyWith => _$ForgotPasswordRequestedCopyWithImpl<ForgotPasswordRequested>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ForgotPasswordRequested&&(identical(other.email, email) || other.email == email));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,email);
+
+@override
+String toString() {
+  return 'AuthEvent.forgotPasswordRequested(email: $email)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ForgotPasswordRequestedCopyWith<$Res> implements $AuthEventCopyWith<$Res> {
+  factory $ForgotPasswordRequestedCopyWith(ForgotPasswordRequested value, $Res Function(ForgotPasswordRequested) _then) = _$ForgotPasswordRequestedCopyWithImpl;
+@useResult
+$Res call({
+ String email
+});
+
+
+
+
+}
+/// @nodoc
+class _$ForgotPasswordRequestedCopyWithImpl<$Res>
+    implements $ForgotPasswordRequestedCopyWith<$Res> {
+  _$ForgotPasswordRequestedCopyWithImpl(this._self, this._then);
+
+  final ForgotPasswordRequested _self;
+  final $Res Function(ForgotPasswordRequested) _then;
+
+/// Create a copy of AuthEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? email = null,}) {
+  return _then(ForgotPasswordRequested(
+email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
 mixin _$AuthState {
 
 
@@ -411,5 +477,37 @@ as String?,
 
 
 }
+
+/// @nodoc
+
+
+class ForgotPasswordSuccessState implements AuthState {
+  const ForgotPasswordSuccessState();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ForgotPasswordSuccessState);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AuthState.forgotPasswordSuccess()';
+}
+
+
+}
+
+
+
 
 // dart format on

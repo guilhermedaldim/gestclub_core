@@ -6,4 +6,5 @@ sealed class AuthState with _$AuthState {
   const factory AuthState.loading() = LoadingState;
   const factory AuthState.success({UserEntity? user}) = SuccessState;
   const factory AuthState.error({String? error}) = ErrorState;
+  const factory AuthState.forgotPasswordSuccess() = ForgotPasswordSuccessState;
 }

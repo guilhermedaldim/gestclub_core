@@ -23,4 +23,11 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Either<Failure, void>> signOut() async {
     return await database.signOut();
   }
+
+  @override
+  Future<Either<Failure, void>> sendPasswordResetEmail({
+    required String email,
+  }) async {
+    return await database.sendPasswordResetEmail(email: email);
+  }
 }

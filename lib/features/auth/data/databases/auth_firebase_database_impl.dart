@@ -23,4 +23,11 @@ class AuthFirebaseDatabaseImpl implements AuthDatabase {
   Future<Either<Failure, void>> signOut() async {
     return await firebaseServices.signOut();
   }
+
+  @override
+  Future<Either<Failure, void>> sendPasswordResetEmail({
+    required String email,
+  }) async {
+    return await firebaseServices.sendPasswordResetEmail(email: email);
+  }
 }

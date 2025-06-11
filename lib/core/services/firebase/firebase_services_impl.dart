@@ -71,4 +71,17 @@ class FirebaseServicesImpl implements FirebaseServices {
       return left(AuthFailure(message: 'Erro desconhecido.'));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> sendPasswordResetEmail({
+    required String email,
+  }) async {
+    try {
+      return right(firebaseAuth.sendPasswordResetEmail(email: email));
+    } on FirebaseAuthException catch (e) {
+      return left(AuthFailure(message: mapFirebaseAuthError(e.code)));
+    } catch (_) {
+      return left(AuthFailure(message: 'Erro desconhecido.'));
+    }
+  }
 }
