@@ -3,17 +3,17 @@ import 'package:gestclub_design_system/gestclub_design_system.dart';
 
 class AuthBasePage extends StatelessWidget {
   final Widget image;
-  final Widget? forgetPassword;
   final GestClubInput emailInput;
-  final GestClubInput passwordInput;
-  final GestClubButton button;
+  final Widget passwordInput;
+  final GestClubTextButton forgetPasswordButton;
+  final GestClubElevatedButton button;
 
   const AuthBasePage({
     super.key,
     required this.image,
-    this.forgetPassword,
     required this.emailInput,
     required this.passwordInput,
+    required this.forgetPasswordButton,
     required this.button,
   });
 
@@ -33,12 +33,10 @@ class AuthBasePage extends StatelessWidget {
                     image,
                     emailInput,
                     passwordInput,
-                    if (forgetPassword != null) ...[
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: forgetPassword!,
-                      ),
-                    ],
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: forgetPasswordButton,
+                    ),
                   ],
                 ),
               ),
