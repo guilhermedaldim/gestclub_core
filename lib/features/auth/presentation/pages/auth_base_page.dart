@@ -25,12 +25,24 @@ class AuthBasePage extends StatelessWidget {
         child: Column(
           spacing: GestClubSizes.sixteen,
           children: [
-            image,
-            emailInput,
-            passwordInput,
-            if (forgetPassword != null) ...[
-              Align(alignment: Alignment.centerRight, child: forgetPassword!),
-            ],
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  spacing: GestClubSizes.sixteen,
+                  children: [
+                    image,
+                    emailInput,
+                    passwordInput,
+                    if (forgetPassword != null) ...[
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: forgetPassword!,
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ),
             button,
           ],
         ),
