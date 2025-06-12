@@ -1,2 +1,2 @@
-export 'firebase_services.dart';
-export 'firebase_services_impl.dart';
+export 'auth/auth.dart';
+export 'firestore/firestore.dart';

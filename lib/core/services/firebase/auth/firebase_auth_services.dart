@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:gestclub_core/gestclub_core.dart';
 
-abstract class FirebaseServices {
+abstract class FirebaseAuthServices {
   Future<Either<Failure, UserEntity?>> currentUser();
   Future<Either<Failure, UserEntity?>> signIn({
     required String email,
