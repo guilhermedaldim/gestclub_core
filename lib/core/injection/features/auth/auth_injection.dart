@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gestclub_core/gestclub_core.dart';
 import 'package:get_it/get_it.dart';
@@ -22,15 +23,23 @@ class AuthInjection {
   static void register() {
     final getIt = GetIt.instance;
 
-    //Firebase Services
-    getIt.registerLazySingleton<FirebaseServices>(
-      () => FirebaseServicesImpl(firebaseAuth: FirebaseAuth.instance),
+    //Firebase Auth Services
+    getIt.registerLazySingleton<FirebaseAuthServices>(
+      () => FirebaseAuthServicesImpl(firebaseAuth: FirebaseAuth.instance),
+    );
+
+    //Firebase Firestore Services
+    getIt.registerLazySingleton<FirebaseFirestoreServices>(
+      () =>
+          FirebaseFirestoreServicesImpl(firestore: FirebaseFirestore.instance),
     );
 
     //Databases
     getIt.registerLazySingleton<AuthDatabase>(
-      () =>
-          AuthFirebaseDatabaseImpl(firebaseServices: getIt<FirebaseServices>()),
+      () => AuthFirebaseDatabaseImpl(
+        firebaseAuthServices: getIt<FirebaseAuthServices>(),
+        firestoreServices: getIt<FirebaseFirestoreServices>(),
+      ),
     );
 
     //UseCases
@@ -46,6 +55,9 @@ class AuthInjection {
     getIt.registerLazySingleton<SendPasswordResetEmailUsecase>(
       () => SendPasswordResetEmailUseCaseImpl(database: getIt<AuthDatabase>()),
     );
+    getIt.registerLazySingleton<GetUserByIdUsecase>(
+      () => GetUserByIdUsecaseImpl(database: getIt<AuthDatabase>()),
+    );
 
     //Bloc
     getIt.registerLazySingleton<AuthBloc>(
@@ -54,6 +66,7 @@ class AuthInjection {
         signOutUsecase: getIt<SignOutUsecase>(),
         currentUserUsecase: getIt<CurrentUserUsecase>(),
         sendPasswordResetEmailUseCase: getIt<SendPasswordResetEmailUsecase>(),
+        getUserByIdUsecase: getIt<GetUserByIdUsecase>(),
       ),
     );
   }

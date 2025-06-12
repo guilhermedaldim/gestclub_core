@@ -46,11 +46,12 @@ $AuthEventCopyWith(AuthEvent _, $Res Function(AuthEvent) __);
 
 
 class SignIn implements AuthEvent {
-  const SignIn({required this.email, required this.password});
+  const SignIn({required this.email, required this.password, this.id});
   
 
  final  String email;
  final  String password;
+ final  String? id;
 
 /// Create a copy of AuthEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -62,16 +63,16 @@ $SignInCopyWith<SignIn> get copyWith => _$SignInCopyWithImpl<SignIn>(this, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SignIn&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SignIn&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&(identical(other.id, id) || other.id == id));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,email,password);
+int get hashCode => Object.hash(runtimeType,email,password,id);
 
 @override
 String toString() {
-  return 'AuthEvent.signIn(email: $email, password: $password)';
+  return 'AuthEvent.signIn(email: $email, password: $password, id: $id)';
 }
 
 
@@ -82,7 +83,7 @@ abstract mixin class $SignInCopyWith<$Res> implements $AuthEventCopyWith<$Res> {
   factory $SignInCopyWith(SignIn value, $Res Function(SignIn) _then) = _$SignInCopyWithImpl;
 @useResult
 $Res call({
- String email, String password
+ String email, String password, String? id
 });
 
 
@@ -99,11 +100,12 @@ class _$SignInCopyWithImpl<$Res>
 
 /// Create a copy of AuthEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? email = null,Object? password = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? email = null,Object? password = null,Object? id = freezed,}) {
   return _then(SignIn(
 email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
-as String,
+as String,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

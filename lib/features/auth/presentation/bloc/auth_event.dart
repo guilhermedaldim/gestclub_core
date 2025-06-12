@@ -5,6 +5,7 @@ sealed class AuthEvent with _$AuthEvent {
   const factory AuthEvent.signIn({
     required String email,
     required String password,
+    String? id,
   }) = SignIn;
   const factory AuthEvent.signOut() = SignOut;
   const factory AuthEvent.currentUser() = CurrentUser;
