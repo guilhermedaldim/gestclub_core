@@ -10,7 +10,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final SignInUsecase signInUsecase;
   final SignOutUsecase signOutUsecase;
   final CurrentUserUsecase currentUserUsecase;
-  final SendPasswordResetEmailUseCase sendPasswordResetEmailUseCase;
+  final SendPasswordResetEmailUsecase sendPasswordResetEmailUseCase;
 
   AuthBloc({
     required this.signInUsecase,

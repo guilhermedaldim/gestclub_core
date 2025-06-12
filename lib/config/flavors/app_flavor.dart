@@ -13,6 +13,4 @@ class AppFlavor {
         return 'Prod';
     }
   }
-
-  //TODO url base
 }

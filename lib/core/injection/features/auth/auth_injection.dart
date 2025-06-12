@@ -33,23 +33,18 @@ class AuthInjection {
           AuthFirebaseDatabaseImpl(firebaseServices: getIt<FirebaseServices>()),
     );
 
-    //Repositories
-    getIt.registerLazySingleton<AuthRepository>(
-      () => AuthRepositoryImpl(database: getIt<AuthDatabase>()),
-    );
-
     //UseCases
     getIt.registerLazySingleton<CurrentUserUsecase>(
-      () => CurrentUserUsecase(repository: getIt<AuthRepository>()),
+      () => CurrentUserUsecaseImpl(database: getIt<AuthDatabase>()),
     );
     getIt.registerLazySingleton<SignInUsecase>(
-      () => SignInUsecase(repository: getIt<AuthRepository>()),
+      () => SignInUsecaseImpl(database: getIt<AuthDatabase>()),
     );
     getIt.registerLazySingleton<SignOutUsecase>(
-      () => SignOutUsecase(repository: getIt<AuthRepository>()),
+      () => SignOutUsecaseImpl(database: getIt<AuthDatabase>()),
     );
-    getIt.registerLazySingleton<SendPasswordResetEmailUseCase>(
-      () => SendPasswordResetEmailUseCase(repository: getIt<AuthRepository>()),
+    getIt.registerLazySingleton<SendPasswordResetEmailUsecase>(
+      () => SendPasswordResetEmailUseCaseImpl(database: getIt<AuthDatabase>()),
     );
 
     //Bloc
@@ -58,7 +53,7 @@ class AuthInjection {
         signInUsecase: getIt<SignInUsecase>(),
         signOutUsecase: getIt<SignOutUsecase>(),
         currentUserUsecase: getIt<CurrentUserUsecase>(),
-        sendPasswordResetEmailUseCase: getIt<SendPasswordResetEmailUseCase>(),
+        sendPasswordResetEmailUseCase: getIt<SendPasswordResetEmailUsecase>(),
       ),
     );
   }
