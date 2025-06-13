@@ -512,4 +512,36 @@ String toString() {
 
 
 
+/// @nodoc
+
+
+class LogoutSuccessState implements AuthState {
+  const LogoutSuccessState();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LogoutSuccessState);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AuthState.logoutSuccess()';
+}
+
+
+}
+
+
+
+
 // dart format on

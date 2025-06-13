@@ -47,16 +47,23 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
           result.fold(
             (error) => emit(AuthState.error(error: error.message)),
-            (_) => emit(const AuthState.initial()),
+            (_) => emit(const AuthState.logoutSuccess()),
           );
 
         case CurrentUser():
           emit(const AuthState.loading());
           final result = await currentUserUsecase.call();
 
-          result.fold(
+          return result.fold(
             (error) => emit(AuthState.error(error: error.message)),
-            (user) => emit(AuthState.success(user: user)),
+            (user) async {
+              final getUserResult = await getUserByIdUsecase(id: user!.id);
+
+              return getUserResult.fold(
+                (error) => emit(AuthState.error(error: error.message)),
+                (user) => emit(AuthState.success(user: user)),
+              );
+            },
           );
 
         case ForgotPasswordRequested():
