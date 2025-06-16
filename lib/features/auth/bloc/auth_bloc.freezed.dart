@@ -275,8 +275,8 @@ $AuthStateCopyWith(AuthState _, $Res Function(AuthState) __);
 /// @nodoc
 
 
-class InitialState implements AuthState {
-  const InitialState();
+class InitialAuthState implements AuthState {
+  const InitialAuthState();
   
 
 
@@ -286,7 +286,7 @@ class InitialState implements AuthState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is InitialState);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is InitialAuthState);
 }
 
 
@@ -307,8 +307,8 @@ String toString() {
 /// @nodoc
 
 
-class LoadingState implements AuthState {
-  const LoadingState();
+class LoadingAuthState implements AuthState {
+  const LoadingAuthState();
   
 
 
@@ -318,7 +318,7 @@ class LoadingState implements AuthState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadingState);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadingAuthState);
 }
 
 
@@ -339,8 +339,8 @@ String toString() {
 /// @nodoc
 
 
-class SuccessState implements AuthState {
-  const SuccessState({this.user});
+class SuccessAuthState implements AuthState {
+  const SuccessAuthState({this.user});
   
 
  final  UserEntity? user;
@@ -349,13 +349,13 @@ class SuccessState implements AuthState {
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$SuccessStateCopyWith<SuccessState> get copyWith => _$SuccessStateCopyWithImpl<SuccessState>(this, _$identity);
+$SuccessAuthStateCopyWith<SuccessAuthState> get copyWith => _$SuccessAuthStateCopyWithImpl<SuccessAuthState>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuccessState&&(identical(other.user, user) || other.user == user));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuccessAuthState&&(identical(other.user, user) || other.user == user));
 }
 
 
@@ -371,8 +371,8 @@ String toString() {
 }
 
 /// @nodoc
-abstract mixin class $SuccessStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
-  factory $SuccessStateCopyWith(SuccessState value, $Res Function(SuccessState) _then) = _$SuccessStateCopyWithImpl;
+abstract mixin class $SuccessAuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
+  factory $SuccessAuthStateCopyWith(SuccessAuthState value, $Res Function(SuccessAuthState) _then) = _$SuccessAuthStateCopyWithImpl;
 @useResult
 $Res call({
  UserEntity? user
@@ -383,17 +383,17 @@ $UserEntityCopyWith<$Res>? get user;
 
 }
 /// @nodoc
-class _$SuccessStateCopyWithImpl<$Res>
-    implements $SuccessStateCopyWith<$Res> {
-  _$SuccessStateCopyWithImpl(this._self, this._then);
+class _$SuccessAuthStateCopyWithImpl<$Res>
+    implements $SuccessAuthStateCopyWith<$Res> {
+  _$SuccessAuthStateCopyWithImpl(this._self, this._then);
 
-  final SuccessState _self;
-  final $Res Function(SuccessState) _then;
+  final SuccessAuthState _self;
+  final $Res Function(SuccessAuthState) _then;
 
 /// Create a copy of AuthState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? user = freezed,}) {
-  return _then(SuccessState(
+  return _then(SuccessAuthState(
 user: freezed == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
 as UserEntity?,
   ));
@@ -417,8 +417,8 @@ $UserEntityCopyWith<$Res>? get user {
 /// @nodoc
 
 
-class ErrorState implements AuthState {
-  const ErrorState({this.error});
+class ErrorAuthState implements AuthState {
+  const ErrorAuthState({this.error});
   
 
  final  String? error;
@@ -427,13 +427,13 @@ class ErrorState implements AuthState {
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ErrorStateCopyWith<ErrorState> get copyWith => _$ErrorStateCopyWithImpl<ErrorState>(this, _$identity);
+$ErrorAuthStateCopyWith<ErrorAuthState> get copyWith => _$ErrorAuthStateCopyWithImpl<ErrorAuthState>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorState&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorAuthState&&(identical(other.error, error) || other.error == error));
 }
 
 
@@ -449,8 +449,8 @@ String toString() {
 }
 
 /// @nodoc
-abstract mixin class $ErrorStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
-  factory $ErrorStateCopyWith(ErrorState value, $Res Function(ErrorState) _then) = _$ErrorStateCopyWithImpl;
+abstract mixin class $ErrorAuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
+  factory $ErrorAuthStateCopyWith(ErrorAuthState value, $Res Function(ErrorAuthState) _then) = _$ErrorAuthStateCopyWithImpl;
 @useResult
 $Res call({
  String? error
@@ -461,17 +461,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$ErrorStateCopyWithImpl<$Res>
-    implements $ErrorStateCopyWith<$Res> {
-  _$ErrorStateCopyWithImpl(this._self, this._then);
+class _$ErrorAuthStateCopyWithImpl<$Res>
+    implements $ErrorAuthStateCopyWith<$Res> {
+  _$ErrorAuthStateCopyWithImpl(this._self, this._then);
 
-  final ErrorState _self;
-  final $Res Function(ErrorState) _then;
+  final ErrorAuthState _self;
+  final $Res Function(ErrorAuthState) _then;
 
 /// Create a copy of AuthState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? error = freezed,}) {
-  return _then(ErrorState(
+  return _then(ErrorAuthState(
 error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
@@ -483,8 +483,8 @@ as String?,
 /// @nodoc
 
 
-class ForgotPasswordSuccessState implements AuthState {
-  const ForgotPasswordSuccessState();
+class ForgotPasswordSuccessAuthState implements AuthState {
+  const ForgotPasswordSuccessAuthState();
   
 
 
@@ -494,7 +494,7 @@ class ForgotPasswordSuccessState implements AuthState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ForgotPasswordSuccessState);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ForgotPasswordSuccessAuthState);
 }
 
 
@@ -515,8 +515,8 @@ String toString() {
 /// @nodoc
 
 
-class LogoutSuccessState implements AuthState {
-  const LogoutSuccessState();
+class LogoutSuccessAuthState implements AuthState {
+  const LogoutSuccessAuthState();
   
 
 
@@ -526,7 +526,7 @@ class LogoutSuccessState implements AuthState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LogoutSuccessState);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LogoutSuccessAuthState);
 }
 
 

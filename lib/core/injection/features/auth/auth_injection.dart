@@ -1,8 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gestclub_core/gestclub_core.dart';
 import 'package:get_it/get_it.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 // Aqui podemos criar um enum e dentro da init um switch para definir se auth será via firebase ou api
 // enum AuthBackendType { firebase, api }
@@ -21,32 +18,8 @@ import 'package:shared_preferences/shared_preferences.dart';
   } */
 
 class AuthInjection {
-  static void register() async {
+  static void register({required GetIt getIt}) async {
     final getIt = GetIt.instance;
-
-    //Firebase Auth Services
-    getIt.registerLazySingleton<FirebaseAuthServices>(
-      () => FirebaseAuthServicesImpl(firebaseAuth: FirebaseAuth.instance),
-    );
-
-    //Firebase Firestore Services
-    getIt.registerLazySingleton<FirebaseFirestoreServices>(
-      () =>
-          FirebaseFirestoreServicesImpl(firestore: FirebaseFirestore.instance),
-    );
-
-    //SharedPreferences
-    GetIt.instance.registerLazySingletonAsync<SharedPreferences>(
-      () => SharedPreferences.getInstance(),
-    );
-
-    await getIt.isReady<SharedPreferences>();
-
-    //SharedPreferences Services
-    getIt.registerLazySingleton<SharedPreferencesService>(
-      () =>
-          SharedPreferencesServiceImpl(preferences: getIt<SharedPreferences>()),
-    );
 
     //Firebase Database
     getIt.registerLazySingleton<AuthDatabase>(
