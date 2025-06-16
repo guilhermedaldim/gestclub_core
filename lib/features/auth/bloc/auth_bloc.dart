@@ -45,7 +45,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           emit(const AuthState.loading());
           final result = await signOutUsecase.call();
 
-          result.fold(
+          return result.fold(
             (error) => emit(AuthState.error(error: error.message)),
             (_) => emit(const AuthState.logoutSuccess()),
           );
@@ -73,7 +73,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             email: event.email,
           );
 
-          result.fold(
+          return result.fold(
             (error) => emit(AuthState.error(error: error.message)),
             (_) => emit(AuthState.forgotPasswordSuccess()),
           );

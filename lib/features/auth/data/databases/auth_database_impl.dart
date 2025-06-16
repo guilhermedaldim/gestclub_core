@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:gestclub_core/gestclub_core.dart';
 
-class AuthFirebaseDatabaseImpl implements AuthDatabase {
+class AuthDatabaseImpl implements AuthDatabase {
   final FirebaseAuthServices firebaseAuthServices;
   final FirebaseFirestoreServices firestoreServices;
 
-  AuthFirebaseDatabaseImpl({
+  AuthDatabaseImpl({
     required this.firebaseAuthServices,
     required this.firestoreServices,
   });

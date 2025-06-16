@@ -1,3 +1,3 @@
-export 'auth_failure_firebase.dart';
-export 'auth_failure.dart';
+export 'auth/auth.dart';
+export 'events/events.dart';
 export 'failure.dart';

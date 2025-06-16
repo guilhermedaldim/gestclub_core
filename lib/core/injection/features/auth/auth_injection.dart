@@ -50,7 +50,7 @@ class AuthInjection {
 
     //Firebase Database
     getIt.registerLazySingleton<AuthDatabase>(
-      () => AuthFirebaseDatabaseImpl(
+      () => AuthDatabaseImpl(
         firebaseAuthServices: getIt<FirebaseAuthServices>(),
         firestoreServices: getIt<FirebaseFirestoreServices>(),
       ),
