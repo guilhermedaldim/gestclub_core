@@ -11,12 +11,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final SignOutUsecase signOutUsecase;
   final CurrentUserUsecase currentUserUsecase;
   final SendPasswordResetEmailUsecase sendPasswordResetEmailUseCase;
+  final GetUserByIdUsecase getUserByIdUsecase;
 
   AuthBloc({
     required this.signInUsecase,
     required this.signOutUsecase,
     required this.currentUserUsecase,
     required this.sendPasswordResetEmailUseCase,
+    required this.getUserByIdUsecase,
   }) : super(const AuthState.initial()) {
     on<AuthEvent>((event, emit) async {
       switch (event) {
@@ -27,27 +29,41 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             password: event.password,
           );
 
-          result.fold(
+          return result.fold(
             (error) => emit(AuthState.error(error: error.message)),
-            (user) => emit(AuthState.success(user: user)),
+            (user) async {
+              final getUserResult = await getUserByIdUsecase(id: user!.id);
+
+              return getUserResult.fold(
+                (error) => emit(AuthState.error(error: error.message)),
+                (user) => emit(AuthState.success(user: user)),
+              );
+            },
           );
 
         case SignOut():
           emit(const AuthState.loading());
           final result = await signOutUsecase.call();
 
-          result.fold(
+          return result.fold(
             (error) => emit(AuthState.error(error: error.message)),
-            (_) => emit(const AuthState.initial()),
+            (_) => emit(const AuthState.logoutSuccess()),
           );
 
         case CurrentUser():
           emit(const AuthState.loading());
           final result = await currentUserUsecase.call();
 
-          result.fold(
+          return result.fold(
             (error) => emit(AuthState.error(error: error.message)),
-            (user) => emit(AuthState.success(user: user)),
+            (user) async {
+              final getUserResult = await getUserByIdUsecase(id: user!.id);
+
+              return getUserResult.fold(
+                (error) => emit(AuthState.error(error: error.message)),
+                (user) => emit(AuthState.success(user: user)),
+              );
+            },
           );
 
         case ForgotPasswordRequested():
@@ -57,7 +73,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             email: event.email,
           );
 
-          result.fold(
+          return result.fold(
             (error) => emit(AuthState.error(error: error.message)),
             (_) => emit(AuthState.forgotPasswordSuccess()),
           );

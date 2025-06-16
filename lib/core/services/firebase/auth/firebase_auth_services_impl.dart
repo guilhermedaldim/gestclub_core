@@ -2,10 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gestclub_core/gestclub_core.dart';
 
-class FirebaseServicesImpl implements FirebaseServices {
+class FirebaseAuthServicesImpl implements FirebaseAuthServices {
   FirebaseAuth firebaseAuth;
 
-  FirebaseServicesImpl({required this.firebaseAuth});
+  FirebaseAuthServicesImpl({required this.firebaseAuth});
 
   @override
   Future<Either<AuthFailure, UserEntity?>> currentUser() async {
