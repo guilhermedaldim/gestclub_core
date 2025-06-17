@@ -6,7 +6,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class DependencyInjection {
   // Podemos add os parâmetros para diferentes tipos de databases (api ou firebase)
-  static void initialize(/*{required AuthBackendType authBackend}*/) async {
+  static Future<void> initialize(
+    /*{required AuthBackendType authBackend}*/
+  ) async {
     final getIt = GetIt.instance;
 
     //Firebase Auth Services

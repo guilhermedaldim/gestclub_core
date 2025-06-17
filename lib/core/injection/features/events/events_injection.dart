@@ -2,7 +2,7 @@ import 'package:gestclub_core/gestclub_core.dart';
 import 'package:get_it/get_it.dart';
 
 class EventsInjection {
-  static void register({required GetIt getIt}) async {
+  static void register({required GetIt getIt}) {
     //Firebase Database
     getIt.registerLazySingleton<EventsDatabase>(
       () => EventsDatabaseImpl(
