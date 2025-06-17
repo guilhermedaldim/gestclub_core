@@ -25,4 +25,28 @@ class FirebaseFirestoreServicesImpl implements FirebaseFirestoreServices {
       return left(AuthFailure(message: 'Erro desconhecido.'));
     }
   }
+
+  @override
+  Future<Either<Failure, List<EventsEntity>>> getEvents() async {
+    try {
+      final snapshot = await firestore
+          .collection('events')
+          .orderBy('date')
+          .get();
+
+      if (snapshot.docs.isEmpty) {
+        return left(EventFailure(message: 'Nenhum evento encontrado.'));
+      }
+
+      final events = snapshot.docs
+          .map((doc) => EventsEntity.fromJson(doc.data()))
+          .toList();
+
+      return right(events);
+    } on FirebaseException catch (e) {
+      return left(EventFailure(message: e.message.toString()));
+    } catch (e) {
+      return left(EventFailure(message: 'Erro desconhecido.'));
+    }
+  }
 }
