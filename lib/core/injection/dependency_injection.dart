@@ -40,5 +40,11 @@ class DependencyInjection {
 
     //Initialize events
     EventsInjection.register(getIt: getIt);
+
+    //Initialize appointments
+    AppointmentsInjection.register(getIt: getIt);
+
+    //Initialize spaces
+    SpacesInjection.register(getIt: getIt);
   }
 }
