@@ -1,4 +1,3 @@
-import 'package:gestclub_core/features/appointments/data/usecases/get_user_appointments_usecase_impl.dart';
 import 'package:gestclub_core/gestclub_core.dart';
 import 'package:get_it/get_it.dart';
 
@@ -22,12 +21,18 @@ class AppointmentsInjection {
         database: getIt<AppointmentsDatabase>(),
       ),
     );
+    getIt.registerLazySingleton<GetAppointmentsByDateUsecase>(
+      () => GetAppointmentsByDateUsecaseImpl(
+        database: getIt<AppointmentsDatabase>(),
+      ),
+    );
 
     //Bloc
     getIt.registerLazySingleton<AppointmentsBloc>(
       () => AppointmentsBloc(
         createAppointmentUsecase: getIt<CreateAppointmentsUsecase>(),
         getUserAppointmentsUsecase: getIt<GetUserAppointmentsUsecase>(),
+        getAppointmentsByDateUsecase: getIt<GetAppointmentsByDateUsecase>(),
       ),
     );
   }
