@@ -8,10 +8,12 @@ class CreateAppointmentsUsecaseImpl implements CreateAppointmentsUsecase {
 
   @override
   Future<Either<Failure, void>> call({
-    required AppointmentEntity appointment,
+    required AppointmentEntity appointmentEntity,
   }) async {
     try {
-      return await database.createAppointment(appointment: appointment);
+      return await database.createAppointment(
+        appointmentEntity: appointmentEntity,
+      );
     } catch (e) {
       return left(AppointmentsFailure(message: e.toString()));
     }
