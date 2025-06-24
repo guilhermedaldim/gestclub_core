@@ -9,10 +9,12 @@ part 'appointments_bloc.freezed.dart';
 class AppointmentsBloc extends Bloc<AppointmentsEvent, AppointmentsState> {
   final CreateAppointmentsUsecase createAppointmentUsecase;
   final GetUserAppointmentsUsecase getUserAppointmentsUsecase;
+  final GetAppointmentsByDateUsecase getAppointmentsByDateUsecase;
 
   AppointmentsBloc({
     required this.createAppointmentUsecase,
     required this.getUserAppointmentsUsecase,
+    required this.getAppointmentsByDateUsecase,
   }) : super(const AppointmentsState.initial()) {
     on<AppointmentsEvent>((event, emit) async {
       switch (event) {
@@ -20,7 +22,7 @@ class AppointmentsBloc extends Bloc<AppointmentsEvent, AppointmentsState> {
           emit(const AppointmentsState.loadingCreate());
 
           final result = await createAppointmentUsecase.call(
-            appointment: event.appointment,
+            appointmentEntity: event.appointmentEntity,
           );
 
           return result.fold(
@@ -28,6 +30,7 @@ class AppointmentsBloc extends Bloc<AppointmentsEvent, AppointmentsState> {
                 emit(AppointmentsState.errorCreate(error: error.message)),
             (_) => emit(const AppointmentsState.successCreate()),
           );
+
         case GetUserAppointments():
           emit(const AppointmentsState.loading());
 
@@ -37,6 +40,22 @@ class AppointmentsBloc extends Bloc<AppointmentsEvent, AppointmentsState> {
             (error) => emit(AppointmentsState.error(error: error.message)),
             (appointments) =>
                 emit(AppointmentsState.success(appointments: appointments)),
+          );
+
+        case GetAppointmentsByDate():
+          emit(const AppointmentsState.loadingByDate());
+
+          final result = await getAppointmentsByDateUsecase(
+            date: event.date,
+            spaceId: event.spaceId,
+          );
+
+          result.fold(
+            (failure) =>
+                emit(AppointmentsState.errorByDate(error: failure.message)),
+            (appointments) => emit(
+              AppointmentsState.successByDate(appointments: appointments),
+            ),
           );
       }
     });

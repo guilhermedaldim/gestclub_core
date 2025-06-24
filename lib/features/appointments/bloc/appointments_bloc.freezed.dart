@@ -46,10 +46,10 @@ $AppointmentsEventCopyWith(AppointmentsEvent _, $Res Function(AppointmentsEvent)
 
 
 class CreateAppointment implements AppointmentsEvent {
-  const CreateAppointment({required this.appointment});
+  const CreateAppointment({required this.appointmentEntity});
   
 
- final  AppointmentEntity appointment;
+ final  AppointmentEntity appointmentEntity;
 
 /// Create a copy of AppointmentsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -61,16 +61,16 @@ $CreateAppointmentCopyWith<CreateAppointment> get copyWith => _$CreateAppointmen
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateAppointment&&(identical(other.appointment, appointment) || other.appointment == appointment));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateAppointment&&(identical(other.appointmentEntity, appointmentEntity) || other.appointmentEntity == appointmentEntity));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,appointment);
+int get hashCode => Object.hash(runtimeType,appointmentEntity);
 
 @override
 String toString() {
-  return 'AppointmentsEvent.createAppointment(appointment: $appointment)';
+  return 'AppointmentsEvent.createAppointment(appointmentEntity: $appointmentEntity)';
 }
 
 
@@ -81,11 +81,11 @@ abstract mixin class $CreateAppointmentCopyWith<$Res> implements $AppointmentsEv
   factory $CreateAppointmentCopyWith(CreateAppointment value, $Res Function(CreateAppointment) _then) = _$CreateAppointmentCopyWithImpl;
 @useResult
 $Res call({
- AppointmentEntity appointment
+ AppointmentEntity appointmentEntity
 });
 
 
-$AppointmentEntityCopyWith<$Res> get appointment;
+$AppointmentEntityCopyWith<$Res> get appointmentEntity;
 
 }
 /// @nodoc
@@ -98,9 +98,9 @@ class _$CreateAppointmentCopyWithImpl<$Res>
 
 /// Create a copy of AppointmentsEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? appointment = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? appointmentEntity = null,}) {
   return _then(CreateAppointment(
-appointment: null == appointment ? _self.appointment : appointment // ignore: cast_nullable_to_non_nullable
+appointmentEntity: null == appointmentEntity ? _self.appointmentEntity : appointmentEntity // ignore: cast_nullable_to_non_nullable
 as AppointmentEntity,
   ));
 }
@@ -109,10 +109,10 @@ as AppointmentEntity,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$AppointmentEntityCopyWith<$Res> get appointment {
+$AppointmentEntityCopyWith<$Res> get appointmentEntity {
   
-  return $AppointmentEntityCopyWith<$Res>(_self.appointment, (value) {
-    return _then(_self.copyWith(appointment: value));
+  return $AppointmentEntityCopyWith<$Res>(_self.appointmentEntity, (value) {
+    return _then(_self.copyWith(appointmentEntity: value));
   });
 }
 }
@@ -176,6 +176,74 @@ class _$GetUserAppointmentsCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') $Res call({Object? userId = null,}) {
   return _then(GetUserAppointments(
 userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class GetAppointmentsByDate implements AppointmentsEvent {
+  const GetAppointmentsByDate({required this.date, required this.spaceId});
+  
+
+ final  DateTime date;
+ final  String spaceId;
+
+/// Create a copy of AppointmentsEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$GetAppointmentsByDateCopyWith<GetAppointmentsByDate> get copyWith => _$GetAppointmentsByDateCopyWithImpl<GetAppointmentsByDate>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetAppointmentsByDate&&(identical(other.date, date) || other.date == date)&&(identical(other.spaceId, spaceId) || other.spaceId == spaceId));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,date,spaceId);
+
+@override
+String toString() {
+  return 'AppointmentsEvent.getAppointmentsByDate(date: $date, spaceId: $spaceId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $GetAppointmentsByDateCopyWith<$Res> implements $AppointmentsEventCopyWith<$Res> {
+  factory $GetAppointmentsByDateCopyWith(GetAppointmentsByDate value, $Res Function(GetAppointmentsByDate) _then) = _$GetAppointmentsByDateCopyWithImpl;
+@useResult
+$Res call({
+ DateTime date, String spaceId
+});
+
+
+
+
+}
+/// @nodoc
+class _$GetAppointmentsByDateCopyWithImpl<$Res>
+    implements $GetAppointmentsByDateCopyWith<$Res> {
+  _$GetAppointmentsByDateCopyWithImpl(this._self, this._then);
+
+  final GetAppointmentsByDate _self;
+  final $Res Function(GetAppointmentsByDate) _then;
+
+/// Create a copy of AppointmentsEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? date = null,Object? spaceId = null,}) {
+  return _then(GetAppointmentsByDate(
+date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
+as DateTime,spaceId: null == spaceId ? _self.spaceId : spaceId // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -537,6 +605,176 @@ class _$ErrorAppointmentsStateCopyWithImpl<$Res>
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? error = freezed,}) {
   return _then(ErrorAppointmentsState(
+error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class LoadingAppointmentByDataState implements AppointmentsState {
+  const LoadingAppointmentByDataState();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadingAppointmentByDataState);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AppointmentsState.loadingByDate()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class SuccessAppointmentByDataState implements AppointmentsState {
+  const SuccessAppointmentByDataState({required final  List<AppointmentEntity> appointments}): _appointments = appointments;
+  
+
+ final  List<AppointmentEntity> _appointments;
+ List<AppointmentEntity> get appointments {
+  if (_appointments is EqualUnmodifiableListView) return _appointments;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_appointments);
+}
+
+
+/// Create a copy of AppointmentsState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SuccessAppointmentByDataStateCopyWith<SuccessAppointmentByDataState> get copyWith => _$SuccessAppointmentByDataStateCopyWithImpl<SuccessAppointmentByDataState>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuccessAppointmentByDataState&&const DeepCollectionEquality().equals(other._appointments, _appointments));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_appointments));
+
+@override
+String toString() {
+  return 'AppointmentsState.successByDate(appointments: $appointments)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SuccessAppointmentByDataStateCopyWith<$Res> implements $AppointmentsStateCopyWith<$Res> {
+  factory $SuccessAppointmentByDataStateCopyWith(SuccessAppointmentByDataState value, $Res Function(SuccessAppointmentByDataState) _then) = _$SuccessAppointmentByDataStateCopyWithImpl;
+@useResult
+$Res call({
+ List<AppointmentEntity> appointments
+});
+
+
+
+
+}
+/// @nodoc
+class _$SuccessAppointmentByDataStateCopyWithImpl<$Res>
+    implements $SuccessAppointmentByDataStateCopyWith<$Res> {
+  _$SuccessAppointmentByDataStateCopyWithImpl(this._self, this._then);
+
+  final SuccessAppointmentByDataState _self;
+  final $Res Function(SuccessAppointmentByDataState) _then;
+
+/// Create a copy of AppointmentsState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? appointments = null,}) {
+  return _then(SuccessAppointmentByDataState(
+appointments: null == appointments ? _self._appointments : appointments // ignore: cast_nullable_to_non_nullable
+as List<AppointmentEntity>,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class ErrorAppointmentByDataState implements AppointmentsState {
+  const ErrorAppointmentByDataState({this.error});
+  
+
+ final  String? error;
+
+/// Create a copy of AppointmentsState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ErrorAppointmentByDataStateCopyWith<ErrorAppointmentByDataState> get copyWith => _$ErrorAppointmentByDataStateCopyWithImpl<ErrorAppointmentByDataState>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorAppointmentByDataState&&(identical(other.error, error) || other.error == error));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,error);
+
+@override
+String toString() {
+  return 'AppointmentsState.errorByDate(error: $error)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ErrorAppointmentByDataStateCopyWith<$Res> implements $AppointmentsStateCopyWith<$Res> {
+  factory $ErrorAppointmentByDataStateCopyWith(ErrorAppointmentByDataState value, $Res Function(ErrorAppointmentByDataState) _then) = _$ErrorAppointmentByDataStateCopyWithImpl;
+@useResult
+$Res call({
+ String? error
+});
+
+
+
+
+}
+/// @nodoc
+class _$ErrorAppointmentByDataStateCopyWithImpl<$Res>
+    implements $ErrorAppointmentByDataStateCopyWith<$Res> {
+  _$ErrorAppointmentByDataStateCopyWithImpl(this._self, this._then);
+
+  final ErrorAppointmentByDataState _self;
+  final $Res Function(ErrorAppointmentByDataState) _then;
+
+/// Create a copy of AppointmentsState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? error = freezed,}) {
+  return _then(ErrorAppointmentByDataState(
 error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as String?,
   ));

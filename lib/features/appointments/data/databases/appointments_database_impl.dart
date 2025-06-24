@@ -8,9 +8,11 @@ class AppointmentsDatabaseImpl implements AppointmentsDatabase {
 
   @override
   Future<Either<Failure, void>> createAppointment({
-    required AppointmentEntity appointment,
+    required AppointmentEntity appointmentEntity,
   }) async {
-    return await firestoreServices.createAppointment(appointment: appointment);
+    return await firestoreServices.createAppointment(
+      appointmentEntity: appointmentEntity,
+    );
   }
 
   @override
@@ -18,5 +20,16 @@ class AppointmentsDatabaseImpl implements AppointmentsDatabase {
     required String userId,
   }) async {
     return await firestoreServices.getUserAppointments(userId: userId);
+  }
+
+  @override
+  Future<Either<Failure, List<AppointmentEntity>>> getAppointmentsByDate({
+    required DateTime date,
+    required String spaceId,
+  }) async {
+    return await firestoreServices.getAppointmentsByDate(
+      date: date,
+      spaceId: spaceId,
+    );
   }
 }
