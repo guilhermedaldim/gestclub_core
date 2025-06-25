@@ -12,8 +12,13 @@ _SpaceEntity _$SpaceEntityFromJson(Map<String, dynamic> json) => _SpaceEntity(
   type: $enumDecode(_$SpaceTypeEnumMap, json['type']),
   description: json['description'] as String?,
   image: json['image'] as String?,
+  scheduleStart: json['scheduleStart'] as String?,
+  scheduleEnd: json['scheduleEnd'] as String?,
   allowedCategories: (json['allowedCategories'] as List<dynamic>?)
       ?.map((e) => e as String)
+      .toList(),
+  periods: (json['periods'] as List<dynamic>?)
+      ?.map((e) => Map<String, String>.from(e as Map))
       .toList(),
 );
 
@@ -24,7 +29,10 @@ Map<String, dynamic> _$SpaceEntityToJson(_SpaceEntity instance) =>
       'type': _$SpaceTypeEnumMap[instance.type]!,
       'description': instance.description,
       'image': instance.image,
+      'scheduleStart': instance.scheduleStart,
+      'scheduleEnd': instance.scheduleEnd,
       'allowedCategories': instance.allowedCategories,
+      'periods': instance.periods,
     };
 
 const _$SpaceTypeEnumMap = {
