@@ -19,8 +19,6 @@ import 'package:get_it/get_it.dart';
 
 class AuthInjection {
   static void register({required GetIt getIt}) {
-    final getIt = GetIt.instance;
-
     //Firebase Database
     getIt.registerLazySingleton<AuthDatabase>(
       () => AuthDatabaseImpl(
