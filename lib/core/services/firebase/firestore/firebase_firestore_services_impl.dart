@@ -7,6 +7,7 @@ class FirebaseFirestoreServicesImpl implements FirebaseFirestoreServices {
 
   FirebaseFirestoreServicesImpl({required this.firestore});
 
+  //USER
   @override
   Future<Either<Failure, UserEntity?>> getUserById({required String id}) async {
     try {
@@ -26,6 +27,7 @@ class FirebaseFirestoreServicesImpl implements FirebaseFirestoreServices {
     }
   }
 
+  //EVENTS
   @override
   Future<Either<Failure, List<EventsEntity>>> getEvents() async {
     try {
@@ -50,6 +52,7 @@ class FirebaseFirestoreServicesImpl implements FirebaseFirestoreServices {
     }
   }
 
+  //SPACES
   @override
   Future<Either<Failure, List<SpaceEntity>>> getSpaces({
     required UserEntity user,
@@ -80,6 +83,7 @@ class FirebaseFirestoreServicesImpl implements FirebaseFirestoreServices {
     }
   }
 
+  //APPOINTMENTS
   @override
   Future<Either<Failure, void>> createAppointment({
     required AppointmentEntity appointmentEntity,
@@ -208,6 +212,141 @@ class FirebaseFirestoreServicesImpl implements FirebaseFirestoreServices {
       return left(FirebaseFailure(message: mapFirebaseExceptionMapper(e.code)));
     } catch (e) {
       return left(AppointmentsFailure(message: e.toString()));
+    }
+  }
+
+  //CLASSIFICATIONS
+  @override
+  Future<Either<Failure, List<TeamEntity>>> getFootballClassification({
+    required String year,
+  }) async {
+    try {
+      final teamsSnapshot = await firestore
+          .collection('classifications')
+          .doc('futebol')
+          .collection('years')
+          .doc(year)
+          .collection('teams')
+          .orderBy('rank')
+          .get();
+
+      if (teamsSnapshot.docs.isEmpty) {
+        return left(ClassificationsFailure(message: 'Nenhum time encontrado.'));
+      }
+
+      final List<TeamEntity> teams = [];
+      for (final doc in teamsSnapshot.docs) {
+        final teamData = doc.data();
+
+        final playersSnapshot = await firestore
+            .collection('classifications')
+            .doc('futebol')
+            .collection('years')
+            .doc(year)
+            .collection('teams')
+            .doc(doc.id)
+            .collection('players')
+            .get();
+
+        final players = playersSnapshot.docs
+            .map((p) => PlayerEntity.fromJson(p.data()))
+            .toList();
+
+        teams.add(
+          TeamEntity.fromJson({
+            ...teamData,
+            'id': doc.id,
+            'players': players.map((p) => p.toJson()).toList(),
+          }),
+        );
+      }
+
+      return right(teams);
+    } on FirebaseException catch (e) {
+      if (e.code == 'failed-precondition' &&
+          e.message?.contains('index') == true) {
+        return right([]);
+      }
+
+      return left(FirebaseFailure(message: mapFirebaseExceptionMapper(e.code)));
+    } catch (e) {
+      return left(ClassificationsFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<PlayerEntity>>> getTennisRanking({
+    required String className,
+  }) async {
+    try {
+      final snapshot = await firestore
+          .collection('classifications')
+          .doc('tenis')
+          .collection('classes')
+          .doc(className)
+          .collection('players')
+          .orderBy('rank')
+          .get();
+
+      if (snapshot.docs.isEmpty) {
+        return left(ClassificationsFailure(message: 'Nenhum time encontrado.'));
+      }
+
+      final players = snapshot.docs
+          .map((doc) => PlayerEntity.fromJson(doc.data()))
+          .toList();
+
+      return right(players);
+    } on FirebaseException catch (e) {
+      if (e.code == 'failed-precondition' &&
+          e.message?.contains('index') == true) {
+        return right([]);
+      }
+      return left(FirebaseFailure(message: mapFirebaseExceptionMapper(e.code)));
+    } catch (e) {
+      return left(ClassificationsFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<String>>> getFootballYears() async {
+    try {
+      final snapshot = await firestore
+          .collection('classifications')
+          .doc('futebol')
+          .collection('years')
+          .get();
+
+      if (snapshot.docs.isEmpty) {
+        return left(ClassificationsFailure(message: 'Nenhum ano encontrado.'));
+      }
+
+      final years = snapshot.docs.map((doc) => doc.id).toList();
+      return right(years);
+    } catch (e) {
+      return left(ClassificationsFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<String>>> getTennisClasses() async {
+    try {
+      final snapshot = await firestore
+          .collection('classifications')
+          .doc('tenis')
+          .collection('classes')
+          .get();
+
+      if (snapshot.docs.isEmpty) {
+        return left(
+          ClassificationsFailure(message: 'Nenhuma classe encontrada.'),
+        );
+      }
+
+      final classes = snapshot.docs.map((doc) => doc.id).toList();
+      return right(classes);
+    } catch (e) {
+      return left(ClassificationsFailure(message: e.toString()));
     }
   }
 }
