@@ -46,5 +46,8 @@ class DependencyInjection {
 
     //Initialize spaces
     SpacesInjection.register(getIt: getIt);
+
+    //Initialize classifications
+    ClassificationsInjection.register(getIt: getIt);
   }
 }
