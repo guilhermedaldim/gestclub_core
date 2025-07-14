@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AppointmentEntity {
 
- String get id; String get spaceId; UserEntity get user; SpaceEntity get space;@TimestampConverter() DateTime get date;
+ String get id; String get spaceId; UserEntity get user; SpaceEntity get space;@TimestampConverter() DateTime? get date;
 /// Create a copy of AppointmentEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +49,7 @@ abstract mixin class $AppointmentEntityCopyWith<$Res>  {
   factory $AppointmentEntityCopyWith(AppointmentEntity value, $Res Function(AppointmentEntity) _then) = _$AppointmentEntityCopyWithImpl;
 @useResult
 $Res call({
- String id, String spaceId, UserEntity user, SpaceEntity space,@TimestampConverter() DateTime date
+ String id, String spaceId, UserEntity user, SpaceEntity space,@TimestampConverter() DateTime? date
 });
 
 
@@ -66,14 +66,14 @@ class _$AppointmentEntityCopyWithImpl<$Res>
 
 /// Create a copy of AppointmentEntity
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? spaceId = null,Object? user = null,Object? space = null,Object? date = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? spaceId = null,Object? user = null,Object? space = null,Object? date = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,spaceId: null == spaceId ? _self.spaceId : spaceId // ignore: cast_nullable_to_non_nullable
 as String,user: null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
 as UserEntity,space: null == space ? _self.space : space // ignore: cast_nullable_to_non_nullable
-as SpaceEntity,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
-as DateTime,
+as SpaceEntity,date: freezed == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
+as DateTime?,
   ));
 }
 /// Create a copy of AppointmentEntity
@@ -109,7 +109,7 @@ class _AppointmentEntity extends AppointmentEntity {
 @override final  String spaceId;
 @override final  UserEntity user;
 @override final  SpaceEntity space;
-@override@TimestampConverter() final  DateTime date;
+@override@TimestampConverter() final  DateTime? date;
 
 /// Create a copy of AppointmentEntity
 /// with the given fields replaced by the non-null parameter values.
@@ -144,7 +144,7 @@ abstract mixin class _$AppointmentEntityCopyWith<$Res> implements $AppointmentEn
   factory _$AppointmentEntityCopyWith(_AppointmentEntity value, $Res Function(_AppointmentEntity) _then) = __$AppointmentEntityCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String spaceId, UserEntity user, SpaceEntity space,@TimestampConverter() DateTime date
+ String id, String spaceId, UserEntity user, SpaceEntity space,@TimestampConverter() DateTime? date
 });
 
 
@@ -161,14 +161,14 @@ class __$AppointmentEntityCopyWithImpl<$Res>
 
 /// Create a copy of AppointmentEntity
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? spaceId = null,Object? user = null,Object? space = null,Object? date = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? spaceId = null,Object? user = null,Object? space = null,Object? date = freezed,}) {
   return _then(_AppointmentEntity(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,spaceId: null == spaceId ? _self.spaceId : spaceId // ignore: cast_nullable_to_non_nullable
 as String,user: null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
 as UserEntity,space: null == space ? _self.space : space // ignore: cast_nullable_to_non_nullable
-as SpaceEntity,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
-as DateTime,
+as SpaceEntity,date: freezed == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
+as DateTime?,
   ));
 }
 
