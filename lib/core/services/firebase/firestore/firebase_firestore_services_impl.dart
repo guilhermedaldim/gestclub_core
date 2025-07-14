@@ -209,6 +209,7 @@ class FirebaseFirestoreServicesImpl implements FirebaseFirestoreServices {
           e.message?.contains('index') == true) {
         return right([]);
       }
+
       return left(FirebaseFailure(message: mapFirebaseExceptionMapper(e.code)));
     } catch (e) {
       return left(AppointmentsFailure(message: e.toString()));
@@ -323,6 +324,8 @@ class FirebaseFirestoreServicesImpl implements FirebaseFirestoreServices {
 
       final years = snapshot.docs.map((doc) => doc.id).toList();
       return right(years);
+    } on FirebaseException catch (e) {
+      return left(FirebaseFailure(message: mapFirebaseExceptionMapper(e.code)));
     } catch (e) {
       return left(ClassificationsFailure(message: e.toString()));
     }
@@ -345,8 +348,80 @@ class FirebaseFirestoreServicesImpl implements FirebaseFirestoreServices {
 
       final classes = snapshot.docs.map((doc) => doc.id).toList();
       return right(classes);
+    } on FirebaseException catch (e) {
+      return left(FirebaseFailure(message: mapFirebaseExceptionMapper(e.code)));
     } catch (e) {
       return left(ClassificationsFailure(message: e.toString()));
+    }
+  }
+
+  //PAYMENTS
+  @override
+  Future<Either<Failure, PaymentEntity>> createPayment({
+    required String userId,
+    required PaymentEntity payment,
+  }) async {
+    try {
+      final snapshot = await firestore
+          .collection('users')
+          .doc(userId)
+          .collection('payments')
+          .add(payment.toJson());
+
+      // Atualiza o campo `id` do documento com o ID gerado
+      await snapshot.update({'id': snapshot.id});
+
+      return right(payment.copyWith(id: snapshot.id));
+    } on FirebaseException catch (e) {
+      return left(FirebaseFailure(message: mapFirebaseExceptionMapper(e.code)));
+    } catch (e) {
+      return left(PaymentFailure(message: 'Erro desconhecido.'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<PaymentEntity>>> getPayments({
+    required String userId,
+  }) async {
+    try {
+      final snapshot = await firestore
+          .collection('users')
+          .doc(userId)
+          .collection('payments')
+          .orderBy('createdAt', descending: true)
+          .get();
+
+      if (snapshot.docs.isEmpty) {
+        return left(PaymentFailure(message: 'Nenhum pagamento encontrado.'));
+      }
+
+      final payments = snapshot.docs
+          .map((doc) => PaymentEntity.fromJson(doc.data()))
+          .toList();
+
+      return right(payments);
+    } on FirebaseException catch (e) {
+      return left(FirebaseFailure(message: mapFirebaseExceptionMapper(e.code)));
+    } catch (e) {
+      return left(PaymentFailure(message: 'Erro desconhecido.'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, ClubPixInfoEntity>> getClubPixInfo() async {
+    try {
+      final snapshot = await firestore.collection('pix').doc('info').get();
+
+      if (!snapshot.exists) {
+        return left(FirebaseFailure(message: 'Dados Pix não encontrados.'));
+      }
+
+      final data = ClubPixInfoEntity.fromJson(snapshot.data()!);
+      return right(data);
+    } on FirebaseException catch (e) {
+      return left(FirebaseFailure(message: mapFirebaseExceptionMapper(e.code)));
+    } catch (e) {
+      return left(PaymentFailure(message: 'Erro desconhecido.'));
     }
   }
 }
