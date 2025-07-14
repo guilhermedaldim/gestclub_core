@@ -34,4 +34,14 @@ abstract class FirebaseFirestoreServices {
   });
   Future<Either<Failure, List<String>>> getFootballYears();
   Future<Either<Failure, List<String>>> getTennisClasses();
+
+  //PAYMENTS
+  Future<Either<Failure, PaymentEntity>> createPayment({
+    required String userId,
+    required PaymentEntity payment,
+  });
+  Future<Either<Failure, List<PaymentEntity>>> getPayments({
+    required String userId,
+  });
+  Future<Either<Failure, ClubPixInfoEntity>> getClubPixInfo();
 }

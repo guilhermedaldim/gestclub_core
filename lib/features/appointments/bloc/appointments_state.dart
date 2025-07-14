@@ -22,10 +22,10 @@ sealed class AppointmentsState with _$AppointmentsState {
 
   // GET APPOINTMENTS BY DATE
   const factory AppointmentsState.loadingByDate() =
-      LoadingAppointmentByDataState;
+      LoadingAppointmentByDateState;
   const factory AppointmentsState.successByDate({
     required List<AppointmentEntity> appointments,
-  }) = SuccessAppointmentByDataState;
+  }) = SuccessAppointmentByDateState;
   const factory AppointmentsState.errorByDate({String? error}) =
-      ErrorAppointmentByDataState;
+      ErrorAppointmentByDateState;
 }

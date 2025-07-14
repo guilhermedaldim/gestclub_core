@@ -35,6 +35,15 @@ class DependencyInjection {
           SharedPreferencesServiceImpl(preferences: getIt<SharedPreferences>()),
     );
 
+    //HttpClient Service
+    getIt.registerLazySingleton<HttpClientService>(
+      () => DioHttpClientService(),
+    );
+
+    getIt.registerLazySingleton<PixQrCodeService>(
+      () => PixQrCodeServiceImpl(httpClient: getIt<HttpClientService>()),
+    );
+
     //Initialize auth
     AuthInjection.register(getIt: getIt);
 
@@ -49,5 +58,8 @@ class DependencyInjection {
 
     //Initialize classifications
     ClassificationsInjection.register(getIt: getIt);
+
+    //Initialize payments
+    PaymentsInjection.register(getIt: getIt);
   }
 }
