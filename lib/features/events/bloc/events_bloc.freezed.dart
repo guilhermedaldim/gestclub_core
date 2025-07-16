@@ -15,30 +15,61 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$EventsEvent {
 
-
+ String get clubId;
+/// Create a copy of EventsEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$EventsEventCopyWith<EventsEvent> get copyWith => _$EventsEventCopyWithImpl<EventsEvent>(this as EventsEvent, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is EventsEvent);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is EventsEvent&&(identical(other.clubId, clubId) || other.clubId == clubId));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,clubId);
 
 @override
 String toString() {
-  return 'EventsEvent()';
+  return 'EventsEvent(clubId: $clubId)';
 }
 
 
 }
 
 /// @nodoc
-class $EventsEventCopyWith<$Res>  {
-$EventsEventCopyWith(EventsEvent _, $Res Function(EventsEvent) __);
+abstract mixin class $EventsEventCopyWith<$Res>  {
+  factory $EventsEventCopyWith(EventsEvent value, $Res Function(EventsEvent) _then) = _$EventsEventCopyWithImpl;
+@useResult
+$Res call({
+ String clubId
+});
+
+
+
+
+}
+/// @nodoc
+class _$EventsEventCopyWithImpl<$Res>
+    implements $EventsEventCopyWith<$Res> {
+  _$EventsEventCopyWithImpl(this._self, this._then);
+
+  final EventsEvent _self;
+  final $Res Function(EventsEvent) _then;
+
+/// Create a copy of EventsEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? clubId = null,}) {
+  return _then(_self.copyWith(
+clubId: null == clubId ? _self.clubId : clubId // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
 }
 
 
@@ -46,33 +77,67 @@ $EventsEventCopyWith(EventsEvent _, $Res Function(EventsEvent) __);
 
 
 class GetEvents implements EventsEvent {
-  const GetEvents();
+  const GetEvents({required this.clubId});
   
 
+@override final  String clubId;
 
-
+/// Create a copy of EventsEvent
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$GetEventsCopyWith<GetEvents> get copyWith => _$GetEventsCopyWithImpl<GetEvents>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetEvents);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetEvents&&(identical(other.clubId, clubId) || other.clubId == clubId));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,clubId);
 
 @override
 String toString() {
-  return 'EventsEvent.getEvents()';
+  return 'EventsEvent.getEvents(clubId: $clubId)';
 }
 
 
 }
 
+/// @nodoc
+abstract mixin class $GetEventsCopyWith<$Res> implements $EventsEventCopyWith<$Res> {
+  factory $GetEventsCopyWith(GetEvents value, $Res Function(GetEvents) _then) = _$GetEventsCopyWithImpl;
+@override @useResult
+$Res call({
+ String clubId
+});
 
 
+
+
+}
+/// @nodoc
+class _$GetEventsCopyWithImpl<$Res>
+    implements $GetEventsCopyWith<$Res> {
+  _$GetEventsCopyWithImpl(this._self, this._then);
+
+  final GetEvents _self;
+  final $Res Function(GetEvents) _then;
+
+/// Create a copy of EventsEvent
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? clubId = null,}) {
+  return _then(GetEvents(
+clubId: null == clubId ? _self.clubId : clubId // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
 
 /// @nodoc
 mixin _$EventsState {

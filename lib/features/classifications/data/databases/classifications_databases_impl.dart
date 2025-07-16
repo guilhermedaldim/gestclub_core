@@ -9,15 +9,23 @@ class ClassificationsDatabaseImpl implements ClassificationsDatabase {
   @override
   Future<Either<Failure, List<PlayerEntity>>> getTennisRanking({
     required String className,
+    required String clubId,
   }) async {
-    return await firestoreServices.getTennisRanking(className: className);
+    return await firestoreServices.getTennisRanking(
+      className: className,
+      clubId: clubId,
+    );
   }
 
   @override
   Future<Either<Failure, List<TeamEntity>>> getFootballClassification({
     required String year,
+    required String clubId,
   }) async {
-    return firestoreServices.getFootballClassification(year: year);
+    return firestoreServices.getFootballClassification(
+      year: year,
+      clubId: clubId,
+    );
   }
 
   @override

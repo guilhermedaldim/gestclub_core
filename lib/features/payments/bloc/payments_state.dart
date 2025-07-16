@@ -12,14 +12,6 @@ sealed class PaymentsState with _$PaymentsState {
   const factory PaymentsState.errorPayments({String? error}) =
       ErrorPaymentsState;
 
-  // GET CLUB PIX INFO
-  const factory PaymentsState.loadingClubPixInfo() = LoadingClubPixInfoState;
-  const factory PaymentsState.successClubPixInfo({
-    required ClubPixInfoEntity clubPixInfo,
-  }) = SuccessClubPixInfoState;
-  const factory PaymentsState.errorClubPixInfo({String? error}) =
-      ErrorClubPixInfoState;
-
   // CREATE PAYMENT
   const factory PaymentsState.loadingCreatePayment() =
       LoadingCreatePaymentState;

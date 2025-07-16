@@ -7,7 +7,9 @@ class EventsDatabaseImpl implements EventsDatabase {
   const EventsDatabaseImpl({required this.firestoreServices});
 
   @override
-  Future<Either<Failure, List<EventsEntity>>> getEvents() async {
-    return await firestoreServices.getEvents();
+  Future<Either<Failure, List<EventsEntity>>> getEvents({
+    required String clubId,
+  }) async {
+    return await firestoreServices.getEvents(clubId: clubId);
   }
 }

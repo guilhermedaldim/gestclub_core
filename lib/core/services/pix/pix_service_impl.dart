@@ -46,7 +46,7 @@ class PixQrCodeServiceImpl implements PixQrCodeService {
         return left(PaymentFailure(message: 'Código PIX inválido.'));
       }
     } catch (e) {
-      return left(PaymentFailure(message: e.toString()));
+      return left(PaymentFailure(message: 'Erro ao gerar código PIX.'));
     }
   }
 
