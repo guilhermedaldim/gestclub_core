@@ -8,9 +8,15 @@ class GetFootballClassificationUsecaseImpl
   GetFootballClassificationUsecaseImpl({required this.database});
 
   @override
-  Future<Either<Failure, List<TeamEntity>>> call({required String year}) async {
+  Future<Either<Failure, List<TeamEntity>>> call({
+    required String year,
+    required String clubId,
+  }) async {
     try {
-      final result = await database.getFootballClassification(year: year);
+      final result = await database.getFootballClassification(
+        year: year,
+        clubId: clubId,
+      );
 
       return result.fold((error) => left(error), (teams) => right(teams));
     } catch (e) {

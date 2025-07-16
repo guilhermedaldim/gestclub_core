@@ -4,9 +4,11 @@ part of 'classifications_bloc.dart';
 sealed class ClassificationsEvent with _$ClassificationsEvent {
   const factory ClassificationsEvent.getFootballClassification({
     required String year,
+    required String clubId,
   }) = GetFootballClassificationEvent;
   const factory ClassificationsEvent.getTennisRanking({
     required String className,
+    required String clubId,
   }) = GetTennisRankingEvent;
   const factory ClassificationsEvent.getTennisClasses() = GetTennisClassesEvent;
   const factory ClassificationsEvent.getFootballYears() = GetFootballYearsEvent;

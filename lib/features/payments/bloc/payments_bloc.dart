@@ -9,13 +9,11 @@ part 'payments_bloc.freezed.dart';
 class PaymentsBloc extends Bloc<PaymentsEvent, PaymentsState> {
   final CreatePaymentUsecase createPaymentUsecase;
   final GetPaymentsUsecase getPaymentsUsecase;
-  final GetClubPixInfoUsecase getClubPixInfoUsecase;
   final GetPixCodeUsecase getPixCodeUsecase;
 
   PaymentsBloc({
     required this.createPaymentUsecase,
     required this.getPaymentsUsecase,
-    required this.getClubPixInfoUsecase,
     required this.getPixCodeUsecase,
   }) : super(const PaymentsState.initial()) {
     on<PaymentsEvent>((event, emit) async {
@@ -45,19 +43,6 @@ class PaymentsBloc extends Bloc<PaymentsEvent, PaymentsState> {
                 emit(PaymentsState.errorPayments(error: failure.message)),
             (payments) =>
                 emit(PaymentsState.successPayments(payments: payments)),
-          );
-
-        case GetClubPixInfoEvent():
-          emit(const PaymentsState.loadingClubPixInfo());
-
-          final result = await getClubPixInfoUsecase.call();
-
-          return result.fold(
-            (failure) =>
-                emit(PaymentsState.errorClubPixInfo(error: failure.message)),
-            (clubPixInfo) => emit(
-              PaymentsState.successClubPixInfo(clubPixInfo: clubPixInfo),
-            ),
           );
 
         case GetPixCodeEvent():

@@ -26,6 +26,7 @@ class ClassificationsBloc
 
           final result = await getFootballClassificationUsecase.call(
             year: event.year,
+            clubId: event.clubId,
           );
 
           return result.fold(
@@ -57,6 +58,7 @@ class ClassificationsBloc
 
           final result = await getTennisRankingUsecase.call(
             className: event.className,
+            clubId: event.clubId,
           );
 
           return result.fold(

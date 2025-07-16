@@ -9,5 +9,4 @@ abstract class PaymentsDatabase {
   Future<Either<Failure, List<PaymentEntity>>> getPayments({
     required String userId,
   });
-  Future<Either<Failure, ClubPixInfoEntity>> getClubPixInfo();
 }

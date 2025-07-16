@@ -47,6 +47,9 @@ class DependencyInjection {
     //Initialize auth
     AuthInjection.register(getIt: getIt);
 
+    //Initialize clubs
+    ClubsInjection.register(getIt: getIt);
+
     //Initialize events
     EventsInjection.register(getIt: getIt);
 

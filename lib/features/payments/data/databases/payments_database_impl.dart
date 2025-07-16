@@ -23,9 +23,4 @@ class PaymentsDatabasesImpl implements PaymentsDatabase {
   }) async {
     return await firestoreServices.getPayments(userId: userId);
   }
-
-  @override
-  Future<Either<Failure, ClubPixInfoEntity>> getClubPixInfo() async {
-    return await firestoreServices.getClubPixInfo();
-  }
 }

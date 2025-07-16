@@ -4,7 +4,6 @@ part of 'payments_bloc.dart';
 sealed class PaymentsEvent with _$PaymentsEvent {
   const factory PaymentsEvent.getPayments({required String userId}) =
       GetPaymentsEvent;
-  const factory PaymentsEvent.getClubPixInfo() = GetClubPixInfoEvent;
   const factory PaymentsEvent.createPayment({
     required String userId,
     required PaymentEntity payment,

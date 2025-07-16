@@ -29,10 +29,13 @@ class FirebaseFirestoreServicesImpl implements FirebaseFirestoreServices {
 
   //EVENTS
   @override
-  Future<Either<Failure, List<EventsEntity>>> getEvents() async {
+  Future<Either<Failure, List<EventsEntity>>> getEvents({
+    required String clubId,
+  }) async {
     try {
       final snapshot = await firestore
           .collection('events')
+          .where('clubId', isEqualTo: clubId)
           .orderBy('date')
           .get();
 
@@ -62,6 +65,7 @@ class FirebaseFirestoreServicesImpl implements FirebaseFirestoreServices {
 
       final snapshot = await firestore
           .collection('spaces')
+          .where('clubId', isEqualTo: map['clubId'])
           .where('allowedCategories', arrayContains: map['category'])
           .get();
 
@@ -116,7 +120,7 @@ class FirebaseFirestoreServicesImpl implements FirebaseFirestoreServices {
           .collection('users')
           .doc(userId)
           .collection('appointments')
-          .orderBy('date')
+          .orderBy('date', descending: true)
           .get();
 
       if (snapshot.docs.isEmpty) {
@@ -220,6 +224,7 @@ class FirebaseFirestoreServicesImpl implements FirebaseFirestoreServices {
   @override
   Future<Either<Failure, List<TeamEntity>>> getFootballClassification({
     required String year,
+    required String clubId,
   }) async {
     try {
       final teamsSnapshot = await firestore
@@ -228,6 +233,7 @@ class FirebaseFirestoreServicesImpl implements FirebaseFirestoreServices {
           .collection('years')
           .doc(year)
           .collection('teams')
+          .where('clubId', isEqualTo: clubId)
           .orderBy('rank')
           .get();
 
@@ -278,6 +284,7 @@ class FirebaseFirestoreServicesImpl implements FirebaseFirestoreServices {
   @override
   Future<Either<Failure, List<PlayerEntity>>> getTennisRanking({
     required String className,
+    required String clubId,
   }) async {
     try {
       final snapshot = await firestore
@@ -286,6 +293,7 @@ class FirebaseFirestoreServicesImpl implements FirebaseFirestoreServices {
           .collection('classes')
           .doc(className)
           .collection('players')
+          .where('clubId', isEqualTo: clubId)
           .orderBy('rank')
           .get();
 
@@ -407,21 +415,44 @@ class FirebaseFirestoreServicesImpl implements FirebaseFirestoreServices {
     }
   }
 
+  //CLUBS
   @override
-  Future<Either<Failure, ClubPixInfoEntity>> getClubPixInfo() async {
+  Future<Either<Failure, void>> createClub({required ClubEntity club}) async {
     try {
-      final snapshot = await firestore.collection('pix').doc('info').get();
+      final snapshot = await firestore
+          .collection('clubs')
+          .doc(club.id)
+          .set(club.toJson(), SetOptions(merge: true));
+
+      return right(snapshot);
+    } on FirebaseException catch (e) {
+      return left(FirebaseFailure(message: mapFirebaseExceptionMapper(e.code)));
+    } catch (e) {
+      return left(ClubsFailure(message: 'Erro desconhecido.'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, ClubEntity>> getClubById({
+    required String clubId,
+  }) async {
+    try {
+      final snapshot = await firestore.collection('clubs').doc(clubId).get();
 
       if (!snapshot.exists) {
-        return left(FirebaseFailure(message: 'Dados Pix não encontrados.'));
+        throw left(ClubsFailure(message: 'Clube não encontrado'));
       }
 
-      final data = ClubPixInfoEntity.fromJson(snapshot.data()!);
+      final data = ClubEntity.fromJson({
+        ...snapshot.data()!,
+        'id': snapshot.id,
+      });
+
       return right(data);
     } on FirebaseException catch (e) {
       return left(FirebaseFailure(message: mapFirebaseExceptionMapper(e.code)));
     } catch (e) {
-      return left(PaymentFailure(message: 'Erro desconhecido.'));
+      return left(ClubsFailure(message: 'Erro desconhecido.'));
     }
   }
 }

@@ -11,6 +11,7 @@ abstract class UserEntity with _$UserEntity {
     required String id,
     required String email,
     String? name,
+    String? clubId,
     CategoryType? category,
   }) = _UserEntity;
 

@@ -16,7 +16,7 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
         case GetEvents():
           emit(const EventsState.loading());
 
-          final result = await getEventsUsecase();
+          final result = await getEventsUsecase(clubId: event.clubId);
 
           return result.fold(
             (error) => emit(EventsState.error(error: error.message)),

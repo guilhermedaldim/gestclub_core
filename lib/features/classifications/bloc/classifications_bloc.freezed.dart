@@ -46,10 +46,11 @@ $ClassificationsEventCopyWith(ClassificationsEvent _, $Res Function(Classificati
 
 
 class GetFootballClassificationEvent implements ClassificationsEvent {
-  const GetFootballClassificationEvent({required this.year});
+  const GetFootballClassificationEvent({required this.year, required this.clubId});
   
 
  final  String year;
+ final  String clubId;
 
 /// Create a copy of ClassificationsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -61,16 +62,16 @@ $GetFootballClassificationEventCopyWith<GetFootballClassificationEvent> get copy
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetFootballClassificationEvent&&(identical(other.year, year) || other.year == year));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetFootballClassificationEvent&&(identical(other.year, year) || other.year == year)&&(identical(other.clubId, clubId) || other.clubId == clubId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,year);
+int get hashCode => Object.hash(runtimeType,year,clubId);
 
 @override
 String toString() {
-  return 'ClassificationsEvent.getFootballClassification(year: $year)';
+  return 'ClassificationsEvent.getFootballClassification(year: $year, clubId: $clubId)';
 }
 
 
@@ -81,7 +82,7 @@ abstract mixin class $GetFootballClassificationEventCopyWith<$Res> implements $C
   factory $GetFootballClassificationEventCopyWith(GetFootballClassificationEvent value, $Res Function(GetFootballClassificationEvent) _then) = _$GetFootballClassificationEventCopyWithImpl;
 @useResult
 $Res call({
- String year
+ String year, String clubId
 });
 
 
@@ -98,9 +99,10 @@ class _$GetFootballClassificationEventCopyWithImpl<$Res>
 
 /// Create a copy of ClassificationsEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? year = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? year = null,Object? clubId = null,}) {
   return _then(GetFootballClassificationEvent(
 year: null == year ? _self.year : year // ignore: cast_nullable_to_non_nullable
+as String,clubId: null == clubId ? _self.clubId : clubId // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -112,10 +114,11 @@ as String,
 
 
 class GetTennisRankingEvent implements ClassificationsEvent {
-  const GetTennisRankingEvent({required this.className});
+  const GetTennisRankingEvent({required this.className, required this.clubId});
   
 
  final  String className;
+ final  String clubId;
 
 /// Create a copy of ClassificationsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -127,16 +130,16 @@ $GetTennisRankingEventCopyWith<GetTennisRankingEvent> get copyWith => _$GetTenni
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetTennisRankingEvent&&(identical(other.className, className) || other.className == className));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetTennisRankingEvent&&(identical(other.className, className) || other.className == className)&&(identical(other.clubId, clubId) || other.clubId == clubId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,className);
+int get hashCode => Object.hash(runtimeType,className,clubId);
 
 @override
 String toString() {
-  return 'ClassificationsEvent.getTennisRanking(className: $className)';
+  return 'ClassificationsEvent.getTennisRanking(className: $className, clubId: $clubId)';
 }
 
 
@@ -147,7 +150,7 @@ abstract mixin class $GetTennisRankingEventCopyWith<$Res> implements $Classifica
   factory $GetTennisRankingEventCopyWith(GetTennisRankingEvent value, $Res Function(GetTennisRankingEvent) _then) = _$GetTennisRankingEventCopyWithImpl;
 @useResult
 $Res call({
- String className
+ String className, String clubId
 });
 
 
@@ -164,9 +167,10 @@ class _$GetTennisRankingEventCopyWithImpl<$Res>
 
 /// Create a copy of ClassificationsEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? className = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? className = null,Object? clubId = null,}) {
   return _then(GetTennisRankingEvent(
 className: null == className ? _self.className : className // ignore: cast_nullable_to_non_nullable
+as String,clubId: null == clubId ? _self.clubId : clubId // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

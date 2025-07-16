@@ -6,7 +6,9 @@ abstract class FirebaseFirestoreServices {
   Future<Either<Failure, UserEntity?>> getUserById({required String id});
 
   //EVENTS
-  Future<Either<Failure, List<EventsEntity>>> getEvents();
+  Future<Either<Failure, List<EventsEntity>>> getEvents({
+    required String clubId,
+  });
 
   //SPACES
   Future<Either<Failure, List<SpaceEntity>>> getSpaces({
@@ -28,9 +30,11 @@ abstract class FirebaseFirestoreServices {
   //CLASSIFICATIONS
   Future<Either<Failure, List<PlayerEntity>>> getTennisRanking({
     required String className,
+    required String clubId,
   });
   Future<Either<Failure, List<TeamEntity>>> getFootballClassification({
     required String year,
+    required String clubId,
   });
   Future<Either<Failure, List<String>>> getFootballYears();
   Future<Either<Failure, List<String>>> getTennisClasses();
@@ -43,5 +47,8 @@ abstract class FirebaseFirestoreServices {
   Future<Either<Failure, List<PaymentEntity>>> getPayments({
     required String userId,
   });
-  Future<Either<Failure, ClubPixInfoEntity>> getClubPixInfo();
+
+  //CLUBS
+  Future<Either<Failure, void>> createClub({required ClubEntity club});
+  Future<Either<Failure, ClubEntity>> getClubById({required String clubId});
 }

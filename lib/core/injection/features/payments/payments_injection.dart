@@ -17,9 +17,6 @@ class PaymentsInjection {
     getIt.registerLazySingleton<CreatePaymentUsecase>(
       () => CreatePaymentUsecaseImpl(database: getIt<PaymentsDatabase>()),
     );
-    getIt.registerLazySingleton<GetClubPixInfoUsecase>(
-      () => GetClubPixInfoUsecaseImpl(database: getIt<PaymentsDatabase>()),
-    );
     getIt.registerLazySingleton<GetPixCodeUsecase>(
       () => GetPixCodeUsecaseImpl(pixQrCodeService: getIt<PixQrCodeService>()),
     );
@@ -29,7 +26,6 @@ class PaymentsInjection {
       () => PaymentsBloc(
         createPaymentUsecase: getIt<CreatePaymentUsecase>(),
         getPaymentsUsecase: getIt<GetPaymentsUsecase>(),
-        getClubPixInfoUsecase: getIt<GetClubPixInfoUsecase>(),
         getPixCodeUsecase: getIt<GetPixCodeUsecase>(),
       ),
     );
