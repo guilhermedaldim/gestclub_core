@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ClubEntity {
 
- String get id; String get name; String get city; String get pixKey; String get pixName; String get ownerUserId; String? get logoUrl;
+ String get id; String get name; String get city;@JsonKey(name: 'pix_key') String get pixKey;@JsonKey(name: 'pix_name') String get pixName;@JsonKey(name: 'owner_user_id') String get ownerUserId; String? get logoUrl;
 /// Create a copy of ClubEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +49,7 @@ abstract mixin class $ClubEntityCopyWith<$Res>  {
   factory $ClubEntityCopyWith(ClubEntity value, $Res Function(ClubEntity) _then) = _$ClubEntityCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, String city, String pixKey, String pixName, String ownerUserId, String? logoUrl
+ String id, String name, String city,@JsonKey(name: 'pix_key') String pixKey,@JsonKey(name: 'pix_name') String pixName,@JsonKey(name: 'owner_user_id') String ownerUserId, String? logoUrl
 });
 
 
@@ -86,15 +86,15 @@ as String?,
 @JsonSerializable()
 
 class _ClubEntity implements ClubEntity {
-  const _ClubEntity({required this.id, required this.name, required this.city, required this.pixKey, required this.pixName, required this.ownerUserId, this.logoUrl});
+  const _ClubEntity({required this.id, required this.name, required this.city, @JsonKey(name: 'pix_key') required this.pixKey, @JsonKey(name: 'pix_name') required this.pixName, @JsonKey(name: 'owner_user_id') required this.ownerUserId, this.logoUrl});
   factory _ClubEntity.fromJson(Map<String, dynamic> json) => _$ClubEntityFromJson(json);
 
 @override final  String id;
 @override final  String name;
 @override final  String city;
-@override final  String pixKey;
-@override final  String pixName;
-@override final  String ownerUserId;
+@override@JsonKey(name: 'pix_key') final  String pixKey;
+@override@JsonKey(name: 'pix_name') final  String pixName;
+@override@JsonKey(name: 'owner_user_id') final  String ownerUserId;
 @override final  String? logoUrl;
 
 /// Create a copy of ClubEntity
@@ -130,7 +130,7 @@ abstract mixin class _$ClubEntityCopyWith<$Res> implements $ClubEntityCopyWith<$
   factory _$ClubEntityCopyWith(_ClubEntity value, $Res Function(_ClubEntity) _then) = __$ClubEntityCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, String city, String pixKey, String pixName, String ownerUserId, String? logoUrl
+ String id, String name, String city,@JsonKey(name: 'pix_key') String pixKey,@JsonKey(name: 'pix_name') String pixName,@JsonKey(name: 'owner_user_id') String ownerUserId, String? logoUrl
 });
 
 

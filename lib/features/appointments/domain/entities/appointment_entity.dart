@@ -13,10 +13,11 @@ abstract class AppointmentEntity with _$AppointmentEntity {
   @JsonSerializable(explicitToJson: true)
   const factory AppointmentEntity({
     required String id,
-    required String spaceId,
+    @JsonKey(name: 'user_id') required String userId,
+    @JsonKey(name: 'space_id') required String spaceId,
     required UserEntity user,
     required SpaceEntity space,
-    @TimestampConverter() required DateTime? date,
+    required DateTime? date,
   }) = _AppointmentEntity;
 
   factory AppointmentEntity.fromJson(Map<String, dynamic> json) =>

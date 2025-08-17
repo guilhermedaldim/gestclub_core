@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SpaceEntity {
 
- String get id; String get name; SpaceType get type; String? get description; String? get image; String? get scheduleStart; String? get scheduleEnd; List<String>? get allowedCategories; List<Map<String, String>>? get periods;
+ String get id; String get name; SpaceType get type; String? get description; String? get image;@JsonKey(name: 'schedule_start') String? get scheduleStart;@JsonKey(name: 'schedule_end') String? get scheduleEnd;@JsonKey(name: 'allowed_categories') List<String>? get allowedCategories; List<Map<String, String>>? get periods;
 /// Create a copy of SpaceEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +49,7 @@ abstract mixin class $SpaceEntityCopyWith<$Res>  {
   factory $SpaceEntityCopyWith(SpaceEntity value, $Res Function(SpaceEntity) _then) = _$SpaceEntityCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, SpaceType type, String? description, String? image, String? scheduleStart, String? scheduleEnd, List<String>? allowedCategories, List<Map<String, String>>? periods
+ String id, String name, SpaceType type, String? description, String? image,@JsonKey(name: 'schedule_start') String? scheduleStart,@JsonKey(name: 'schedule_end') String? scheduleEnd,@JsonKey(name: 'allowed_categories') List<String>? allowedCategories, List<Map<String, String>>? periods
 });
 
 
@@ -88,7 +88,7 @@ as List<Map<String, String>>?,
 @JsonSerializable()
 
 class _SpaceEntity implements SpaceEntity {
-  const _SpaceEntity({required this.id, required this.name, required this.type, this.description, this.image, this.scheduleStart, this.scheduleEnd, final  List<String>? allowedCategories, final  List<Map<String, String>>? periods}): _allowedCategories = allowedCategories,_periods = periods;
+  const _SpaceEntity({required this.id, required this.name, required this.type, this.description, this.image, @JsonKey(name: 'schedule_start') this.scheduleStart, @JsonKey(name: 'schedule_end') this.scheduleEnd, @JsonKey(name: 'allowed_categories') final  List<String>? allowedCategories, final  List<Map<String, String>>? periods}): _allowedCategories = allowedCategories,_periods = periods;
   factory _SpaceEntity.fromJson(Map<String, dynamic> json) => _$SpaceEntityFromJson(json);
 
 @override final  String id;
@@ -96,10 +96,10 @@ class _SpaceEntity implements SpaceEntity {
 @override final  SpaceType type;
 @override final  String? description;
 @override final  String? image;
-@override final  String? scheduleStart;
-@override final  String? scheduleEnd;
+@override@JsonKey(name: 'schedule_start') final  String? scheduleStart;
+@override@JsonKey(name: 'schedule_end') final  String? scheduleEnd;
  final  List<String>? _allowedCategories;
-@override List<String>? get allowedCategories {
+@override@JsonKey(name: 'allowed_categories') List<String>? get allowedCategories {
   final value = _allowedCategories;
   if (value == null) return null;
   if (_allowedCategories is EqualUnmodifiableListView) return _allowedCategories;
@@ -150,7 +150,7 @@ abstract mixin class _$SpaceEntityCopyWith<$Res> implements $SpaceEntityCopyWith
   factory _$SpaceEntityCopyWith(_SpaceEntity value, $Res Function(_SpaceEntity) _then) = __$SpaceEntityCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, SpaceType type, String? description, String? image, String? scheduleStart, String? scheduleEnd, List<String>? allowedCategories, List<Map<String, String>>? periods
+ String id, String name, SpaceType type, String? description, String? image,@JsonKey(name: 'schedule_start') String? scheduleStart,@JsonKey(name: 'schedule_end') String? scheduleEnd,@JsonKey(name: 'allowed_categories') List<String>? allowedCategories, List<Map<String, String>>? periods
 });
 
 

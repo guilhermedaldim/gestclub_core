@@ -8,6 +8,15 @@ abstract class AuthDatabase {
   });
   Future<Either<Failure, void>> signOut();
   Future<Either<Failure, UserEntity?>> currentUser();
-  Future<Either<Failure, void>> sendPasswordResetEmail({required String email});
-  Future<Either<Failure, UserEntity?>> getUserById({required String id});
+  Future<Either<Failure, void>> sendResetPasswordForEmail({
+    required String email,
+  });
+  Future<Either<Failure, void>> updatePassword({required String password});
+  Future<Either<Failure, UserEntity?>> signUp({
+    required String email,
+    required String password,
+    String? name,
+    String? clubId,
+    String? category,
+  });
 }

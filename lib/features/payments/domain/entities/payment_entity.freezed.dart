@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PaymentEntity {
 
- String get id; String get description; double get amount; PaymentStatus get status;@TimestampConverter() DateTime? get createdAt;@TimestampConverter() DateTime? get paidAt;
+ String get id; String get description; double get amount; PaymentStatus get status;@JsonKey(name: 'created_at') DateTime? get createdAt;@JsonKey(name: 'paid_at') DateTime? get paidAt;
 /// Create a copy of PaymentEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +49,7 @@ abstract mixin class $PaymentEntityCopyWith<$Res>  {
   factory $PaymentEntityCopyWith(PaymentEntity value, $Res Function(PaymentEntity) _then) = _$PaymentEntityCopyWithImpl;
 @useResult
 $Res call({
- String id, String description, double amount, PaymentStatus status,@TimestampConverter() DateTime? createdAt,@TimestampConverter() DateTime? paidAt
+ String id, String description, double amount, PaymentStatus status,@JsonKey(name: 'created_at') DateTime? createdAt,@JsonKey(name: 'paid_at') DateTime? paidAt
 });
 
 
@@ -85,15 +85,15 @@ as DateTime?,
 @JsonSerializable()
 
 class _PaymentEntity implements PaymentEntity {
-  const _PaymentEntity({required this.id, required this.description, required this.amount, required this.status, @TimestampConverter() required this.createdAt, @TimestampConverter() this.paidAt});
+  const _PaymentEntity({required this.id, required this.description, required this.amount, required this.status, @JsonKey(name: 'created_at') required this.createdAt, @JsonKey(name: 'paid_at') this.paidAt});
   factory _PaymentEntity.fromJson(Map<String, dynamic> json) => _$PaymentEntityFromJson(json);
 
 @override final  String id;
 @override final  String description;
 @override final  double amount;
 @override final  PaymentStatus status;
-@override@TimestampConverter() final  DateTime? createdAt;
-@override@TimestampConverter() final  DateTime? paidAt;
+@override@JsonKey(name: 'created_at') final  DateTime? createdAt;
+@override@JsonKey(name: 'paid_at') final  DateTime? paidAt;
 
 /// Create a copy of PaymentEntity
 /// with the given fields replaced by the non-null parameter values.
@@ -128,7 +128,7 @@ abstract mixin class _$PaymentEntityCopyWith<$Res> implements $PaymentEntityCopy
   factory _$PaymentEntityCopyWith(_PaymentEntity value, $Res Function(_PaymentEntity) _then) = __$PaymentEntityCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String description, double amount, PaymentStatus status,@TimestampConverter() DateTime? createdAt,@TimestampConverter() DateTime? paidAt
+ String id, String description, double amount, PaymentStatus status,@JsonKey(name: 'created_at') DateTime? createdAt,@JsonKey(name: 'paid_at') DateTime? paidAt
 });
 
 

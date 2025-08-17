@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UserEntity {
 
- String get id; String get email; String? get name; String? get clubId; CategoryType? get category;
+ String get id; String get email; String? get name;@JsonKey(name: 'club_id') String? get clubId; CategoryType? get category;
 /// Create a copy of UserEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +49,7 @@ abstract mixin class $UserEntityCopyWith<$Res>  {
   factory $UserEntityCopyWith(UserEntity value, $Res Function(UserEntity) _then) = _$UserEntityCopyWithImpl;
 @useResult
 $Res call({
- String id, String email, String? name, String? clubId, CategoryType? category
+ String id, String email, String? name,@JsonKey(name: 'club_id') String? clubId, CategoryType? category
 });
 
 
@@ -84,13 +84,13 @@ as CategoryType?,
 @JsonSerializable()
 
 class _UserEntity implements UserEntity {
-  const _UserEntity({required this.id, required this.email, this.name, this.clubId, this.category});
+  const _UserEntity({required this.id, required this.email, this.name, @JsonKey(name: 'club_id') this.clubId, this.category});
   factory _UserEntity.fromJson(Map<String, dynamic> json) => _$UserEntityFromJson(json);
 
 @override final  String id;
 @override final  String email;
 @override final  String? name;
-@override final  String? clubId;
+@override@JsonKey(name: 'club_id') final  String? clubId;
 @override final  CategoryType? category;
 
 /// Create a copy of UserEntity
@@ -126,7 +126,7 @@ abstract mixin class _$UserEntityCopyWith<$Res> implements $UserEntityCopyWith<$
   factory _$UserEntityCopyWith(_UserEntity value, $Res Function(_UserEntity) _then) = __$UserEntityCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String email, String? name, String? clubId, CategoryType? category
+ String id, String email, String? name,@JsonKey(name: 'club_id') String? clubId, CategoryType? category
 });
 
 

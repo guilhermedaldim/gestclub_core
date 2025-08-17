@@ -2,14 +2,17 @@ part of 'classifications_bloc.dart';
 
 @freezed
 sealed class ClassificationsEvent with _$ClassificationsEvent {
-  const factory ClassificationsEvent.getFootballClassification({
-    required String year,
+  const factory ClassificationsEvent.getBeachTennisClassification({
+    required String className,
     required String clubId,
-  }) = GetFootballClassificationEvent;
+  }) = GetBeachTennisClassificationEvent;
   const factory ClassificationsEvent.getTennisRanking({
     required String className,
     required String clubId,
   }) = GetTennisRankingEvent;
-  const factory ClassificationsEvent.getTennisClasses() = GetTennisClassesEvent;
-  const factory ClassificationsEvent.getFootballYears() = GetFootballYearsEvent;
+  const factory ClassificationsEvent.getTennisClasses({required String sport}) =
+      GetTennisClassesEvent;
+  const factory ClassificationsEvent.getBeachTennisClasses({
+    required String sport,
+  }) = GetBeachTennisClassesEvent;
 }

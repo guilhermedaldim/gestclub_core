@@ -3,11 +3,9 @@ import 'package:get_it/get_it.dart';
 
 class SpacesInjection {
   static void register({required GetIt getIt}) {
-    //Firebase Database
+    //Database
     getIt.registerLazySingleton<SpacesDatabase>(
-      () => SpacesDatabaseImpl(
-        firestoreServices: getIt<FirebaseFirestoreServices>(),
-      ),
+      () => SpacesDatabaseImpl(database: getIt<DatabaseServices>()),
     );
 
     //Usecases

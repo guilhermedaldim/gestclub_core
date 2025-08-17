@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'space_entity.freezed.dart';
@@ -13,9 +15,9 @@ abstract class SpaceEntity with _$SpaceEntity {
     required SpaceType type,
     String? description,
     String? image,
-    String? scheduleStart,
-    String? scheduleEnd,
-    List<String>? allowedCategories,
+    @JsonKey(name: 'schedule_start') String? scheduleStart,
+    @JsonKey(name: 'schedule_end') String? scheduleEnd,
+    @JsonKey(name: 'allowed_categories') List<String>? allowedCategories,
     List<Map<String, String>>? periods,
   }) = _SpaceEntity;
 

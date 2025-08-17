@@ -10,7 +10,7 @@ _UserEntity _$UserEntityFromJson(Map<String, dynamic> json) => _UserEntity(
   id: json['id'] as String,
   email: json['email'] as String,
   name: json['name'] as String?,
-  clubId: json['clubId'] as String?,
+  clubId: json['club_id'] as String?,
   category: $enumDecodeNullable(_$CategoryTypeEnumMap, json['category']),
 );
 
@@ -19,7 +19,7 @@ Map<String, dynamic> _$UserEntityToJson(_UserEntity instance) =>
       'id': instance.id,
       'email': instance.email,
       'name': instance.name,
-      'clubId': instance.clubId,
+      'club_id': instance.clubId,
       'category': _$CategoryTypeEnumMap[instance.category],
     };
 

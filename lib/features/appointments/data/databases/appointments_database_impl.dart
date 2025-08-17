@@ -2,15 +2,15 @@ import 'package:dartz/dartz.dart';
 import 'package:gestclub_core/gestclub_core.dart';
 
 class AppointmentsDatabaseImpl implements AppointmentsDatabase {
-  final FirebaseFirestoreServices firestoreServices;
+  final DatabaseServices database;
 
-  const AppointmentsDatabaseImpl({required this.firestoreServices});
+  const AppointmentsDatabaseImpl({required this.database});
 
   @override
   Future<Either<Failure, void>> createAppointment({
     required AppointmentEntity appointmentEntity,
   }) async {
-    return await firestoreServices.createAppointment(
+    return await database.createAppointment(
       appointmentEntity: appointmentEntity,
     );
   }
@@ -19,7 +19,7 @@ class AppointmentsDatabaseImpl implements AppointmentsDatabase {
   Future<Either<Failure, List<AppointmentEntity>>> getUserAppointments({
     required String userId,
   }) async {
-    return await firestoreServices.getUserAppointments(userId: userId);
+    return await database.getUserAppointments(userId: userId);
   }
 
   @override
@@ -27,9 +27,6 @@ class AppointmentsDatabaseImpl implements AppointmentsDatabase {
     required DateTime date,
     required String spaceId,
   }) async {
-    return await firestoreServices.getAppointmentsByDate(
-      date: date,
-      spaceId: spaceId,
-    );
+    return await database.getAppointmentsByDate(date: date, spaceId: spaceId);
   }
 }

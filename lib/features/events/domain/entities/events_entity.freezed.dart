@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$EventsEntity {
 
- String get id; String get title; String get description; EventType get type; String? get image;@TimestampSerializer() dynamic get date;
+ String get id; String get title; String get description; EventType get type; String? get image; DateTime? get date;
 /// Create a copy of EventsEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,12 +29,12 @@ $EventsEntityCopyWith<EventsEntity> get copyWith => _$EventsEntityCopyWithImpl<E
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is EventsEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.type, type) || other.type == type)&&(identical(other.image, image) || other.image == image)&&const DeepCollectionEquality().equals(other.date, date));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is EventsEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.type, type) || other.type == type)&&(identical(other.image, image) || other.image == image)&&(identical(other.date, date) || other.date == date));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,title,description,type,image,const DeepCollectionEquality().hash(date));
+int get hashCode => Object.hash(runtimeType,id,title,description,type,image,date);
 
 @override
 String toString() {
@@ -49,7 +49,7 @@ abstract mixin class $EventsEntityCopyWith<$Res>  {
   factory $EventsEntityCopyWith(EventsEntity value, $Res Function(EventsEntity) _then) = _$EventsEntityCopyWithImpl;
 @useResult
 $Res call({
- String id, String title, String description, EventType type, String? image,@TimestampSerializer() dynamic date
+ String id, String title, String description, EventType type, String? image, DateTime? date
 });
 
 
@@ -74,7 +74,7 @@ as String,description: null == description ? _self.description : description // 
 as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as EventType,image: freezed == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
 as String?,date: freezed == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
-as dynamic,
+as DateTime?,
   ));
 }
 
@@ -85,7 +85,7 @@ as dynamic,
 @JsonSerializable()
 
 class _EventsEntity implements EventsEntity {
-  const _EventsEntity({required this.id, required this.title, required this.description, required this.type, this.image, @TimestampSerializer() this.date});
+  const _EventsEntity({required this.id, required this.title, required this.description, required this.type, this.image, this.date});
   factory _EventsEntity.fromJson(Map<String, dynamic> json) => _$EventsEntityFromJson(json);
 
 @override final  String id;
@@ -93,7 +93,7 @@ class _EventsEntity implements EventsEntity {
 @override final  String description;
 @override final  EventType type;
 @override final  String? image;
-@override@TimestampSerializer() final  dynamic date;
+@override final  DateTime? date;
 
 /// Create a copy of EventsEntity
 /// with the given fields replaced by the non-null parameter values.
@@ -108,12 +108,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EventsEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.type, type) || other.type == type)&&(identical(other.image, image) || other.image == image)&&const DeepCollectionEquality().equals(other.date, date));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EventsEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.type, type) || other.type == type)&&(identical(other.image, image) || other.image == image)&&(identical(other.date, date) || other.date == date));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,title,description,type,image,const DeepCollectionEquality().hash(date));
+int get hashCode => Object.hash(runtimeType,id,title,description,type,image,date);
 
 @override
 String toString() {
@@ -128,7 +128,7 @@ abstract mixin class _$EventsEntityCopyWith<$Res> implements $EventsEntityCopyWi
   factory _$EventsEntityCopyWith(_EventsEntity value, $Res Function(_EventsEntity) _then) = __$EventsEntityCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String title, String description, EventType type, String? image,@TimestampSerializer() dynamic date
+ String id, String title, String description, EventType type, String? image, DateTime? date
 });
 
 
@@ -153,7 +153,7 @@ as String,description: null == description ? _self.description : description // 
 as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as EventType,image: freezed == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
 as String?,date: freezed == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
-as dynamic,
+as DateTime?,
   ));
 }
 

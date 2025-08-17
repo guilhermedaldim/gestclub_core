@@ -12,8 +12,12 @@ _PaymentEntity _$PaymentEntityFromJson(Map<String, dynamic> json) =>
       description: json['description'] as String,
       amount: (json['amount'] as num).toDouble(),
       status: $enumDecode(_$PaymentStatusEnumMap, json['status']),
-      createdAt: const TimestampConverter().fromJson(json['createdAt']),
-      paidAt: const TimestampConverter().fromJson(json['paidAt']),
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+      paidAt: json['paid_at'] == null
+          ? null
+          : DateTime.parse(json['paid_at'] as String),
     );
 
 Map<String, dynamic> _$PaymentEntityToJson(_PaymentEntity instance) =>
@@ -22,8 +26,8 @@ Map<String, dynamic> _$PaymentEntityToJson(_PaymentEntity instance) =>
       'description': instance.description,
       'amount': instance.amount,
       'status': _$PaymentStatusEnumMap[instance.status]!,
-      'createdAt': const TimestampConverter().toJson(instance.createdAt),
-      'paidAt': const TimestampConverter().toJson(instance.paidAt),
+      'created_at': instance.createdAt?.toIso8601String(),
+      'paid_at': instance.paidAt?.toIso8601String(),
     };
 
 const _$PaymentStatusEnumMap = {

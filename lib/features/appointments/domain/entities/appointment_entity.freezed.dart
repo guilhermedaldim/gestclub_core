@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AppointmentEntity {
 
- String get id; String get spaceId; UserEntity get user; SpaceEntity get space;@TimestampConverter() DateTime? get date;
+ String get id;@JsonKey(name: 'user_id') String get userId;@JsonKey(name: 'space_id') String get spaceId; UserEntity get user; SpaceEntity get space; DateTime? get date;
 /// Create a copy of AppointmentEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,16 +29,16 @@ $AppointmentEntityCopyWith<AppointmentEntity> get copyWith => _$AppointmentEntit
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppointmentEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.spaceId, spaceId) || other.spaceId == spaceId)&&(identical(other.user, user) || other.user == user)&&(identical(other.space, space) || other.space == space)&&(identical(other.date, date) || other.date == date));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppointmentEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.spaceId, spaceId) || other.spaceId == spaceId)&&(identical(other.user, user) || other.user == user)&&(identical(other.space, space) || other.space == space)&&(identical(other.date, date) || other.date == date));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,spaceId,user,space,date);
+int get hashCode => Object.hash(runtimeType,id,userId,spaceId,user,space,date);
 
 @override
 String toString() {
-  return 'AppointmentEntity(id: $id, spaceId: $spaceId, user: $user, space: $space, date: $date)';
+  return 'AppointmentEntity(id: $id, userId: $userId, spaceId: $spaceId, user: $user, space: $space, date: $date)';
 }
 
 
@@ -49,7 +49,7 @@ abstract mixin class $AppointmentEntityCopyWith<$Res>  {
   factory $AppointmentEntityCopyWith(AppointmentEntity value, $Res Function(AppointmentEntity) _then) = _$AppointmentEntityCopyWithImpl;
 @useResult
 $Res call({
- String id, String spaceId, UserEntity user, SpaceEntity space,@TimestampConverter() DateTime? date
+ String id,@JsonKey(name: 'user_id') String userId,@JsonKey(name: 'space_id') String spaceId, UserEntity user, SpaceEntity space, DateTime? date
 });
 
 
@@ -66,9 +66,10 @@ class _$AppointmentEntityCopyWithImpl<$Res>
 
 /// Create a copy of AppointmentEntity
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? spaceId = null,Object? user = null,Object? space = null,Object? date = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? userId = null,Object? spaceId = null,Object? user = null,Object? space = null,Object? date = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
 as String,spaceId: null == spaceId ? _self.spaceId : spaceId // ignore: cast_nullable_to_non_nullable
 as String,user: null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
 as UserEntity,space: null == space ? _self.space : space // ignore: cast_nullable_to_non_nullable
@@ -102,14 +103,15 @@ $SpaceEntityCopyWith<$Res> get space {
 
 @JsonSerializable(explicitToJson: true)
 class _AppointmentEntity extends AppointmentEntity {
-  const _AppointmentEntity({required this.id, required this.spaceId, required this.user, required this.space, @TimestampConverter() required this.date}): super._();
+  const _AppointmentEntity({required this.id, @JsonKey(name: 'user_id') required this.userId, @JsonKey(name: 'space_id') required this.spaceId, required this.user, required this.space, required this.date}): super._();
   factory _AppointmentEntity.fromJson(Map<String, dynamic> json) => _$AppointmentEntityFromJson(json);
 
 @override final  String id;
-@override final  String spaceId;
+@override@JsonKey(name: 'user_id') final  String userId;
+@override@JsonKey(name: 'space_id') final  String spaceId;
 @override final  UserEntity user;
 @override final  SpaceEntity space;
-@override@TimestampConverter() final  DateTime? date;
+@override final  DateTime? date;
 
 /// Create a copy of AppointmentEntity
 /// with the given fields replaced by the non-null parameter values.
@@ -124,16 +126,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppointmentEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.spaceId, spaceId) || other.spaceId == spaceId)&&(identical(other.user, user) || other.user == user)&&(identical(other.space, space) || other.space == space)&&(identical(other.date, date) || other.date == date));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppointmentEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.spaceId, spaceId) || other.spaceId == spaceId)&&(identical(other.user, user) || other.user == user)&&(identical(other.space, space) || other.space == space)&&(identical(other.date, date) || other.date == date));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,spaceId,user,space,date);
+int get hashCode => Object.hash(runtimeType,id,userId,spaceId,user,space,date);
 
 @override
 String toString() {
-  return 'AppointmentEntity(id: $id, spaceId: $spaceId, user: $user, space: $space, date: $date)';
+  return 'AppointmentEntity(id: $id, userId: $userId, spaceId: $spaceId, user: $user, space: $space, date: $date)';
 }
 
 
@@ -144,7 +146,7 @@ abstract mixin class _$AppointmentEntityCopyWith<$Res> implements $AppointmentEn
   factory _$AppointmentEntityCopyWith(_AppointmentEntity value, $Res Function(_AppointmentEntity) _then) = __$AppointmentEntityCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String spaceId, UserEntity user, SpaceEntity space,@TimestampConverter() DateTime? date
+ String id,@JsonKey(name: 'user_id') String userId,@JsonKey(name: 'space_id') String spaceId, UserEntity user, SpaceEntity space, DateTime? date
 });
 
 
@@ -161,9 +163,10 @@ class __$AppointmentEntityCopyWithImpl<$Res>
 
 /// Create a copy of AppointmentEntity
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? spaceId = null,Object? user = null,Object? space = null,Object? date = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? userId = null,Object? spaceId = null,Object? user = null,Object? space = null,Object? date = freezed,}) {
   return _then(_AppointmentEntity(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
 as String,spaceId: null == spaceId ? _self.spaceId : spaceId // ignore: cast_nullable_to_non_nullable
 as String,user: null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
 as UserEntity,space: null == space ? _self.space : space // ignore: cast_nullable_to_non_nullable

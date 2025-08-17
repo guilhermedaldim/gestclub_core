@@ -6,10 +6,11 @@ abstract class ClassificationsDatabase {
     required String className,
     required String clubId,
   });
-  Future<Either<Failure, List<TeamEntity>>> getFootballClassification({
-    required String year,
+  Future<Either<Failure, List<PlayerEntity>>> getBeachTennisClassification({
+    required String className,
     required String clubId,
   });
-  Future<Either<Failure, List<String>>> getFootballYears();
-  Future<Either<Failure, List<String>>> getTennisClasses();
+  Future<Either<Failure, List<String>>> getClassificationsClasses({
+    required String sport,
+  });
 }

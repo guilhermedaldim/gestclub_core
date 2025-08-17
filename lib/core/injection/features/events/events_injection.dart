@@ -5,9 +5,7 @@ class EventsInjection {
   static void register({required GetIt getIt}) {
     //Firebase Database
     getIt.registerLazySingleton<EventsDatabase>(
-      () => EventsDatabaseImpl(
-        firestoreServices: getIt<FirebaseFirestoreServices>(),
-      ),
+      () => EventsDatabaseImpl(database: getIt<DatabaseServices>()),
     );
 
     //Usecases

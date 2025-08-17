@@ -5,9 +5,7 @@ class AppointmentsInjection {
   static void register({required GetIt getIt}) {
     //Firebase Database
     getIt.registerLazySingleton<AppointmentsDatabase>(
-      () => AppointmentsDatabaseImpl(
-        firestoreServices: getIt<FirebaseFirestoreServices>(),
-      ),
+      () => AppointmentsDatabaseImpl(database: getIt<DatabaseServices>()),
     );
 
     //Usecases

@@ -5,9 +5,7 @@ class PaymentsInjection {
   static void register({required GetIt getIt}) {
     //Firebase Database
     getIt.registerLazySingleton<PaymentsDatabase>(
-      () => PaymentsDatabasesImpl(
-        firestoreServices: getIt<FirebaseFirestoreServices>(),
-      ),
+      () => PaymentsDatabasesImpl(database: getIt<DatabaseServices>()),
     );
 
     //Usecases
