@@ -1,0 +1,399 @@
+import 'package:dartz/dartz.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:gestclub_core/gestclub_core.dart';
+
+class SupabaseServicesImpl implements DatabaseServices {
+  final SupabaseClient client;
+
+  SupabaseServicesImpl({required this.client});
+
+  @override
+  Future<Either<Failure, UserEntity?>> getUserById({
+    required String userId,
+  }) async {
+    try {
+      final response = await client
+          .from('users')
+          .select()
+          .eq('id', userId)
+          .maybeSingle();
+
+      if (response == null) {
+        return left(AuthFailure(message: 'Nenhum usuário encontrado.'));
+      }
+
+      final user = UserEntity.fromJson(response);
+      return right(user);
+    } catch (e) {
+      return left(AuthFailure(message: 'Erro desconhecido.'));
+    }
+  }
+
+  // EVENTS
+  @override
+  Future<Either<Failure, List<EventsEntity>>> getEvents({
+    required String clubId,
+  }) async {
+    try {
+      final response = await client
+          .from('events')
+          .select()
+          .eq('club_id', clubId)
+          .order('date');
+
+      if (response.isEmpty) {
+        return left(EventFailure(message: 'Nenhum evento encontrado.'));
+      }
+
+      final events = response
+          .map<EventsEntity>((json) => EventsEntity.fromJson(json))
+          .toList();
+
+      return right(events);
+    } catch (e) {
+      return left(EventFailure(message: 'Erro desconhecido.'));
+    }
+  }
+
+  // SPACES
+  @override
+  Future<Either<Failure, List<SpaceEntity>>> getSpaces({
+    required UserEntity user,
+  }) async {
+    try {
+      final map = user.toJson();
+
+      final response = await client
+          .from('spaces')
+          .select()
+          .eq('club_id', map['club_id'])
+          .contains('allowed_categories', [map['category']]);
+
+      if (response.isEmpty) {
+        return left(
+          SpacesFailure(message: 'Nenhum espaço disponível para agendamento.'),
+        );
+      }
+
+      final spaces = response
+          .map<SpaceEntity>((json) => SpaceEntity.fromJson(json))
+          .toList();
+
+      return right(spaces);
+    } catch (e) {
+      return left(SpacesFailure(message: 'Erro desconhecido.'));
+    }
+  }
+
+  // APPOINTMENTS
+  @override
+  Future<Either<Failure, void>> createAppointment({
+    required AppointmentEntity appointmentEntity,
+  }) async {
+    try {
+      final data = {
+        'user_id': appointmentEntity.userId,
+        'space_id': appointmentEntity.spaceId,
+        'date': appointmentEntity.date?.toIso8601String(),
+      };
+
+      final response = await client
+          .from('appointments')
+          .insert(data)
+          .select()
+          .single();
+
+      if (response.isEmpty) {
+        return left(AppointmentsFailure(message: 'Erro ao criar agendamento.'));
+      }
+      return right(null);
+    } catch (e) {
+      return left(AppointmentsFailure(message: 'Erro desconhecido.'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<AppointmentEntity>>> getUserAppointments({
+    required String userId,
+  }) async {
+    try {
+      final response = await client
+          .from('appointments')
+          .select()
+          .eq('user_id', userId)
+          .order('date', ascending: false);
+
+      if (response.isEmpty) {
+        return left(
+          AppointmentsFailure(message: 'Nenhum agendamento encontrado.'),
+        );
+      }
+
+      final List<AppointmentEntity> appointments = [];
+      for (final json in response) {
+        // Busca o usuário
+        final currentUser = await client
+            .from('users')
+            .select()
+            .eq('id', userId)
+            .maybeSingle();
+
+        final user = currentUser != null
+            ? UserEntity.fromJson(currentUser)
+            : throw Exception('Usuário não encontrado');
+
+        // Busca o espaço
+        final spaceResponse = await client
+            .from('spaces')
+            .select()
+            .eq('id', json['space_id'])
+            .maybeSingle();
+
+        final space = spaceResponse != null
+            ? SpaceEntity.fromJson(spaceResponse)
+            : throw Exception('Espaço não encontrado');
+
+        appointments.add(
+          AppointmentEntity.fromJson({
+            ...json,
+            'user': user.toJson(),
+            'space': space.toJson(),
+          }),
+        );
+      }
+
+      return right(appointments);
+    } catch (e) {
+      return left(AppointmentsFailure(message: 'Erro desconhecido.'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<AppointmentEntity>>> getAppointmentsByDate({
+    required DateTime date,
+    required String spaceId,
+  }) async {
+    try {
+      final startOfDay = DateTime.utc(date.year, date.month, date.day);
+      final endOfDay = startOfDay.add(const Duration(days: 1));
+
+      var query = client
+          .from('appointments')
+          .select()
+          .eq('space_id', spaceId)
+          .gte('date', startOfDay.toIso8601String())
+          .lt('date', endOfDay.toIso8601String());
+
+      final response = await query;
+
+      if (response.isEmpty) {
+        return right([]);
+      }
+
+      final appointments = <AppointmentEntity>[];
+      for (final json in response) {
+        final currentUser = await client
+            .from('users')
+            .select()
+            .eq('id', json['user_id'])
+            .maybeSingle();
+
+        final user = currentUser != null
+            ? UserEntity.fromJson(currentUser)
+            : throw Exception('Usuário não encontrado');
+
+        final spaceResponse = await client
+            .from('spaces')
+            .select()
+            .eq('id', json['space_id'])
+            .maybeSingle();
+
+        final space = spaceResponse != null
+            ? SpaceEntity.fromJson(spaceResponse)
+            : throw Exception('Espaço não encontrado');
+
+        appointments.add(
+          AppointmentEntity.fromJson({
+            ...json,
+            'user': user.toJson(),
+            'space': space.toJson(),
+          }),
+        );
+      }
+
+      return right(appointments);
+    } catch (e) {
+      return left(AppointmentsFailure(message: 'Erro desconhecido.'));
+    }
+  }
+
+  // CLASSIFICATIONS
+  @override
+  Future<Either<Failure, List<PlayerEntity>>> getBeachTennisClassification({
+    required String className,
+    required String clubId,
+  }) async {
+    try {
+      final response = await client
+          .from('classification_class_players')
+          .select()
+          .eq('club_id', clubId)
+          .eq('class_id', className)
+          .order('rank', ascending: true);
+
+      if (response.isEmpty) {
+        return left(
+          ClassificationsFailure(message: 'Nenhum jogador encontrado.'),
+        );
+      }
+
+      final players = response
+          .map<PlayerEntity>((json) => PlayerEntity.fromJson(json))
+          .toList();
+
+      return right(players);
+    } catch (e) {
+      return left(ClassificationsFailure(message: 'Erro desconhecido.'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<PlayerEntity>>> getTennisRanking({
+    required String className,
+    required String clubId,
+  }) async {
+    try {
+      final response = await client
+          .from('classification_class_players')
+          .select()
+          .eq('club_id', clubId)
+          .eq('class_id', className)
+          .order('rank', ascending: true);
+
+      if (response.isEmpty) {
+        return left(
+          ClassificationsFailure(message: 'Nenhum jogador encontrado.'),
+        );
+      }
+
+      final players = response
+          .map<PlayerEntity>((json) => PlayerEntity.fromJson(json))
+          .toList();
+
+      return right(players);
+    } catch (e) {
+      return left(ClassificationsFailure(message: 'Erro desconhecido.'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<String>>> getClassificationsClasses({
+    required String sport,
+  }) async {
+    try {
+      final response = await client
+          .from('classification_classes')
+          .select('id')
+          .eq('sport', sport);
+
+      final classes = response
+          .map<String>((row) => row['id'].toString())
+          .toList();
+
+      if (classes.isEmpty) {
+        return left(
+          ClassificationsFailure(message: 'Nenhuma classe encontrada.'),
+        );
+      }
+
+      return right(classes);
+    } catch (e) {
+      return left(ClassificationsFailure(message: 'Erro desconhecido.'));
+    }
+  }
+
+  // PAYMENTS
+  @override
+  Future<Either<Failure, PaymentEntity>> createPayment({
+    required String userId,
+    required PaymentEntity payment,
+  }) async {
+    try {
+      final data = payment.toJson();
+      data['user_id'] = userId;
+      final response = await client
+          .from('payments')
+          .insert(data)
+          .select()
+          .single();
+
+      if (response.isEmpty) {
+        return left(PaymentFailure(message: 'Erro ao criar pagamento.'));
+      }
+
+      return right(PaymentEntity.fromJson(response));
+    } catch (e) {
+      return left(PaymentFailure(message: 'Erro desconhecido.'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<PaymentEntity>>> getPayments({
+    required String userId,
+  }) async {
+    try {
+      final response = await client
+          .from('payments')
+          .select()
+          .eq('user_id', userId)
+          .order('created_at', ascending: false);
+
+      if (response.isEmpty) {
+        return left(PaymentFailure(message: 'Nenhum pagamento encontrado.'));
+      }
+
+      final payments = response
+          .map<PaymentEntity>((json) => PaymentEntity.fromJson(json))
+          .toList();
+
+      return right(payments);
+    } catch (e) {
+      return left(PaymentFailure(message: 'Erro desconhecido.'));
+    }
+  }
+
+  // CLUBS
+  @override
+  Future<Either<Failure, void>> createClub({required ClubEntity club}) async {
+    try {
+      final data = club.toJson();
+      await client.from('clubs').upsert(data);
+      return right(null);
+    } catch (e) {
+      return left(ClubsFailure(message: 'Erro desconhecido.'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, ClubEntity>> getClubById({
+    required String clubId,
+  }) async {
+    try {
+      final response = await client
+          .from('clubs')
+          .select()
+          .eq('id', clubId)
+          .maybeSingle();
+
+      if (response == null) {
+        return left(ClubsFailure(message: 'Clube não encontrado'));
+      }
+
+      final data = ClubEntity.fromJson(response);
+
+      return right(data);
+    } catch (e) {
+      return left(ClubsFailure(message: 'Erro desconhecido.'));
+    }
+  }
+}

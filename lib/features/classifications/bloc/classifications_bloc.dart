@@ -8,49 +8,54 @@ part 'classifications_bloc.freezed.dart';
 
 class ClassificationsBloc
     extends Bloc<ClassificationsEvent, ClassificationsState> {
-  final GetFootballClassificationUsecase getFootballClassificationUsecase;
-  final GetFootballYearsUsecase getFootballYearsUsecase;
+  final GetBeachTennisClassificationUsecase getBeachTennisClassificationUsecase;
   final GetTennisRankingUsecase getTennisRankingUsecase;
-  final GetTennisClassesUsecase getTennisClassesUsecase;
+  final GetClassificationsClassesUsecase getClassificationsClassesUsecase;
 
   ClassificationsBloc({
-    required this.getFootballClassificationUsecase,
-    required this.getFootballYearsUsecase,
+    required this.getBeachTennisClassificationUsecase,
     required this.getTennisRankingUsecase,
-    required this.getTennisClassesUsecase,
+    required this.getClassificationsClassesUsecase,
   }) : super(const ClassificationsState.initial()) {
     on<ClassificationsEvent>((event, emit) async {
       switch (event) {
-        case GetFootballClassificationEvent():
-          emit(const ClassificationsState.loadingFootballClassification());
+        case GetBeachTennisClassificationEvent():
+          emit(const ClassificationsState.loadingBeachTennisClassification());
 
-          final result = await getFootballClassificationUsecase.call(
-            year: event.year,
+          final result = await getBeachTennisClassificationUsecase.call(
+            className: event.className,
             clubId: event.clubId,
           );
 
           return result.fold(
             (error) => emit(
-              ClassificationsState.errorFootballClassification(
+              ClassificationsState.errorBeachTennisClassification(
                 error: error.message,
               ),
             ),
-            (teams) => emit(
-              ClassificationsState.successFootballClassification(teams: teams),
+            (players) => emit(
+              ClassificationsState.successBeachTennisClassification(
+                players: players,
+              ),
             ),
           );
 
-        case GetFootballYearsEvent():
-          emit(const ClassificationsState.loadingFootballYears());
+        case GetBeachTennisClassesEvent():
+          emit(const ClassificationsState.loadingBeachTennisClasses());
 
-          final result = await getFootballYearsUsecase.call();
+          final result = await getClassificationsClassesUsecase.call(
+            sport: event.sport,
+          );
 
           return result.fold(
             (error) => emit(
-              ClassificationsState.errorFootballYears(error: error.message),
+              ClassificationsState.errorBeachTennisClasses(
+                error: error.message,
+              ),
             ),
-            (years) =>
-                emit(ClassificationsState.successFootballYears(years: years)),
+            (classes) => emit(
+              ClassificationsState.successBeachTennisClasses(classes: classes),
+            ),
           );
 
         case GetTennisRankingEvent():
@@ -73,7 +78,9 @@ class ClassificationsBloc
         case GetTennisClassesEvent():
           emit(const ClassificationsState.loadingTennisClasses());
 
-          final result = await getTennisClassesUsecase.call();
+          final result = await getClassificationsClassesUsecase.call(
+            sport: event.sport,
+          );
 
           return result.fold(
             (error) => emit(

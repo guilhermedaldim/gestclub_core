@@ -13,7 +13,9 @@ _EventsEntity _$EventsEntityFromJson(Map<String, dynamic> json) =>
       description: json['description'] as String,
       type: $enumDecode(_$EventTypeEnumMap, json['type']),
       image: json['image'] as String?,
-      date: json['date'],
+      date: json['date'] == null
+          ? null
+          : DateTime.parse(json['date'] as String),
     );
 
 Map<String, dynamic> _$EventsEntityToJson(_EventsEntity instance) =>
@@ -23,7 +25,7 @@ Map<String, dynamic> _$EventsEntityToJson(_EventsEntity instance) =>
       'description': instance.description,
       'type': _$EventTypeEnumMap[instance.type]!,
       'image': instance.image,
-      'date': instance.date,
+      'date': instance.date?.toIso8601String(),
     };
 
 const _$EventTypeEnumMap = {EventType.news: 'news', EventType.event: 'event'};

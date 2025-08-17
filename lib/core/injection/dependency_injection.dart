@@ -1,25 +1,21 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gestclub_core/gestclub_core.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class DependencyInjection {
   // Podemos add os parâmetros para diferentes tipos de databases (api ou firebase)
-  static Future<void> initialize(
-    /*{required AuthBackendType authBackend}*/
-  ) async {
+  static Future<void> initialize() async {
     final getIt = GetIt.instance;
 
-    //Firebase Auth Services
-    getIt.registerLazySingleton<FirebaseAuthServices>(
-      () => FirebaseAuthServicesImpl(firebaseAuth: FirebaseAuth.instance),
+    // Supabase auth service
+    getIt.registerLazySingleton<AuthServices>(
+      () => SupabaseAuthServicesImpl(client: Supabase.instance.client),
     );
 
-    //Firebase Firestore Services
-    getIt.registerLazySingleton<FirebaseFirestoreServices>(
-      () =>
-          FirebaseFirestoreServicesImpl(firestore: FirebaseFirestore.instance),
+    // Supabase database service
+    getIt.registerLazySingleton<DatabaseServices>(
+      () => SupabaseServicesImpl(client: Supabase.instance.client),
     );
 
     //SharedPreferences

@@ -4,24 +4,24 @@ part of 'classifications_bloc.dart';
 sealed class ClassificationsState with _$ClassificationsState {
   const factory ClassificationsState.initial() = InitialClassificationsState;
 
-  // FOOTBALL CLASSIFICATION
-  const factory ClassificationsState.loadingFootballClassification() =
-      LoadingFootballClassificationState;
-  const factory ClassificationsState.successFootballClassification({
-    required List<TeamEntity> teams,
-  }) = SuccessFootballClassificationState;
-  const factory ClassificationsState.errorFootballClassification({
+  // BEACH TENNIS RANKING
+  const factory ClassificationsState.loadingBeachTennisClassification() =
+      LoadingBeachTennisClassificationState;
+  const factory ClassificationsState.successBeachTennisClassification({
+    required List<PlayerEntity> players,
+  }) = SuccessBeachTennisClassificationState;
+  const factory ClassificationsState.errorBeachTennisClassification({
     String? error,
-  }) = ErrorFootballClassificationState;
+  }) = ErrorBeachTennisClassificationState;
 
-  // FOOTBALL YEARS
-  const factory ClassificationsState.loadingFootballYears() =
-      LoadingFootballYearsState;
-  const factory ClassificationsState.successFootballYears({
-    required List<String> years,
-  }) = SuccessFootballYearsState;
-  const factory ClassificationsState.errorFootballYears({String? error}) =
-      ErrorFootballYearsState;
+  // BEACH TENNIS CLASSES
+  const factory ClassificationsState.loadingBeachTennisClasses() =
+      LoadingBeachTennisClassesState;
+  const factory ClassificationsState.successBeachTennisClasses({
+    required List<String> classes,
+  }) = SuccessBeachTennisClassesState;
+  const factory ClassificationsState.errorBeachTennisClasses({String? error}) =
+      ErrorBeachTennisClassesState;
 
   // TENNIS RANKING
   const factory ClassificationsState.loadingTennisRanking() =

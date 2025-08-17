@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:gestclub_core/gestclub_core.dart';
 
-abstract class FirebaseFirestoreServices {
+abstract class DatabaseServices {
   //USER
-  Future<Either<Failure, UserEntity?>> getUserById({required String id});
+  Future<Either<Failure, UserEntity?>> getUserById({required String userId});
 
   //EVENTS
   Future<Either<Failure, List<EventsEntity>>> getEvents({
@@ -32,12 +32,13 @@ abstract class FirebaseFirestoreServices {
     required String className,
     required String clubId,
   });
-  Future<Either<Failure, List<TeamEntity>>> getFootballClassification({
-    required String year,
+  Future<Either<Failure, List<PlayerEntity>>> getBeachTennisClassification({
+    required String className,
     required String clubId,
   });
-  Future<Either<Failure, List<String>>> getFootballYears();
-  Future<Either<Failure, List<String>>> getTennisClasses();
+  Future<Either<Failure, List<String>>> getClassificationsClasses({
+    required String sport,
+  });
 
   //PAYMENTS
   Future<Either<Failure, PaymentEntity>> createPayment({

@@ -1,5 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:gestclub_core/gestclub_core.dart';
+import 'package:pix_flutter/pix_flutter.dart';
+import 'package:uuid/uuid.dart';
 
 class PixQrCodeServiceImpl implements PixQrCodeService {
   final HttpClientService httpClient;
@@ -22,26 +24,21 @@ class PixQrCodeServiceImpl implements PixQrCodeService {
 
       final amountStr = amount > 0 ? amount.toStringAsFixed(2) : '';
 
-      final queryParameters = {
-        'nome': formattedName,
-        'cidade': formattedCity,
-        'saida': 'br',
-        'chave': formattedKey,
-        'valor': amountStr,
-      };
-
-      if (formattedDescription.isNotEmpty) {
-        queryParameters['info'] = formattedDescription;
-      }
-
-      final data = await httpClient.get(
-        url: 'https://gerarqrcodepix.com.br/api/v1',
-        queryParameters: queryParameters,
+      PixFlutter pixFlutter = PixFlutter(
+        payload: Payload(
+          pixKey: formattedKey,
+          description: formattedDescription,
+          merchantName: formattedName,
+          merchantCity: formattedCity,
+          amount: amountStr,
+          txid: generateUuid25(),
+        ),
       );
 
+      final data = pixFlutter.getQRCode();
+
       if (data.isNotEmpty) {
-        final String code = data['brcode'];
-        return right(code);
+        return right(data);
       } else {
         return left(PaymentFailure(message: 'Código PIX inválido.'));
       }
@@ -113,5 +110,11 @@ class PixQrCodeServiceImpl implements PixQrCodeService {
       str = str.replaceAll(withAccents[i], withoutAccents[i]);
     }
     return str;
+  }
+
+  String generateUuid25() {
+    final uuid = Uuid().v4();
+    final compact = uuid.replaceAll('-', '');
+    return compact.substring(0, 25);
   }
 }

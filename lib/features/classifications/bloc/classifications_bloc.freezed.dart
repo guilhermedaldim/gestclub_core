@@ -45,44 +45,44 @@ $ClassificationsEventCopyWith(ClassificationsEvent _, $Res Function(Classificati
 /// @nodoc
 
 
-class GetFootballClassificationEvent implements ClassificationsEvent {
-  const GetFootballClassificationEvent({required this.year, required this.clubId});
+class GetBeachTennisClassificationEvent implements ClassificationsEvent {
+  const GetBeachTennisClassificationEvent({required this.className, required this.clubId});
   
 
- final  String year;
+ final  String className;
  final  String clubId;
 
 /// Create a copy of ClassificationsEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$GetFootballClassificationEventCopyWith<GetFootballClassificationEvent> get copyWith => _$GetFootballClassificationEventCopyWithImpl<GetFootballClassificationEvent>(this, _$identity);
+$GetBeachTennisClassificationEventCopyWith<GetBeachTennisClassificationEvent> get copyWith => _$GetBeachTennisClassificationEventCopyWithImpl<GetBeachTennisClassificationEvent>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetFootballClassificationEvent&&(identical(other.year, year) || other.year == year)&&(identical(other.clubId, clubId) || other.clubId == clubId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetBeachTennisClassificationEvent&&(identical(other.className, className) || other.className == className)&&(identical(other.clubId, clubId) || other.clubId == clubId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,year,clubId);
+int get hashCode => Object.hash(runtimeType,className,clubId);
 
 @override
 String toString() {
-  return 'ClassificationsEvent.getFootballClassification(year: $year, clubId: $clubId)';
+  return 'ClassificationsEvent.getBeachTennisClassification(className: $className, clubId: $clubId)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $GetFootballClassificationEventCopyWith<$Res> implements $ClassificationsEventCopyWith<$Res> {
-  factory $GetFootballClassificationEventCopyWith(GetFootballClassificationEvent value, $Res Function(GetFootballClassificationEvent) _then) = _$GetFootballClassificationEventCopyWithImpl;
+abstract mixin class $GetBeachTennisClassificationEventCopyWith<$Res> implements $ClassificationsEventCopyWith<$Res> {
+  factory $GetBeachTennisClassificationEventCopyWith(GetBeachTennisClassificationEvent value, $Res Function(GetBeachTennisClassificationEvent) _then) = _$GetBeachTennisClassificationEventCopyWithImpl;
 @useResult
 $Res call({
- String year, String clubId
+ String className, String clubId
 });
 
 
@@ -90,18 +90,18 @@ $Res call({
 
 }
 /// @nodoc
-class _$GetFootballClassificationEventCopyWithImpl<$Res>
-    implements $GetFootballClassificationEventCopyWith<$Res> {
-  _$GetFootballClassificationEventCopyWithImpl(this._self, this._then);
+class _$GetBeachTennisClassificationEventCopyWithImpl<$Res>
+    implements $GetBeachTennisClassificationEventCopyWith<$Res> {
+  _$GetBeachTennisClassificationEventCopyWithImpl(this._self, this._then);
 
-  final GetFootballClassificationEvent _self;
-  final $Res Function(GetFootballClassificationEvent) _then;
+  final GetBeachTennisClassificationEvent _self;
+  final $Res Function(GetBeachTennisClassificationEvent) _then;
 
 /// Create a copy of ClassificationsEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? year = null,Object? clubId = null,}) {
-  return _then(GetFootballClassificationEvent(
-year: null == year ? _self.year : year // ignore: cast_nullable_to_non_nullable
+@pragma('vm:prefer-inline') $Res call({Object? className = null,Object? clubId = null,}) {
+  return _then(GetBeachTennisClassificationEvent(
+className: null == className ? _self.className : className // ignore: cast_nullable_to_non_nullable
 as String,clubId: null == clubId ? _self.clubId : clubId // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -182,65 +182,133 @@ as String,
 
 
 class GetTennisClassesEvent implements ClassificationsEvent {
-  const GetTennisClassesEvent();
+  const GetTennisClassesEvent({required this.sport});
   
 
+ final  String sport;
 
-
+/// Create a copy of ClassificationsEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$GetTennisClassesEventCopyWith<GetTennisClassesEvent> get copyWith => _$GetTennisClassesEventCopyWithImpl<GetTennisClassesEvent>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetTennisClassesEvent);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetTennisClassesEvent&&(identical(other.sport, sport) || other.sport == sport));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,sport);
 
 @override
 String toString() {
-  return 'ClassificationsEvent.getTennisClasses()';
+  return 'ClassificationsEvent.getTennisClasses(sport: $sport)';
 }
 
 
 }
 
+/// @nodoc
+abstract mixin class $GetTennisClassesEventCopyWith<$Res> implements $ClassificationsEventCopyWith<$Res> {
+  factory $GetTennisClassesEventCopyWith(GetTennisClassesEvent value, $Res Function(GetTennisClassesEvent) _then) = _$GetTennisClassesEventCopyWithImpl;
+@useResult
+$Res call({
+ String sport
+});
 
 
+
+
+}
+/// @nodoc
+class _$GetTennisClassesEventCopyWithImpl<$Res>
+    implements $GetTennisClassesEventCopyWith<$Res> {
+  _$GetTennisClassesEventCopyWithImpl(this._self, this._then);
+
+  final GetTennisClassesEvent _self;
+  final $Res Function(GetTennisClassesEvent) _then;
+
+/// Create a copy of ClassificationsEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? sport = null,}) {
+  return _then(GetTennisClassesEvent(
+sport: null == sport ? _self.sport : sport // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
 
 /// @nodoc
 
 
-class GetFootballYearsEvent implements ClassificationsEvent {
-  const GetFootballYearsEvent();
+class GetBeachTennisClassesEvent implements ClassificationsEvent {
+  const GetBeachTennisClassesEvent({required this.sport});
   
 
+ final  String sport;
 
-
+/// Create a copy of ClassificationsEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$GetBeachTennisClassesEventCopyWith<GetBeachTennisClassesEvent> get copyWith => _$GetBeachTennisClassesEventCopyWithImpl<GetBeachTennisClassesEvent>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetFootballYearsEvent);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetBeachTennisClassesEvent&&(identical(other.sport, sport) || other.sport == sport));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,sport);
 
 @override
 String toString() {
-  return 'ClassificationsEvent.getFootballYears()';
+  return 'ClassificationsEvent.getBeachTennisClasses(sport: $sport)';
 }
 
 
 }
 
+/// @nodoc
+abstract mixin class $GetBeachTennisClassesEventCopyWith<$Res> implements $ClassificationsEventCopyWith<$Res> {
+  factory $GetBeachTennisClassesEventCopyWith(GetBeachTennisClassesEvent value, $Res Function(GetBeachTennisClassesEvent) _then) = _$GetBeachTennisClassesEventCopyWithImpl;
+@useResult
+$Res call({
+ String sport
+});
 
 
+
+
+}
+/// @nodoc
+class _$GetBeachTennisClassesEventCopyWithImpl<$Res>
+    implements $GetBeachTennisClassesEventCopyWith<$Res> {
+  _$GetBeachTennisClassesEventCopyWithImpl(this._self, this._then);
+
+  final GetBeachTennisClassesEvent _self;
+  final $Res Function(GetBeachTennisClassesEvent) _then;
+
+/// Create a copy of ClassificationsEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? sport = null,}) {
+  return _then(GetBeachTennisClassesEvent(
+sport: null == sport ? _self.sport : sport // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
 
 /// @nodoc
 mixin _$ClassificationsState {
@@ -307,8 +375,8 @@ String toString() {
 /// @nodoc
 
 
-class LoadingFootballClassificationState implements ClassificationsState {
-  const LoadingFootballClassificationState();
+class LoadingBeachTennisClassificationState implements ClassificationsState {
+  const LoadingBeachTennisClassificationState();
   
 
 
@@ -318,7 +386,7 @@ class LoadingFootballClassificationState implements ClassificationsState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadingFootballClassificationState);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadingBeachTennisClassificationState);
 }
 
 
@@ -327,7 +395,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ClassificationsState.loadingFootballClassification()';
+  return 'ClassificationsState.loadingBeachTennisClassification()';
 }
 
 
@@ -339,15 +407,15 @@ String toString() {
 /// @nodoc
 
 
-class SuccessFootballClassificationState implements ClassificationsState {
-  const SuccessFootballClassificationState({required final  List<TeamEntity> teams}): _teams = teams;
+class SuccessBeachTennisClassificationState implements ClassificationsState {
+  const SuccessBeachTennisClassificationState({required final  List<PlayerEntity> players}): _players = players;
   
 
- final  List<TeamEntity> _teams;
- List<TeamEntity> get teams {
-  if (_teams is EqualUnmodifiableListView) return _teams;
+ final  List<PlayerEntity> _players;
+ List<PlayerEntity> get players {
+  if (_players is EqualUnmodifiableListView) return _players;
   // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_teams);
+  return EqualUnmodifiableListView(_players);
 }
 
 
@@ -355,33 +423,33 @@ class SuccessFootballClassificationState implements ClassificationsState {
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$SuccessFootballClassificationStateCopyWith<SuccessFootballClassificationState> get copyWith => _$SuccessFootballClassificationStateCopyWithImpl<SuccessFootballClassificationState>(this, _$identity);
+$SuccessBeachTennisClassificationStateCopyWith<SuccessBeachTennisClassificationState> get copyWith => _$SuccessBeachTennisClassificationStateCopyWithImpl<SuccessBeachTennisClassificationState>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuccessFootballClassificationState&&const DeepCollectionEquality().equals(other._teams, _teams));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuccessBeachTennisClassificationState&&const DeepCollectionEquality().equals(other._players, _players));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_teams));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_players));
 
 @override
 String toString() {
-  return 'ClassificationsState.successFootballClassification(teams: $teams)';
+  return 'ClassificationsState.successBeachTennisClassification(players: $players)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $SuccessFootballClassificationStateCopyWith<$Res> implements $ClassificationsStateCopyWith<$Res> {
-  factory $SuccessFootballClassificationStateCopyWith(SuccessFootballClassificationState value, $Res Function(SuccessFootballClassificationState) _then) = _$SuccessFootballClassificationStateCopyWithImpl;
+abstract mixin class $SuccessBeachTennisClassificationStateCopyWith<$Res> implements $ClassificationsStateCopyWith<$Res> {
+  factory $SuccessBeachTennisClassificationStateCopyWith(SuccessBeachTennisClassificationState value, $Res Function(SuccessBeachTennisClassificationState) _then) = _$SuccessBeachTennisClassificationStateCopyWithImpl;
 @useResult
 $Res call({
- List<TeamEntity> teams
+ List<PlayerEntity> players
 });
 
 
@@ -389,19 +457,19 @@ $Res call({
 
 }
 /// @nodoc
-class _$SuccessFootballClassificationStateCopyWithImpl<$Res>
-    implements $SuccessFootballClassificationStateCopyWith<$Res> {
-  _$SuccessFootballClassificationStateCopyWithImpl(this._self, this._then);
+class _$SuccessBeachTennisClassificationStateCopyWithImpl<$Res>
+    implements $SuccessBeachTennisClassificationStateCopyWith<$Res> {
+  _$SuccessBeachTennisClassificationStateCopyWithImpl(this._self, this._then);
 
-  final SuccessFootballClassificationState _self;
-  final $Res Function(SuccessFootballClassificationState) _then;
+  final SuccessBeachTennisClassificationState _self;
+  final $Res Function(SuccessBeachTennisClassificationState) _then;
 
 /// Create a copy of ClassificationsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? teams = null,}) {
-  return _then(SuccessFootballClassificationState(
-teams: null == teams ? _self._teams : teams // ignore: cast_nullable_to_non_nullable
-as List<TeamEntity>,
+@pragma('vm:prefer-inline') $Res call({Object? players = null,}) {
+  return _then(SuccessBeachTennisClassificationState(
+players: null == players ? _self._players : players // ignore: cast_nullable_to_non_nullable
+as List<PlayerEntity>,
   ));
 }
 
@@ -411,8 +479,8 @@ as List<TeamEntity>,
 /// @nodoc
 
 
-class ErrorFootballClassificationState implements ClassificationsState {
-  const ErrorFootballClassificationState({this.error});
+class ErrorBeachTennisClassificationState implements ClassificationsState {
+  const ErrorBeachTennisClassificationState({this.error});
   
 
  final  String? error;
@@ -421,13 +489,13 @@ class ErrorFootballClassificationState implements ClassificationsState {
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ErrorFootballClassificationStateCopyWith<ErrorFootballClassificationState> get copyWith => _$ErrorFootballClassificationStateCopyWithImpl<ErrorFootballClassificationState>(this, _$identity);
+$ErrorBeachTennisClassificationStateCopyWith<ErrorBeachTennisClassificationState> get copyWith => _$ErrorBeachTennisClassificationStateCopyWithImpl<ErrorBeachTennisClassificationState>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorFootballClassificationState&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorBeachTennisClassificationState&&(identical(other.error, error) || other.error == error));
 }
 
 
@@ -436,15 +504,15 @@ int get hashCode => Object.hash(runtimeType,error);
 
 @override
 String toString() {
-  return 'ClassificationsState.errorFootballClassification(error: $error)';
+  return 'ClassificationsState.errorBeachTennisClassification(error: $error)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ErrorFootballClassificationStateCopyWith<$Res> implements $ClassificationsStateCopyWith<$Res> {
-  factory $ErrorFootballClassificationStateCopyWith(ErrorFootballClassificationState value, $Res Function(ErrorFootballClassificationState) _then) = _$ErrorFootballClassificationStateCopyWithImpl;
+abstract mixin class $ErrorBeachTennisClassificationStateCopyWith<$Res> implements $ClassificationsStateCopyWith<$Res> {
+  factory $ErrorBeachTennisClassificationStateCopyWith(ErrorBeachTennisClassificationState value, $Res Function(ErrorBeachTennisClassificationState) _then) = _$ErrorBeachTennisClassificationStateCopyWithImpl;
 @useResult
 $Res call({
  String? error
@@ -455,17 +523,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$ErrorFootballClassificationStateCopyWithImpl<$Res>
-    implements $ErrorFootballClassificationStateCopyWith<$Res> {
-  _$ErrorFootballClassificationStateCopyWithImpl(this._self, this._then);
+class _$ErrorBeachTennisClassificationStateCopyWithImpl<$Res>
+    implements $ErrorBeachTennisClassificationStateCopyWith<$Res> {
+  _$ErrorBeachTennisClassificationStateCopyWithImpl(this._self, this._then);
 
-  final ErrorFootballClassificationState _self;
-  final $Res Function(ErrorFootballClassificationState) _then;
+  final ErrorBeachTennisClassificationState _self;
+  final $Res Function(ErrorBeachTennisClassificationState) _then;
 
 /// Create a copy of ClassificationsState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? error = freezed,}) {
-  return _then(ErrorFootballClassificationState(
+  return _then(ErrorBeachTennisClassificationState(
 error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
@@ -477,8 +545,8 @@ as String?,
 /// @nodoc
 
 
-class LoadingFootballYearsState implements ClassificationsState {
-  const LoadingFootballYearsState();
+class LoadingBeachTennisClassesState implements ClassificationsState {
+  const LoadingBeachTennisClassesState();
   
 
 
@@ -488,7 +556,7 @@ class LoadingFootballYearsState implements ClassificationsState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadingFootballYearsState);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadingBeachTennisClassesState);
 }
 
 
@@ -497,7 +565,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ClassificationsState.loadingFootballYears()';
+  return 'ClassificationsState.loadingBeachTennisClasses()';
 }
 
 
@@ -509,15 +577,15 @@ String toString() {
 /// @nodoc
 
 
-class SuccessFootballYearsState implements ClassificationsState {
-  const SuccessFootballYearsState({required final  List<String> years}): _years = years;
+class SuccessBeachTennisClassesState implements ClassificationsState {
+  const SuccessBeachTennisClassesState({required final  List<String> classes}): _classes = classes;
   
 
- final  List<String> _years;
- List<String> get years {
-  if (_years is EqualUnmodifiableListView) return _years;
+ final  List<String> _classes;
+ List<String> get classes {
+  if (_classes is EqualUnmodifiableListView) return _classes;
   // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_years);
+  return EqualUnmodifiableListView(_classes);
 }
 
 
@@ -525,33 +593,33 @@ class SuccessFootballYearsState implements ClassificationsState {
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$SuccessFootballYearsStateCopyWith<SuccessFootballYearsState> get copyWith => _$SuccessFootballYearsStateCopyWithImpl<SuccessFootballYearsState>(this, _$identity);
+$SuccessBeachTennisClassesStateCopyWith<SuccessBeachTennisClassesState> get copyWith => _$SuccessBeachTennisClassesStateCopyWithImpl<SuccessBeachTennisClassesState>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuccessFootballYearsState&&const DeepCollectionEquality().equals(other._years, _years));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuccessBeachTennisClassesState&&const DeepCollectionEquality().equals(other._classes, _classes));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_years));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_classes));
 
 @override
 String toString() {
-  return 'ClassificationsState.successFootballYears(years: $years)';
+  return 'ClassificationsState.successBeachTennisClasses(classes: $classes)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $SuccessFootballYearsStateCopyWith<$Res> implements $ClassificationsStateCopyWith<$Res> {
-  factory $SuccessFootballYearsStateCopyWith(SuccessFootballYearsState value, $Res Function(SuccessFootballYearsState) _then) = _$SuccessFootballYearsStateCopyWithImpl;
+abstract mixin class $SuccessBeachTennisClassesStateCopyWith<$Res> implements $ClassificationsStateCopyWith<$Res> {
+  factory $SuccessBeachTennisClassesStateCopyWith(SuccessBeachTennisClassesState value, $Res Function(SuccessBeachTennisClassesState) _then) = _$SuccessBeachTennisClassesStateCopyWithImpl;
 @useResult
 $Res call({
- List<String> years
+ List<String> classes
 });
 
 
@@ -559,18 +627,18 @@ $Res call({
 
 }
 /// @nodoc
-class _$SuccessFootballYearsStateCopyWithImpl<$Res>
-    implements $SuccessFootballYearsStateCopyWith<$Res> {
-  _$SuccessFootballYearsStateCopyWithImpl(this._self, this._then);
+class _$SuccessBeachTennisClassesStateCopyWithImpl<$Res>
+    implements $SuccessBeachTennisClassesStateCopyWith<$Res> {
+  _$SuccessBeachTennisClassesStateCopyWithImpl(this._self, this._then);
 
-  final SuccessFootballYearsState _self;
-  final $Res Function(SuccessFootballYearsState) _then;
+  final SuccessBeachTennisClassesState _self;
+  final $Res Function(SuccessBeachTennisClassesState) _then;
 
 /// Create a copy of ClassificationsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? years = null,}) {
-  return _then(SuccessFootballYearsState(
-years: null == years ? _self._years : years // ignore: cast_nullable_to_non_nullable
+@pragma('vm:prefer-inline') $Res call({Object? classes = null,}) {
+  return _then(SuccessBeachTennisClassesState(
+classes: null == classes ? _self._classes : classes // ignore: cast_nullable_to_non_nullable
 as List<String>,
   ));
 }
@@ -581,8 +649,8 @@ as List<String>,
 /// @nodoc
 
 
-class ErrorFootballYearsState implements ClassificationsState {
-  const ErrorFootballYearsState({this.error});
+class ErrorBeachTennisClassesState implements ClassificationsState {
+  const ErrorBeachTennisClassesState({this.error});
   
 
  final  String? error;
@@ -591,13 +659,13 @@ class ErrorFootballYearsState implements ClassificationsState {
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ErrorFootballYearsStateCopyWith<ErrorFootballYearsState> get copyWith => _$ErrorFootballYearsStateCopyWithImpl<ErrorFootballYearsState>(this, _$identity);
+$ErrorBeachTennisClassesStateCopyWith<ErrorBeachTennisClassesState> get copyWith => _$ErrorBeachTennisClassesStateCopyWithImpl<ErrorBeachTennisClassesState>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorFootballYearsState&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorBeachTennisClassesState&&(identical(other.error, error) || other.error == error));
 }
 
 
@@ -606,15 +674,15 @@ int get hashCode => Object.hash(runtimeType,error);
 
 @override
 String toString() {
-  return 'ClassificationsState.errorFootballYears(error: $error)';
+  return 'ClassificationsState.errorBeachTennisClasses(error: $error)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ErrorFootballYearsStateCopyWith<$Res> implements $ClassificationsStateCopyWith<$Res> {
-  factory $ErrorFootballYearsStateCopyWith(ErrorFootballYearsState value, $Res Function(ErrorFootballYearsState) _then) = _$ErrorFootballYearsStateCopyWithImpl;
+abstract mixin class $ErrorBeachTennisClassesStateCopyWith<$Res> implements $ClassificationsStateCopyWith<$Res> {
+  factory $ErrorBeachTennisClassesStateCopyWith(ErrorBeachTennisClassesState value, $Res Function(ErrorBeachTennisClassesState) _then) = _$ErrorBeachTennisClassesStateCopyWithImpl;
 @useResult
 $Res call({
  String? error
@@ -625,17 +693,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$ErrorFootballYearsStateCopyWithImpl<$Res>
-    implements $ErrorFootballYearsStateCopyWith<$Res> {
-  _$ErrorFootballYearsStateCopyWithImpl(this._self, this._then);
+class _$ErrorBeachTennisClassesStateCopyWithImpl<$Res>
+    implements $ErrorBeachTennisClassesStateCopyWith<$Res> {
+  _$ErrorBeachTennisClassesStateCopyWithImpl(this._self, this._then);
 
-  final ErrorFootballYearsState _self;
-  final $Res Function(ErrorFootballYearsState) _then;
+  final ErrorBeachTennisClassesState _self;
+  final $Res Function(ErrorBeachTennisClassesState) _then;
 
 /// Create a copy of ClassificationsState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? error = freezed,}) {
-  return _then(ErrorFootballYearsState(
+  return _then(ErrorBeachTennisClassesState(
 error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as String?,
   ));

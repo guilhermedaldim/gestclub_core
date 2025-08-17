@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:gestclub_core/gestclub_core.dart';
 
@@ -11,8 +13,8 @@ abstract class PaymentEntity with _$PaymentEntity {
     required String description,
     required double amount,
     required PaymentStatus status,
-    @TimestampConverter() required DateTime? createdAt,
-    @TimestampConverter() DateTime? paidAt,
+    @JsonKey(name: 'created_at') required DateTime? createdAt,
+    @JsonKey(name: 'paid_at') DateTime? paidAt,
   }) = _PaymentEntity;
 
   factory PaymentEntity.fromJson(Map<String, dynamic> json) =>

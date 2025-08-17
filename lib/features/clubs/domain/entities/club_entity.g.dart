@@ -10,9 +10,9 @@ _ClubEntity _$ClubEntityFromJson(Map<String, dynamic> json) => _ClubEntity(
   id: json['id'] as String,
   name: json['name'] as String,
   city: json['city'] as String,
-  pixKey: json['pixKey'] as String,
-  pixName: json['pixName'] as String,
-  ownerUserId: json['ownerUserId'] as String,
+  pixKey: json['pix_key'] as String,
+  pixName: json['pix_name'] as String,
+  ownerUserId: json['owner_user_id'] as String,
   logoUrl: json['logoUrl'] as String?,
 );
 
@@ -21,8 +21,8 @@ Map<String, dynamic> _$ClubEntityToJson(_ClubEntity instance) =>
       'id': instance.id,
       'name': instance.name,
       'city': instance.city,
-      'pixKey': instance.pixKey,
-      'pixName': instance.pixName,
-      'ownerUserId': instance.ownerUserId,
+      'pix_key': instance.pixKey,
+      'pix_name': instance.pixName,
+      'owner_user_id': instance.ownerUserId,
       'logoUrl': instance.logoUrl,
     };

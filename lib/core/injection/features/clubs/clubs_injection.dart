@@ -6,9 +6,7 @@ class ClubsInjection {
   static void register({required GetIt getIt}) {
     //Firebase Database
     getIt.registerLazySingleton<ClubsDatabase>(
-      () => ClubsDatabaseImpl(
-        firestoreServices: getIt<FirebaseFirestoreServices>(),
-      ),
+      () => ClubsDatabaseImpl(database: getIt<DatabaseServices>()),
     );
 
     //Usecases

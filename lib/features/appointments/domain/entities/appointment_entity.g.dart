@@ -9,17 +9,21 @@ part of 'appointment_entity.dart';
 _AppointmentEntity _$AppointmentEntityFromJson(Map<String, dynamic> json) =>
     _AppointmentEntity(
       id: json['id'] as String,
-      spaceId: json['spaceId'] as String,
+      userId: json['user_id'] as String,
+      spaceId: json['space_id'] as String,
       user: UserEntity.fromJson(json['user'] as Map<String, dynamic>),
       space: SpaceEntity.fromJson(json['space'] as Map<String, dynamic>),
-      date: const TimestampConverter().fromJson(json['date']),
+      date: json['date'] == null
+          ? null
+          : DateTime.parse(json['date'] as String),
     );
 
 Map<String, dynamic> _$AppointmentEntityToJson(_AppointmentEntity instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'spaceId': instance.spaceId,
+      'user_id': instance.userId,
+      'space_id': instance.spaceId,
       'user': instance.user.toJson(),
       'space': instance.space.toJson(),
-      'date': const TimestampConverter().toJson(instance.date),
+      'date': instance.date?.toIso8601String(),
     };

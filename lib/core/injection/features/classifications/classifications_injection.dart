@@ -5,19 +5,12 @@ class ClassificationsInjection {
   static void register({required GetIt getIt}) {
     //Firebase Database
     getIt.registerLazySingleton<ClassificationsDatabase>(
-      () => ClassificationsDatabaseImpl(
-        firestoreServices: getIt<FirebaseFirestoreServices>(),
-      ),
+      () => ClassificationsDatabaseImpl(database: getIt<DatabaseServices>()),
     );
 
     //Usecases
-    getIt.registerLazySingleton<GetFootballClassificationUsecase>(
-      () => GetFootballClassificationUsecaseImpl(
-        database: getIt<ClassificationsDatabase>(),
-      ),
-    );
-    getIt.registerLazySingleton<GetFootballYearsUsecase>(
-      () => GetFootballYearsUsecaseImpl(
+    getIt.registerLazySingleton<GetBeachTennisClassificationUsecase>(
+      () => GetBeachTennisClassificationUsecaseImpl(
         database: getIt<ClassificationsDatabase>(),
       ),
     );
@@ -26,8 +19,8 @@ class ClassificationsInjection {
         database: getIt<ClassificationsDatabase>(),
       ),
     );
-    getIt.registerLazySingleton<GetTennisClassesUsecase>(
-      () => GetTennisClassesUsecaseImpl(
+    getIt.registerLazySingleton<GetClassificationsClassesUsecase>(
+      () => GetClassificationsClassesUsecaseImpl(
         database: getIt<ClassificationsDatabase>(),
       ),
     );
@@ -35,11 +28,11 @@ class ClassificationsInjection {
     //Bloc
     getIt.registerLazySingleton<ClassificationsBloc>(
       () => ClassificationsBloc(
-        getFootballClassificationUsecase:
-            getIt<GetFootballClassificationUsecase>(),
-        getFootballYearsUsecase: getIt<GetFootballYearsUsecase>(),
+        getBeachTennisClassificationUsecase:
+            getIt<GetBeachTennisClassificationUsecase>(),
         getTennisRankingUsecase: getIt<GetTennisRankingUsecase>(),
-        getTennisClassesUsecase: getIt<GetTennisClassesUsecase>(),
+        getClassificationsClassesUsecase:
+            getIt<GetClassificationsClassesUsecase>(),
       ),
     );
   }

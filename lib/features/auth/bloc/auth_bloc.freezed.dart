@@ -243,6 +243,146 @@ as String,
 }
 
 /// @nodoc
+
+
+class CreateUser implements AuthEvent {
+  const CreateUser({required this.email, required this.password, this.name, this.clubId, this.category});
+  
+
+ final  String email;
+ final  String password;
+ final  String? name;
+ final  String? clubId;
+ final  String? category;
+
+/// Create a copy of AuthEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CreateUserCopyWith<CreateUser> get copyWith => _$CreateUserCopyWithImpl<CreateUser>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateUser&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&(identical(other.name, name) || other.name == name)&&(identical(other.clubId, clubId) || other.clubId == clubId)&&(identical(other.category, category) || other.category == category));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,email,password,name,clubId,category);
+
+@override
+String toString() {
+  return 'AuthEvent.createUser(email: $email, password: $password, name: $name, clubId: $clubId, category: $category)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CreateUserCopyWith<$Res> implements $AuthEventCopyWith<$Res> {
+  factory $CreateUserCopyWith(CreateUser value, $Res Function(CreateUser) _then) = _$CreateUserCopyWithImpl;
+@useResult
+$Res call({
+ String email, String password, String? name, String? clubId, String? category
+});
+
+
+
+
+}
+/// @nodoc
+class _$CreateUserCopyWithImpl<$Res>
+    implements $CreateUserCopyWith<$Res> {
+  _$CreateUserCopyWithImpl(this._self, this._then);
+
+  final CreateUser _self;
+  final $Res Function(CreateUser) _then;
+
+/// Create a copy of AuthEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? email = null,Object? password = null,Object? name = freezed,Object? clubId = freezed,Object? category = freezed,}) {
+  return _then(CreateUser(
+email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
+as String,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,clubId: freezed == clubId ? _self.clubId : clubId // ignore: cast_nullable_to_non_nullable
+as String?,category: freezed == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class UpdatePassword implements AuthEvent {
+  const UpdatePassword({required this.password});
+  
+
+ final  String password;
+
+/// Create a copy of AuthEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UpdatePasswordCopyWith<UpdatePassword> get copyWith => _$UpdatePasswordCopyWithImpl<UpdatePassword>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdatePassword&&(identical(other.password, password) || other.password == password));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,password);
+
+@override
+String toString() {
+  return 'AuthEvent.updatePassword(password: $password)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $UpdatePasswordCopyWith<$Res> implements $AuthEventCopyWith<$Res> {
+  factory $UpdatePasswordCopyWith(UpdatePassword value, $Res Function(UpdatePassword) _then) = _$UpdatePasswordCopyWithImpl;
+@useResult
+$Res call({
+ String password
+});
+
+
+
+
+}
+/// @nodoc
+class _$UpdatePasswordCopyWithImpl<$Res>
+    implements $UpdatePasswordCopyWith<$Res> {
+  _$UpdatePasswordCopyWithImpl(this._self, this._then);
+
+  final UpdatePassword _self;
+  final $Res Function(UpdatePassword) _then;
+
+/// Create a copy of AuthEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? password = null,}) {
+  return _then(UpdatePassword(
+password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
 mixin _$AuthState {
 
 
@@ -483,8 +623,8 @@ as String?,
 /// @nodoc
 
 
-class ForgotPasswordSuccessAuthState implements AuthState {
-  const ForgotPasswordSuccessAuthState();
+class LoadingSendEmailResetPassowordState implements AuthState {
+  const LoadingSendEmailResetPassowordState();
   
 
 
@@ -494,7 +634,7 @@ class ForgotPasswordSuccessAuthState implements AuthState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ForgotPasswordSuccessAuthState);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadingSendEmailResetPassowordState);
 }
 
 
@@ -503,7 +643,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AuthState.forgotPasswordSuccess()';
+  return 'AuthState.loadingSendEmailResetPassoword()';
 }
 
 
@@ -515,8 +655,8 @@ String toString() {
 /// @nodoc
 
 
-class LogoutSuccessAuthState implements AuthState {
-  const LogoutSuccessAuthState();
+class SuccessSendEmailResetPassowordState implements AuthState {
+  const SuccessSendEmailResetPassowordState();
   
 
 
@@ -526,7 +666,7 @@ class LogoutSuccessAuthState implements AuthState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LogoutSuccessAuthState);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuccessSendEmailResetPassowordState);
 }
 
 
@@ -535,7 +675,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AuthState.logoutSuccess()';
+  return 'AuthState.successSendEmailResetPassoword()';
 }
 
 
@@ -543,5 +683,507 @@ String toString() {
 
 
 
+
+/// @nodoc
+
+
+class ErrorSendEmailResetPassowordState implements AuthState {
+  const ErrorSendEmailResetPassowordState({this.error});
+  
+
+ final  String? error;
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ErrorSendEmailResetPassowordStateCopyWith<ErrorSendEmailResetPassowordState> get copyWith => _$ErrorSendEmailResetPassowordStateCopyWithImpl<ErrorSendEmailResetPassowordState>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorSendEmailResetPassowordState&&(identical(other.error, error) || other.error == error));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,error);
+
+@override
+String toString() {
+  return 'AuthState.errorSendEmailResetPassoword(error: $error)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ErrorSendEmailResetPassowordStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
+  factory $ErrorSendEmailResetPassowordStateCopyWith(ErrorSendEmailResetPassowordState value, $Res Function(ErrorSendEmailResetPassowordState) _then) = _$ErrorSendEmailResetPassowordStateCopyWithImpl;
+@useResult
+$Res call({
+ String? error
+});
+
+
+
+
+}
+/// @nodoc
+class _$ErrorSendEmailResetPassowordStateCopyWithImpl<$Res>
+    implements $ErrorSendEmailResetPassowordStateCopyWith<$Res> {
+  _$ErrorSendEmailResetPassowordStateCopyWithImpl(this._self, this._then);
+
+  final ErrorSendEmailResetPassowordState _self;
+  final $Res Function(ErrorSendEmailResetPassowordState) _then;
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? error = freezed,}) {
+  return _then(ErrorSendEmailResetPassowordState(
+error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class LoadingForgotPasswordState implements AuthState {
+  const LoadingForgotPasswordState();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadingForgotPasswordState);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AuthState.loadingForgotPassword()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class SuccessForgotPasswordState implements AuthState {
+  const SuccessForgotPasswordState();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuccessForgotPasswordState);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AuthState.successForgotPassword()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class ErrorForgotPasswordState implements AuthState {
+  const ErrorForgotPasswordState({this.error});
+  
+
+ final  String? error;
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ErrorForgotPasswordStateCopyWith<ErrorForgotPasswordState> get copyWith => _$ErrorForgotPasswordStateCopyWithImpl<ErrorForgotPasswordState>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorForgotPasswordState&&(identical(other.error, error) || other.error == error));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,error);
+
+@override
+String toString() {
+  return 'AuthState.errorForgotPassword(error: $error)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ErrorForgotPasswordStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
+  factory $ErrorForgotPasswordStateCopyWith(ErrorForgotPasswordState value, $Res Function(ErrorForgotPasswordState) _then) = _$ErrorForgotPasswordStateCopyWithImpl;
+@useResult
+$Res call({
+ String? error
+});
+
+
+
+
+}
+/// @nodoc
+class _$ErrorForgotPasswordStateCopyWithImpl<$Res>
+    implements $ErrorForgotPasswordStateCopyWith<$Res> {
+  _$ErrorForgotPasswordStateCopyWithImpl(this._self, this._then);
+
+  final ErrorForgotPasswordState _self;
+  final $Res Function(ErrorForgotPasswordState) _then;
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? error = freezed,}) {
+  return _then(ErrorForgotPasswordState(
+error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class LoadingLogoutState implements AuthState {
+  const LoadingLogoutState();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadingLogoutState);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AuthState.loadingLogout()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class SuccessLogoutState implements AuthState {
+  const SuccessLogoutState();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuccessLogoutState);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AuthState.successLogout()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class ErrorLogoutState implements AuthState {
+  const ErrorLogoutState({this.error});
+  
+
+ final  String? error;
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ErrorLogoutStateCopyWith<ErrorLogoutState> get copyWith => _$ErrorLogoutStateCopyWithImpl<ErrorLogoutState>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorLogoutState&&(identical(other.error, error) || other.error == error));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,error);
+
+@override
+String toString() {
+  return 'AuthState.errorLogout(error: $error)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ErrorLogoutStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
+  factory $ErrorLogoutStateCopyWith(ErrorLogoutState value, $Res Function(ErrorLogoutState) _then) = _$ErrorLogoutStateCopyWithImpl;
+@useResult
+$Res call({
+ String? error
+});
+
+
+
+
+}
+/// @nodoc
+class _$ErrorLogoutStateCopyWithImpl<$Res>
+    implements $ErrorLogoutStateCopyWith<$Res> {
+  _$ErrorLogoutStateCopyWithImpl(this._self, this._then);
+
+  final ErrorLogoutState _self;
+  final $Res Function(ErrorLogoutState) _then;
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? error = freezed,}) {
+  return _then(ErrorLogoutState(
+error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class LoadingCreateState implements AuthState {
+  const LoadingCreateState();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadingCreateState);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AuthState.loadingCreate()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class SuccessCreateState implements AuthState {
+  const SuccessCreateState({this.user});
+  
+
+ final  UserEntity? user;
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SuccessCreateStateCopyWith<SuccessCreateState> get copyWith => _$SuccessCreateStateCopyWithImpl<SuccessCreateState>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuccessCreateState&&(identical(other.user, user) || other.user == user));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,user);
+
+@override
+String toString() {
+  return 'AuthState.successCreate(user: $user)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SuccessCreateStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
+  factory $SuccessCreateStateCopyWith(SuccessCreateState value, $Res Function(SuccessCreateState) _then) = _$SuccessCreateStateCopyWithImpl;
+@useResult
+$Res call({
+ UserEntity? user
+});
+
+
+$UserEntityCopyWith<$Res>? get user;
+
+}
+/// @nodoc
+class _$SuccessCreateStateCopyWithImpl<$Res>
+    implements $SuccessCreateStateCopyWith<$Res> {
+  _$SuccessCreateStateCopyWithImpl(this._self, this._then);
+
+  final SuccessCreateState _self;
+  final $Res Function(SuccessCreateState) _then;
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? user = freezed,}) {
+  return _then(SuccessCreateState(
+user: freezed == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
+as UserEntity?,
+  ));
+}
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UserEntityCopyWith<$Res>? get user {
+    if (_self.user == null) {
+    return null;
+  }
+
+  return $UserEntityCopyWith<$Res>(_self.user!, (value) {
+    return _then(_self.copyWith(user: value));
+  });
+}
+}
+
+/// @nodoc
+
+
+class ErrorCreateState implements AuthState {
+  const ErrorCreateState({this.error});
+  
+
+ final  String? error;
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ErrorCreateStateCopyWith<ErrorCreateState> get copyWith => _$ErrorCreateStateCopyWithImpl<ErrorCreateState>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorCreateState&&(identical(other.error, error) || other.error == error));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,error);
+
+@override
+String toString() {
+  return 'AuthState.errorCreate(error: $error)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ErrorCreateStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
+  factory $ErrorCreateStateCopyWith(ErrorCreateState value, $Res Function(ErrorCreateState) _then) = _$ErrorCreateStateCopyWithImpl;
+@useResult
+$Res call({
+ String? error
+});
+
+
+
+
+}
+/// @nodoc
+class _$ErrorCreateStateCopyWithImpl<$Res>
+    implements $ErrorCreateStateCopyWith<$Res> {
+  _$ErrorCreateStateCopyWithImpl(this._self, this._then);
+
+  final ErrorCreateState _self;
+  final $Res Function(ErrorCreateState) _then;
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? error = freezed,}) {
+  return _then(ErrorCreateState(
+error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
 
 // dart format on
