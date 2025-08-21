@@ -7,6 +7,7 @@ class SupabaseServicesImpl implements DatabaseServices {
 
   SupabaseServicesImpl({required this.client});
 
+  // USERS
   @override
   Future<Either<Failure, UserEntity?>> getUserById({
     required String userId,
@@ -25,7 +26,149 @@ class SupabaseServicesImpl implements DatabaseServices {
       final user = UserEntity.fromJson(response);
       return right(user);
     } catch (e) {
-      return left(AuthFailure(message: 'Erro desconhecido.'));
+      return left(UserFailure(message: 'Erro desconhecido.'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<UserEntity?>>> getUsers({
+    required String clubId,
+  }) async {
+    try {
+      final response = await client
+          .from('users')
+          .select()
+          .eq('club_id', clubId);
+
+      if (response.isEmpty) {
+        return left(UserFailure(message: 'Nenhum usuário encontrado.'));
+      }
+
+      final users = response
+          .map<UserEntity>((user) => UserEntity.fromJson(user))
+          .toList();
+
+      return right(users);
+    } catch (e) {
+      return left(UserFailure(message: 'Erro desconhecido.'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserEntity>> createUser({
+    required String email,
+    required String password,
+    String? name,
+    String? clubId,
+    String? category,
+  }) async {
+    try {
+      final response = await client.functions.invoke(
+        'create_user_admin',
+        body: {
+          'email': email,
+          'password': password,
+          'name': name,
+
+          'category': category,
+          'club_id': clubId,
+        },
+        headers: {
+          'Authorization': 'Bearer ${client.auth.currentSession?.accessToken}',
+        },
+      );
+
+      if (response.data != null && response.data['success'] == true) {
+        final userJson = response.data?['user'];
+
+        if (userJson == null) {
+          return left(
+            AuthFailure(message: 'Usuário não retornado pela função'),
+          );
+        }
+
+        final user = UserEntity.fromJson({
+          'id': userJson['id'],
+          'name': userJson['name'] ?? name,
+          'email': userJson['email'] ?? email,
+          'category': userJson['category'] ?? category,
+          'club_id': userJson['club_id'] ?? clubId,
+        });
+
+        return right(user);
+      } else {
+        final errorMsg = response.data?['error'] ?? 'Erro ao criar usuário';
+        return left(UserFailure(message: errorMsg));
+      }
+    } on AuthException catch (e) {
+      return left(UserFailure(message: e.message));
+    } catch (e) {
+      return left(UserFailure(message: 'Erro desconhecido: $e'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserEntity?>> updateUser({
+    required String id,
+    String? email,
+    String? name,
+    String? category,
+    String? clubId,
+  }) async {
+    try {
+      final response = await client.functions.invoke(
+        'update_user_admin',
+        body: {
+          'id': id,
+          'email': email,
+          'name': name,
+          'category': category,
+          'club_id': clubId,
+        },
+        headers: {
+          'Authorization': 'Bearer ${client.auth.currentSession?.accessToken}',
+        },
+      );
+
+      if (response.data != null && response.data['success'] == true) {
+        final userResp = await client
+            .from('users')
+            .select()
+            .eq('id', id)
+            .single();
+
+        final user = UserEntity.fromJson(userResp);
+
+        return right(user);
+      } else {
+        final errorMsg = response.data?['error'] ?? 'Erro ao atualizar usuário';
+        return left(UserFailure(message: errorMsg));
+      }
+    } on AuthException catch (e) {
+      return left(UserFailure(message: e.message));
+    } catch (e) {
+      return left(UserFailure(message: 'Erro ao atualizar usuário: $e'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> deleteUser({required String userId}) async {
+    try {
+      final response = await client.functions.invoke(
+        'delete_user_admin',
+        body: {'userId': userId},
+        headers: {
+          'Authorization': 'Bearer ${client.auth.currentSession?.accessToken}',
+        },
+      );
+
+      if (response.data != null && response.data['error'] == true) {
+        return left(UserFailure(message: response.data['error'].toString()));
+      }
+
+      return right(null);
+    } catch (e) {
+      return left(UserFailure(message: e.toString()));
     }
   }
 

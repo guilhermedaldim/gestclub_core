@@ -32,23 +32,6 @@ class AuthDatabaseImpl implements AuthDatabase {
   }
 
   @override
-  Future<Either<Failure, UserEntity?>> signUp({
-    required String email,
-    required String password,
-    String? name,
-    String? clubId,
-    String? category,
-  }) async {
-    return await authService.signUp(
-      email: email,
-      password: password,
-      name: name,
-      clubId: clubId,
-      category: category,
-    );
-  }
-
-  @override
   Future<Either<Failure, void>> updatePassword({
     required String password,
   }) async {

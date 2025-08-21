@@ -60,5 +60,8 @@ class DependencyInjection {
 
     //Initialize payments
     PaymentsInjection.register(getIt: getIt);
+
+    //Initialize users
+    UsersInjection.register(getIt: getIt);
   }
 }

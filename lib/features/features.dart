@@ -5,3 +5,4 @@ export 'clubs/clubs.dart';
 export 'events/events.dart';
 export 'payments/payments.dart';
 export 'spaces/spaces.dart';
+export 'users/users.dart';

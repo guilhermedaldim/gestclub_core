@@ -31,12 +31,9 @@ class AuthInjection {
         localDatabase: getIt<AuthLocalDatabase>(),
       ),
     );
-    getIt.registerLazySingleton<SendResetPasswordEmailUsecase>(
+    getIt.registerLazySingleton<SendResetPasswordForEmailUsecase>(
       () =>
           SendResetPasswordForEmailUsecaseImpl(database: getIt<AuthDatabase>()),
-    );
-    getIt.registerLazySingleton<CreateUserUsecase>(
-      () => CreateUserUsecaseImpl(database: getIt<AuthDatabase>()),
     );
     getIt.registerLazySingleton<UpdatePasswordUsecase>(
       () => UpdatePasswordUsecaseImpl(database: getIt<AuthDatabase>()),
@@ -48,8 +45,8 @@ class AuthInjection {
         signInUsecase: getIt<SignInUsecase>(),
         signOutUsecase: getIt<SignOutUsecase>(),
         currentUserUsecase: getIt<CurrentUserUsecase>(),
-        sendPasswordResetEmailUseCase: getIt<SendResetPasswordEmailUsecase>(),
-        createUserUsecase: getIt<CreateUserUsecase>(),
+        sendPasswordResetEmailUseCase:
+            getIt<SendResetPasswordForEmailUsecase>(),
         updatePasswordUsecase: getIt<UpdatePasswordUsecase>(),
       ),
     );

@@ -94,35 +94,6 @@ class SupabaseAuthServicesImpl implements AuthServices {
   }
 
   @override
-  Future<Either<Failure, UserEntity>> signUp({
-    required String email,
-    required String password,
-    String? name,
-    String? clubId,
-    String? category,
-  }) async {
-    try {
-      final response = await client.auth.signUp(
-        email: email,
-        password: password,
-        data: {'name': name, 'category': category, 'club_id': clubId},
-      );
-
-      if (response.user == null) {
-        return left(AuthFailure(message: 'Usuário não identificado'));
-      }
-
-      final user = UserEntity.fromJson(response.user!.toJson());
-
-      return right(user);
-    } on AuthException catch (e) {
-      return left(AuthFailure(message: e.message));
-    } catch (e) {
-      return left(AuthFailure(message: 'Erro desconhecido.'));
-    }
-  }
-
-  @override
   Future<Either<Failure, void>> updatePassword({
     required String password,
   }) async {
