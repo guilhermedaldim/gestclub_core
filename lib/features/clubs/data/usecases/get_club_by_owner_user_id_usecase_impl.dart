@@ -1,15 +1,15 @@
 import 'package:dartz/dartz.dart';
 import 'package:gestclub_core/gestclub_core.dart';
 
-class CreateClubUsecaseImpl implements CreateClubUsecase {
+class GetClubByOwnerUserIdUsecaseImpl implements GetClubByOwnerUserIdUsecase {
   final ClubsDatabase database;
 
-  const CreateClubUsecaseImpl({required this.database});
+  const GetClubByOwnerUserIdUsecaseImpl({required this.database});
 
   @override
-  Future<Either<Failure, ClubEntity>> call({required ClubEntity club}) async {
+  Future<Either<Failure, ClubEntity>> call({required String userId}) async {
     try {
-      final result = await database.createClub(club: club);
+      final result = await database.getClubByOwnerUserId(userId: userId);
 
       return result.fold((error) => left(error), (club) => right(club));
     } catch (e) {

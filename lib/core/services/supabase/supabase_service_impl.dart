@@ -9,7 +9,7 @@ class SupabaseServicesImpl implements DatabaseServices {
 
   // USERS
   @override
-  Future<Either<Failure, UserEntity?>> getUserById({
+  Future<Either<Failure, UserEntity>> getUserById({
     required String userId,
   }) async {
     try {
@@ -131,15 +131,21 @@ class SupabaseServicesImpl implements DatabaseServices {
       );
 
       if (response.data != null && response.data['success'] == true) {
-        final userResp = await client
-            .from('users')
-            .select()
-            .eq('id', id)
-            .single();
+        final currentUserId = client.auth.currentUser?.id;
 
-        final user = UserEntity.fromJson(userResp);
+        // se o admin está atualizando o próprio user
+        if (currentUserId == id) {
+          final userResp = await client
+              .from('users')
+              .select()
+              .eq('id', id)
+              .single();
 
-        return right(user);
+          final user = UserEntity.fromJson(userResp);
+          return right(user);
+        }
+
+        return right(null);
       } else {
         final errorMsg = response.data?['error'] ?? 'Erro ao atualizar usuário';
         return left(UserFailure(message: errorMsg));
@@ -178,6 +184,10 @@ class SupabaseServicesImpl implements DatabaseServices {
     required String clubId,
   }) async {
     try {
+      if (clubId == '') {
+        return left(EventFailure(message: 'Nenhum evento encontrado.'));
+      }
+
       final response = await client
           .from('events')
           .select()
@@ -377,6 +387,10 @@ class SupabaseServicesImpl implements DatabaseServices {
     required String clubId,
   }) async {
     try {
+      if (clubId == '') {
+        return left(EventFailure(message: 'Nenhum jogador encontrado.'));
+      }
+
       final response = await client
           .from('classification_class_players')
           .select()
@@ -406,6 +420,10 @@ class SupabaseServicesImpl implements DatabaseServices {
     required String clubId,
   }) async {
     try {
+      if (clubId == '') {
+        return left(EventFailure(message: 'Nenhum jogador encontrado.'));
+      }
+
       final response = await client
           .from('classification_class_players')
           .select()
@@ -507,13 +525,32 @@ class SupabaseServicesImpl implements DatabaseServices {
 
   // CLUBS
   @override
-  Future<Either<Failure, void>> createClub({required ClubEntity club}) async {
+  Future<Either<Failure, ClubEntity>> createClub({
+    required ClubEntity club,
+  }) async {
     try {
-      final data = club.toJson();
-      await client.from('clubs').upsert(data);
-      return right(null);
+      // Adicionar um novo clube
+      final response = await client
+          .from('clubs')
+          .insert(club.toInsertMap())
+          .select()
+          .single();
+
+      final newClubId = response['id'] as String;
+
+      // Atualiza o usuário logado com o novo club_id
+      await updateUser(
+        id: club.ownerUserId,
+        clubId: newClubId,
+        name: client.auth.currentUser?.userMetadata?['name'],
+        category: client.auth.currentUser?.userMetadata?['category'],
+      );
+
+      final newClub = ClubEntity.fromJson(response);
+
+      return right(newClub);
     } catch (e) {
-      return left(ClubsFailure(message: 'Erro desconhecido.'));
+      return left(ClubsFailure(message: e.toString()));
     }
   }
 
@@ -537,6 +574,74 @@ class SupabaseServicesImpl implements DatabaseServices {
       return right(data);
     } catch (e) {
       return left(ClubsFailure(message: 'Erro desconhecido.'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, ClubEntity>> getClubByOwnerUserId({
+    required String userId,
+  }) async {
+    try {
+      final response = await client
+          .from('clubs')
+          .select()
+          .eq('owner_user_id', userId)
+          .maybeSingle();
+
+      if (response == null) {
+        return left(ClubsFailure(message: 'Clube não encontrado'));
+      }
+
+      final data = ClubEntity.fromJson(response);
+
+      return right(data);
+    } catch (e) {
+      return left(ClubsFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> deleteClub({required String clubId}) async {
+    try {
+      final response = await client.functions.invoke(
+        'delete_club_admin',
+        body: {'clubId': clubId},
+        headers: {
+          'Authorization': 'Bearer ${client.auth.currentSession?.accessToken}',
+        },
+      );
+
+      if (response.data != null && response.data['error'] == true) {
+        return left(ClubsFailure(message: response.data['error'].toString()));
+      }
+
+      return right(null);
+    } catch (e) {
+      return left(ClubsFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, ClubEntity>> updateClub({
+    required ClubEntity club,
+  }) async {
+    try {
+      final response = await client
+          .from('clubs')
+          .update(club.toJson())
+          .eq('id', club.id!)
+          .select()
+          .maybeSingle();
+
+      if (response == null) {
+        return left(ClubsFailure(message: 'Clube não encontrado.'));
+      }
+
+      final updatedClub = ClubEntity.fromJson(response);
+
+      return right(updatedClub);
+    } catch (e) {
+      return left(ClubsFailure(message: e.toString()));
     }
   }
 }

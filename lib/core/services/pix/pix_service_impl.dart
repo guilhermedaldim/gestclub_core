@@ -50,31 +50,38 @@ class PixQrCodeServiceImpl implements PixQrCodeService {
   static String _formatPixKey(String key) {
     final trimmedKey = key.trim();
 
-    // Se for e-mail (tem @)
+    if (!isValidPixKey(trimmedKey)) {
+      throw FormatException('Chave PIX inválida');
+    }
+
+    // Email → maiúsculo
     if (trimmedKey.contains('@')) {
-      return trimmedKey.toUpperCase();
+      return trimmedKey.toLowerCase(); // emails geralmente ficam em lower case
     }
 
-    // Se for chave aleatória (UUID → contém hífen)
-    if (trimmedKey.contains('-') && !trimmedKey.startsWith('+')) {
-      return trimmedKey;
-    }
-
-    // Remove todos os caracteres não numéricos
     final digitsOnly = trimmedKey.replaceAll(RegExp(r'\D'), '');
 
-    // Se for CPF (11 dígitos)
+    // CPF
     if (digitsOnly.length == 11) {
       return digitsOnly;
     }
 
-    // Se for telefone (deve ter pelo menos 10 ou 11 dígitos, nacional ou internacional)
+    // CNPJ
+    if (digitsOnly.length == 14) {
+      return digitsOnly;
+    }
+
+    // Telefone
     if (trimmedKey.startsWith('+') || digitsOnly.length >= 10) {
       final cleaned = trimmedKey.replaceAll(RegExp(r'[^\d]'), '');
       return '+$cleaned';
     }
 
-    // Caso não se encaixe em nada, devolve como está
+    // UUID (chave aleatória)
+    if (trimmedKey.contains('-')) {
+      return trimmedKey.toLowerCase();
+    }
+
     return trimmedKey;
   }
 
@@ -116,5 +123,41 @@ class PixQrCodeServiceImpl implements PixQrCodeService {
     final uuid = Uuid().v4();
     final compact = uuid.replaceAll('-', '');
     return compact.substring(0, 25);
+  }
+
+  static bool isValidPixKey(String key) {
+    final trimmedKey = key.trim();
+
+    // Email
+    if (trimmedKey.contains('@')) {
+      final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+$');
+      return emailRegex.hasMatch(trimmedKey);
+    }
+
+    // CPF (11 dígitos)
+    final digitsOnly = trimmedKey.replaceAll(RegExp(r'\D'), '');
+    if (digitsOnly.length == 11) {
+      return true; // aqui poderia entrar um validador de CPF se quiser
+    }
+
+    // CNPJ (14 dígitos)
+    if (digitsOnly.length == 14) {
+      return true; // idem, pode validar CNPJ
+    }
+
+    // Telefone (mínimo 10 dígitos, começa com + ou DDD)
+    if (trimmedKey.startsWith('+') || digitsOnly.length >= 10) {
+      return true;
+    }
+
+    // Chave aleatória (UUID v4)
+    final uuidRegex = RegExp(
+      r'^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}$',
+    );
+    if (uuidRegex.hasMatch(trimmedKey)) {
+      return true;
+    }
+
+    return false;
   }
 }

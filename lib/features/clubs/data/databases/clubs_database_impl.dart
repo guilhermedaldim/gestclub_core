@@ -7,7 +7,9 @@ class ClubsDatabaseImpl implements ClubsDatabase {
   const ClubsDatabaseImpl({required this.database});
 
   @override
-  Future<Either<Failure, void>> createClub({required ClubEntity club}) async {
+  Future<Either<Failure, ClubEntity>> createClub({
+    required ClubEntity club,
+  }) async {
     return await database.createClub(club: club);
   }
 
@@ -16,5 +18,24 @@ class ClubsDatabaseImpl implements ClubsDatabase {
     required String clubId,
   }) async {
     return await database.getClubById(clubId: clubId);
+  }
+
+  @override
+  Future<Either<Failure, ClubEntity>> getClubByOwnerUserId({
+    required String userId,
+  }) async {
+    return await database.getClubByOwnerUserId(userId: userId);
+  }
+
+  @override
+  Future<Either<Failure, void>> deleteClub({required String clubId}) async {
+    return await database.deleteClub(clubId: clubId);
+  }
+
+  @override
+  Future<Either<Failure, ClubEntity>> updateClub({
+    required ClubEntity club,
+  }) async {
+    return await database.updateClub(club: club);
   }
 }

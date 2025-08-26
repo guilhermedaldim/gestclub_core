@@ -18,6 +18,11 @@ class DependencyInjection {
       () => SupabaseServicesImpl(client: Supabase.instance.client),
     );
 
+    // Supabase storage service
+    getIt.registerLazySingleton<StorageServices>(
+      () => SupabaseStorageServiceImpl(client: Supabase.instance.client),
+    );
+
     //SharedPreferences
     GetIt.instance.registerLazySingletonAsync<SharedPreferences>(
       () => SharedPreferences.getInstance(),

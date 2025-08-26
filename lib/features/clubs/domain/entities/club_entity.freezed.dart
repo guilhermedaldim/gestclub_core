@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ClubEntity {
 
- String get id; String get name; String get city;@JsonKey(name: 'pix_key') String get pixKey;@JsonKey(name: 'pix_name') String get pixName;@JsonKey(name: 'owner_user_id') String get ownerUserId; String? get logoUrl;
+ String? get id; String get name; String get city;@JsonKey(name: 'pix_key') String get pixKey;@JsonKey(name: 'pix_name') String get pixName;@JsonKey(name: 'owner_user_id') String get ownerUserId;@JsonKey(name: 'logo_url') String? get logoUrl;
 /// Create a copy of ClubEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +49,7 @@ abstract mixin class $ClubEntityCopyWith<$Res>  {
   factory $ClubEntityCopyWith(ClubEntity value, $Res Function(ClubEntity) _then) = _$ClubEntityCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, String city,@JsonKey(name: 'pix_key') String pixKey,@JsonKey(name: 'pix_name') String pixName,@JsonKey(name: 'owner_user_id') String ownerUserId, String? logoUrl
+ String? id, String name, String city,@JsonKey(name: 'pix_key') String pixKey,@JsonKey(name: 'pix_name') String pixName,@JsonKey(name: 'owner_user_id') String ownerUserId,@JsonKey(name: 'logo_url') String? logoUrl
 });
 
 
@@ -66,10 +66,10 @@ class _$ClubEntityCopyWithImpl<$Res>
 
 /// Create a copy of ClubEntity
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? city = null,Object? pixKey = null,Object? pixName = null,Object? ownerUserId = null,Object? logoUrl = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? name = null,Object? city = null,Object? pixKey = null,Object? pixName = null,Object? ownerUserId = null,Object? logoUrl = freezed,}) {
   return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,city: null == city ? _self.city : city // ignore: cast_nullable_to_non_nullable
 as String,pixKey: null == pixKey ? _self.pixKey : pixKey // ignore: cast_nullable_to_non_nullable
 as String,pixName: null == pixName ? _self.pixName : pixName // ignore: cast_nullable_to_non_nullable
@@ -86,16 +86,16 @@ as String?,
 @JsonSerializable()
 
 class _ClubEntity implements ClubEntity {
-  const _ClubEntity({required this.id, required this.name, required this.city, @JsonKey(name: 'pix_key') required this.pixKey, @JsonKey(name: 'pix_name') required this.pixName, @JsonKey(name: 'owner_user_id') required this.ownerUserId, this.logoUrl});
+  const _ClubEntity({this.id, required this.name, required this.city, @JsonKey(name: 'pix_key') required this.pixKey, @JsonKey(name: 'pix_name') required this.pixName, @JsonKey(name: 'owner_user_id') required this.ownerUserId, @JsonKey(name: 'logo_url') this.logoUrl});
   factory _ClubEntity.fromJson(Map<String, dynamic> json) => _$ClubEntityFromJson(json);
 
-@override final  String id;
+@override final  String? id;
 @override final  String name;
 @override final  String city;
 @override@JsonKey(name: 'pix_key') final  String pixKey;
 @override@JsonKey(name: 'pix_name') final  String pixName;
 @override@JsonKey(name: 'owner_user_id') final  String ownerUserId;
-@override final  String? logoUrl;
+@override@JsonKey(name: 'logo_url') final  String? logoUrl;
 
 /// Create a copy of ClubEntity
 /// with the given fields replaced by the non-null parameter values.
@@ -130,7 +130,7 @@ abstract mixin class _$ClubEntityCopyWith<$Res> implements $ClubEntityCopyWith<$
   factory _$ClubEntityCopyWith(_ClubEntity value, $Res Function(_ClubEntity) _then) = __$ClubEntityCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, String city,@JsonKey(name: 'pix_key') String pixKey,@JsonKey(name: 'pix_name') String pixName,@JsonKey(name: 'owner_user_id') String ownerUserId, String? logoUrl
+ String? id, String name, String city,@JsonKey(name: 'pix_key') String pixKey,@JsonKey(name: 'pix_name') String pixName,@JsonKey(name: 'owner_user_id') String ownerUserId,@JsonKey(name: 'logo_url') String? logoUrl
 });
 
 
@@ -147,10 +147,10 @@ class __$ClubEntityCopyWithImpl<$Res>
 
 /// Create a copy of ClubEntity
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? city = null,Object? pixKey = null,Object? pixName = null,Object? ownerUserId = null,Object? logoUrl = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? name = null,Object? city = null,Object? pixKey = null,Object? pixName = null,Object? ownerUserId = null,Object? logoUrl = freezed,}) {
   return _then(_ClubEntity(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,city: null == city ? _self.city : city // ignore: cast_nullable_to_non_nullable
 as String,pixKey: null == pixKey ? _self.pixKey : pixKey // ignore: cast_nullable_to_non_nullable
 as String,pixName: null == pixName ? _self.pixName : pixName // ignore: cast_nullable_to_non_nullable
