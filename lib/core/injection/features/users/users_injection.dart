@@ -12,6 +12,9 @@ class UsersInjection {
     getIt.registerLazySingleton<GetUsersUsecase>(
       () => GetUsersUsecaseImpl(database: getIt<UsersDatabase>()),
     );
+    getIt.registerLazySingleton<GetUserByIdUsecase>(
+      () => GetUserByIdUsecaseImpl(database: getIt<UsersDatabase>()),
+    );
     getIt.registerLazySingleton<CreateUserUsecase>(
       () => CreateUserUsecaseImpl(database: getIt<UsersDatabase>()),
     );
@@ -26,6 +29,7 @@ class UsersInjection {
     getIt.registerLazySingleton<UsersBloc>(
       () => UsersBloc(
         getUsersUsecase: getIt<GetUsersUsecase>(),
+        getUserByIdUsecase: getIt<GetUserByIdUsecase>(),
         createUserUsecase: getIt<CreateUserUsecase>(),
         updateUserUsecase: getIt<UpdateUserUsecase>(),
         deleteUserUsecase: getIt<DeleteUserUsecase>(),

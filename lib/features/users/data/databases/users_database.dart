@@ -3,6 +3,7 @@ import 'package:gestclub_core/gestclub_core.dart';
 
 abstract class UsersDatabase {
   Future<Either<Failure, List<UserEntity?>>> getUsers({required String clubId});
+  Future<Either<Failure, UserEntity>> getUserById({required String userId});
   Future<Either<Failure, UserEntity?>> createUser({
     required String email,
     required String password,

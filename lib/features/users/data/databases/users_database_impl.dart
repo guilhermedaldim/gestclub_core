@@ -51,4 +51,11 @@ class UsersDatabaseImpl implements UsersDatabase {
   Future<Either<Failure, void>> deleteUser({required String userId}) async {
     return await database.deleteUser(userId: userId);
   }
+
+  @override
+  Future<Either<Failure, UserEntity>> getUserById({
+    required String userId,
+  }) async {
+    return await database.getUserById(userId: userId);
+  }
 }

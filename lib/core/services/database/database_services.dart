@@ -3,7 +3,7 @@ import 'package:gestclub_core/gestclub_core.dart';
 
 abstract class DatabaseServices {
   //USER
-  Future<Either<Failure, UserEntity?>> getUserById({required String userId});
+  Future<Either<Failure, UserEntity>> getUserById({required String userId});
   Future<Either<Failure, List<UserEntity?>>> getUsers({required String clubId});
   Future<Either<Failure, UserEntity?>> createUser({
     required String email,
@@ -66,6 +66,11 @@ abstract class DatabaseServices {
   });
 
   //CLUBS
-  Future<Either<Failure, void>> createClub({required ClubEntity club});
+  Future<Either<Failure, ClubEntity>> createClub({required ClubEntity club});
   Future<Either<Failure, ClubEntity>> getClubById({required String clubId});
+  Future<Either<Failure, ClubEntity>> getClubByOwnerUserId({
+    required String userId,
+  });
+  Future<Either<Failure, ClubEntity>> updateClub({required ClubEntity club});
+  Future<Either<Failure, void>> deleteClub({required String clubId});
 }

@@ -8,12 +8,14 @@ part 'users_bloc.freezed.dart';
 
 class UsersBloc extends Bloc<UsersEvent, UsersState> {
   final GetUsersUsecase getUsersUsecase;
+  final GetUserByIdUsecase getUserByIdUsecase;
   final DeleteUserUsecase deleteUserUsecase;
   final CreateUserUsecase createUserUsecase;
   final UpdateUserUsecase updateUserUsecase;
 
   UsersBloc({
     required this.getUsersUsecase,
+    required this.getUserByIdUsecase,
     required this.deleteUserUsecase,
     required this.createUserUsecase,
     required this.updateUserUsecase,
@@ -28,6 +30,16 @@ class UsersBloc extends Bloc<UsersEvent, UsersState> {
           return result.fold(
             (error) => emit(UsersState.error(error: error.message)),
             (users) => emit(UsersState.success(users: users)),
+          );
+
+        case GetUserById():
+          emit(const UsersState.loadingGetUserById());
+
+          final result = await getUserByIdUsecase(userId: event.userId);
+
+          return result.fold(
+            (error) => emit(UsersState.errorGetUserById(error: error.message)),
+            (user) => emit(UsersState.successGetUserById(user: user)),
           );
 
         case CreateUser():

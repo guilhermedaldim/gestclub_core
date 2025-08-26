@@ -10,6 +10,13 @@ sealed class UsersState with _$UsersState {
       SuccessUsersState;
   const factory UsersState.error({String? error}) = ErrorUsersState;
 
+  //GET USER BY ID
+  const factory UsersState.loadingGetUserById() = LoadingGetUserByIdState;
+  const factory UsersState.successGetUserById({required UserEntity? user}) =
+      SuccessGetUserByIdState;
+  const factory UsersState.errorGetUserById({String? error}) =
+      ErrorGetUserByIdState;
+
   //CREATE
   const factory UsersState.loadingCreate() = LoadingCreateState;
   const factory UsersState.successCreate({UserEntity? user}) =

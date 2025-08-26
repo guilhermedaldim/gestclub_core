@@ -111,6 +111,72 @@ as String,
 /// @nodoc
 
 
+class GetUserById implements UsersEvent {
+  const GetUserById({required this.userId});
+  
+
+ final  String userId;
+
+/// Create a copy of UsersEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$GetUserByIdCopyWith<GetUserById> get copyWith => _$GetUserByIdCopyWithImpl<GetUserById>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetUserById&&(identical(other.userId, userId) || other.userId == userId));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,userId);
+
+@override
+String toString() {
+  return 'UsersEvent.getUserById(userId: $userId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $GetUserByIdCopyWith<$Res> implements $UsersEventCopyWith<$Res> {
+  factory $GetUserByIdCopyWith(GetUserById value, $Res Function(GetUserById) _then) = _$GetUserByIdCopyWithImpl;
+@useResult
+$Res call({
+ String userId
+});
+
+
+
+
+}
+/// @nodoc
+class _$GetUserByIdCopyWithImpl<$Res>
+    implements $GetUserByIdCopyWith<$Res> {
+  _$GetUserByIdCopyWithImpl(this._self, this._then);
+
+  final GetUserById _self;
+  final $Res Function(GetUserById) _then;
+
+/// Create a copy of UsersEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? userId = null,}) {
+  return _then(GetUserById(
+userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
 class CreateUser implements UsersEvent {
   const CreateUser({required this.email, required this.password, this.name, this.clubId, this.category});
   
@@ -546,6 +612,182 @@ class _$ErrorUsersStateCopyWithImpl<$Res>
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? error = freezed,}) {
   return _then(ErrorUsersState(
+error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class LoadingGetUserByIdState implements UsersState {
+  const LoadingGetUserByIdState();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadingGetUserByIdState);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'UsersState.loadingGetUserById()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class SuccessGetUserByIdState implements UsersState {
+  const SuccessGetUserByIdState({required this.user});
+  
+
+ final  UserEntity? user;
+
+/// Create a copy of UsersState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SuccessGetUserByIdStateCopyWith<SuccessGetUserByIdState> get copyWith => _$SuccessGetUserByIdStateCopyWithImpl<SuccessGetUserByIdState>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuccessGetUserByIdState&&(identical(other.user, user) || other.user == user));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,user);
+
+@override
+String toString() {
+  return 'UsersState.successGetUserById(user: $user)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SuccessGetUserByIdStateCopyWith<$Res> implements $UsersStateCopyWith<$Res> {
+  factory $SuccessGetUserByIdStateCopyWith(SuccessGetUserByIdState value, $Res Function(SuccessGetUserByIdState) _then) = _$SuccessGetUserByIdStateCopyWithImpl;
+@useResult
+$Res call({
+ UserEntity? user
+});
+
+
+$UserEntityCopyWith<$Res>? get user;
+
+}
+/// @nodoc
+class _$SuccessGetUserByIdStateCopyWithImpl<$Res>
+    implements $SuccessGetUserByIdStateCopyWith<$Res> {
+  _$SuccessGetUserByIdStateCopyWithImpl(this._self, this._then);
+
+  final SuccessGetUserByIdState _self;
+  final $Res Function(SuccessGetUserByIdState) _then;
+
+/// Create a copy of UsersState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? user = freezed,}) {
+  return _then(SuccessGetUserByIdState(
+user: freezed == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
+as UserEntity?,
+  ));
+}
+
+/// Create a copy of UsersState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UserEntityCopyWith<$Res>? get user {
+    if (_self.user == null) {
+    return null;
+  }
+
+  return $UserEntityCopyWith<$Res>(_self.user!, (value) {
+    return _then(_self.copyWith(user: value));
+  });
+}
+}
+
+/// @nodoc
+
+
+class ErrorGetUserByIdState implements UsersState {
+  const ErrorGetUserByIdState({this.error});
+  
+
+ final  String? error;
+
+/// Create a copy of UsersState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ErrorGetUserByIdStateCopyWith<ErrorGetUserByIdState> get copyWith => _$ErrorGetUserByIdStateCopyWithImpl<ErrorGetUserByIdState>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorGetUserByIdState&&(identical(other.error, error) || other.error == error));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,error);
+
+@override
+String toString() {
+  return 'UsersState.errorGetUserById(error: $error)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ErrorGetUserByIdStateCopyWith<$Res> implements $UsersStateCopyWith<$Res> {
+  factory $ErrorGetUserByIdStateCopyWith(ErrorGetUserByIdState value, $Res Function(ErrorGetUserByIdState) _then) = _$ErrorGetUserByIdStateCopyWithImpl;
+@useResult
+$Res call({
+ String? error
+});
+
+
+
+
+}
+/// @nodoc
+class _$ErrorGetUserByIdStateCopyWithImpl<$Res>
+    implements $ErrorGetUserByIdStateCopyWith<$Res> {
+  _$ErrorGetUserByIdStateCopyWithImpl(this._self, this._then);
+
+  final ErrorGetUserByIdState _self;
+  final $Res Function(ErrorGetUserByIdState) _then;
+
+/// Create a copy of UsersState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? error = freezed,}) {
+  return _then(ErrorGetUserByIdState(
 error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
