@@ -328,10 +328,11 @@ $ClubEntityCopyWith<$Res> get club {
 
 
 class DeleteClubEvent implements ClubsEvent {
-  const DeleteClubEvent({required this.clubId});
+  const DeleteClubEvent({required this.clubId, required this.logoUrl});
   
 
  final  String clubId;
+ final  String logoUrl;
 
 /// Create a copy of ClubsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -343,16 +344,16 @@ $DeleteClubEventCopyWith<DeleteClubEvent> get copyWith => _$DeleteClubEventCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DeleteClubEvent&&(identical(other.clubId, clubId) || other.clubId == clubId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DeleteClubEvent&&(identical(other.clubId, clubId) || other.clubId == clubId)&&(identical(other.logoUrl, logoUrl) || other.logoUrl == logoUrl));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,clubId);
+int get hashCode => Object.hash(runtimeType,clubId,logoUrl);
 
 @override
 String toString() {
-  return 'ClubsEvent.deleteClub(clubId: $clubId)';
+  return 'ClubsEvent.deleteClub(clubId: $clubId, logoUrl: $logoUrl)';
 }
 
 
@@ -363,7 +364,7 @@ abstract mixin class $DeleteClubEventCopyWith<$Res> implements $ClubsEventCopyWi
   factory $DeleteClubEventCopyWith(DeleteClubEvent value, $Res Function(DeleteClubEvent) _then) = _$DeleteClubEventCopyWithImpl;
 @useResult
 $Res call({
- String clubId
+ String clubId, String logoUrl
 });
 
 
@@ -380,9 +381,10 @@ class _$DeleteClubEventCopyWithImpl<$Res>
 
 /// Create a copy of ClubsEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? clubId = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? clubId = null,Object? logoUrl = null,}) {
   return _then(DeleteClubEvent(
 clubId: null == clubId ? _self.clubId : clubId // ignore: cast_nullable_to_non_nullable
+as String,logoUrl: null == logoUrl ? _self.logoUrl : logoUrl // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

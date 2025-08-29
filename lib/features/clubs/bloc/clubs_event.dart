@@ -10,6 +10,8 @@ class ClubsEvent with _$ClubsEvent {
       CreateClubEvent;
   const factory ClubsEvent.updateClub({required ClubEntity club}) =
       UpdateClubEvent;
-  const factory ClubsEvent.deleteClub({required String clubId}) =
-      DeleteClubEvent;
+  const factory ClubsEvent.deleteClub({
+    required String clubId,
+    required String logoUrl,
+  }) = DeleteClubEvent;
 }

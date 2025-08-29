@@ -28,8 +28,11 @@ class ClubsDatabaseImpl implements ClubsDatabase {
   }
 
   @override
-  Future<Either<Failure, void>> deleteClub({required String clubId}) async {
-    return await database.deleteClub(clubId: clubId);
+  Future<Either<Failure, void>> deleteClub({
+    required String clubId,
+    required String logoUrl,
+  }) async {
+    return await database.deleteClub(clubId: clubId, logoUrl: logoUrl);
   }
 
   @override

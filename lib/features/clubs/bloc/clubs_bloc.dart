@@ -70,7 +70,10 @@ class ClubsBloc extends Bloc<ClubsEvent, ClubsState> {
         case DeleteClubEvent():
           emit(const ClubsState.loadingDeleteClub());
 
-          final result = await deleteClubUsecase.call(clubId: event.clubId);
+          final result = await deleteClubUsecase.call(
+            clubId: event.clubId,
+            logoUrl: event.logoUrl,
+          );
 
           return result.fold(
             (failure) =>

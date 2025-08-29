@@ -8,5 +8,8 @@ abstract class ClubsDatabase {
   });
   Future<Either<Failure, ClubEntity>> createClub({required ClubEntity club});
   Future<Either<Failure, ClubEntity>> updateClub({required ClubEntity club});
-  Future<Either<Failure, void>> deleteClub({required String clubId});
+  Future<Either<Failure, void>> deleteClub({
+    required String clubId,
+    required String logoUrl,
+  });
 }

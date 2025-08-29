@@ -7,9 +7,15 @@ class DeleteClubUsecaseImpl implements DeleteClubUsecase {
   const DeleteClubUsecaseImpl({required this.database});
 
   @override
-  Future<Either<Failure, void>> call({required String clubId}) async {
+  Future<Either<Failure, void>> call({
+    required String clubId,
+    required String logoUrl,
+  }) async {
     try {
-      final result = await database.deleteClub(clubId: clubId);
+      final result = await database.deleteClub(
+        clubId: clubId,
+        logoUrl: logoUrl,
+      );
 
       return result.fold((error) => left(error), (club) => right(club));
     } catch (e) {
