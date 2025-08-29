@@ -4,8 +4,9 @@ import 'package:gestclub_core/gestclub_core.dart';
 
 class SupabaseServicesImpl implements DatabaseServices {
   final SupabaseClient client;
+  final StorageServices storage;
 
-  SupabaseServicesImpl({required this.client});
+  SupabaseServicesImpl({required this.client, required this.storage});
 
   // USERS
   @override
@@ -205,6 +206,74 @@ class SupabaseServicesImpl implements DatabaseServices {
       return right(events);
     } catch (e) {
       return left(EventFailure(message: 'Erro desconhecido.'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> createEvent({
+    required EventsEntity event,
+    required String clubId,
+  }) async {
+    try {
+      final map = event.toInsertMap(clubId: clubId);
+
+      final response = await client.from('events').insert(map).maybeSingle();
+
+      if (response != null) {
+        return left(EventFailure(message: 'Erro ao criar evento.'));
+      }
+
+      return right(null);
+    } catch (e) {
+      return left(EventFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> deleteEvent({
+    required String eventId,
+    required String imageUrl,
+  }) async {
+    try {
+      final response = await client
+          .from('events')
+          .delete()
+          .eq('id', eventId)
+          .maybeSingle();
+
+      if (response != null) {
+        return left(EventFailure(message: 'Erro ao excluir evento.'));
+      }
+
+      await storage.deleteEventImage(publicUrl: imageUrl);
+
+      return right(null);
+    } catch (e) {
+      return left(EventFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, EventsEntity>> updateEvent({
+    required EventsEntity event,
+  }) async {
+    try {
+      final response = await client
+          .from('events')
+          .update(event.toJson())
+          .eq('id', event.id!)
+          .select()
+          .maybeSingle();
+
+      if (response == null) {
+        return left(EventFailure(message: 'Evento não encontrado.'));
+      }
+
+      final data = EventsEntity.fromJson(response);
+
+      return right(data);
+    } catch (e) {
+      return left(EventFailure(message: e.toString()));
     }
   }
 
@@ -601,7 +670,10 @@ class SupabaseServicesImpl implements DatabaseServices {
   }
 
   @override
-  Future<Either<Failure, void>> deleteClub({required String clubId}) async {
+  Future<Either<Failure, void>> deleteClub({
+    required String clubId,
+    required String logoUrl,
+  }) async {
     try {
       final response = await client.functions.invoke(
         'delete_club_admin',
@@ -614,6 +686,8 @@ class SupabaseServicesImpl implements DatabaseServices {
       if (response.data != null && response.data['error'] == true) {
         return left(ClubsFailure(message: response.data['error'].toString()));
       }
+
+      await storage.deleteClubLogo(publicUrl: logoUrl);
 
       return right(null);
     } catch (e) {
@@ -637,9 +711,9 @@ class SupabaseServicesImpl implements DatabaseServices {
         return left(ClubsFailure(message: 'Clube não encontrado.'));
       }
 
-      final updatedClub = ClubEntity.fromJson(response);
+      final data = ClubEntity.fromJson(response);
 
-      return right(updatedClub);
+      return right(data);
     } catch (e) {
       return left(ClubsFailure(message: e.toString()));
     }

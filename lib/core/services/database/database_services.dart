@@ -25,6 +25,17 @@ abstract class DatabaseServices {
   Future<Either<Failure, List<EventsEntity>>> getEvents({
     required String clubId,
   });
+  Future<Either<Failure, void>> createEvent({
+    required EventsEntity event,
+    required String clubId,
+  });
+  Future<Either<Failure, void>> deleteEvent({
+    required String eventId,
+    required String imageUrl,
+  });
+  Future<Either<Failure, EventsEntity>> updateEvent({
+    required EventsEntity event,
+  });
 
   //SPACES
   Future<Either<Failure, List<SpaceEntity>>> getSpaces({
@@ -72,5 +83,8 @@ abstract class DatabaseServices {
     required String userId,
   });
   Future<Either<Failure, ClubEntity>> updateClub({required ClubEntity club});
-  Future<Either<Failure, void>> deleteClub({required String clubId});
+  Future<Either<Failure, void>> deleteClub({
+    required String clubId,
+    required String logoUrl,
+  });
 }

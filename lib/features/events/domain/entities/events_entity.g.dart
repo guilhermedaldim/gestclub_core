@@ -8,11 +8,12 @@ part of 'events_entity.dart';
 
 _EventsEntity _$EventsEntityFromJson(Map<String, dynamic> json) =>
     _EventsEntity(
-      id: json['id'] as String,
+      id: json['id'] as String?,
       title: json['title'] as String,
       description: json['description'] as String,
       type: $enumDecode(_$EventTypeEnumMap, json['type']),
       image: json['image'] as String?,
+      url: json['url'] as String?,
       date: json['date'] == null
           ? null
           : DateTime.parse(json['date'] as String),
@@ -25,6 +26,7 @@ Map<String, dynamic> _$EventsEntityToJson(_EventsEntity instance) =>
       'description': instance.description,
       'type': _$EventTypeEnumMap[instance.type]!,
       'image': instance.image,
+      'url': instance.url,
       'date': instance.date?.toIso8601String(),
     };
 

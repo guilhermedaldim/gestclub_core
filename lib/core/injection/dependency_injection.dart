@@ -13,14 +13,17 @@ class DependencyInjection {
       () => SupabaseAuthServicesImpl(client: Supabase.instance.client),
     );
 
-    // Supabase database service
-    getIt.registerLazySingleton<DatabaseServices>(
-      () => SupabaseServicesImpl(client: Supabase.instance.client),
-    );
-
     // Supabase storage service
     getIt.registerLazySingleton<StorageServices>(
       () => SupabaseStorageServiceImpl(client: Supabase.instance.client),
+    );
+
+    // Supabase database service
+    getIt.registerLazySingleton<DatabaseServices>(
+      () => SupabaseServicesImpl(
+        client: Supabase.instance.client,
+        storage: getIt<StorageServices>(),
+      ),
     );
 
     //SharedPreferences
