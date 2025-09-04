@@ -8,162 +8,93 @@ class SupabaseStorageServiceImpl implements StorageServices {
 
   SupabaseStorageServiceImpl({required this.client});
 
+  /// Upload genérico
   @override
-  Future<Either<Failure, String>> uploadClubLogo({required File file}) async {
-    try {
-      final fileName =
-          "clubs/${DateTime.now().millisecondsSinceEpoch}_${file.path.split('/').last}";
-      await client.storage.from('club-logos').upload(fileName, file);
-
-      final publicUrl = client.storage
-          .from('club-logos')
-          .getPublicUrl(fileName);
-
-      return right(publicUrl);
-    } catch (e) {
-      return left(ClubsFailure(message: e.toString()));
-    }
-  }
-
-  @override
-  Future<Either<Failure, String>> updateClubLogo({
-    required String clubId,
-    required File newLogo,
+  Future<Either<Failure, String>> uploadFile({
+    required File file,
+    required String bucket,
+    required String folder,
+    required Failure Function(String) failureBuilder,
   }) async {
     try {
-      // Buscar logo atual
-      final clubResponse = await client
-          .from('clubs')
-          .select('logo_url')
-          .eq('id', clubId)
-          .maybeSingle();
-
-      if (clubResponse == null) {
-        return left(ClubsFailure(message: 'Clube não encontrado.'));
-      }
-
-      final String? oldUrl = clubResponse['logo_url'];
-
-      // Excluir logo antiga
-      if (oldUrl != null && oldUrl.isNotEmpty) {
-        final oldPath = _extractPathFromUrl(oldUrl, 'club-logos');
-        await client.storage.from('club-logos').remove([oldPath]);
-      }
-
-      // Upload da nova logo
       final fileName =
-          "clubs/${DateTime.now().millisecondsSinceEpoch}_${newLogo.path.split('/').last}";
-      await client.storage.from('club-logos').upload(fileName, newLogo);
+          "$folder/${DateTime.now().millisecondsSinceEpoch}_${file.path.split('/').last}";
+      await client.storage.from(bucket).upload(fileName, file);
 
-      final publicUrl = client.storage
-          .from('club-logos')
-          .getPublicUrl(fileName);
-
-      // Atualizar no banco
-      await client
-          .from('clubs')
-          .update({'logo_url': publicUrl})
-          .eq('id', clubId);
-
+      final publicUrl = client.storage.from(bucket).getPublicUrl(fileName);
       return right(publicUrl);
     } catch (e) {
-      return left(ClubsFailure(message: e.toString()));
+      return left(failureBuilder(e.toString()));
     }
   }
 
+  /// Update genérico (substitui imagem antiga no bucket e atualiza no banco)
   @override
-  Future<Either<Failure, void>> deleteClubLogo({
-    required String publicUrl,
-  }) async {
-    try {
-      final filePath = _extractPathFromUrl(publicUrl, 'club-logos');
-      await client.storage.from('club-logos').remove([filePath]);
-      return right(null);
-    } catch (e) {
-      return left(ClubsFailure(message: e.toString()));
-    }
-  }
-
-  @override
-  Future<Either<Failure, String>> uploadEventImage({required File file}) async {
-    try {
-      final fileName =
-          "events/${DateTime.now().millisecondsSinceEpoch}_${file.path.split('/').last}";
-      await client.storage.from('events-image').upload(fileName, file);
-
-      final publicUrl = client.storage
-          .from('events-image')
-          .getPublicUrl(fileName);
-
-      return right(publicUrl);
-    } catch (e) {
-      return left(EventFailure(message: e.toString()));
-    }
-  }
-
-  @override
-  Future<Either<Failure, String>> updateEventImage({
-    required String eventId,
-    required File newImage,
+  Future<Either<Failure, String>> updateFile({
+    required String id,
+    required File newFile,
+    required String bucket,
+    required String folder,
+    required String table,
+    required String column, // ex: 'image', 'logo_url'
+    required Failure Function(String) failureBuilder,
   }) async {
     try {
       // Buscar imagem atual
-      final eventResponse = await client
-          .from('events')
-          .select('image')
-          .eq('id', eventId)
+      final response = await client
+          .from(table)
+          .select(column)
+          .eq('id', id)
           .maybeSingle();
 
-      if (eventResponse == null) {
-        return left(EventFailure(message: 'Evento não encontrado.'));
+      if (response == null) {
+        return left(failureBuilder('$table não encontrado.'));
       }
 
-      final String? oldUrl = eventResponse['image'];
+      final String? oldUrl = response[column];
 
       // Excluir imagem antiga
       if (oldUrl != null && oldUrl.isNotEmpty) {
-        final oldPath = _extractPathFromUrl(oldUrl, 'events-image');
-        await client.storage.from('events-image').remove([oldPath]);
+        final oldPath = _extractPathFromUrl(oldUrl, bucket);
+        await client.storage.from(bucket).remove([oldPath]);
       }
 
       // Upload da nova
       final fileName =
-          "events/${DateTime.now().millisecondsSinceEpoch}_${newImage.path.split('/').last}";
-      await client.storage.from('events-image').upload(fileName, newImage);
+          "$folder/${DateTime.now().millisecondsSinceEpoch}_${newFile.path.split('/').last}";
+      await client.storage.from(bucket).upload(fileName, newFile);
 
-      final publicUrl = client.storage
-          .from('events-image')
-          .getPublicUrl(fileName);
+      final publicUrl = client.storage.from(bucket).getPublicUrl(fileName);
 
       // Atualizar no banco
-      await client
-          .from('events')
-          .update({'image': publicUrl})
-          .eq('id', eventId);
+      await client.from(table).update({column: publicUrl}).eq('id', id);
 
       return right(publicUrl);
     } catch (e) {
-      return left(EventFailure(message: e.toString()));
+      return left(failureBuilder(e.toString()));
     }
   }
 
+  /// Delete genérico
   @override
-  Future<Either<Failure, void>> deleteEventImage({
+  Future<Either<Failure, void>> deleteFile({
     required String publicUrl,
+    required String bucket,
+    required Failure Function(String) failureBuilder,
   }) async {
     try {
-      final filePath = _extractPathFromUrl(publicUrl, 'events-image');
-      await client.storage.from('events-image').remove([filePath]);
+      final filePath = _extractPathFromUrl(publicUrl, bucket);
+      await client.storage.from(bucket).remove([filePath]);
       return right(null);
     } catch (e) {
-      return left(EventFailure(message: e.toString()));
+      return left(failureBuilder(e.toString()));
     }
   }
 
+  /// Extrai o path do arquivo a partir da URL pública
   String _extractPathFromUrl(String url, String bucket) {
     final index = url.indexOf('$bucket/');
     if (index == -1) throw Exception("URL inválida para o bucket $bucket");
-
     return url.substring(index + bucket.length + 1);
   }
 }
