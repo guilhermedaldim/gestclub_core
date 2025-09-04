@@ -245,7 +245,11 @@ class SupabaseServicesImpl implements DatabaseServices {
         return left(EventFailure(message: 'Erro ao excluir evento.'));
       }
 
-      await storage.deleteEventImage(publicUrl: imageUrl);
+      await storage.deleteFile(
+        publicUrl: imageUrl,
+        bucket: 'events-image',
+        failureBuilder: (error) => EventFailure(message: error),
+      );
 
       return right(null);
     } catch (e) {
@@ -304,6 +308,101 @@ class SupabaseServicesImpl implements DatabaseServices {
       return right(spaces);
     } catch (e) {
       return left(SpacesFailure(message: 'Erro desconhecido.'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, SpaceEntity>> createSpace({
+    required SpaceEntity space,
+    required String clubId,
+  }) async {
+    try {
+      final response = await client
+          .from('spaces')
+          .insert({
+            'name': space.name,
+            'type': space.type.name,
+            'description': space.description,
+            'image': space.image,
+            'schedule_start': space.scheduleStart,
+            'schedule_end': space.scheduleEnd,
+            'allowed_categories': space.allowedCategories,
+            'periods': space.periods,
+            'club_id': clubId,
+          })
+          .select()
+          .maybeSingle();
+
+      if (response == null) {
+        return left(SpacesFailure(message: 'Erro ao cadastrar espaço.'));
+      }
+
+      final data = SpaceEntity.fromJson(response);
+
+      return right(data);
+    } catch (e) {
+      return left(SpacesFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> deleteSpace({
+    required String spaceId,
+    required String imageUrl,
+  }) async {
+    try {
+      final response = await client
+          .from('spaces')
+          .delete()
+          .eq('id', spaceId)
+          .maybeSingle();
+
+      if (response != null) {
+        return left(SpacesFailure(message: 'Erro ao excluir espaço.'));
+      }
+
+      await storage.deleteFile(
+        publicUrl: imageUrl,
+        bucket: 'spaces-image',
+        failureBuilder: (error) => SpacesFailure(message: error),
+      );
+
+      return right(null);
+    } catch (e) {
+      return left(SpacesFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, SpaceEntity>> updateSpace({
+    required SpaceEntity space,
+  }) async {
+    try {
+      final response = await client
+          .from('spaces')
+          .update({
+            'name': space.name,
+            'type': space.type.name,
+            'description': space.description,
+            'image': space.image,
+            'schedule_start': space.scheduleStart,
+            'schedule_end': space.scheduleEnd,
+            'allowed_categories': space.allowedCategories,
+            'periods': space.periods,
+          })
+          .eq('id', space.id!)
+          .select()
+          .maybeSingle();
+
+      if (response == null) {
+        return left(SpacesFailure(message: 'Erro ao atualizar espaço.'));
+      }
+
+      final data = SpaceEntity.fromJson(response);
+
+      return right(data);
+    } catch (e) {
+      return left(SpacesFailure(message: e.toString()));
     }
   }
 
@@ -386,7 +485,7 @@ class SupabaseServicesImpl implements DatabaseServices {
 
       return right(appointments);
     } catch (e) {
-      return left(AppointmentsFailure(message: 'Erro desconhecido.'));
+      return left(AppointmentsFailure(message: e.toString()));
     }
   }
 
@@ -687,7 +786,11 @@ class SupabaseServicesImpl implements DatabaseServices {
         return left(ClubsFailure(message: response.data['error'].toString()));
       }
 
-      await storage.deleteClubLogo(publicUrl: logoUrl);
+      await storage.deleteFile(
+        publicUrl: logoUrl,
+        bucket: 'club-logos',
+        failureBuilder: (error) => ClubsFailure(message: error),
+      );
 
       return right(null);
     } catch (e) {
