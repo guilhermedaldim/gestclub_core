@@ -7,7 +7,7 @@ part of 'space_entity.dart';
 // **************************************************************************
 
 _SpaceEntity _$SpaceEntityFromJson(Map<String, dynamic> json) => _SpaceEntity(
-  id: json['id'] as String,
+  id: json['id'] as String?,
   name: json['name'] as String,
   type: $enumDecode(_$SpaceTypeEnumMap, json['type']),
   description: json['description'] as String?,

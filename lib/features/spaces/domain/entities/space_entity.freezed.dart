@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SpaceEntity {
 
- String get id; String get name; SpaceType get type; String? get description; String? get image;@JsonKey(name: 'schedule_start') String? get scheduleStart;@JsonKey(name: 'schedule_end') String? get scheduleEnd;@JsonKey(name: 'allowed_categories') List<String>? get allowedCategories; List<Map<String, String>>? get periods;
+ String? get id; String get name; SpaceType get type; String? get description; String? get image;@JsonKey(name: 'schedule_start') String? get scheduleStart;@JsonKey(name: 'schedule_end') String? get scheduleEnd;@JsonKey(name: 'allowed_categories') List<String>? get allowedCategories; List<Map<String, String>>? get periods;
 /// Create a copy of SpaceEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +49,7 @@ abstract mixin class $SpaceEntityCopyWith<$Res>  {
   factory $SpaceEntityCopyWith(SpaceEntity value, $Res Function(SpaceEntity) _then) = _$SpaceEntityCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, SpaceType type, String? description, String? image,@JsonKey(name: 'schedule_start') String? scheduleStart,@JsonKey(name: 'schedule_end') String? scheduleEnd,@JsonKey(name: 'allowed_categories') List<String>? allowedCategories, List<Map<String, String>>? periods
+ String? id, String name, SpaceType type, String? description, String? image,@JsonKey(name: 'schedule_start') String? scheduleStart,@JsonKey(name: 'schedule_end') String? scheduleEnd,@JsonKey(name: 'allowed_categories') List<String>? allowedCategories, List<Map<String, String>>? periods
 });
 
 
@@ -66,10 +66,10 @@ class _$SpaceEntityCopyWithImpl<$Res>
 
 /// Create a copy of SpaceEntity
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? type = null,Object? description = freezed,Object? image = freezed,Object? scheduleStart = freezed,Object? scheduleEnd = freezed,Object? allowedCategories = freezed,Object? periods = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? name = null,Object? type = null,Object? description = freezed,Object? image = freezed,Object? scheduleStart = freezed,Object? scheduleEnd = freezed,Object? allowedCategories = freezed,Object? periods = freezed,}) {
   return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as SpaceType,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,image: freezed == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
@@ -88,10 +88,10 @@ as List<Map<String, String>>?,
 @JsonSerializable()
 
 class _SpaceEntity implements SpaceEntity {
-  const _SpaceEntity({required this.id, required this.name, required this.type, this.description, this.image, @JsonKey(name: 'schedule_start') this.scheduleStart, @JsonKey(name: 'schedule_end') this.scheduleEnd, @JsonKey(name: 'allowed_categories') final  List<String>? allowedCategories, final  List<Map<String, String>>? periods}): _allowedCategories = allowedCategories,_periods = periods;
+  const _SpaceEntity({this.id, required this.name, required this.type, this.description, this.image, @JsonKey(name: 'schedule_start') this.scheduleStart, @JsonKey(name: 'schedule_end') this.scheduleEnd, @JsonKey(name: 'allowed_categories') final  List<String>? allowedCategories, final  List<Map<String, String>>? periods}): _allowedCategories = allowedCategories,_periods = periods;
   factory _SpaceEntity.fromJson(Map<String, dynamic> json) => _$SpaceEntityFromJson(json);
 
-@override final  String id;
+@override final  String? id;
 @override final  String name;
 @override final  SpaceType type;
 @override final  String? description;
@@ -150,7 +150,7 @@ abstract mixin class _$SpaceEntityCopyWith<$Res> implements $SpaceEntityCopyWith
   factory _$SpaceEntityCopyWith(_SpaceEntity value, $Res Function(_SpaceEntity) _then) = __$SpaceEntityCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, SpaceType type, String? description, String? image,@JsonKey(name: 'schedule_start') String? scheduleStart,@JsonKey(name: 'schedule_end') String? scheduleEnd,@JsonKey(name: 'allowed_categories') List<String>? allowedCategories, List<Map<String, String>>? periods
+ String? id, String name, SpaceType type, String? description, String? image,@JsonKey(name: 'schedule_start') String? scheduleStart,@JsonKey(name: 'schedule_end') String? scheduleEnd,@JsonKey(name: 'allowed_categories') List<String>? allowedCategories, List<Map<String, String>>? periods
 });
 
 
@@ -167,10 +167,10 @@ class __$SpaceEntityCopyWithImpl<$Res>
 
 /// Create a copy of SpaceEntity
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? type = null,Object? description = freezed,Object? image = freezed,Object? scheduleStart = freezed,Object? scheduleEnd = freezed,Object? allowedCategories = freezed,Object? periods = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? name = null,Object? type = null,Object? description = freezed,Object? image = freezed,Object? scheduleStart = freezed,Object? scheduleEnd = freezed,Object? allowedCategories = freezed,Object? periods = freezed,}) {
   return _then(_SpaceEntity(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as SpaceType,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,image: freezed == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
