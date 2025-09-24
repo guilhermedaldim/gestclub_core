@@ -551,19 +551,19 @@ class SupabaseServicesImpl implements DatabaseServices {
   // CLASSIFICATIONS
   @override
   Future<Either<Failure, List<PlayerEntity>>> getBeachTennisClassification({
-    required String className,
+    required String classId,
     required String clubId,
   }) async {
     try {
-      if (clubId == '') {
+      if (clubId.isEmpty) {
         return left(EventFailure(message: 'Nenhum jogador encontrado.'));
       }
 
       final response = await client
-          .from('classification_class_players')
+          .from('players')
           .select()
           .eq('club_id', clubId)
-          .eq('class_id', className)
+          .eq('class_id', classId)
           .order('rank', ascending: true);
 
       if (response.isEmpty) {
@@ -584,19 +584,19 @@ class SupabaseServicesImpl implements DatabaseServices {
 
   @override
   Future<Either<Failure, List<PlayerEntity>>> getTennisRanking({
-    required String className,
+    required String classId,
     required String clubId,
   }) async {
     try {
-      if (clubId == '') {
+      if (clubId.isEmpty) {
         return left(EventFailure(message: 'Nenhum jogador encontrado.'));
       }
 
       final response = await client
-          .from('classification_class_players')
+          .from('players')
           .select()
           .eq('club_id', clubId)
-          .eq('class_id', className)
+          .eq('class_id', classId)
           .order('rank', ascending: true);
 
       if (response.isEmpty) {
@@ -616,28 +616,250 @@ class SupabaseServicesImpl implements DatabaseServices {
   }
 
   @override
-  Future<Either<Failure, List<String>>> getClassificationsClasses({
-    required String sport,
+  Future<Either<Failure, List<ClassEntity>>> getClasses({
+    required String sportId,
   }) async {
     try {
       final response = await client
-          .from('classification_classes')
-          .select('id')
-          .eq('sport', sport);
+          .from('classes')
+          .select('id, name')
+          .eq('sport_id', sportId);
 
-      final classes = response
-          .map<String>((row) => row['id'].toString())
-          .toList();
-
-      if (classes.isEmpty) {
+      if (response.isEmpty) {
         return left(
           ClassificationsFailure(message: 'Nenhuma classe encontrada.'),
         );
       }
 
+      final classes = response
+          .map<ClassEntity>((row) => ClassEntity.fromJson(row))
+          .toList();
+
       return right(classes);
     } catch (e) {
       return left(ClassificationsFailure(message: 'Erro desconhecido.'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ClassEntity>>> getClassesByClubId({
+    required String clubId,
+  }) async {
+    try {
+      final response = await client
+          .from('classes')
+          .select()
+          .eq('club_id', clubId);
+
+      final classes = (response as List)
+          .map((e) => ClassEntity.fromJson(e as Map<String, dynamic>))
+          .toList();
+
+      return right(classes);
+    } catch (e) {
+      return left(
+        ClassificationsFailure(message: 'Erro ao buscar classes do clube.'),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<SportEntity>>> getSportsByClubId({
+    required String clubId,
+  }) async {
+    try {
+      final response = await client
+          .from('sports')
+          .select()
+          .eq('club_id', clubId);
+
+      final sports = (response as List)
+          .map((sport) => SportEntity.fromJson(sport as Map<String, dynamic>))
+          .toList();
+
+      return right(sports);
+    } catch (e) {
+      return left(
+        ClassificationsFailure(message: 'Erro ao buscar esportes por clube.'),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, SportEntity>> getSportByName({
+    required String name,
+  }) async {
+    try {
+      final response = await client
+          .from('sports')
+          .select()
+          .eq('name', name)
+          .maybeSingle(); // retorna apenas 1 registro ou null
+
+      if (response == null) {
+        return left(ClassificationsFailure(message: 'Erro ao buscar esporte.'));
+      }
+
+      final sport = SportEntity.fromJson(response);
+
+      return right(sport);
+    } catch (e) {
+      return left(ClassificationsFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, SportEntity>> createSport({
+    required SportEntity sport,
+  }) async {
+    try {
+      final response = await client.from('sports').insert(sport.toInsertMap());
+
+      if (response != null) {
+        return left(
+          ClassificationsFailure(message: 'Erro ao cadastrar esporte.'),
+        );
+      }
+
+      final data = SportEntity.fromJson(response);
+
+      return right(data);
+    } catch (e) {
+      return left(ClassificationsFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, SportEntity>> updateSport({
+    required SportEntity sport,
+  }) async {
+    try {
+      final response = await client
+          .from('sports')
+          .update(sport.toJson())
+          .eq('id', sport.id!)
+          .select()
+          .maybeSingle();
+
+      if (response == null) {
+        return left(
+          ClassificationsFailure(message: 'Erro ao atualizar esporte.'),
+        );
+      }
+
+      final data = SportEntity.fromJson(response);
+
+      return right(data);
+    } catch (e) {
+      return left(ClassificationsFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> deleteSport({required String id}) async {
+    try {
+      await client.from('sports').delete().eq('id', id);
+      return right(null);
+    } catch (e) {
+      return left(ClassificationsFailure(message: 'Erro ao excluir esporte.'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> createClass({
+    required ClassEntity classe,
+  }) async {
+    try {
+      await client.from('classes').insert(classe.toInsertMap());
+      return right(null);
+    } catch (e) {
+      return left(ClassificationsFailure(message: 'Erro ao criar classe.'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, ClassEntity>> updateClass({
+    required ClassEntity classe,
+  }) async {
+    try {
+      final response = await client
+          .from('classes')
+          .update(classe.toJson())
+          .eq('id', classe.id!)
+          .select()
+          .maybeSingle();
+
+      if (response == null) {
+        return left(
+          ClassificationsFailure(message: 'Erro ao atualizar classe.'),
+        );
+      }
+
+      final data = ClassEntity.fromJson(response);
+
+      return right(data);
+    } catch (e) {
+      return left(ClassificationsFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> deleteClass({required String id}) async {
+    try {
+      await client.from('classes').delete().eq('id', id);
+      return right(null);
+    } catch (e) {
+      return left(ClassificationsFailure(message: 'Erro ao excluir classe.'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> createPlayer({
+    required PlayerEntity player,
+  }) async {
+    try {
+      await client.from('players').insert(player.toInsertMap());
+      return right(null);
+    } catch (e) {
+      return left(
+        ClassificationsFailure(message: 'Erro ao cadastrar jogador.'),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, PlayerEntity>> updatePlayer({
+    required PlayerEntity player,
+  }) async {
+    try {
+      final response = await client
+          .from('players')
+          .update(player.toJson())
+          .eq('id', player.id!)
+          .select()
+          .maybeSingle();
+
+      if (response == null) {
+        return left(
+          ClassificationsFailure(message: 'Erro ao atualizar jogador.'),
+        );
+      }
+
+      final data = PlayerEntity.fromJson(response);
+
+      return right(data);
+    } catch (e) {
+      return left(ClassificationsFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> deletePlayer({required String id}) async {
+    try {
+      await client.from('players').delete().eq('id', id);
+      return right(null);
+    } catch (e) {
+      return left(ClassificationsFailure(message: 'Erro ao excluir jogador.'));
     }
   }
 

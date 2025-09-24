@@ -9,12 +9,12 @@ class GetBeachTennisClassificationUsecaseImpl
 
   @override
   Future<Either<Failure, List<PlayerEntity>>> call({
-    required String className,
+    required String classId,
     required String clubId,
   }) async {
     try {
       final result = await database.getBeachTennisClassification(
-        className: className,
+        classId: classId,
         clubId: clubId,
       );
 

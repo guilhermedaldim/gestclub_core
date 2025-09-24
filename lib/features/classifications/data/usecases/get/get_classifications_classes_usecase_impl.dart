@@ -8,9 +8,11 @@ class GetClassificationsClassesUsecaseImpl
   GetClassificationsClassesUsecaseImpl({required this.database});
 
   @override
-  Future<Either<Failure, List<String>>> call({required String sport}) async {
+  Future<Either<Failure, List<ClassEntity>>> call({
+    required String sportId,
+  }) async {
     try {
-      final result = await database.getClassificationsClasses(sport: sport);
+      final result = await database.getClasses(sportId: sportId);
 
       return result.fold((error) => left(error), (players) => right(players));
     } catch (e) {

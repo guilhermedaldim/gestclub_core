@@ -67,16 +67,40 @@ abstract class DatabaseServices {
 
   //CLASSIFICATIONS
   Future<Either<Failure, List<PlayerEntity>>> getTennisRanking({
-    required String className,
+    required String classId,
     required String clubId,
   });
   Future<Either<Failure, List<PlayerEntity>>> getBeachTennisClassification({
-    required String className,
+    required String classId,
     required String clubId,
   });
-  Future<Either<Failure, List<String>>> getClassificationsClasses({
-    required String sport,
+  Future<Either<Failure, List<ClassEntity>>> getClasses({
+    required String sportId,
   });
+  Future<Either<Failure, List<ClassEntity>>> getClassesByClubId({
+    required String clubId,
+  });
+  Future<Either<Failure, List<SportEntity>>> getSportsByClubId({
+    required String clubId,
+  });
+  Future<Either<Failure, SportEntity>> getSportByName({required String name});
+  Future<Either<Failure, SportEntity>> createSport({
+    required SportEntity sport,
+  });
+  Future<Either<Failure, SportEntity>> updateSport({
+    required SportEntity sport,
+  });
+  Future<Either<Failure, void>> deleteSport({required String id});
+  Future<Either<Failure, void>> createClass({required ClassEntity classe});
+  Future<Either<Failure, ClassEntity>> updateClass({
+    required ClassEntity classe,
+  });
+  Future<Either<Failure, void>> deleteClass({required String id});
+  Future<Either<Failure, void>> createPlayer({required PlayerEntity player});
+  Future<Either<Failure, PlayerEntity>> updatePlayer({
+    required PlayerEntity player,
+  });
+  Future<Either<Failure, void>> deletePlayer({required String id});
 
   //PAYMENTS
   Future<Either<Failure, PaymentEntity>> createPayment({
