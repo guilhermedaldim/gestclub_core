@@ -21,6 +21,23 @@ sealed class PaymentsState with _$PaymentsState {
   const factory PaymentsState.errorCreatePayment({String? error}) =
       ErrorCreatePaymentState;
 
+  //DELETE PAYMENT
+  const factory PaymentsState.loadingDeletePayment() =
+      LoadingDeletePaymentState;
+  const factory PaymentsState.successDeletePayment() =
+      SuccessDeletePaymentState;
+  const factory PaymentsState.errorDeletePayment({String? error}) =
+      ErrorDeletePaymentState;
+
+  // UPDATE PAYMENT
+  const factory PaymentsState.loadingUpdatePayment() =
+      LoadingUpdatePaymentState;
+  const factory PaymentsState.successUpdatePayment({
+    required PaymentEntity payment,
+  }) = SuccessUpdatePaymentState;
+  const factory PaymentsState.errorUpdatePayment({String? error}) =
+      ErrorUpdatePaymentState;
+
   // GET PIX CODE
   const factory PaymentsState.loadingPixCode() = LoadingPixCodeState;
   const factory PaymentsState.successPixCode({required String pixCode}) =

@@ -8,11 +8,15 @@ part 'payments_bloc.freezed.dart';
 
 class PaymentsBloc extends Bloc<PaymentsEvent, PaymentsState> {
   final CreatePaymentUsecase createPaymentUsecase;
+  final DeletePaymentUsecase deletePaymentUsecase;
+  final UpdatePaymentUsecase updatePaymentUsecase;
   final GetPaymentsUsecase getPaymentsUsecase;
   final GetPixCodeUsecase getPixCodeUsecase;
 
   PaymentsBloc({
     required this.createPaymentUsecase,
+    required this.deletePaymentUsecase,
+    required this.updatePaymentUsecase,
     required this.getPaymentsUsecase,
     required this.getPixCodeUsecase,
   }) : super(const PaymentsState.initial()) {
@@ -22,7 +26,6 @@ class PaymentsBloc extends Bloc<PaymentsEvent, PaymentsState> {
           emit(const PaymentsState.loadingCreatePayment());
 
           final result = await createPaymentUsecase.call(
-            userId: event.userId,
             payment: event.payment,
           );
 
@@ -31,6 +34,31 @@ class PaymentsBloc extends Bloc<PaymentsEvent, PaymentsState> {
                 emit(PaymentsState.errorCreatePayment(error: failure.message)),
             (payment) =>
                 emit(PaymentsState.successCreatePayment(payment: payment)),
+          );
+
+        case DeletePaymentEvent():
+          emit(const PaymentsState.loadingDeletePayment());
+
+          final result = await deletePaymentUsecase.call(id: event.id);
+
+          return result.fold(
+            (failure) =>
+                emit(PaymentsState.errorDeletePayment(error: failure.message)),
+            (_) => emit(PaymentsState.successDeletePayment()),
+          );
+
+        case UpdatePaymentEvent():
+          emit(const PaymentsState.loadingUpdatePayment());
+
+          final result = await updatePaymentUsecase.call(
+            payment: event.payment,
+          );
+
+          return result.fold(
+            (failure) =>
+                emit(PaymentsState.errorUpdatePayment(error: failure.message)),
+            (payment) =>
+                emit(PaymentsState.successUpdatePayment(payment: payment)),
           );
 
         case GetPaymentsEvent():

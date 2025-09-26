@@ -104,9 +104,12 @@ abstract class DatabaseServices {
 
   //PAYMENTS
   Future<Either<Failure, PaymentEntity>> createPayment({
-    required String userId,
     required PaymentEntity payment,
   });
+  Future<Either<Failure, PaymentEntity>> updatePayment({
+    required PaymentEntity payment,
+  });
+  Future<Either<Failure, void>> deletePayment({required String id});
   Future<Either<Failure, List<PaymentEntity>>> getPayments({
     required String userId,
   });

@@ -175,7 +175,7 @@ class SupabaseServicesImpl implements DatabaseServices {
 
       return right(null);
     } catch (e) {
-      return left(UserFailure(message: e.toString()));
+      return left(UserFailure(message: 'Erro ao excluir usuário.'));
     }
   }
 
@@ -225,7 +225,7 @@ class SupabaseServicesImpl implements DatabaseServices {
 
       return right(null);
     } catch (e) {
-      return left(EventFailure(message: e.toString()));
+      return left(EventFailure(message: 'Erro ao criar evento.'));
     }
   }
 
@@ -253,7 +253,7 @@ class SupabaseServicesImpl implements DatabaseServices {
 
       return right(null);
     } catch (e) {
-      return left(EventFailure(message: e.toString()));
+      return left(EventFailure(message: 'Erro ao excluir evento.'));
     }
   }
 
@@ -277,7 +277,7 @@ class SupabaseServicesImpl implements DatabaseServices {
 
       return right(data);
     } catch (e) {
-      return left(EventFailure(message: e.toString()));
+      return left(EventFailure(message: 'Evento não encontrado.'));
     }
   }
 
@@ -341,7 +341,7 @@ class SupabaseServicesImpl implements DatabaseServices {
 
       return right(data);
     } catch (e) {
-      return left(SpacesFailure(message: e.toString()));
+      return left(SpacesFailure(message: 'Erro ao cadastrar espaço.'));
     }
   }
 
@@ -358,7 +358,7 @@ class SupabaseServicesImpl implements DatabaseServices {
           .maybeSingle();
 
       if (response != null) {
-        return left(SpacesFailure(message: 'Erro ao excluir espaço.'));
+        return left(SpacesFailure(message: 'Erro ao atualizar espaço.'));
       }
 
       await storage.deleteFile(
@@ -369,7 +369,7 @@ class SupabaseServicesImpl implements DatabaseServices {
 
       return right(null);
     } catch (e) {
-      return left(SpacesFailure(message: e.toString()));
+      return left(SpacesFailure(message: 'Erro ao atualizar espaço.'));
     }
   }
 
@@ -402,7 +402,7 @@ class SupabaseServicesImpl implements DatabaseServices {
 
       return right(data);
     } catch (e) {
-      return left(SpacesFailure(message: e.toString()));
+      return left(SpacesFailure(message: 'Erro ao atualizar espaço.'));
     }
   }
 
@@ -485,7 +485,7 @@ class SupabaseServicesImpl implements DatabaseServices {
 
       return right(appointments);
     } catch (e) {
-      return left(AppointmentsFailure(message: e.toString()));
+      return left(AppointmentsFailure(message: 'Erro ao buscar agendamentos.'));
     }
   }
 
@@ -704,7 +704,7 @@ class SupabaseServicesImpl implements DatabaseServices {
 
       return right(sport);
     } catch (e) {
-      return left(ClassificationsFailure(message: e.toString()));
+      return left(ClassificationsFailure(message: 'Erro ao buscar esporte.'));
     }
   }
 
@@ -725,7 +725,9 @@ class SupabaseServicesImpl implements DatabaseServices {
 
       return right(data);
     } catch (e) {
-      return left(ClassificationsFailure(message: e.toString()));
+      return left(
+        ClassificationsFailure(message: 'Erro ao cadastrar esporte.'),
+      );
     }
   }
 
@@ -751,7 +753,9 @@ class SupabaseServicesImpl implements DatabaseServices {
 
       return right(data);
     } catch (e) {
-      return left(ClassificationsFailure(message: e.toString()));
+      return left(
+        ClassificationsFailure(message: 'Erro ao atualizar esporte.'),
+      );
     }
   }
 
@@ -799,7 +803,7 @@ class SupabaseServicesImpl implements DatabaseServices {
 
       return right(data);
     } catch (e) {
-      return left(ClassificationsFailure(message: e.toString()));
+      return left(ClassificationsFailure(message: 'Erro ao atualizar classe'));
     }
   }
 
@@ -849,7 +853,7 @@ class SupabaseServicesImpl implements DatabaseServices {
 
       return right(data);
     } catch (e) {
-      return left(ClassificationsFailure(message: e.toString()));
+      return left(ClassificationsFailure(message: 'Erro ao atualizar jogador'));
     }
   }
 
@@ -866,25 +870,60 @@ class SupabaseServicesImpl implements DatabaseServices {
   // PAYMENTS
   @override
   Future<Either<Failure, PaymentEntity>> createPayment({
-    required String userId,
     required PaymentEntity payment,
   }) async {
     try {
-      final data = payment.toJson();
-      data['user_id'] = userId;
+      final data = payment.toInsertMap();
+
       final response = await client
           .from('payments')
           .insert(data)
           .select()
-          .single();
+          .maybeSingle();
 
-      if (response.isEmpty) {
+      if (response == null) {
         return left(PaymentFailure(message: 'Erro ao criar pagamento.'));
       }
 
       return right(PaymentEntity.fromJson(response));
     } catch (e) {
-      return left(PaymentFailure(message: 'Erro desconhecido.'));
+      return left(PaymentFailure(message: 'Erro ao criar pagamento.'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, PaymentEntity>> updatePayment({
+    required PaymentEntity payment,
+  }) async {
+    try {
+      final data = payment.toJson();
+
+      final response = await client
+          .from('payments')
+          .update(data)
+          .eq('id', payment.id ?? '')
+          .select()
+          .maybeSingle();
+
+      if (response == null) {
+        return left(
+          PaymentFailure(message: 'Pagamento não encontrado para atualização.'),
+        );
+      }
+
+      return right(PaymentEntity.fromJson(response));
+    } catch (e) {
+      return left(PaymentFailure(message: 'Erro ao atualizar pagamento.'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> deletePayment({required String id}) async {
+    try {
+      await client.from('payments').delete().eq('id', id);
+      return right(null);
+    } catch (e) {
+      return left(PaymentFailure(message: 'Erro ao deletar pagamento.'));
     }
   }
 
@@ -940,7 +979,7 @@ class SupabaseServicesImpl implements DatabaseServices {
 
       return right(newClub);
     } catch (e) {
-      return left(ClubsFailure(message: e.toString()));
+      return left(ClubsFailure(message: 'Erro ao adicionar clube.'));
     }
   }
 
@@ -986,7 +1025,7 @@ class SupabaseServicesImpl implements DatabaseServices {
 
       return right(data);
     } catch (e) {
-      return left(ClubsFailure(message: e.toString()));
+      return left(ClubsFailure(message: 'Erro ao buscar clube.'));
     }
   }
 
@@ -1016,7 +1055,7 @@ class SupabaseServicesImpl implements DatabaseServices {
 
       return right(null);
     } catch (e) {
-      return left(ClubsFailure(message: e.toString()));
+      return left(ClubsFailure(message: 'Erro ao excluir clube.'));
     }
   }
 
@@ -1040,7 +1079,7 @@ class SupabaseServicesImpl implements DatabaseServices {
 
       return right(data);
     } catch (e) {
-      return left(ClubsFailure(message: e.toString()));
+      return left(ClubsFailure(message: 'Erro ao atualizar clube.'));
     }
   }
 }

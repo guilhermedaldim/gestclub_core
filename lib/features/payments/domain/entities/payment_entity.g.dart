@@ -8,7 +8,8 @@ part of 'payment_entity.dart';
 
 _PaymentEntity _$PaymentEntityFromJson(Map<String, dynamic> json) =>
     _PaymentEntity(
-      id: json['id'] as String,
+      id: json['id'] as String?,
+      userId: json['user_id'] as String,
       description: json['description'] as String,
       amount: (json['amount'] as num).toDouble(),
       status: $enumDecode(_$PaymentStatusEnumMap, json['status']),
@@ -23,6 +24,7 @@ _PaymentEntity _$PaymentEntityFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$PaymentEntityToJson(_PaymentEntity instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'user_id': instance.userId,
       'description': instance.description,
       'amount': instance.amount,
       'status': _$PaymentStatusEnumMap[instance.status]!,

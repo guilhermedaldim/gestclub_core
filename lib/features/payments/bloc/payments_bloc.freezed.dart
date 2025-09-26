@@ -112,10 +112,9 @@ as String,
 
 
 class CreatePaymentEvent implements PaymentsEvent {
-  const CreatePaymentEvent({required this.userId, required this.payment});
+  const CreatePaymentEvent({required this.payment});
   
 
- final  String userId;
  final  PaymentEntity payment;
 
 /// Create a copy of PaymentsEvent
@@ -128,16 +127,16 @@ $CreatePaymentEventCopyWith<CreatePaymentEvent> get copyWith => _$CreatePaymentE
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreatePaymentEvent&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.payment, payment) || other.payment == payment));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreatePaymentEvent&&(identical(other.payment, payment) || other.payment == payment));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,userId,payment);
+int get hashCode => Object.hash(runtimeType,payment);
 
 @override
 String toString() {
-  return 'PaymentsEvent.createPayment(userId: $userId, payment: $payment)';
+  return 'PaymentsEvent.createPayment(payment: $payment)';
 }
 
 
@@ -148,7 +147,7 @@ abstract mixin class $CreatePaymentEventCopyWith<$Res> implements $PaymentsEvent
   factory $CreatePaymentEventCopyWith(CreatePaymentEvent value, $Res Function(CreatePaymentEvent) _then) = _$CreatePaymentEventCopyWithImpl;
 @useResult
 $Res call({
- String userId, PaymentEntity payment
+ PaymentEntity payment
 });
 
 
@@ -165,10 +164,150 @@ class _$CreatePaymentEventCopyWithImpl<$Res>
 
 /// Create a copy of PaymentsEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? userId = null,Object? payment = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? payment = null,}) {
   return _then(CreatePaymentEvent(
-userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
-as String,payment: null == payment ? _self.payment : payment // ignore: cast_nullable_to_non_nullable
+payment: null == payment ? _self.payment : payment // ignore: cast_nullable_to_non_nullable
+as PaymentEntity,
+  ));
+}
+
+/// Create a copy of PaymentsEvent
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PaymentEntityCopyWith<$Res> get payment {
+  
+  return $PaymentEntityCopyWith<$Res>(_self.payment, (value) {
+    return _then(_self.copyWith(payment: value));
+  });
+}
+}
+
+/// @nodoc
+
+
+class DeletePaymentEvent implements PaymentsEvent {
+  const DeletePaymentEvent({required this.id});
+  
+
+ final  String id;
+
+/// Create a copy of PaymentsEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$DeletePaymentEventCopyWith<DeletePaymentEvent> get copyWith => _$DeletePaymentEventCopyWithImpl<DeletePaymentEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DeletePaymentEvent&&(identical(other.id, id) || other.id == id));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,id);
+
+@override
+String toString() {
+  return 'PaymentsEvent.deletePayment(id: $id)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $DeletePaymentEventCopyWith<$Res> implements $PaymentsEventCopyWith<$Res> {
+  factory $DeletePaymentEventCopyWith(DeletePaymentEvent value, $Res Function(DeletePaymentEvent) _then) = _$DeletePaymentEventCopyWithImpl;
+@useResult
+$Res call({
+ String id
+});
+
+
+
+
+}
+/// @nodoc
+class _$DeletePaymentEventCopyWithImpl<$Res>
+    implements $DeletePaymentEventCopyWith<$Res> {
+  _$DeletePaymentEventCopyWithImpl(this._self, this._then);
+
+  final DeletePaymentEvent _self;
+  final $Res Function(DeletePaymentEvent) _then;
+
+/// Create a copy of PaymentsEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? id = null,}) {
+  return _then(DeletePaymentEvent(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class UpdatePaymentEvent implements PaymentsEvent {
+  const UpdatePaymentEvent({required this.payment});
+  
+
+ final  PaymentEntity payment;
+
+/// Create a copy of PaymentsEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UpdatePaymentEventCopyWith<UpdatePaymentEvent> get copyWith => _$UpdatePaymentEventCopyWithImpl<UpdatePaymentEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdatePaymentEvent&&(identical(other.payment, payment) || other.payment == payment));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,payment);
+
+@override
+String toString() {
+  return 'PaymentsEvent.updatePayment(payment: $payment)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $UpdatePaymentEventCopyWith<$Res> implements $PaymentsEventCopyWith<$Res> {
+  factory $UpdatePaymentEventCopyWith(UpdatePaymentEvent value, $Res Function(UpdatePaymentEvent) _then) = _$UpdatePaymentEventCopyWithImpl;
+@useResult
+$Res call({
+ PaymentEntity payment
+});
+
+
+$PaymentEntityCopyWith<$Res> get payment;
+
+}
+/// @nodoc
+class _$UpdatePaymentEventCopyWithImpl<$Res>
+    implements $UpdatePaymentEventCopyWith<$Res> {
+  _$UpdatePaymentEventCopyWithImpl(this._self, this._then);
+
+  final UpdatePaymentEvent _self;
+  final $Res Function(UpdatePaymentEvent) _then;
+
+/// Create a copy of PaymentsEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? payment = null,}) {
+  return _then(UpdatePaymentEvent(
+payment: null == payment ? _self.payment : payment // ignore: cast_nullable_to_non_nullable
 as PaymentEntity,
   ));
 }
@@ -656,6 +795,309 @@ class _$ErrorCreatePaymentStateCopyWithImpl<$Res>
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? error = freezed,}) {
   return _then(ErrorCreatePaymentState(
+error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class LoadingDeletePaymentState implements PaymentsState {
+  const LoadingDeletePaymentState();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadingDeletePaymentState);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'PaymentsState.loadingDeletePayment()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class SuccessDeletePaymentState implements PaymentsState {
+  const SuccessDeletePaymentState();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuccessDeletePaymentState);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'PaymentsState.successDeletePayment()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class ErrorDeletePaymentState implements PaymentsState {
+  const ErrorDeletePaymentState({this.error});
+  
+
+ final  String? error;
+
+/// Create a copy of PaymentsState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ErrorDeletePaymentStateCopyWith<ErrorDeletePaymentState> get copyWith => _$ErrorDeletePaymentStateCopyWithImpl<ErrorDeletePaymentState>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorDeletePaymentState&&(identical(other.error, error) || other.error == error));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,error);
+
+@override
+String toString() {
+  return 'PaymentsState.errorDeletePayment(error: $error)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ErrorDeletePaymentStateCopyWith<$Res> implements $PaymentsStateCopyWith<$Res> {
+  factory $ErrorDeletePaymentStateCopyWith(ErrorDeletePaymentState value, $Res Function(ErrorDeletePaymentState) _then) = _$ErrorDeletePaymentStateCopyWithImpl;
+@useResult
+$Res call({
+ String? error
+});
+
+
+
+
+}
+/// @nodoc
+class _$ErrorDeletePaymentStateCopyWithImpl<$Res>
+    implements $ErrorDeletePaymentStateCopyWith<$Res> {
+  _$ErrorDeletePaymentStateCopyWithImpl(this._self, this._then);
+
+  final ErrorDeletePaymentState _self;
+  final $Res Function(ErrorDeletePaymentState) _then;
+
+/// Create a copy of PaymentsState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? error = freezed,}) {
+  return _then(ErrorDeletePaymentState(
+error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class LoadingUpdatePaymentState implements PaymentsState {
+  const LoadingUpdatePaymentState();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadingUpdatePaymentState);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'PaymentsState.loadingUpdatePayment()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class SuccessUpdatePaymentState implements PaymentsState {
+  const SuccessUpdatePaymentState({required this.payment});
+  
+
+ final  PaymentEntity payment;
+
+/// Create a copy of PaymentsState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SuccessUpdatePaymentStateCopyWith<SuccessUpdatePaymentState> get copyWith => _$SuccessUpdatePaymentStateCopyWithImpl<SuccessUpdatePaymentState>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuccessUpdatePaymentState&&(identical(other.payment, payment) || other.payment == payment));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,payment);
+
+@override
+String toString() {
+  return 'PaymentsState.successUpdatePayment(payment: $payment)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SuccessUpdatePaymentStateCopyWith<$Res> implements $PaymentsStateCopyWith<$Res> {
+  factory $SuccessUpdatePaymentStateCopyWith(SuccessUpdatePaymentState value, $Res Function(SuccessUpdatePaymentState) _then) = _$SuccessUpdatePaymentStateCopyWithImpl;
+@useResult
+$Res call({
+ PaymentEntity payment
+});
+
+
+$PaymentEntityCopyWith<$Res> get payment;
+
+}
+/// @nodoc
+class _$SuccessUpdatePaymentStateCopyWithImpl<$Res>
+    implements $SuccessUpdatePaymentStateCopyWith<$Res> {
+  _$SuccessUpdatePaymentStateCopyWithImpl(this._self, this._then);
+
+  final SuccessUpdatePaymentState _self;
+  final $Res Function(SuccessUpdatePaymentState) _then;
+
+/// Create a copy of PaymentsState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? payment = null,}) {
+  return _then(SuccessUpdatePaymentState(
+payment: null == payment ? _self.payment : payment // ignore: cast_nullable_to_non_nullable
+as PaymentEntity,
+  ));
+}
+
+/// Create a copy of PaymentsState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PaymentEntityCopyWith<$Res> get payment {
+  
+  return $PaymentEntityCopyWith<$Res>(_self.payment, (value) {
+    return _then(_self.copyWith(payment: value));
+  });
+}
+}
+
+/// @nodoc
+
+
+class ErrorUpdatePaymentState implements PaymentsState {
+  const ErrorUpdatePaymentState({this.error});
+  
+
+ final  String? error;
+
+/// Create a copy of PaymentsState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ErrorUpdatePaymentStateCopyWith<ErrorUpdatePaymentState> get copyWith => _$ErrorUpdatePaymentStateCopyWithImpl<ErrorUpdatePaymentState>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorUpdatePaymentState&&(identical(other.error, error) || other.error == error));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,error);
+
+@override
+String toString() {
+  return 'PaymentsState.errorUpdatePayment(error: $error)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ErrorUpdatePaymentStateCopyWith<$Res> implements $PaymentsStateCopyWith<$Res> {
+  factory $ErrorUpdatePaymentStateCopyWith(ErrorUpdatePaymentState value, $Res Function(ErrorUpdatePaymentState) _then) = _$ErrorUpdatePaymentStateCopyWithImpl;
+@useResult
+$Res call({
+ String? error
+});
+
+
+
+
+}
+/// @nodoc
+class _$ErrorUpdatePaymentStateCopyWithImpl<$Res>
+    implements $ErrorUpdatePaymentStateCopyWith<$Res> {
+  _$ErrorUpdatePaymentStateCopyWithImpl(this._self, this._then);
+
+  final ErrorUpdatePaymentState _self;
+  final $Res Function(ErrorUpdatePaymentState) _then;
+
+/// Create a copy of PaymentsState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? error = freezed,}) {
+  return _then(ErrorUpdatePaymentState(
 error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
