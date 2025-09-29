@@ -7,7 +7,7 @@ class CreateClubUsecaseImpl implements CreateClubUsecase {
   const CreateClubUsecaseImpl({required this.database});
 
   @override
-  Future<Either<Failure, void>> call({required ClubEntity club}) async {
+  Future<Either<Failure, ClubEntity>> call({required ClubEntity club}) async {
     try {
       final result = await database.createClub(club: club);
 

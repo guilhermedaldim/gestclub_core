@@ -13,9 +13,17 @@ class DependencyInjection {
       () => SupabaseAuthServicesImpl(client: Supabase.instance.client),
     );
 
+    // Supabase storage service
+    getIt.registerLazySingleton<StorageServices>(
+      () => SupabaseStorageServiceImpl(client: Supabase.instance.client),
+    );
+
     // Supabase database service
     getIt.registerLazySingleton<DatabaseServices>(
-      () => SupabaseServicesImpl(client: Supabase.instance.client),
+      () => SupabaseServicesImpl(
+        client: Supabase.instance.client,
+        storage: getIt<StorageServices>(),
+      ),
     );
 
     //SharedPreferences
@@ -60,5 +68,8 @@ class DependencyInjection {
 
     //Initialize payments
     PaymentsInjection.register(getIt: getIt);
+
+    //Initialize users
+    UsersInjection.register(getIt: getIt);
   }
 }

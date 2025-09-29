@@ -6,4 +6,5 @@ export 'events/events.dart';
 export 'firebase/firebase.dart';
 export 'payment/payment.dart';
 export 'spaces/spaces.dart';
+export 'user/user.dart';
 export 'failure.dart';

@@ -12,10 +12,24 @@ class EventsInjection {
     getIt.registerLazySingleton<GetEventsUsecase>(
       () => GetEventsUsecaseImpl(database: getIt<EventsDatabase>()),
     );
+    getIt.registerLazySingleton<CreateEventUsecase>(
+      () => CreateEventUsecaseImpl(database: getIt<EventsDatabase>()),
+    );
+    getIt.registerLazySingleton<DeleteEventUsecase>(
+      () => DeleteEventUsecaseImpl(database: getIt<EventsDatabase>()),
+    );
+    getIt.registerLazySingleton<UpdateEventUsecase>(
+      () => UpdateEventUsecaseImpl(database: getIt<EventsDatabase>()),
+    );
 
     //Bloc
     getIt.registerLazySingleton<EventsBloc>(
-      () => EventsBloc(getEventsUsecase: getIt<GetEventsUsecase>()),
+      () => EventsBloc(
+        getEventsUsecase: getIt<GetEventsUsecase>(),
+        createEventUsecase: getIt<CreateEventUsecase>(),
+        deleteEventUsecase: getIt<DeleteEventUsecase>(),
+        updateEventUsecase: getIt<UpdateEventUsecase>(),
+      ),
     );
   }
 }

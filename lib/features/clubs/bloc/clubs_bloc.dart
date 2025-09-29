@@ -9,9 +9,17 @@ part 'clubs_bloc.freezed.dart';
 class ClubsBloc extends Bloc<ClubsEvent, ClubsState> {
   final GetClubByIdUsecase getClubByIdUsecase;
   final CreateClubUsecase createClubUsecase;
+  final GetClubByOwnerUserIdUsecase getClubByOwnerUserIdUsecase;
+  final UpdateClubUsecase updateClubUsecase;
+  final DeleteClubUsecase deleteClubUsecase;
 
-  ClubsBloc({required this.getClubByIdUsecase, required this.createClubUsecase})
-    : super(const ClubsState.initial()) {
+  ClubsBloc({
+    required this.getClubByIdUsecase,
+    required this.createClubUsecase,
+    required this.getClubByOwnerUserIdUsecase,
+    required this.updateClubUsecase,
+    required this.deleteClubUsecase,
+  }) : super(const ClubsState.initial()) {
     on<ClubsEvent>((event, emit) async {
       switch (event) {
         case GetClubByIdEvent():
@@ -32,7 +40,45 @@ class ClubsBloc extends Bloc<ClubsEvent, ClubsState> {
           return result.fold(
             (failure) =>
                 emit(ClubsState.errorCreateClub(error: failure.message)),
-            (_) => emit(ClubsState.successCreateClub()),
+            (club) => emit(ClubsState.successCreateClub(club: club)),
+          );
+
+        case GetClubByOwnerUserIdEvent():
+          emit(const ClubsState.loadingClubByOwnerUserId());
+
+          final result = await getClubByOwnerUserIdUsecase.call(
+            userId: event.userId,
+          );
+
+          return result.fold(
+            (failure) =>
+                emit(ClubsState.errorClubByOwnerUserId(error: failure.message)),
+            (club) => emit(ClubsState.successClubByOwnerUserId(club: club)),
+          );
+
+        case UpdateClubEvent():
+          emit(const ClubsState.loadingUpdateClub());
+
+          final result = await updateClubUsecase.call(club: event.club);
+
+          return result.fold(
+            (failure) =>
+                emit(ClubsState.errorUpdateClub(error: failure.message)),
+            (club) => emit(ClubsState.successUpdateClub(club: club)),
+          );
+
+        case DeleteClubEvent():
+          emit(const ClubsState.loadingDeleteClub());
+
+          final result = await deleteClubUsecase.call(
+            clubId: event.clubId,
+            logoUrl: event.logoUrl,
+          );
+
+          return result.fold(
+            (failure) =>
+                emit(ClubsState.errorDeleteClub(error: failure.message)),
+            (_) => emit(const ClubsState.successDeleteClub()),
           );
       }
     });

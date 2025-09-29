@@ -12,11 +12,4 @@ abstract class AuthDatabase {
     required String email,
   });
   Future<Either<Failure, void>> updatePassword({required String password});
-  Future<Either<Failure, UserEntity?>> signUp({
-    required String email,
-    required String password,
-    String? name,
-    String? clubId,
-    String? category,
-  });
 }

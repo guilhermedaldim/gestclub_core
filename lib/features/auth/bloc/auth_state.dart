@@ -28,9 +28,7 @@ sealed class AuthState with _$AuthState {
   const factory AuthState.successLogout() = SuccessLogoutState;
   const factory AuthState.errorLogout({String? error}) = ErrorLogoutState;
 
-  //CREATE
-  const factory AuthState.loadingCreate() = LoadingCreateState;
-  const factory AuthState.successCreate({UserEntity? user}) =
-      SuccessCreateState;
-  const factory AuthState.errorCreate({String? error}) = ErrorCreateState;
+  //UPDATE USER (necessário para atualizar um user logado)
+  const factory AuthState.successUpdateUser({UserEntity? user}) =
+      SuccessUpdateUserState;
 }

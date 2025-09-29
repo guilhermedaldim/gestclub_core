@@ -16,12 +16,24 @@ class ClubsInjection {
     getIt.registerLazySingleton<CreateClubUsecase>(
       () => CreateClubUsecaseImpl(database: getIt<ClubsDatabase>()),
     );
+    getIt.registerLazySingleton<GetClubByOwnerUserIdUsecase>(
+      () => GetClubByOwnerUserIdUsecaseImpl(database: getIt<ClubsDatabase>()),
+    );
+    getIt.registerLazySingleton<UpdateClubUsecase>(
+      () => UpdateClubUsecaseImpl(database: getIt<ClubsDatabase>()),
+    );
+    getIt.registerLazySingleton<DeleteClubUsecase>(
+      () => DeleteClubUsecaseImpl(database: getIt<ClubsDatabase>()),
+    );
 
     //Bloc
     getIt.registerLazySingleton<ClubsBloc>(
       () => ClubsBloc(
         getClubByIdUsecase: getIt<GetClubByIdUsecase>(),
         createClubUsecase: getIt<CreateClubUsecase>(),
+        getClubByOwnerUserIdUsecase: getIt<GetClubByOwnerUserIdUsecase>(),
+        updateClubUsecase: getIt<UpdateClubUsecase>(),
+        deleteClubUsecase: getIt<DeleteClubUsecase>(),
       ),
     );
   }

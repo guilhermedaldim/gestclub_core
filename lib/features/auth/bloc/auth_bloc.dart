@@ -10,8 +10,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final SignInUsecase signInUsecase;
   final SignOutUsecase signOutUsecase;
   final CurrentUserUsecase currentUserUsecase;
-  final SendResetPasswordEmailUsecase sendPasswordResetEmailUseCase;
-  final CreateUserUsecase createUserUsecase;
+  final SendResetPasswordForEmailUsecase sendPasswordResetEmailUseCase;
   final UpdatePasswordUsecase updatePasswordUsecase;
 
   AuthBloc({
@@ -19,7 +18,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     required this.signOutUsecase,
     required this.currentUserUsecase,
     required this.sendPasswordResetEmailUseCase,
-    required this.createUserUsecase,
     required this.updatePasswordUsecase,
   }) : super(const AuthState.initial()) {
     on<AuthEvent>((event, emit) async {
@@ -58,14 +56,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
           return result.fold(
             (error) => emit(AuthState.error(error: error.message)),
-            (user) async {
-              final currentUserResult = await currentUserUsecase();
-
-              return currentUserResult.fold(
-                (error) => emit(AuthState.error(error: error.message)),
-                (user) => emit(AuthState.success(user: user)),
-              );
-            },
+            (user) => emit(AuthState.success(user: user)),
           );
 
         case ForgotPasswordRequested():
@@ -82,22 +73,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             (_) => emit(AuthState.successSendEmailResetPassoword()),
           );
 
-        case CreateUser():
-          emit(const AuthState.loadingCreate());
-
-          final result = await createUserUsecase.call(
-            email: event.email,
-            password: event.password,
-            name: event.name,
-            clubId: event.clubId,
-            category: event.category,
-          );
-
-          return result.fold(
-            (error) => emit(AuthState.errorCreate(error: error.message)),
-            (user) => emit(AuthState.successCreate(user: user)),
-          );
-
         case UpdatePassword():
           emit(const AuthState.loadingForgotPassword());
 
@@ -110,6 +85,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
                 emit(AuthState.errorForgotPassword(error: error.message)),
             (_) => emit(const AuthState.successForgotPassword()),
           );
+
+        case UpdateLoggedUser():
+          emit(AuthState.success(user: event.user));
+          return;
       }
     });
   }

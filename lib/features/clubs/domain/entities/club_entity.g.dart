@@ -7,13 +7,13 @@ part of 'club_entity.dart';
 // **************************************************************************
 
 _ClubEntity _$ClubEntityFromJson(Map<String, dynamic> json) => _ClubEntity(
-  id: json['id'] as String,
+  id: json['id'] as String?,
   name: json['name'] as String,
   city: json['city'] as String,
   pixKey: json['pix_key'] as String,
   pixName: json['pix_name'] as String,
   ownerUserId: json['owner_user_id'] as String,
-  logoUrl: json['logoUrl'] as String?,
+  logoUrl: json['logo_url'] as String?,
 );
 
 Map<String, dynamic> _$ClubEntityToJson(_ClubEntity instance) =>
@@ -24,5 +24,5 @@ Map<String, dynamic> _$ClubEntityToJson(_ClubEntity instance) =>
       'pix_key': instance.pixKey,
       'pix_name': instance.pixName,
       'owner_user_id': instance.ownerUserId,
-      'logoUrl': instance.logoUrl,
+      'logo_url': instance.logoUrl,
     };

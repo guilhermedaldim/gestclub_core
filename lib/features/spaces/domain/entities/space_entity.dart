@@ -5,12 +5,33 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'space_entity.freezed.dart';
 part 'space_entity.g.dart';
 
-enum SpaceType { court, field, barbecue, kiosk, eventHall }
+enum SpaceType {
+  court,
+  field,
+  barbecue,
+  kiosk,
+  eventHall;
+
+  String get text {
+    switch (this) {
+      case SpaceType.court:
+        return 'Quadra';
+      case SpaceType.field:
+        return 'Campo';
+      case SpaceType.barbecue:
+        return 'Churrasqueira';
+      case SpaceType.kiosk:
+        return 'Quiosque';
+      case SpaceType.eventHall:
+        return 'Salão de Festas';
+    }
+  }
+}
 
 @freezed
 abstract class SpaceEntity with _$SpaceEntity {
   const factory SpaceEntity({
-    required String id,
+    String? id,
     required String name,
     required SpaceType type,
     String? description,
@@ -45,13 +66,7 @@ extension SpaceEntityExtension on SpaceEntity {
       final start = _parseTime(scheduleStart ?? '06:00', baseDate);
       final end = _parseTime(scheduleEnd ?? '22:00', baseDate);
 
-      final interval = Duration(
-        minutes: type == SpaceType.court
-            ? 90
-            : type == SpaceType.field
-            ? 120
-            : 60,
-      );
+      final interval = Duration(minutes: type == SpaceType.field ? 120 : 60);
 
       var current = start;
       while (current.add(interval).isBefore(end) ||

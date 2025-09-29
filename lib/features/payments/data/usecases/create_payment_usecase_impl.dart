@@ -8,19 +8,12 @@ class CreatePaymentUsecaseImpl implements CreatePaymentUsecase {
 
   @override
   Future<Either<Failure, PaymentEntity>> call({
-    required String userId,
     required PaymentEntity payment,
   }) async {
     try {
-      final result = await database.createPayment(
-        userId: userId,
-        payment: payment,
-      );
+      final result = await database.createPayment(payment: payment);
 
-      return result.fold(
-        (error) => left(error),
-        (paymentEntity) => right(paymentEntity),
-      );
+      return result.fold((error) => left(error), (payment) => right(payment));
     } catch (e) {
       return left(PaymentFailure(message: 'Erro ao criar pagamento.'));
     }

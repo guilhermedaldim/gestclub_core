@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PaymentEntity {
 
- String get id; String get description; double get amount; PaymentStatus get status;@JsonKey(name: 'created_at') DateTime? get createdAt;@JsonKey(name: 'paid_at') DateTime? get paidAt;
+ String? get id;@JsonKey(name: 'user_id') String get userId; String get description; double get amount; PaymentStatus get status;@JsonKey(name: 'created_at') DateTime? get createdAt;@JsonKey(name: 'paid_at') DateTime? get paidAt;
 /// Create a copy of PaymentEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,16 +29,16 @@ $PaymentEntityCopyWith<PaymentEntity> get copyWith => _$PaymentEntityCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.description, description) || other.description == description)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.status, status) || other.status == status)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.paidAt, paidAt) || other.paidAt == paidAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PaymentEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.description, description) || other.description == description)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.status, status) || other.status == status)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.paidAt, paidAt) || other.paidAt == paidAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,description,amount,status,createdAt,paidAt);
+int get hashCode => Object.hash(runtimeType,id,userId,description,amount,status,createdAt,paidAt);
 
 @override
 String toString() {
-  return 'PaymentEntity(id: $id, description: $description, amount: $amount, status: $status, createdAt: $createdAt, paidAt: $paidAt)';
+  return 'PaymentEntity(id: $id, userId: $userId, description: $description, amount: $amount, status: $status, createdAt: $createdAt, paidAt: $paidAt)';
 }
 
 
@@ -49,7 +49,7 @@ abstract mixin class $PaymentEntityCopyWith<$Res>  {
   factory $PaymentEntityCopyWith(PaymentEntity value, $Res Function(PaymentEntity) _then) = _$PaymentEntityCopyWithImpl;
 @useResult
 $Res call({
- String id, String description, double amount, PaymentStatus status,@JsonKey(name: 'created_at') DateTime? createdAt,@JsonKey(name: 'paid_at') DateTime? paidAt
+ String? id,@JsonKey(name: 'user_id') String userId, String description, double amount, PaymentStatus status,@JsonKey(name: 'created_at') DateTime? createdAt,@JsonKey(name: 'paid_at') DateTime? paidAt
 });
 
 
@@ -66,9 +66,10 @@ class _$PaymentEntityCopyWithImpl<$Res>
 
 /// Create a copy of PaymentEntity
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? description = null,Object? amount = null,Object? status = null,Object? createdAt = freezed,Object? paidAt = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? userId = null,Object? description = null,Object? amount = null,Object? status = null,Object? createdAt = freezed,Object? paidAt = freezed,}) {
   return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
 as double,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
@@ -85,10 +86,11 @@ as DateTime?,
 @JsonSerializable()
 
 class _PaymentEntity implements PaymentEntity {
-  const _PaymentEntity({required this.id, required this.description, required this.amount, required this.status, @JsonKey(name: 'created_at') required this.createdAt, @JsonKey(name: 'paid_at') this.paidAt});
+  const _PaymentEntity({this.id, @JsonKey(name: 'user_id') required this.userId, required this.description, required this.amount, required this.status, @JsonKey(name: 'created_at') required this.createdAt, @JsonKey(name: 'paid_at') this.paidAt});
   factory _PaymentEntity.fromJson(Map<String, dynamic> json) => _$PaymentEntityFromJson(json);
 
-@override final  String id;
+@override final  String? id;
+@override@JsonKey(name: 'user_id') final  String userId;
 @override final  String description;
 @override final  double amount;
 @override final  PaymentStatus status;
@@ -108,16 +110,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.description, description) || other.description == description)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.status, status) || other.status == status)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.paidAt, paidAt) || other.paidAt == paidAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.description, description) || other.description == description)&&(identical(other.amount, amount) || other.amount == amount)&&(identical(other.status, status) || other.status == status)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.paidAt, paidAt) || other.paidAt == paidAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,description,amount,status,createdAt,paidAt);
+int get hashCode => Object.hash(runtimeType,id,userId,description,amount,status,createdAt,paidAt);
 
 @override
 String toString() {
-  return 'PaymentEntity(id: $id, description: $description, amount: $amount, status: $status, createdAt: $createdAt, paidAt: $paidAt)';
+  return 'PaymentEntity(id: $id, userId: $userId, description: $description, amount: $amount, status: $status, createdAt: $createdAt, paidAt: $paidAt)';
 }
 
 
@@ -128,7 +130,7 @@ abstract mixin class _$PaymentEntityCopyWith<$Res> implements $PaymentEntityCopy
   factory _$PaymentEntityCopyWith(_PaymentEntity value, $Res Function(_PaymentEntity) _then) = __$PaymentEntityCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String description, double amount, PaymentStatus status,@JsonKey(name: 'created_at') DateTime? createdAt,@JsonKey(name: 'paid_at') DateTime? paidAt
+ String? id,@JsonKey(name: 'user_id') String userId, String description, double amount, PaymentStatus status,@JsonKey(name: 'created_at') DateTime? createdAt,@JsonKey(name: 'paid_at') DateTime? paidAt
 });
 
 
@@ -145,9 +147,10 @@ class __$PaymentEntityCopyWithImpl<$Res>
 
 /// Create a copy of PaymentEntity
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? description = null,Object? amount = null,Object? status = null,Object? createdAt = freezed,Object? paidAt = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? userId = null,Object? description = null,Object? amount = null,Object? status = null,Object? createdAt = freezed,Object? paidAt = freezed,}) {
   return _then(_PaymentEntity(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
 as double,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
