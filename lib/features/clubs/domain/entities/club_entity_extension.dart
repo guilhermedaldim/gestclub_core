@@ -1,6 +1,6 @@
 import 'club_entity.dart';
 
-extension ClubEntityInsertX on ClubEntity {
+extension ClubEntityExtension on ClubEntity {
   /// Mapa só com os campos necessários para INSERT.
   /// Não inclui `id` (deixa o Postgres gerar via DEFAULT).
   Map<String, dynamic> toInsertMap() {
