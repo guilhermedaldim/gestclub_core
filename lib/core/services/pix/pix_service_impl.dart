@@ -53,10 +53,8 @@ class PixQrCodeServiceImpl implements PixQrCodeService {
     if (!isValidPixKey(trimmedKey)) {
       throw FormatException('Chave PIX inválida');
     }
-
-    // Email → maiúsculo
     if (trimmedKey.contains('@')) {
-      return trimmedKey.toLowerCase(); // emails geralmente ficam em lower case
+      return trimmedKey.toLowerCase();
     }
 
     final digitsOnly = trimmedKey.replaceAll(RegExp(r'\D'), '');
