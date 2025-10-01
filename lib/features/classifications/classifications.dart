@@ -1,4 +1,4 @@
 export 'bloc/bloc.dart';
-export 'data/data.dart ';
+export 'data/data.dart';
 export 'domain/domain.dart';
 export 'enum/enum.dart';
