@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -41,6 +40,148 @@ class $SpacesEventCopyWith<$Res>  {
 $SpacesEventCopyWith(SpacesEvent _, $Res Function(SpacesEvent) __);
 }
 
+
+/// Adds pattern-matching-related methods to [SpacesEvent].
+extension SpacesEventPatterns on SpacesEvent {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( GetSpaces value)?  getSpaces,TResult Function( CreateSpace value)?  createSpace,TResult Function( UpdateSpace value)?  updateSpace,TResult Function( DeleteSpace value)?  deleteSpace,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case GetSpaces() when getSpaces != null:
+return getSpaces(_that);case CreateSpace() when createSpace != null:
+return createSpace(_that);case UpdateSpace() when updateSpace != null:
+return updateSpace(_that);case DeleteSpace() when deleteSpace != null:
+return deleteSpace(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( GetSpaces value)  getSpaces,required TResult Function( CreateSpace value)  createSpace,required TResult Function( UpdateSpace value)  updateSpace,required TResult Function( DeleteSpace value)  deleteSpace,}){
+final _that = this;
+switch (_that) {
+case GetSpaces():
+return getSpaces(_that);case CreateSpace():
+return createSpace(_that);case UpdateSpace():
+return updateSpace(_that);case DeleteSpace():
+return deleteSpace(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( GetSpaces value)?  getSpaces,TResult? Function( CreateSpace value)?  createSpace,TResult? Function( UpdateSpace value)?  updateSpace,TResult? Function( DeleteSpace value)?  deleteSpace,}){
+final _that = this;
+switch (_that) {
+case GetSpaces() when getSpaces != null:
+return getSpaces(_that);case CreateSpace() when createSpace != null:
+return createSpace(_that);case UpdateSpace() when updateSpace != null:
+return updateSpace(_that);case DeleteSpace() when deleteSpace != null:
+return deleteSpace(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( UserEntity user)?  getSpaces,TResult Function( SpaceEntity space,  String clubId)?  createSpace,TResult Function( SpaceEntity space)?  updateSpace,TResult Function( String spaceId,  String imageUrl)?  deleteSpace,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case GetSpaces() when getSpaces != null:
+return getSpaces(_that.user);case CreateSpace() when createSpace != null:
+return createSpace(_that.space,_that.clubId);case UpdateSpace() when updateSpace != null:
+return updateSpace(_that.space);case DeleteSpace() when deleteSpace != null:
+return deleteSpace(_that.spaceId,_that.imageUrl);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( UserEntity user)  getSpaces,required TResult Function( SpaceEntity space,  String clubId)  createSpace,required TResult Function( SpaceEntity space)  updateSpace,required TResult Function( String spaceId,  String imageUrl)  deleteSpace,}) {final _that = this;
+switch (_that) {
+case GetSpaces():
+return getSpaces(_that.user);case CreateSpace():
+return createSpace(_that.space,_that.clubId);case UpdateSpace():
+return updateSpace(_that.space);case DeleteSpace():
+return deleteSpace(_that.spaceId,_that.imageUrl);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( UserEntity user)?  getSpaces,TResult? Function( SpaceEntity space,  String clubId)?  createSpace,TResult? Function( SpaceEntity space)?  updateSpace,TResult? Function( String spaceId,  String imageUrl)?  deleteSpace,}) {final _that = this;
+switch (_that) {
+case GetSpaces() when getSpaces != null:
+return getSpaces(_that.user);case CreateSpace() when createSpace != null:
+return createSpace(_that.space,_that.clubId);case UpdateSpace() when updateSpace != null:
+return updateSpace(_that.space);case DeleteSpace() when deleteSpace != null:
+return deleteSpace(_that.spaceId,_that.imageUrl);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 
@@ -366,6 +507,202 @@ class $SpacesStateCopyWith<$Res>  {
 $SpacesStateCopyWith(SpacesState _, $Res Function(SpacesState) __);
 }
 
+
+/// Adds pattern-matching-related methods to [SpacesState].
+extension SpacesStatePatterns on SpacesState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( InitialSpacesState value)?  initial,TResult Function( LoadingSpacesState value)?  loading,TResult Function( SuccessSpacesState value)?  success,TResult Function( ErrorSpacesState value)?  error,TResult Function( LoadingCreateSpaceState value)?  loadingCreateSpace,TResult Function( SuccessCreateSpaceState value)?  successCreateSpace,TResult Function( ErrorCreateSpaceState value)?  errorCreateSpace,TResult Function( LoadingDeleteSpaceState value)?  loadingDeleteSpace,TResult Function( SuccessDeleteSpaceState value)?  successDeleteSpace,TResult Function( ErrorDeleteSpaceState value)?  errorDeleteSpace,TResult Function( LoadingUpdateSpaceState value)?  loadingUpdateSpace,TResult Function( SuccessUpdateSpaceState value)?  successUpdateSpace,TResult Function( ErrorUpdateSpaceState value)?  errorUpdateSpace,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case InitialSpacesState() when initial != null:
+return initial(_that);case LoadingSpacesState() when loading != null:
+return loading(_that);case SuccessSpacesState() when success != null:
+return success(_that);case ErrorSpacesState() when error != null:
+return error(_that);case LoadingCreateSpaceState() when loadingCreateSpace != null:
+return loadingCreateSpace(_that);case SuccessCreateSpaceState() when successCreateSpace != null:
+return successCreateSpace(_that);case ErrorCreateSpaceState() when errorCreateSpace != null:
+return errorCreateSpace(_that);case LoadingDeleteSpaceState() when loadingDeleteSpace != null:
+return loadingDeleteSpace(_that);case SuccessDeleteSpaceState() when successDeleteSpace != null:
+return successDeleteSpace(_that);case ErrorDeleteSpaceState() when errorDeleteSpace != null:
+return errorDeleteSpace(_that);case LoadingUpdateSpaceState() when loadingUpdateSpace != null:
+return loadingUpdateSpace(_that);case SuccessUpdateSpaceState() when successUpdateSpace != null:
+return successUpdateSpace(_that);case ErrorUpdateSpaceState() when errorUpdateSpace != null:
+return errorUpdateSpace(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( InitialSpacesState value)  initial,required TResult Function( LoadingSpacesState value)  loading,required TResult Function( SuccessSpacesState value)  success,required TResult Function( ErrorSpacesState value)  error,required TResult Function( LoadingCreateSpaceState value)  loadingCreateSpace,required TResult Function( SuccessCreateSpaceState value)  successCreateSpace,required TResult Function( ErrorCreateSpaceState value)  errorCreateSpace,required TResult Function( LoadingDeleteSpaceState value)  loadingDeleteSpace,required TResult Function( SuccessDeleteSpaceState value)  successDeleteSpace,required TResult Function( ErrorDeleteSpaceState value)  errorDeleteSpace,required TResult Function( LoadingUpdateSpaceState value)  loadingUpdateSpace,required TResult Function( SuccessUpdateSpaceState value)  successUpdateSpace,required TResult Function( ErrorUpdateSpaceState value)  errorUpdateSpace,}){
+final _that = this;
+switch (_that) {
+case InitialSpacesState():
+return initial(_that);case LoadingSpacesState():
+return loading(_that);case SuccessSpacesState():
+return success(_that);case ErrorSpacesState():
+return error(_that);case LoadingCreateSpaceState():
+return loadingCreateSpace(_that);case SuccessCreateSpaceState():
+return successCreateSpace(_that);case ErrorCreateSpaceState():
+return errorCreateSpace(_that);case LoadingDeleteSpaceState():
+return loadingDeleteSpace(_that);case SuccessDeleteSpaceState():
+return successDeleteSpace(_that);case ErrorDeleteSpaceState():
+return errorDeleteSpace(_that);case LoadingUpdateSpaceState():
+return loadingUpdateSpace(_that);case SuccessUpdateSpaceState():
+return successUpdateSpace(_that);case ErrorUpdateSpaceState():
+return errorUpdateSpace(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( InitialSpacesState value)?  initial,TResult? Function( LoadingSpacesState value)?  loading,TResult? Function( SuccessSpacesState value)?  success,TResult? Function( ErrorSpacesState value)?  error,TResult? Function( LoadingCreateSpaceState value)?  loadingCreateSpace,TResult? Function( SuccessCreateSpaceState value)?  successCreateSpace,TResult? Function( ErrorCreateSpaceState value)?  errorCreateSpace,TResult? Function( LoadingDeleteSpaceState value)?  loadingDeleteSpace,TResult? Function( SuccessDeleteSpaceState value)?  successDeleteSpace,TResult? Function( ErrorDeleteSpaceState value)?  errorDeleteSpace,TResult? Function( LoadingUpdateSpaceState value)?  loadingUpdateSpace,TResult? Function( SuccessUpdateSpaceState value)?  successUpdateSpace,TResult? Function( ErrorUpdateSpaceState value)?  errorUpdateSpace,}){
+final _that = this;
+switch (_that) {
+case InitialSpacesState() when initial != null:
+return initial(_that);case LoadingSpacesState() when loading != null:
+return loading(_that);case SuccessSpacesState() when success != null:
+return success(_that);case ErrorSpacesState() when error != null:
+return error(_that);case LoadingCreateSpaceState() when loadingCreateSpace != null:
+return loadingCreateSpace(_that);case SuccessCreateSpaceState() when successCreateSpace != null:
+return successCreateSpace(_that);case ErrorCreateSpaceState() when errorCreateSpace != null:
+return errorCreateSpace(_that);case LoadingDeleteSpaceState() when loadingDeleteSpace != null:
+return loadingDeleteSpace(_that);case SuccessDeleteSpaceState() when successDeleteSpace != null:
+return successDeleteSpace(_that);case ErrorDeleteSpaceState() when errorDeleteSpace != null:
+return errorDeleteSpace(_that);case LoadingUpdateSpaceState() when loadingUpdateSpace != null:
+return loadingUpdateSpace(_that);case SuccessUpdateSpaceState() when successUpdateSpace != null:
+return successUpdateSpace(_that);case ErrorUpdateSpaceState() when errorUpdateSpace != null:
+return errorUpdateSpace(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( List<SpaceEntity> spaces)?  success,TResult Function( String? error)?  error,TResult Function()?  loadingCreateSpace,TResult Function( SpaceEntity space)?  successCreateSpace,TResult Function( String? error)?  errorCreateSpace,TResult Function()?  loadingDeleteSpace,TResult Function()?  successDeleteSpace,TResult Function( String? error)?  errorDeleteSpace,TResult Function()?  loadingUpdateSpace,TResult Function( SpaceEntity space)?  successUpdateSpace,TResult Function( String? error)?  errorUpdateSpace,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case InitialSpacesState() when initial != null:
+return initial();case LoadingSpacesState() when loading != null:
+return loading();case SuccessSpacesState() when success != null:
+return success(_that.spaces);case ErrorSpacesState() when error != null:
+return error(_that.error);case LoadingCreateSpaceState() when loadingCreateSpace != null:
+return loadingCreateSpace();case SuccessCreateSpaceState() when successCreateSpace != null:
+return successCreateSpace(_that.space);case ErrorCreateSpaceState() when errorCreateSpace != null:
+return errorCreateSpace(_that.error);case LoadingDeleteSpaceState() when loadingDeleteSpace != null:
+return loadingDeleteSpace();case SuccessDeleteSpaceState() when successDeleteSpace != null:
+return successDeleteSpace();case ErrorDeleteSpaceState() when errorDeleteSpace != null:
+return errorDeleteSpace(_that.error);case LoadingUpdateSpaceState() when loadingUpdateSpace != null:
+return loadingUpdateSpace();case SuccessUpdateSpaceState() when successUpdateSpace != null:
+return successUpdateSpace(_that.space);case ErrorUpdateSpaceState() when errorUpdateSpace != null:
+return errorUpdateSpace(_that.error);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( List<SpaceEntity> spaces)  success,required TResult Function( String? error)  error,required TResult Function()  loadingCreateSpace,required TResult Function( SpaceEntity space)  successCreateSpace,required TResult Function( String? error)  errorCreateSpace,required TResult Function()  loadingDeleteSpace,required TResult Function()  successDeleteSpace,required TResult Function( String? error)  errorDeleteSpace,required TResult Function()  loadingUpdateSpace,required TResult Function( SpaceEntity space)  successUpdateSpace,required TResult Function( String? error)  errorUpdateSpace,}) {final _that = this;
+switch (_that) {
+case InitialSpacesState():
+return initial();case LoadingSpacesState():
+return loading();case SuccessSpacesState():
+return success(_that.spaces);case ErrorSpacesState():
+return error(_that.error);case LoadingCreateSpaceState():
+return loadingCreateSpace();case SuccessCreateSpaceState():
+return successCreateSpace(_that.space);case ErrorCreateSpaceState():
+return errorCreateSpace(_that.error);case LoadingDeleteSpaceState():
+return loadingDeleteSpace();case SuccessDeleteSpaceState():
+return successDeleteSpace();case ErrorDeleteSpaceState():
+return errorDeleteSpace(_that.error);case LoadingUpdateSpaceState():
+return loadingUpdateSpace();case SuccessUpdateSpaceState():
+return successUpdateSpace(_that.space);case ErrorUpdateSpaceState():
+return errorUpdateSpace(_that.error);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( List<SpaceEntity> spaces)?  success,TResult? Function( String? error)?  error,TResult? Function()?  loadingCreateSpace,TResult? Function( SpaceEntity space)?  successCreateSpace,TResult? Function( String? error)?  errorCreateSpace,TResult? Function()?  loadingDeleteSpace,TResult? Function()?  successDeleteSpace,TResult? Function( String? error)?  errorDeleteSpace,TResult? Function()?  loadingUpdateSpace,TResult? Function( SpaceEntity space)?  successUpdateSpace,TResult? Function( String? error)?  errorUpdateSpace,}) {final _that = this;
+switch (_that) {
+case InitialSpacesState() when initial != null:
+return initial();case LoadingSpacesState() when loading != null:
+return loading();case SuccessSpacesState() when success != null:
+return success(_that.spaces);case ErrorSpacesState() when error != null:
+return error(_that.error);case LoadingCreateSpaceState() when loadingCreateSpace != null:
+return loadingCreateSpace();case SuccessCreateSpaceState() when successCreateSpace != null:
+return successCreateSpace(_that.space);case ErrorCreateSpaceState() when errorCreateSpace != null:
+return errorCreateSpace(_that.error);case LoadingDeleteSpaceState() when loadingDeleteSpace != null:
+return loadingDeleteSpace();case SuccessDeleteSpaceState() when successDeleteSpace != null:
+return successDeleteSpace();case ErrorDeleteSpaceState() when errorDeleteSpace != null:
+return errorDeleteSpace(_that.error);case LoadingUpdateSpaceState() when loadingUpdateSpace != null:
+return loadingUpdateSpace();case SuccessUpdateSpaceState() when successUpdateSpace != null:
+return successUpdateSpace(_that.space);case ErrorUpdateSpaceState() when errorUpdateSpace != null:
+return errorUpdateSpace(_that.error);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 

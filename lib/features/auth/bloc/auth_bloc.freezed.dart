@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -41,6 +40,160 @@ class $AuthEventCopyWith<$Res>  {
 $AuthEventCopyWith(AuthEvent _, $Res Function(AuthEvent) __);
 }
 
+
+/// Adds pattern-matching-related methods to [AuthEvent].
+extension AuthEventPatterns on AuthEvent {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SignIn value)?  signIn,TResult Function( SignOut value)?  signOut,TResult Function( CurrentUser value)?  currentUser,TResult Function( ForgotPasswordRequested value)?  forgotPasswordRequested,TResult Function( UpdatePassword value)?  updatePassword,TResult Function( UpdateLoggedUser value)?  updateLoggedUser,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case SignIn() when signIn != null:
+return signIn(_that);case SignOut() when signOut != null:
+return signOut(_that);case CurrentUser() when currentUser != null:
+return currentUser(_that);case ForgotPasswordRequested() when forgotPasswordRequested != null:
+return forgotPasswordRequested(_that);case UpdatePassword() when updatePassword != null:
+return updatePassword(_that);case UpdateLoggedUser() when updateLoggedUser != null:
+return updateLoggedUser(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SignIn value)  signIn,required TResult Function( SignOut value)  signOut,required TResult Function( CurrentUser value)  currentUser,required TResult Function( ForgotPasswordRequested value)  forgotPasswordRequested,required TResult Function( UpdatePassword value)  updatePassword,required TResult Function( UpdateLoggedUser value)  updateLoggedUser,}){
+final _that = this;
+switch (_that) {
+case SignIn():
+return signIn(_that);case SignOut():
+return signOut(_that);case CurrentUser():
+return currentUser(_that);case ForgotPasswordRequested():
+return forgotPasswordRequested(_that);case UpdatePassword():
+return updatePassword(_that);case UpdateLoggedUser():
+return updateLoggedUser(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SignIn value)?  signIn,TResult? Function( SignOut value)?  signOut,TResult? Function( CurrentUser value)?  currentUser,TResult? Function( ForgotPasswordRequested value)?  forgotPasswordRequested,TResult? Function( UpdatePassword value)?  updatePassword,TResult? Function( UpdateLoggedUser value)?  updateLoggedUser,}){
+final _that = this;
+switch (_that) {
+case SignIn() when signIn != null:
+return signIn(_that);case SignOut() when signOut != null:
+return signOut(_that);case CurrentUser() when currentUser != null:
+return currentUser(_that);case ForgotPasswordRequested() when forgotPasswordRequested != null:
+return forgotPasswordRequested(_that);case UpdatePassword() when updatePassword != null:
+return updatePassword(_that);case UpdateLoggedUser() when updateLoggedUser != null:
+return updateLoggedUser(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String email,  String password,  String? id)?  signIn,TResult Function()?  signOut,TResult Function()?  currentUser,TResult Function( String email)?  forgotPasswordRequested,TResult Function( String password)?  updatePassword,TResult Function( UserEntity? user)?  updateLoggedUser,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case SignIn() when signIn != null:
+return signIn(_that.email,_that.password,_that.id);case SignOut() when signOut != null:
+return signOut();case CurrentUser() when currentUser != null:
+return currentUser();case ForgotPasswordRequested() when forgotPasswordRequested != null:
+return forgotPasswordRequested(_that.email);case UpdatePassword() when updatePassword != null:
+return updatePassword(_that.password);case UpdateLoggedUser() when updateLoggedUser != null:
+return updateLoggedUser(_that.user);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String email,  String password,  String? id)  signIn,required TResult Function()  signOut,required TResult Function()  currentUser,required TResult Function( String email)  forgotPasswordRequested,required TResult Function( String password)  updatePassword,required TResult Function( UserEntity? user)  updateLoggedUser,}) {final _that = this;
+switch (_that) {
+case SignIn():
+return signIn(_that.email,_that.password,_that.id);case SignOut():
+return signOut();case CurrentUser():
+return currentUser();case ForgotPasswordRequested():
+return forgotPasswordRequested(_that.email);case UpdatePassword():
+return updatePassword(_that.password);case UpdateLoggedUser():
+return updateLoggedUser(_that.user);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String email,  String password,  String? id)?  signIn,TResult? Function()?  signOut,TResult? Function()?  currentUser,TResult? Function( String email)?  forgotPasswordRequested,TResult? Function( String password)?  updatePassword,TResult? Function( UserEntity? user)?  updateLoggedUser,}) {final _that = this;
+switch (_that) {
+case SignIn() when signIn != null:
+return signIn(_that.email,_that.password,_that.id);case SignOut() when signOut != null:
+return signOut();case CurrentUser() when currentUser != null:
+return currentUser();case ForgotPasswordRequested() when forgotPasswordRequested != null:
+return forgotPasswordRequested(_that.email);case UpdatePassword() when updatePassword != null:
+return updatePassword(_that.password);case UpdateLoggedUser() when updateLoggedUser != null:
+return updateLoggedUser(_that.user);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 
@@ -415,6 +568,208 @@ class $AuthStateCopyWith<$Res>  {
 $AuthStateCopyWith(AuthState _, $Res Function(AuthState) __);
 }
 
+
+/// Adds pattern-matching-related methods to [AuthState].
+extension AuthStatePatterns on AuthState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( InitialAuthState value)?  initial,TResult Function( LoadingAuthState value)?  loading,TResult Function( SuccessAuthState value)?  success,TResult Function( ErrorAuthState value)?  error,TResult Function( LoadingSendEmailResetPassowordState value)?  loadingSendEmailResetPassoword,TResult Function( SuccessSendEmailResetPassowordState value)?  successSendEmailResetPassoword,TResult Function( ErrorSendEmailResetPassowordState value)?  errorSendEmailResetPassoword,TResult Function( LoadingForgotPasswordState value)?  loadingForgotPassword,TResult Function( SuccessForgotPasswordState value)?  successForgotPassword,TResult Function( ErrorForgotPasswordState value)?  errorForgotPassword,TResult Function( LoadingLogoutState value)?  loadingLogout,TResult Function( SuccessLogoutState value)?  successLogout,TResult Function( ErrorLogoutState value)?  errorLogout,TResult Function( SuccessUpdateUserState value)?  successUpdateUser,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case InitialAuthState() when initial != null:
+return initial(_that);case LoadingAuthState() when loading != null:
+return loading(_that);case SuccessAuthState() when success != null:
+return success(_that);case ErrorAuthState() when error != null:
+return error(_that);case LoadingSendEmailResetPassowordState() when loadingSendEmailResetPassoword != null:
+return loadingSendEmailResetPassoword(_that);case SuccessSendEmailResetPassowordState() when successSendEmailResetPassoword != null:
+return successSendEmailResetPassoword(_that);case ErrorSendEmailResetPassowordState() when errorSendEmailResetPassoword != null:
+return errorSendEmailResetPassoword(_that);case LoadingForgotPasswordState() when loadingForgotPassword != null:
+return loadingForgotPassword(_that);case SuccessForgotPasswordState() when successForgotPassword != null:
+return successForgotPassword(_that);case ErrorForgotPasswordState() when errorForgotPassword != null:
+return errorForgotPassword(_that);case LoadingLogoutState() when loadingLogout != null:
+return loadingLogout(_that);case SuccessLogoutState() when successLogout != null:
+return successLogout(_that);case ErrorLogoutState() when errorLogout != null:
+return errorLogout(_that);case SuccessUpdateUserState() when successUpdateUser != null:
+return successUpdateUser(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( InitialAuthState value)  initial,required TResult Function( LoadingAuthState value)  loading,required TResult Function( SuccessAuthState value)  success,required TResult Function( ErrorAuthState value)  error,required TResult Function( LoadingSendEmailResetPassowordState value)  loadingSendEmailResetPassoword,required TResult Function( SuccessSendEmailResetPassowordState value)  successSendEmailResetPassoword,required TResult Function( ErrorSendEmailResetPassowordState value)  errorSendEmailResetPassoword,required TResult Function( LoadingForgotPasswordState value)  loadingForgotPassword,required TResult Function( SuccessForgotPasswordState value)  successForgotPassword,required TResult Function( ErrorForgotPasswordState value)  errorForgotPassword,required TResult Function( LoadingLogoutState value)  loadingLogout,required TResult Function( SuccessLogoutState value)  successLogout,required TResult Function( ErrorLogoutState value)  errorLogout,required TResult Function( SuccessUpdateUserState value)  successUpdateUser,}){
+final _that = this;
+switch (_that) {
+case InitialAuthState():
+return initial(_that);case LoadingAuthState():
+return loading(_that);case SuccessAuthState():
+return success(_that);case ErrorAuthState():
+return error(_that);case LoadingSendEmailResetPassowordState():
+return loadingSendEmailResetPassoword(_that);case SuccessSendEmailResetPassowordState():
+return successSendEmailResetPassoword(_that);case ErrorSendEmailResetPassowordState():
+return errorSendEmailResetPassoword(_that);case LoadingForgotPasswordState():
+return loadingForgotPassword(_that);case SuccessForgotPasswordState():
+return successForgotPassword(_that);case ErrorForgotPasswordState():
+return errorForgotPassword(_that);case LoadingLogoutState():
+return loadingLogout(_that);case SuccessLogoutState():
+return successLogout(_that);case ErrorLogoutState():
+return errorLogout(_that);case SuccessUpdateUserState():
+return successUpdateUser(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( InitialAuthState value)?  initial,TResult? Function( LoadingAuthState value)?  loading,TResult? Function( SuccessAuthState value)?  success,TResult? Function( ErrorAuthState value)?  error,TResult? Function( LoadingSendEmailResetPassowordState value)?  loadingSendEmailResetPassoword,TResult? Function( SuccessSendEmailResetPassowordState value)?  successSendEmailResetPassoword,TResult? Function( ErrorSendEmailResetPassowordState value)?  errorSendEmailResetPassoword,TResult? Function( LoadingForgotPasswordState value)?  loadingForgotPassword,TResult? Function( SuccessForgotPasswordState value)?  successForgotPassword,TResult? Function( ErrorForgotPasswordState value)?  errorForgotPassword,TResult? Function( LoadingLogoutState value)?  loadingLogout,TResult? Function( SuccessLogoutState value)?  successLogout,TResult? Function( ErrorLogoutState value)?  errorLogout,TResult? Function( SuccessUpdateUserState value)?  successUpdateUser,}){
+final _that = this;
+switch (_that) {
+case InitialAuthState() when initial != null:
+return initial(_that);case LoadingAuthState() when loading != null:
+return loading(_that);case SuccessAuthState() when success != null:
+return success(_that);case ErrorAuthState() when error != null:
+return error(_that);case LoadingSendEmailResetPassowordState() when loadingSendEmailResetPassoword != null:
+return loadingSendEmailResetPassoword(_that);case SuccessSendEmailResetPassowordState() when successSendEmailResetPassoword != null:
+return successSendEmailResetPassoword(_that);case ErrorSendEmailResetPassowordState() when errorSendEmailResetPassoword != null:
+return errorSendEmailResetPassoword(_that);case LoadingForgotPasswordState() when loadingForgotPassword != null:
+return loadingForgotPassword(_that);case SuccessForgotPasswordState() when successForgotPassword != null:
+return successForgotPassword(_that);case ErrorForgotPasswordState() when errorForgotPassword != null:
+return errorForgotPassword(_that);case LoadingLogoutState() when loadingLogout != null:
+return loadingLogout(_that);case SuccessLogoutState() when successLogout != null:
+return successLogout(_that);case ErrorLogoutState() when errorLogout != null:
+return errorLogout(_that);case SuccessUpdateUserState() when successUpdateUser != null:
+return successUpdateUser(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( UserEntity? user)?  success,TResult Function( String? error)?  error,TResult Function()?  loadingSendEmailResetPassoword,TResult Function()?  successSendEmailResetPassoword,TResult Function( String? error)?  errorSendEmailResetPassoword,TResult Function()?  loadingForgotPassword,TResult Function()?  successForgotPassword,TResult Function( String? error)?  errorForgotPassword,TResult Function()?  loadingLogout,TResult Function()?  successLogout,TResult Function( String? error)?  errorLogout,TResult Function( UserEntity? user)?  successUpdateUser,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case InitialAuthState() when initial != null:
+return initial();case LoadingAuthState() when loading != null:
+return loading();case SuccessAuthState() when success != null:
+return success(_that.user);case ErrorAuthState() when error != null:
+return error(_that.error);case LoadingSendEmailResetPassowordState() when loadingSendEmailResetPassoword != null:
+return loadingSendEmailResetPassoword();case SuccessSendEmailResetPassowordState() when successSendEmailResetPassoword != null:
+return successSendEmailResetPassoword();case ErrorSendEmailResetPassowordState() when errorSendEmailResetPassoword != null:
+return errorSendEmailResetPassoword(_that.error);case LoadingForgotPasswordState() when loadingForgotPassword != null:
+return loadingForgotPassword();case SuccessForgotPasswordState() when successForgotPassword != null:
+return successForgotPassword();case ErrorForgotPasswordState() when errorForgotPassword != null:
+return errorForgotPassword(_that.error);case LoadingLogoutState() when loadingLogout != null:
+return loadingLogout();case SuccessLogoutState() when successLogout != null:
+return successLogout();case ErrorLogoutState() when errorLogout != null:
+return errorLogout(_that.error);case SuccessUpdateUserState() when successUpdateUser != null:
+return successUpdateUser(_that.user);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( UserEntity? user)  success,required TResult Function( String? error)  error,required TResult Function()  loadingSendEmailResetPassoword,required TResult Function()  successSendEmailResetPassoword,required TResult Function( String? error)  errorSendEmailResetPassoword,required TResult Function()  loadingForgotPassword,required TResult Function()  successForgotPassword,required TResult Function( String? error)  errorForgotPassword,required TResult Function()  loadingLogout,required TResult Function()  successLogout,required TResult Function( String? error)  errorLogout,required TResult Function( UserEntity? user)  successUpdateUser,}) {final _that = this;
+switch (_that) {
+case InitialAuthState():
+return initial();case LoadingAuthState():
+return loading();case SuccessAuthState():
+return success(_that.user);case ErrorAuthState():
+return error(_that.error);case LoadingSendEmailResetPassowordState():
+return loadingSendEmailResetPassoword();case SuccessSendEmailResetPassowordState():
+return successSendEmailResetPassoword();case ErrorSendEmailResetPassowordState():
+return errorSendEmailResetPassoword(_that.error);case LoadingForgotPasswordState():
+return loadingForgotPassword();case SuccessForgotPasswordState():
+return successForgotPassword();case ErrorForgotPasswordState():
+return errorForgotPassword(_that.error);case LoadingLogoutState():
+return loadingLogout();case SuccessLogoutState():
+return successLogout();case ErrorLogoutState():
+return errorLogout(_that.error);case SuccessUpdateUserState():
+return successUpdateUser(_that.user);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( UserEntity? user)?  success,TResult? Function( String? error)?  error,TResult? Function()?  loadingSendEmailResetPassoword,TResult? Function()?  successSendEmailResetPassoword,TResult? Function( String? error)?  errorSendEmailResetPassoword,TResult? Function()?  loadingForgotPassword,TResult? Function()?  successForgotPassword,TResult? Function( String? error)?  errorForgotPassword,TResult? Function()?  loadingLogout,TResult? Function()?  successLogout,TResult? Function( String? error)?  errorLogout,TResult? Function( UserEntity? user)?  successUpdateUser,}) {final _that = this;
+switch (_that) {
+case InitialAuthState() when initial != null:
+return initial();case LoadingAuthState() when loading != null:
+return loading();case SuccessAuthState() when success != null:
+return success(_that.user);case ErrorAuthState() when error != null:
+return error(_that.error);case LoadingSendEmailResetPassowordState() when loadingSendEmailResetPassoword != null:
+return loadingSendEmailResetPassoword();case SuccessSendEmailResetPassowordState() when successSendEmailResetPassoword != null:
+return successSendEmailResetPassoword();case ErrorSendEmailResetPassowordState() when errorSendEmailResetPassoword != null:
+return errorSendEmailResetPassoword(_that.error);case LoadingForgotPasswordState() when loadingForgotPassword != null:
+return loadingForgotPassword();case SuccessForgotPasswordState() when successForgotPassword != null:
+return successForgotPassword();case ErrorForgotPasswordState() when errorForgotPassword != null:
+return errorForgotPassword(_that.error);case LoadingLogoutState() when loadingLogout != null:
+return loadingLogout();case SuccessLogoutState() when successLogout != null:
+return successLogout();case ErrorLogoutState() when errorLogout != null:
+return errorLogout(_that.error);case SuccessUpdateUserState() when successUpdateUser != null:
+return successUpdateUser(_that.user);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 

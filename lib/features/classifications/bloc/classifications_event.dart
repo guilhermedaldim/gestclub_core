@@ -39,6 +39,7 @@ sealed class ClassificationsEvent with _$ClassificationsEvent {
   }) = GetClassesByClubIdEvent;
   const factory ClassificationsEvent.createClass({
     required ClassEntity classe,
+    SportEntity? sport,
   }) = CreateClassEvent;
   const factory ClassificationsEvent.deleteClass({required String id}) =
       DeleteClassEvent;

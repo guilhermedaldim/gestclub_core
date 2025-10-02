@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -41,6 +40,220 @@ class $ClassificationsEventCopyWith<$Res>  {
 $ClassificationsEventCopyWith(ClassificationsEvent _, $Res Function(ClassificationsEvent) __);
 }
 
+
+/// Adds pattern-matching-related methods to [ClassificationsEvent].
+extension ClassificationsEventPatterns on ClassificationsEvent {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( GetBeachTennisClassificationEvent value)?  getBeachTennisClassification,TResult Function( GetBeachTennisClassesEvent value)?  getBeachTennisClasses,TResult Function( GetTennisRankingEvent value)?  getTennisRanking,TResult Function( GetTennisClassesEvent value)?  getTennisClasses,TResult Function( GetSportByNameEvent value)?  getSportByName,TResult Function( GetSportsByClubIdEvent value)?  getSportsByClubId,TResult Function( CreateSportEvent value)?  createSport,TResult Function( DeleteSportEvent value)?  deleteSport,TResult Function( UpdateSportEvent value)?  updateSport,TResult Function( GetClassesByClubIdEvent value)?  getClassesByClubId,TResult Function( CreateClassEvent value)?  createClass,TResult Function( DeleteClassEvent value)?  deleteClass,TResult Function( UpdateClassEvent value)?  updateClass,TResult Function( CreatePlayerEvent value)?  createPlayer,TResult Function( DeletePlayerEvent value)?  deletePlayer,TResult Function( UpdatePlayerEvent value)?  updatePlayer,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case GetBeachTennisClassificationEvent() when getBeachTennisClassification != null:
+return getBeachTennisClassification(_that);case GetBeachTennisClassesEvent() when getBeachTennisClasses != null:
+return getBeachTennisClasses(_that);case GetTennisRankingEvent() when getTennisRanking != null:
+return getTennisRanking(_that);case GetTennisClassesEvent() when getTennisClasses != null:
+return getTennisClasses(_that);case GetSportByNameEvent() when getSportByName != null:
+return getSportByName(_that);case GetSportsByClubIdEvent() when getSportsByClubId != null:
+return getSportsByClubId(_that);case CreateSportEvent() when createSport != null:
+return createSport(_that);case DeleteSportEvent() when deleteSport != null:
+return deleteSport(_that);case UpdateSportEvent() when updateSport != null:
+return updateSport(_that);case GetClassesByClubIdEvent() when getClassesByClubId != null:
+return getClassesByClubId(_that);case CreateClassEvent() when createClass != null:
+return createClass(_that);case DeleteClassEvent() when deleteClass != null:
+return deleteClass(_that);case UpdateClassEvent() when updateClass != null:
+return updateClass(_that);case CreatePlayerEvent() when createPlayer != null:
+return createPlayer(_that);case DeletePlayerEvent() when deletePlayer != null:
+return deletePlayer(_that);case UpdatePlayerEvent() when updatePlayer != null:
+return updatePlayer(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( GetBeachTennisClassificationEvent value)  getBeachTennisClassification,required TResult Function( GetBeachTennisClassesEvent value)  getBeachTennisClasses,required TResult Function( GetTennisRankingEvent value)  getTennisRanking,required TResult Function( GetTennisClassesEvent value)  getTennisClasses,required TResult Function( GetSportByNameEvent value)  getSportByName,required TResult Function( GetSportsByClubIdEvent value)  getSportsByClubId,required TResult Function( CreateSportEvent value)  createSport,required TResult Function( DeleteSportEvent value)  deleteSport,required TResult Function( UpdateSportEvent value)  updateSport,required TResult Function( GetClassesByClubIdEvent value)  getClassesByClubId,required TResult Function( CreateClassEvent value)  createClass,required TResult Function( DeleteClassEvent value)  deleteClass,required TResult Function( UpdateClassEvent value)  updateClass,required TResult Function( CreatePlayerEvent value)  createPlayer,required TResult Function( DeletePlayerEvent value)  deletePlayer,required TResult Function( UpdatePlayerEvent value)  updatePlayer,}){
+final _that = this;
+switch (_that) {
+case GetBeachTennisClassificationEvent():
+return getBeachTennisClassification(_that);case GetBeachTennisClassesEvent():
+return getBeachTennisClasses(_that);case GetTennisRankingEvent():
+return getTennisRanking(_that);case GetTennisClassesEvent():
+return getTennisClasses(_that);case GetSportByNameEvent():
+return getSportByName(_that);case GetSportsByClubIdEvent():
+return getSportsByClubId(_that);case CreateSportEvent():
+return createSport(_that);case DeleteSportEvent():
+return deleteSport(_that);case UpdateSportEvent():
+return updateSport(_that);case GetClassesByClubIdEvent():
+return getClassesByClubId(_that);case CreateClassEvent():
+return createClass(_that);case DeleteClassEvent():
+return deleteClass(_that);case UpdateClassEvent():
+return updateClass(_that);case CreatePlayerEvent():
+return createPlayer(_that);case DeletePlayerEvent():
+return deletePlayer(_that);case UpdatePlayerEvent():
+return updatePlayer(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( GetBeachTennisClassificationEvent value)?  getBeachTennisClassification,TResult? Function( GetBeachTennisClassesEvent value)?  getBeachTennisClasses,TResult? Function( GetTennisRankingEvent value)?  getTennisRanking,TResult? Function( GetTennisClassesEvent value)?  getTennisClasses,TResult? Function( GetSportByNameEvent value)?  getSportByName,TResult? Function( GetSportsByClubIdEvent value)?  getSportsByClubId,TResult? Function( CreateSportEvent value)?  createSport,TResult? Function( DeleteSportEvent value)?  deleteSport,TResult? Function( UpdateSportEvent value)?  updateSport,TResult? Function( GetClassesByClubIdEvent value)?  getClassesByClubId,TResult? Function( CreateClassEvent value)?  createClass,TResult? Function( DeleteClassEvent value)?  deleteClass,TResult? Function( UpdateClassEvent value)?  updateClass,TResult? Function( CreatePlayerEvent value)?  createPlayer,TResult? Function( DeletePlayerEvent value)?  deletePlayer,TResult? Function( UpdatePlayerEvent value)?  updatePlayer,}){
+final _that = this;
+switch (_that) {
+case GetBeachTennisClassificationEvent() when getBeachTennisClassification != null:
+return getBeachTennisClassification(_that);case GetBeachTennisClassesEvent() when getBeachTennisClasses != null:
+return getBeachTennisClasses(_that);case GetTennisRankingEvent() when getTennisRanking != null:
+return getTennisRanking(_that);case GetTennisClassesEvent() when getTennisClasses != null:
+return getTennisClasses(_that);case GetSportByNameEvent() when getSportByName != null:
+return getSportByName(_that);case GetSportsByClubIdEvent() when getSportsByClubId != null:
+return getSportsByClubId(_that);case CreateSportEvent() when createSport != null:
+return createSport(_that);case DeleteSportEvent() when deleteSport != null:
+return deleteSport(_that);case UpdateSportEvent() when updateSport != null:
+return updateSport(_that);case GetClassesByClubIdEvent() when getClassesByClubId != null:
+return getClassesByClubId(_that);case CreateClassEvent() when createClass != null:
+return createClass(_that);case DeleteClassEvent() when deleteClass != null:
+return deleteClass(_that);case UpdateClassEvent() when updateClass != null:
+return updateClass(_that);case CreatePlayerEvent() when createPlayer != null:
+return createPlayer(_that);case DeletePlayerEvent() when deletePlayer != null:
+return deletePlayer(_that);case UpdatePlayerEvent() when updatePlayer != null:
+return updatePlayer(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String classId,  String clubId)?  getBeachTennisClassification,TResult Function( String sportId)?  getBeachTennisClasses,TResult Function( String classId,  String clubId)?  getTennisRanking,TResult Function( String sportId)?  getTennisClasses,TResult Function( String name)?  getSportByName,TResult Function( String clubId)?  getSportsByClubId,TResult Function( SportEntity sport)?  createSport,TResult Function( String id)?  deleteSport,TResult Function( SportEntity sport)?  updateSport,TResult Function( String clubId)?  getClassesByClubId,TResult Function( ClassEntity classe,  SportEntity? sport)?  createClass,TResult Function( String id)?  deleteClass,TResult Function( ClassEntity classe)?  updateClass,TResult Function( PlayerEntity player)?  createPlayer,TResult Function( String id)?  deletePlayer,TResult Function( PlayerEntity player)?  updatePlayer,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case GetBeachTennisClassificationEvent() when getBeachTennisClassification != null:
+return getBeachTennisClassification(_that.classId,_that.clubId);case GetBeachTennisClassesEvent() when getBeachTennisClasses != null:
+return getBeachTennisClasses(_that.sportId);case GetTennisRankingEvent() when getTennisRanking != null:
+return getTennisRanking(_that.classId,_that.clubId);case GetTennisClassesEvent() when getTennisClasses != null:
+return getTennisClasses(_that.sportId);case GetSportByNameEvent() when getSportByName != null:
+return getSportByName(_that.name);case GetSportsByClubIdEvent() when getSportsByClubId != null:
+return getSportsByClubId(_that.clubId);case CreateSportEvent() when createSport != null:
+return createSport(_that.sport);case DeleteSportEvent() when deleteSport != null:
+return deleteSport(_that.id);case UpdateSportEvent() when updateSport != null:
+return updateSport(_that.sport);case GetClassesByClubIdEvent() when getClassesByClubId != null:
+return getClassesByClubId(_that.clubId);case CreateClassEvent() when createClass != null:
+return createClass(_that.classe,_that.sport);case DeleteClassEvent() when deleteClass != null:
+return deleteClass(_that.id);case UpdateClassEvent() when updateClass != null:
+return updateClass(_that.classe);case CreatePlayerEvent() when createPlayer != null:
+return createPlayer(_that.player);case DeletePlayerEvent() when deletePlayer != null:
+return deletePlayer(_that.id);case UpdatePlayerEvent() when updatePlayer != null:
+return updatePlayer(_that.player);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String classId,  String clubId)  getBeachTennisClassification,required TResult Function( String sportId)  getBeachTennisClasses,required TResult Function( String classId,  String clubId)  getTennisRanking,required TResult Function( String sportId)  getTennisClasses,required TResult Function( String name)  getSportByName,required TResult Function( String clubId)  getSportsByClubId,required TResult Function( SportEntity sport)  createSport,required TResult Function( String id)  deleteSport,required TResult Function( SportEntity sport)  updateSport,required TResult Function( String clubId)  getClassesByClubId,required TResult Function( ClassEntity classe,  SportEntity? sport)  createClass,required TResult Function( String id)  deleteClass,required TResult Function( ClassEntity classe)  updateClass,required TResult Function( PlayerEntity player)  createPlayer,required TResult Function( String id)  deletePlayer,required TResult Function( PlayerEntity player)  updatePlayer,}) {final _that = this;
+switch (_that) {
+case GetBeachTennisClassificationEvent():
+return getBeachTennisClassification(_that.classId,_that.clubId);case GetBeachTennisClassesEvent():
+return getBeachTennisClasses(_that.sportId);case GetTennisRankingEvent():
+return getTennisRanking(_that.classId,_that.clubId);case GetTennisClassesEvent():
+return getTennisClasses(_that.sportId);case GetSportByNameEvent():
+return getSportByName(_that.name);case GetSportsByClubIdEvent():
+return getSportsByClubId(_that.clubId);case CreateSportEvent():
+return createSport(_that.sport);case DeleteSportEvent():
+return deleteSport(_that.id);case UpdateSportEvent():
+return updateSport(_that.sport);case GetClassesByClubIdEvent():
+return getClassesByClubId(_that.clubId);case CreateClassEvent():
+return createClass(_that.classe,_that.sport);case DeleteClassEvent():
+return deleteClass(_that.id);case UpdateClassEvent():
+return updateClass(_that.classe);case CreatePlayerEvent():
+return createPlayer(_that.player);case DeletePlayerEvent():
+return deletePlayer(_that.id);case UpdatePlayerEvent():
+return updatePlayer(_that.player);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String classId,  String clubId)?  getBeachTennisClassification,TResult? Function( String sportId)?  getBeachTennisClasses,TResult? Function( String classId,  String clubId)?  getTennisRanking,TResult? Function( String sportId)?  getTennisClasses,TResult? Function( String name)?  getSportByName,TResult? Function( String clubId)?  getSportsByClubId,TResult? Function( SportEntity sport)?  createSport,TResult? Function( String id)?  deleteSport,TResult? Function( SportEntity sport)?  updateSport,TResult? Function( String clubId)?  getClassesByClubId,TResult? Function( ClassEntity classe,  SportEntity? sport)?  createClass,TResult? Function( String id)?  deleteClass,TResult? Function( ClassEntity classe)?  updateClass,TResult? Function( PlayerEntity player)?  createPlayer,TResult? Function( String id)?  deletePlayer,TResult? Function( PlayerEntity player)?  updatePlayer,}) {final _that = this;
+switch (_that) {
+case GetBeachTennisClassificationEvent() when getBeachTennisClassification != null:
+return getBeachTennisClassification(_that.classId,_that.clubId);case GetBeachTennisClassesEvent() when getBeachTennisClasses != null:
+return getBeachTennisClasses(_that.sportId);case GetTennisRankingEvent() when getTennisRanking != null:
+return getTennisRanking(_that.classId,_that.clubId);case GetTennisClassesEvent() when getTennisClasses != null:
+return getTennisClasses(_that.sportId);case GetSportByNameEvent() when getSportByName != null:
+return getSportByName(_that.name);case GetSportsByClubIdEvent() when getSportsByClubId != null:
+return getSportsByClubId(_that.clubId);case CreateSportEvent() when createSport != null:
+return createSport(_that.sport);case DeleteSportEvent() when deleteSport != null:
+return deleteSport(_that.id);case UpdateSportEvent() when updateSport != null:
+return updateSport(_that.sport);case GetClassesByClubIdEvent() when getClassesByClubId != null:
+return getClassesByClubId(_that.clubId);case CreateClassEvent() when createClass != null:
+return createClass(_that.classe,_that.sport);case DeleteClassEvent() when deleteClass != null:
+return deleteClass(_that.id);case UpdateClassEvent() when updateClass != null:
+return updateClass(_that.classe);case CreatePlayerEvent() when createPlayer != null:
+return createPlayer(_that.player);case DeletePlayerEvent() when deletePlayer != null:
+return deletePlayer(_that.id);case UpdatePlayerEvent() when updatePlayer != null:
+return updatePlayer(_that.player);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 
@@ -728,10 +941,11 @@ as String,
 
 
 class CreateClassEvent implements ClassificationsEvent {
-  const CreateClassEvent({required this.classe});
+  const CreateClassEvent({required this.classe, this.sport});
   
 
  final  ClassEntity classe;
+ final  SportEntity? sport;
 
 /// Create a copy of ClassificationsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -743,16 +957,16 @@ $CreateClassEventCopyWith<CreateClassEvent> get copyWith => _$CreateClassEventCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateClassEvent&&(identical(other.classe, classe) || other.classe == classe));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateClassEvent&&(identical(other.classe, classe) || other.classe == classe)&&(identical(other.sport, sport) || other.sport == sport));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,classe);
+int get hashCode => Object.hash(runtimeType,classe,sport);
 
 @override
 String toString() {
-  return 'ClassificationsEvent.createClass(classe: $classe)';
+  return 'ClassificationsEvent.createClass(classe: $classe, sport: $sport)';
 }
 
 
@@ -763,11 +977,11 @@ abstract mixin class $CreateClassEventCopyWith<$Res> implements $Classifications
   factory $CreateClassEventCopyWith(CreateClassEvent value, $Res Function(CreateClassEvent) _then) = _$CreateClassEventCopyWithImpl;
 @useResult
 $Res call({
- ClassEntity classe
+ ClassEntity classe, SportEntity? sport
 });
 
 
-$ClassEntityCopyWith<$Res> get classe;
+$ClassEntityCopyWith<$Res> get classe;$SportEntityCopyWith<$Res>? get sport;
 
 }
 /// @nodoc
@@ -780,10 +994,11 @@ class _$CreateClassEventCopyWithImpl<$Res>
 
 /// Create a copy of ClassificationsEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? classe = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? classe = null,Object? sport = freezed,}) {
   return _then(CreateClassEvent(
 classe: null == classe ? _self.classe : classe // ignore: cast_nullable_to_non_nullable
-as ClassEntity,
+as ClassEntity,sport: freezed == sport ? _self.sport : sport // ignore: cast_nullable_to_non_nullable
+as SportEntity?,
   ));
 }
 
@@ -795,6 +1010,18 @@ $ClassEntityCopyWith<$Res> get classe {
   
   return $ClassEntityCopyWith<$Res>(_self.classe, (value) {
     return _then(_self.copyWith(classe: value));
+  });
+}/// Create a copy of ClassificationsEvent
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SportEntityCopyWith<$Res>? get sport {
+    if (_self.sport == null) {
+    return null;
+  }
+
+  return $SportEntityCopyWith<$Res>(_self.sport!, (value) {
+    return _then(_self.copyWith(sport: value));
   });
 }
 }
@@ -1185,6 +1412,418 @@ class $ClassificationsStateCopyWith<$Res>  {
 $ClassificationsStateCopyWith(ClassificationsState _, $Res Function(ClassificationsState) __);
 }
 
+
+/// Adds pattern-matching-related methods to [ClassificationsState].
+extension ClassificationsStatePatterns on ClassificationsState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( InitialClassificationsState value)?  initial,TResult Function( LoadingBeachTennisClassificationState value)?  loadingBeachTennisClassification,TResult Function( SuccessBeachTennisClassificationState value)?  successBeachTennisClassification,TResult Function( ErrorBeachTennisClassificationState value)?  errorBeachTennisClassification,TResult Function( LoadingBeachTennisClassesState value)?  loadingBeachTennisClasses,TResult Function( SuccessBeachTennisClassesState value)?  successBeachTennisClasses,TResult Function( ErrorBeachTennisClassesState value)?  errorBeachTennisClasses,TResult Function( LoadingTennisRankingState value)?  loadingTennisRanking,TResult Function( SuccessTennisRankingState value)?  successTennisRanking,TResult Function( ErrorTennisRankingState value)?  errorTennisRanking,TResult Function( LoadingTennisClassesState value)?  loadingTennisClasses,TResult Function( SuccessTennisClassesState value)?  successTennisClasses,TResult Function( ErrorTennisClassesState value)?  errorTennisClasses,TResult Function( LoadingSportIdByNameState value)?  loadingSportByName,TResult Function( SuccessSportIdByNameState value)?  successSportByName,TResult Function( ErrorSportIdByNameState value)?  errorSportByName,TResult Function( LoadingSportsByClubIdState value)?  loadingSportsByClubId,TResult Function( SuccessSportsByClubIdState value)?  successSportsByClubId,TResult Function( ErrorSportsByClubIdState value)?  errorSportsByClubId,TResult Function( LoadingCreateSportState value)?  loadingCreateSport,TResult Function( SuccessCreateSportState value)?  successCreateSport,TResult Function( ErrorCreateSportState value)?  errorCreateSport,TResult Function( LoadingDeleteSportState value)?  loadingDeleteSport,TResult Function( SuccessDeleteSportState value)?  successDeleteSport,TResult Function( ErrorDeleteSportState value)?  errorDeleteSport,TResult Function( LoadingUpdateSportState value)?  loadingUpdateSport,TResult Function( SuccessUpdateSportState value)?  successUpdateSport,TResult Function( ErrorUpdateSportState value)?  errorUpdateSport,TResult Function( LoadingClassesByClubIdState value)?  loadingClassesByClubId,TResult Function( SuccessClassesByClubIdState value)?  successClassesByClubId,TResult Function( ErrorClassesByClubIdState value)?  errorClassesByClubId,TResult Function( LoadingCreateClassState value)?  loadingCreateClass,TResult Function( SuccessCreateClassState value)?  successCreateClass,TResult Function( ErrorCreateClassState value)?  errorCreateClass,TResult Function( LoadingDeleteClassState value)?  loadingDeleteClass,TResult Function( SuccessDeleteClassState value)?  successDeleteClass,TResult Function( ErrorDeleteClassState value)?  errorDeleteClass,TResult Function( LoadingUpdateClassState value)?  loadingUpdateClass,TResult Function( SuccessUpdateClassState value)?  successUpdateClass,TResult Function( ErrorUpdateClassState value)?  errorUpdateClass,TResult Function( LoadingCreatePlayerState value)?  loadingCreatePlayer,TResult Function( SuccessCreatePlayerState value)?  successCreatePlayer,TResult Function( ErrorCreatePlayerState value)?  errorCreatePlayer,TResult Function( LoadingDeletePlayerState value)?  loadingDeletePlayer,TResult Function( SuccessDeletePlayerState value)?  successDeletePlayer,TResult Function( ErrorDeletePlayerState value)?  errorDeletePlayer,TResult Function( LoadingUpdatePlayerState value)?  loadingUpdatePlayer,TResult Function( SuccessUpdatePlayerState value)?  successUpdatePlayer,TResult Function( ErrorUpdatePlayerState value)?  errorUpdatePlayer,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case InitialClassificationsState() when initial != null:
+return initial(_that);case LoadingBeachTennisClassificationState() when loadingBeachTennisClassification != null:
+return loadingBeachTennisClassification(_that);case SuccessBeachTennisClassificationState() when successBeachTennisClassification != null:
+return successBeachTennisClassification(_that);case ErrorBeachTennisClassificationState() when errorBeachTennisClassification != null:
+return errorBeachTennisClassification(_that);case LoadingBeachTennisClassesState() when loadingBeachTennisClasses != null:
+return loadingBeachTennisClasses(_that);case SuccessBeachTennisClassesState() when successBeachTennisClasses != null:
+return successBeachTennisClasses(_that);case ErrorBeachTennisClassesState() when errorBeachTennisClasses != null:
+return errorBeachTennisClasses(_that);case LoadingTennisRankingState() when loadingTennisRanking != null:
+return loadingTennisRanking(_that);case SuccessTennisRankingState() when successTennisRanking != null:
+return successTennisRanking(_that);case ErrorTennisRankingState() when errorTennisRanking != null:
+return errorTennisRanking(_that);case LoadingTennisClassesState() when loadingTennisClasses != null:
+return loadingTennisClasses(_that);case SuccessTennisClassesState() when successTennisClasses != null:
+return successTennisClasses(_that);case ErrorTennisClassesState() when errorTennisClasses != null:
+return errorTennisClasses(_that);case LoadingSportIdByNameState() when loadingSportByName != null:
+return loadingSportByName(_that);case SuccessSportIdByNameState() when successSportByName != null:
+return successSportByName(_that);case ErrorSportIdByNameState() when errorSportByName != null:
+return errorSportByName(_that);case LoadingSportsByClubIdState() when loadingSportsByClubId != null:
+return loadingSportsByClubId(_that);case SuccessSportsByClubIdState() when successSportsByClubId != null:
+return successSportsByClubId(_that);case ErrorSportsByClubIdState() when errorSportsByClubId != null:
+return errorSportsByClubId(_that);case LoadingCreateSportState() when loadingCreateSport != null:
+return loadingCreateSport(_that);case SuccessCreateSportState() when successCreateSport != null:
+return successCreateSport(_that);case ErrorCreateSportState() when errorCreateSport != null:
+return errorCreateSport(_that);case LoadingDeleteSportState() when loadingDeleteSport != null:
+return loadingDeleteSport(_that);case SuccessDeleteSportState() when successDeleteSport != null:
+return successDeleteSport(_that);case ErrorDeleteSportState() when errorDeleteSport != null:
+return errorDeleteSport(_that);case LoadingUpdateSportState() when loadingUpdateSport != null:
+return loadingUpdateSport(_that);case SuccessUpdateSportState() when successUpdateSport != null:
+return successUpdateSport(_that);case ErrorUpdateSportState() when errorUpdateSport != null:
+return errorUpdateSport(_that);case LoadingClassesByClubIdState() when loadingClassesByClubId != null:
+return loadingClassesByClubId(_that);case SuccessClassesByClubIdState() when successClassesByClubId != null:
+return successClassesByClubId(_that);case ErrorClassesByClubIdState() when errorClassesByClubId != null:
+return errorClassesByClubId(_that);case LoadingCreateClassState() when loadingCreateClass != null:
+return loadingCreateClass(_that);case SuccessCreateClassState() when successCreateClass != null:
+return successCreateClass(_that);case ErrorCreateClassState() when errorCreateClass != null:
+return errorCreateClass(_that);case LoadingDeleteClassState() when loadingDeleteClass != null:
+return loadingDeleteClass(_that);case SuccessDeleteClassState() when successDeleteClass != null:
+return successDeleteClass(_that);case ErrorDeleteClassState() when errorDeleteClass != null:
+return errorDeleteClass(_that);case LoadingUpdateClassState() when loadingUpdateClass != null:
+return loadingUpdateClass(_that);case SuccessUpdateClassState() when successUpdateClass != null:
+return successUpdateClass(_that);case ErrorUpdateClassState() when errorUpdateClass != null:
+return errorUpdateClass(_that);case LoadingCreatePlayerState() when loadingCreatePlayer != null:
+return loadingCreatePlayer(_that);case SuccessCreatePlayerState() when successCreatePlayer != null:
+return successCreatePlayer(_that);case ErrorCreatePlayerState() when errorCreatePlayer != null:
+return errorCreatePlayer(_that);case LoadingDeletePlayerState() when loadingDeletePlayer != null:
+return loadingDeletePlayer(_that);case SuccessDeletePlayerState() when successDeletePlayer != null:
+return successDeletePlayer(_that);case ErrorDeletePlayerState() when errorDeletePlayer != null:
+return errorDeletePlayer(_that);case LoadingUpdatePlayerState() when loadingUpdatePlayer != null:
+return loadingUpdatePlayer(_that);case SuccessUpdatePlayerState() when successUpdatePlayer != null:
+return successUpdatePlayer(_that);case ErrorUpdatePlayerState() when errorUpdatePlayer != null:
+return errorUpdatePlayer(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( InitialClassificationsState value)  initial,required TResult Function( LoadingBeachTennisClassificationState value)  loadingBeachTennisClassification,required TResult Function( SuccessBeachTennisClassificationState value)  successBeachTennisClassification,required TResult Function( ErrorBeachTennisClassificationState value)  errorBeachTennisClassification,required TResult Function( LoadingBeachTennisClassesState value)  loadingBeachTennisClasses,required TResult Function( SuccessBeachTennisClassesState value)  successBeachTennisClasses,required TResult Function( ErrorBeachTennisClassesState value)  errorBeachTennisClasses,required TResult Function( LoadingTennisRankingState value)  loadingTennisRanking,required TResult Function( SuccessTennisRankingState value)  successTennisRanking,required TResult Function( ErrorTennisRankingState value)  errorTennisRanking,required TResult Function( LoadingTennisClassesState value)  loadingTennisClasses,required TResult Function( SuccessTennisClassesState value)  successTennisClasses,required TResult Function( ErrorTennisClassesState value)  errorTennisClasses,required TResult Function( LoadingSportIdByNameState value)  loadingSportByName,required TResult Function( SuccessSportIdByNameState value)  successSportByName,required TResult Function( ErrorSportIdByNameState value)  errorSportByName,required TResult Function( LoadingSportsByClubIdState value)  loadingSportsByClubId,required TResult Function( SuccessSportsByClubIdState value)  successSportsByClubId,required TResult Function( ErrorSportsByClubIdState value)  errorSportsByClubId,required TResult Function( LoadingCreateSportState value)  loadingCreateSport,required TResult Function( SuccessCreateSportState value)  successCreateSport,required TResult Function( ErrorCreateSportState value)  errorCreateSport,required TResult Function( LoadingDeleteSportState value)  loadingDeleteSport,required TResult Function( SuccessDeleteSportState value)  successDeleteSport,required TResult Function( ErrorDeleteSportState value)  errorDeleteSport,required TResult Function( LoadingUpdateSportState value)  loadingUpdateSport,required TResult Function( SuccessUpdateSportState value)  successUpdateSport,required TResult Function( ErrorUpdateSportState value)  errorUpdateSport,required TResult Function( LoadingClassesByClubIdState value)  loadingClassesByClubId,required TResult Function( SuccessClassesByClubIdState value)  successClassesByClubId,required TResult Function( ErrorClassesByClubIdState value)  errorClassesByClubId,required TResult Function( LoadingCreateClassState value)  loadingCreateClass,required TResult Function( SuccessCreateClassState value)  successCreateClass,required TResult Function( ErrorCreateClassState value)  errorCreateClass,required TResult Function( LoadingDeleteClassState value)  loadingDeleteClass,required TResult Function( SuccessDeleteClassState value)  successDeleteClass,required TResult Function( ErrorDeleteClassState value)  errorDeleteClass,required TResult Function( LoadingUpdateClassState value)  loadingUpdateClass,required TResult Function( SuccessUpdateClassState value)  successUpdateClass,required TResult Function( ErrorUpdateClassState value)  errorUpdateClass,required TResult Function( LoadingCreatePlayerState value)  loadingCreatePlayer,required TResult Function( SuccessCreatePlayerState value)  successCreatePlayer,required TResult Function( ErrorCreatePlayerState value)  errorCreatePlayer,required TResult Function( LoadingDeletePlayerState value)  loadingDeletePlayer,required TResult Function( SuccessDeletePlayerState value)  successDeletePlayer,required TResult Function( ErrorDeletePlayerState value)  errorDeletePlayer,required TResult Function( LoadingUpdatePlayerState value)  loadingUpdatePlayer,required TResult Function( SuccessUpdatePlayerState value)  successUpdatePlayer,required TResult Function( ErrorUpdatePlayerState value)  errorUpdatePlayer,}){
+final _that = this;
+switch (_that) {
+case InitialClassificationsState():
+return initial(_that);case LoadingBeachTennisClassificationState():
+return loadingBeachTennisClassification(_that);case SuccessBeachTennisClassificationState():
+return successBeachTennisClassification(_that);case ErrorBeachTennisClassificationState():
+return errorBeachTennisClassification(_that);case LoadingBeachTennisClassesState():
+return loadingBeachTennisClasses(_that);case SuccessBeachTennisClassesState():
+return successBeachTennisClasses(_that);case ErrorBeachTennisClassesState():
+return errorBeachTennisClasses(_that);case LoadingTennisRankingState():
+return loadingTennisRanking(_that);case SuccessTennisRankingState():
+return successTennisRanking(_that);case ErrorTennisRankingState():
+return errorTennisRanking(_that);case LoadingTennisClassesState():
+return loadingTennisClasses(_that);case SuccessTennisClassesState():
+return successTennisClasses(_that);case ErrorTennisClassesState():
+return errorTennisClasses(_that);case LoadingSportIdByNameState():
+return loadingSportByName(_that);case SuccessSportIdByNameState():
+return successSportByName(_that);case ErrorSportIdByNameState():
+return errorSportByName(_that);case LoadingSportsByClubIdState():
+return loadingSportsByClubId(_that);case SuccessSportsByClubIdState():
+return successSportsByClubId(_that);case ErrorSportsByClubIdState():
+return errorSportsByClubId(_that);case LoadingCreateSportState():
+return loadingCreateSport(_that);case SuccessCreateSportState():
+return successCreateSport(_that);case ErrorCreateSportState():
+return errorCreateSport(_that);case LoadingDeleteSportState():
+return loadingDeleteSport(_that);case SuccessDeleteSportState():
+return successDeleteSport(_that);case ErrorDeleteSportState():
+return errorDeleteSport(_that);case LoadingUpdateSportState():
+return loadingUpdateSport(_that);case SuccessUpdateSportState():
+return successUpdateSport(_that);case ErrorUpdateSportState():
+return errorUpdateSport(_that);case LoadingClassesByClubIdState():
+return loadingClassesByClubId(_that);case SuccessClassesByClubIdState():
+return successClassesByClubId(_that);case ErrorClassesByClubIdState():
+return errorClassesByClubId(_that);case LoadingCreateClassState():
+return loadingCreateClass(_that);case SuccessCreateClassState():
+return successCreateClass(_that);case ErrorCreateClassState():
+return errorCreateClass(_that);case LoadingDeleteClassState():
+return loadingDeleteClass(_that);case SuccessDeleteClassState():
+return successDeleteClass(_that);case ErrorDeleteClassState():
+return errorDeleteClass(_that);case LoadingUpdateClassState():
+return loadingUpdateClass(_that);case SuccessUpdateClassState():
+return successUpdateClass(_that);case ErrorUpdateClassState():
+return errorUpdateClass(_that);case LoadingCreatePlayerState():
+return loadingCreatePlayer(_that);case SuccessCreatePlayerState():
+return successCreatePlayer(_that);case ErrorCreatePlayerState():
+return errorCreatePlayer(_that);case LoadingDeletePlayerState():
+return loadingDeletePlayer(_that);case SuccessDeletePlayerState():
+return successDeletePlayer(_that);case ErrorDeletePlayerState():
+return errorDeletePlayer(_that);case LoadingUpdatePlayerState():
+return loadingUpdatePlayer(_that);case SuccessUpdatePlayerState():
+return successUpdatePlayer(_that);case ErrorUpdatePlayerState():
+return errorUpdatePlayer(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( InitialClassificationsState value)?  initial,TResult? Function( LoadingBeachTennisClassificationState value)?  loadingBeachTennisClassification,TResult? Function( SuccessBeachTennisClassificationState value)?  successBeachTennisClassification,TResult? Function( ErrorBeachTennisClassificationState value)?  errorBeachTennisClassification,TResult? Function( LoadingBeachTennisClassesState value)?  loadingBeachTennisClasses,TResult? Function( SuccessBeachTennisClassesState value)?  successBeachTennisClasses,TResult? Function( ErrorBeachTennisClassesState value)?  errorBeachTennisClasses,TResult? Function( LoadingTennisRankingState value)?  loadingTennisRanking,TResult? Function( SuccessTennisRankingState value)?  successTennisRanking,TResult? Function( ErrorTennisRankingState value)?  errorTennisRanking,TResult? Function( LoadingTennisClassesState value)?  loadingTennisClasses,TResult? Function( SuccessTennisClassesState value)?  successTennisClasses,TResult? Function( ErrorTennisClassesState value)?  errorTennisClasses,TResult? Function( LoadingSportIdByNameState value)?  loadingSportByName,TResult? Function( SuccessSportIdByNameState value)?  successSportByName,TResult? Function( ErrorSportIdByNameState value)?  errorSportByName,TResult? Function( LoadingSportsByClubIdState value)?  loadingSportsByClubId,TResult? Function( SuccessSportsByClubIdState value)?  successSportsByClubId,TResult? Function( ErrorSportsByClubIdState value)?  errorSportsByClubId,TResult? Function( LoadingCreateSportState value)?  loadingCreateSport,TResult? Function( SuccessCreateSportState value)?  successCreateSport,TResult? Function( ErrorCreateSportState value)?  errorCreateSport,TResult? Function( LoadingDeleteSportState value)?  loadingDeleteSport,TResult? Function( SuccessDeleteSportState value)?  successDeleteSport,TResult? Function( ErrorDeleteSportState value)?  errorDeleteSport,TResult? Function( LoadingUpdateSportState value)?  loadingUpdateSport,TResult? Function( SuccessUpdateSportState value)?  successUpdateSport,TResult? Function( ErrorUpdateSportState value)?  errorUpdateSport,TResult? Function( LoadingClassesByClubIdState value)?  loadingClassesByClubId,TResult? Function( SuccessClassesByClubIdState value)?  successClassesByClubId,TResult? Function( ErrorClassesByClubIdState value)?  errorClassesByClubId,TResult? Function( LoadingCreateClassState value)?  loadingCreateClass,TResult? Function( SuccessCreateClassState value)?  successCreateClass,TResult? Function( ErrorCreateClassState value)?  errorCreateClass,TResult? Function( LoadingDeleteClassState value)?  loadingDeleteClass,TResult? Function( SuccessDeleteClassState value)?  successDeleteClass,TResult? Function( ErrorDeleteClassState value)?  errorDeleteClass,TResult? Function( LoadingUpdateClassState value)?  loadingUpdateClass,TResult? Function( SuccessUpdateClassState value)?  successUpdateClass,TResult? Function( ErrorUpdateClassState value)?  errorUpdateClass,TResult? Function( LoadingCreatePlayerState value)?  loadingCreatePlayer,TResult? Function( SuccessCreatePlayerState value)?  successCreatePlayer,TResult? Function( ErrorCreatePlayerState value)?  errorCreatePlayer,TResult? Function( LoadingDeletePlayerState value)?  loadingDeletePlayer,TResult? Function( SuccessDeletePlayerState value)?  successDeletePlayer,TResult? Function( ErrorDeletePlayerState value)?  errorDeletePlayer,TResult? Function( LoadingUpdatePlayerState value)?  loadingUpdatePlayer,TResult? Function( SuccessUpdatePlayerState value)?  successUpdatePlayer,TResult? Function( ErrorUpdatePlayerState value)?  errorUpdatePlayer,}){
+final _that = this;
+switch (_that) {
+case InitialClassificationsState() when initial != null:
+return initial(_that);case LoadingBeachTennisClassificationState() when loadingBeachTennisClassification != null:
+return loadingBeachTennisClassification(_that);case SuccessBeachTennisClassificationState() when successBeachTennisClassification != null:
+return successBeachTennisClassification(_that);case ErrorBeachTennisClassificationState() when errorBeachTennisClassification != null:
+return errorBeachTennisClassification(_that);case LoadingBeachTennisClassesState() when loadingBeachTennisClasses != null:
+return loadingBeachTennisClasses(_that);case SuccessBeachTennisClassesState() when successBeachTennisClasses != null:
+return successBeachTennisClasses(_that);case ErrorBeachTennisClassesState() when errorBeachTennisClasses != null:
+return errorBeachTennisClasses(_that);case LoadingTennisRankingState() when loadingTennisRanking != null:
+return loadingTennisRanking(_that);case SuccessTennisRankingState() when successTennisRanking != null:
+return successTennisRanking(_that);case ErrorTennisRankingState() when errorTennisRanking != null:
+return errorTennisRanking(_that);case LoadingTennisClassesState() when loadingTennisClasses != null:
+return loadingTennisClasses(_that);case SuccessTennisClassesState() when successTennisClasses != null:
+return successTennisClasses(_that);case ErrorTennisClassesState() when errorTennisClasses != null:
+return errorTennisClasses(_that);case LoadingSportIdByNameState() when loadingSportByName != null:
+return loadingSportByName(_that);case SuccessSportIdByNameState() when successSportByName != null:
+return successSportByName(_that);case ErrorSportIdByNameState() when errorSportByName != null:
+return errorSportByName(_that);case LoadingSportsByClubIdState() when loadingSportsByClubId != null:
+return loadingSportsByClubId(_that);case SuccessSportsByClubIdState() when successSportsByClubId != null:
+return successSportsByClubId(_that);case ErrorSportsByClubIdState() when errorSportsByClubId != null:
+return errorSportsByClubId(_that);case LoadingCreateSportState() when loadingCreateSport != null:
+return loadingCreateSport(_that);case SuccessCreateSportState() when successCreateSport != null:
+return successCreateSport(_that);case ErrorCreateSportState() when errorCreateSport != null:
+return errorCreateSport(_that);case LoadingDeleteSportState() when loadingDeleteSport != null:
+return loadingDeleteSport(_that);case SuccessDeleteSportState() when successDeleteSport != null:
+return successDeleteSport(_that);case ErrorDeleteSportState() when errorDeleteSport != null:
+return errorDeleteSport(_that);case LoadingUpdateSportState() when loadingUpdateSport != null:
+return loadingUpdateSport(_that);case SuccessUpdateSportState() when successUpdateSport != null:
+return successUpdateSport(_that);case ErrorUpdateSportState() when errorUpdateSport != null:
+return errorUpdateSport(_that);case LoadingClassesByClubIdState() when loadingClassesByClubId != null:
+return loadingClassesByClubId(_that);case SuccessClassesByClubIdState() when successClassesByClubId != null:
+return successClassesByClubId(_that);case ErrorClassesByClubIdState() when errorClassesByClubId != null:
+return errorClassesByClubId(_that);case LoadingCreateClassState() when loadingCreateClass != null:
+return loadingCreateClass(_that);case SuccessCreateClassState() when successCreateClass != null:
+return successCreateClass(_that);case ErrorCreateClassState() when errorCreateClass != null:
+return errorCreateClass(_that);case LoadingDeleteClassState() when loadingDeleteClass != null:
+return loadingDeleteClass(_that);case SuccessDeleteClassState() when successDeleteClass != null:
+return successDeleteClass(_that);case ErrorDeleteClassState() when errorDeleteClass != null:
+return errorDeleteClass(_that);case LoadingUpdateClassState() when loadingUpdateClass != null:
+return loadingUpdateClass(_that);case SuccessUpdateClassState() when successUpdateClass != null:
+return successUpdateClass(_that);case ErrorUpdateClassState() when errorUpdateClass != null:
+return errorUpdateClass(_that);case LoadingCreatePlayerState() when loadingCreatePlayer != null:
+return loadingCreatePlayer(_that);case SuccessCreatePlayerState() when successCreatePlayer != null:
+return successCreatePlayer(_that);case ErrorCreatePlayerState() when errorCreatePlayer != null:
+return errorCreatePlayer(_that);case LoadingDeletePlayerState() when loadingDeletePlayer != null:
+return loadingDeletePlayer(_that);case SuccessDeletePlayerState() when successDeletePlayer != null:
+return successDeletePlayer(_that);case ErrorDeletePlayerState() when errorDeletePlayer != null:
+return errorDeletePlayer(_that);case LoadingUpdatePlayerState() when loadingUpdatePlayer != null:
+return loadingUpdatePlayer(_that);case SuccessUpdatePlayerState() when successUpdatePlayer != null:
+return successUpdatePlayer(_that);case ErrorUpdatePlayerState() when errorUpdatePlayer != null:
+return errorUpdatePlayer(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loadingBeachTennisClassification,TResult Function( List<PlayerEntity> players)?  successBeachTennisClassification,TResult Function( String? error)?  errorBeachTennisClassification,TResult Function()?  loadingBeachTennisClasses,TResult Function( List<ClassEntity> classes)?  successBeachTennisClasses,TResult Function( String? error)?  errorBeachTennisClasses,TResult Function()?  loadingTennisRanking,TResult Function( List<PlayerEntity> players)?  successTennisRanking,TResult Function( String? error)?  errorTennisRanking,TResult Function()?  loadingTennisClasses,TResult Function( List<ClassEntity> classes)?  successTennisClasses,TResult Function( String? error)?  errorTennisClasses,TResult Function()?  loadingSportByName,TResult Function( SportEntity sport)?  successSportByName,TResult Function( String? error)?  errorSportByName,TResult Function()?  loadingSportsByClubId,TResult Function( List<SportEntity> sports)?  successSportsByClubId,TResult Function( String? error)?  errorSportsByClubId,TResult Function()?  loadingCreateSport,TResult Function( SportEntity sport)?  successCreateSport,TResult Function( String? error)?  errorCreateSport,TResult Function()?  loadingDeleteSport,TResult Function()?  successDeleteSport,TResult Function( String? error)?  errorDeleteSport,TResult Function()?  loadingUpdateSport,TResult Function( SportEntity sport)?  successUpdateSport,TResult Function( String? error)?  errorUpdateSport,TResult Function()?  loadingClassesByClubId,TResult Function( List<ClassEntity> classes)?  successClassesByClubId,TResult Function( String? error)?  errorClassesByClubId,TResult Function()?  loadingCreateClass,TResult Function()?  successCreateClass,TResult Function( String? error)?  errorCreateClass,TResult Function()?  loadingDeleteClass,TResult Function()?  successDeleteClass,TResult Function( String? error)?  errorDeleteClass,TResult Function()?  loadingUpdateClass,TResult Function( ClassEntity classe)?  successUpdateClass,TResult Function( String? error)?  errorUpdateClass,TResult Function()?  loadingCreatePlayer,TResult Function()?  successCreatePlayer,TResult Function( String? error)?  errorCreatePlayer,TResult Function()?  loadingDeletePlayer,TResult Function()?  successDeletePlayer,TResult Function( String? error)?  errorDeletePlayer,TResult Function()?  loadingUpdatePlayer,TResult Function( PlayerEntity player)?  successUpdatePlayer,TResult Function( String? error)?  errorUpdatePlayer,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case InitialClassificationsState() when initial != null:
+return initial();case LoadingBeachTennisClassificationState() when loadingBeachTennisClassification != null:
+return loadingBeachTennisClassification();case SuccessBeachTennisClassificationState() when successBeachTennisClassification != null:
+return successBeachTennisClassification(_that.players);case ErrorBeachTennisClassificationState() when errorBeachTennisClassification != null:
+return errorBeachTennisClassification(_that.error);case LoadingBeachTennisClassesState() when loadingBeachTennisClasses != null:
+return loadingBeachTennisClasses();case SuccessBeachTennisClassesState() when successBeachTennisClasses != null:
+return successBeachTennisClasses(_that.classes);case ErrorBeachTennisClassesState() when errorBeachTennisClasses != null:
+return errorBeachTennisClasses(_that.error);case LoadingTennisRankingState() when loadingTennisRanking != null:
+return loadingTennisRanking();case SuccessTennisRankingState() when successTennisRanking != null:
+return successTennisRanking(_that.players);case ErrorTennisRankingState() when errorTennisRanking != null:
+return errorTennisRanking(_that.error);case LoadingTennisClassesState() when loadingTennisClasses != null:
+return loadingTennisClasses();case SuccessTennisClassesState() when successTennisClasses != null:
+return successTennisClasses(_that.classes);case ErrorTennisClassesState() when errorTennisClasses != null:
+return errorTennisClasses(_that.error);case LoadingSportIdByNameState() when loadingSportByName != null:
+return loadingSportByName();case SuccessSportIdByNameState() when successSportByName != null:
+return successSportByName(_that.sport);case ErrorSportIdByNameState() when errorSportByName != null:
+return errorSportByName(_that.error);case LoadingSportsByClubIdState() when loadingSportsByClubId != null:
+return loadingSportsByClubId();case SuccessSportsByClubIdState() when successSportsByClubId != null:
+return successSportsByClubId(_that.sports);case ErrorSportsByClubIdState() when errorSportsByClubId != null:
+return errorSportsByClubId(_that.error);case LoadingCreateSportState() when loadingCreateSport != null:
+return loadingCreateSport();case SuccessCreateSportState() when successCreateSport != null:
+return successCreateSport(_that.sport);case ErrorCreateSportState() when errorCreateSport != null:
+return errorCreateSport(_that.error);case LoadingDeleteSportState() when loadingDeleteSport != null:
+return loadingDeleteSport();case SuccessDeleteSportState() when successDeleteSport != null:
+return successDeleteSport();case ErrorDeleteSportState() when errorDeleteSport != null:
+return errorDeleteSport(_that.error);case LoadingUpdateSportState() when loadingUpdateSport != null:
+return loadingUpdateSport();case SuccessUpdateSportState() when successUpdateSport != null:
+return successUpdateSport(_that.sport);case ErrorUpdateSportState() when errorUpdateSport != null:
+return errorUpdateSport(_that.error);case LoadingClassesByClubIdState() when loadingClassesByClubId != null:
+return loadingClassesByClubId();case SuccessClassesByClubIdState() when successClassesByClubId != null:
+return successClassesByClubId(_that.classes);case ErrorClassesByClubIdState() when errorClassesByClubId != null:
+return errorClassesByClubId(_that.error);case LoadingCreateClassState() when loadingCreateClass != null:
+return loadingCreateClass();case SuccessCreateClassState() when successCreateClass != null:
+return successCreateClass();case ErrorCreateClassState() when errorCreateClass != null:
+return errorCreateClass(_that.error);case LoadingDeleteClassState() when loadingDeleteClass != null:
+return loadingDeleteClass();case SuccessDeleteClassState() when successDeleteClass != null:
+return successDeleteClass();case ErrorDeleteClassState() when errorDeleteClass != null:
+return errorDeleteClass(_that.error);case LoadingUpdateClassState() when loadingUpdateClass != null:
+return loadingUpdateClass();case SuccessUpdateClassState() when successUpdateClass != null:
+return successUpdateClass(_that.classe);case ErrorUpdateClassState() when errorUpdateClass != null:
+return errorUpdateClass(_that.error);case LoadingCreatePlayerState() when loadingCreatePlayer != null:
+return loadingCreatePlayer();case SuccessCreatePlayerState() when successCreatePlayer != null:
+return successCreatePlayer();case ErrorCreatePlayerState() when errorCreatePlayer != null:
+return errorCreatePlayer(_that.error);case LoadingDeletePlayerState() when loadingDeletePlayer != null:
+return loadingDeletePlayer();case SuccessDeletePlayerState() when successDeletePlayer != null:
+return successDeletePlayer();case ErrorDeletePlayerState() when errorDeletePlayer != null:
+return errorDeletePlayer(_that.error);case LoadingUpdatePlayerState() when loadingUpdatePlayer != null:
+return loadingUpdatePlayer();case SuccessUpdatePlayerState() when successUpdatePlayer != null:
+return successUpdatePlayer(_that.player);case ErrorUpdatePlayerState() when errorUpdatePlayer != null:
+return errorUpdatePlayer(_that.error);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loadingBeachTennisClassification,required TResult Function( List<PlayerEntity> players)  successBeachTennisClassification,required TResult Function( String? error)  errorBeachTennisClassification,required TResult Function()  loadingBeachTennisClasses,required TResult Function( List<ClassEntity> classes)  successBeachTennisClasses,required TResult Function( String? error)  errorBeachTennisClasses,required TResult Function()  loadingTennisRanking,required TResult Function( List<PlayerEntity> players)  successTennisRanking,required TResult Function( String? error)  errorTennisRanking,required TResult Function()  loadingTennisClasses,required TResult Function( List<ClassEntity> classes)  successTennisClasses,required TResult Function( String? error)  errorTennisClasses,required TResult Function()  loadingSportByName,required TResult Function( SportEntity sport)  successSportByName,required TResult Function( String? error)  errorSportByName,required TResult Function()  loadingSportsByClubId,required TResult Function( List<SportEntity> sports)  successSportsByClubId,required TResult Function( String? error)  errorSportsByClubId,required TResult Function()  loadingCreateSport,required TResult Function( SportEntity sport)  successCreateSport,required TResult Function( String? error)  errorCreateSport,required TResult Function()  loadingDeleteSport,required TResult Function()  successDeleteSport,required TResult Function( String? error)  errorDeleteSport,required TResult Function()  loadingUpdateSport,required TResult Function( SportEntity sport)  successUpdateSport,required TResult Function( String? error)  errorUpdateSport,required TResult Function()  loadingClassesByClubId,required TResult Function( List<ClassEntity> classes)  successClassesByClubId,required TResult Function( String? error)  errorClassesByClubId,required TResult Function()  loadingCreateClass,required TResult Function()  successCreateClass,required TResult Function( String? error)  errorCreateClass,required TResult Function()  loadingDeleteClass,required TResult Function()  successDeleteClass,required TResult Function( String? error)  errorDeleteClass,required TResult Function()  loadingUpdateClass,required TResult Function( ClassEntity classe)  successUpdateClass,required TResult Function( String? error)  errorUpdateClass,required TResult Function()  loadingCreatePlayer,required TResult Function()  successCreatePlayer,required TResult Function( String? error)  errorCreatePlayer,required TResult Function()  loadingDeletePlayer,required TResult Function()  successDeletePlayer,required TResult Function( String? error)  errorDeletePlayer,required TResult Function()  loadingUpdatePlayer,required TResult Function( PlayerEntity player)  successUpdatePlayer,required TResult Function( String? error)  errorUpdatePlayer,}) {final _that = this;
+switch (_that) {
+case InitialClassificationsState():
+return initial();case LoadingBeachTennisClassificationState():
+return loadingBeachTennisClassification();case SuccessBeachTennisClassificationState():
+return successBeachTennisClassification(_that.players);case ErrorBeachTennisClassificationState():
+return errorBeachTennisClassification(_that.error);case LoadingBeachTennisClassesState():
+return loadingBeachTennisClasses();case SuccessBeachTennisClassesState():
+return successBeachTennisClasses(_that.classes);case ErrorBeachTennisClassesState():
+return errorBeachTennisClasses(_that.error);case LoadingTennisRankingState():
+return loadingTennisRanking();case SuccessTennisRankingState():
+return successTennisRanking(_that.players);case ErrorTennisRankingState():
+return errorTennisRanking(_that.error);case LoadingTennisClassesState():
+return loadingTennisClasses();case SuccessTennisClassesState():
+return successTennisClasses(_that.classes);case ErrorTennisClassesState():
+return errorTennisClasses(_that.error);case LoadingSportIdByNameState():
+return loadingSportByName();case SuccessSportIdByNameState():
+return successSportByName(_that.sport);case ErrorSportIdByNameState():
+return errorSportByName(_that.error);case LoadingSportsByClubIdState():
+return loadingSportsByClubId();case SuccessSportsByClubIdState():
+return successSportsByClubId(_that.sports);case ErrorSportsByClubIdState():
+return errorSportsByClubId(_that.error);case LoadingCreateSportState():
+return loadingCreateSport();case SuccessCreateSportState():
+return successCreateSport(_that.sport);case ErrorCreateSportState():
+return errorCreateSport(_that.error);case LoadingDeleteSportState():
+return loadingDeleteSport();case SuccessDeleteSportState():
+return successDeleteSport();case ErrorDeleteSportState():
+return errorDeleteSport(_that.error);case LoadingUpdateSportState():
+return loadingUpdateSport();case SuccessUpdateSportState():
+return successUpdateSport(_that.sport);case ErrorUpdateSportState():
+return errorUpdateSport(_that.error);case LoadingClassesByClubIdState():
+return loadingClassesByClubId();case SuccessClassesByClubIdState():
+return successClassesByClubId(_that.classes);case ErrorClassesByClubIdState():
+return errorClassesByClubId(_that.error);case LoadingCreateClassState():
+return loadingCreateClass();case SuccessCreateClassState():
+return successCreateClass();case ErrorCreateClassState():
+return errorCreateClass(_that.error);case LoadingDeleteClassState():
+return loadingDeleteClass();case SuccessDeleteClassState():
+return successDeleteClass();case ErrorDeleteClassState():
+return errorDeleteClass(_that.error);case LoadingUpdateClassState():
+return loadingUpdateClass();case SuccessUpdateClassState():
+return successUpdateClass(_that.classe);case ErrorUpdateClassState():
+return errorUpdateClass(_that.error);case LoadingCreatePlayerState():
+return loadingCreatePlayer();case SuccessCreatePlayerState():
+return successCreatePlayer();case ErrorCreatePlayerState():
+return errorCreatePlayer(_that.error);case LoadingDeletePlayerState():
+return loadingDeletePlayer();case SuccessDeletePlayerState():
+return successDeletePlayer();case ErrorDeletePlayerState():
+return errorDeletePlayer(_that.error);case LoadingUpdatePlayerState():
+return loadingUpdatePlayer();case SuccessUpdatePlayerState():
+return successUpdatePlayer(_that.player);case ErrorUpdatePlayerState():
+return errorUpdatePlayer(_that.error);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loadingBeachTennisClassification,TResult? Function( List<PlayerEntity> players)?  successBeachTennisClassification,TResult? Function( String? error)?  errorBeachTennisClassification,TResult? Function()?  loadingBeachTennisClasses,TResult? Function( List<ClassEntity> classes)?  successBeachTennisClasses,TResult? Function( String? error)?  errorBeachTennisClasses,TResult? Function()?  loadingTennisRanking,TResult? Function( List<PlayerEntity> players)?  successTennisRanking,TResult? Function( String? error)?  errorTennisRanking,TResult? Function()?  loadingTennisClasses,TResult? Function( List<ClassEntity> classes)?  successTennisClasses,TResult? Function( String? error)?  errorTennisClasses,TResult? Function()?  loadingSportByName,TResult? Function( SportEntity sport)?  successSportByName,TResult? Function( String? error)?  errorSportByName,TResult? Function()?  loadingSportsByClubId,TResult? Function( List<SportEntity> sports)?  successSportsByClubId,TResult? Function( String? error)?  errorSportsByClubId,TResult? Function()?  loadingCreateSport,TResult? Function( SportEntity sport)?  successCreateSport,TResult? Function( String? error)?  errorCreateSport,TResult? Function()?  loadingDeleteSport,TResult? Function()?  successDeleteSport,TResult? Function( String? error)?  errorDeleteSport,TResult? Function()?  loadingUpdateSport,TResult? Function( SportEntity sport)?  successUpdateSport,TResult? Function( String? error)?  errorUpdateSport,TResult? Function()?  loadingClassesByClubId,TResult? Function( List<ClassEntity> classes)?  successClassesByClubId,TResult? Function( String? error)?  errorClassesByClubId,TResult? Function()?  loadingCreateClass,TResult? Function()?  successCreateClass,TResult? Function( String? error)?  errorCreateClass,TResult? Function()?  loadingDeleteClass,TResult? Function()?  successDeleteClass,TResult? Function( String? error)?  errorDeleteClass,TResult? Function()?  loadingUpdateClass,TResult? Function( ClassEntity classe)?  successUpdateClass,TResult? Function( String? error)?  errorUpdateClass,TResult? Function()?  loadingCreatePlayer,TResult? Function()?  successCreatePlayer,TResult? Function( String? error)?  errorCreatePlayer,TResult? Function()?  loadingDeletePlayer,TResult? Function()?  successDeletePlayer,TResult? Function( String? error)?  errorDeletePlayer,TResult? Function()?  loadingUpdatePlayer,TResult? Function( PlayerEntity player)?  successUpdatePlayer,TResult? Function( String? error)?  errorUpdatePlayer,}) {final _that = this;
+switch (_that) {
+case InitialClassificationsState() when initial != null:
+return initial();case LoadingBeachTennisClassificationState() when loadingBeachTennisClassification != null:
+return loadingBeachTennisClassification();case SuccessBeachTennisClassificationState() when successBeachTennisClassification != null:
+return successBeachTennisClassification(_that.players);case ErrorBeachTennisClassificationState() when errorBeachTennisClassification != null:
+return errorBeachTennisClassification(_that.error);case LoadingBeachTennisClassesState() when loadingBeachTennisClasses != null:
+return loadingBeachTennisClasses();case SuccessBeachTennisClassesState() when successBeachTennisClasses != null:
+return successBeachTennisClasses(_that.classes);case ErrorBeachTennisClassesState() when errorBeachTennisClasses != null:
+return errorBeachTennisClasses(_that.error);case LoadingTennisRankingState() when loadingTennisRanking != null:
+return loadingTennisRanking();case SuccessTennisRankingState() when successTennisRanking != null:
+return successTennisRanking(_that.players);case ErrorTennisRankingState() when errorTennisRanking != null:
+return errorTennisRanking(_that.error);case LoadingTennisClassesState() when loadingTennisClasses != null:
+return loadingTennisClasses();case SuccessTennisClassesState() when successTennisClasses != null:
+return successTennisClasses(_that.classes);case ErrorTennisClassesState() when errorTennisClasses != null:
+return errorTennisClasses(_that.error);case LoadingSportIdByNameState() when loadingSportByName != null:
+return loadingSportByName();case SuccessSportIdByNameState() when successSportByName != null:
+return successSportByName(_that.sport);case ErrorSportIdByNameState() when errorSportByName != null:
+return errorSportByName(_that.error);case LoadingSportsByClubIdState() when loadingSportsByClubId != null:
+return loadingSportsByClubId();case SuccessSportsByClubIdState() when successSportsByClubId != null:
+return successSportsByClubId(_that.sports);case ErrorSportsByClubIdState() when errorSportsByClubId != null:
+return errorSportsByClubId(_that.error);case LoadingCreateSportState() when loadingCreateSport != null:
+return loadingCreateSport();case SuccessCreateSportState() when successCreateSport != null:
+return successCreateSport(_that.sport);case ErrorCreateSportState() when errorCreateSport != null:
+return errorCreateSport(_that.error);case LoadingDeleteSportState() when loadingDeleteSport != null:
+return loadingDeleteSport();case SuccessDeleteSportState() when successDeleteSport != null:
+return successDeleteSport();case ErrorDeleteSportState() when errorDeleteSport != null:
+return errorDeleteSport(_that.error);case LoadingUpdateSportState() when loadingUpdateSport != null:
+return loadingUpdateSport();case SuccessUpdateSportState() when successUpdateSport != null:
+return successUpdateSport(_that.sport);case ErrorUpdateSportState() when errorUpdateSport != null:
+return errorUpdateSport(_that.error);case LoadingClassesByClubIdState() when loadingClassesByClubId != null:
+return loadingClassesByClubId();case SuccessClassesByClubIdState() when successClassesByClubId != null:
+return successClassesByClubId(_that.classes);case ErrorClassesByClubIdState() when errorClassesByClubId != null:
+return errorClassesByClubId(_that.error);case LoadingCreateClassState() when loadingCreateClass != null:
+return loadingCreateClass();case SuccessCreateClassState() when successCreateClass != null:
+return successCreateClass();case ErrorCreateClassState() when errorCreateClass != null:
+return errorCreateClass(_that.error);case LoadingDeleteClassState() when loadingDeleteClass != null:
+return loadingDeleteClass();case SuccessDeleteClassState() when successDeleteClass != null:
+return successDeleteClass();case ErrorDeleteClassState() when errorDeleteClass != null:
+return errorDeleteClass(_that.error);case LoadingUpdateClassState() when loadingUpdateClass != null:
+return loadingUpdateClass();case SuccessUpdateClassState() when successUpdateClass != null:
+return successUpdateClass(_that.classe);case ErrorUpdateClassState() when errorUpdateClass != null:
+return errorUpdateClass(_that.error);case LoadingCreatePlayerState() when loadingCreatePlayer != null:
+return loadingCreatePlayer();case SuccessCreatePlayerState() when successCreatePlayer != null:
+return successCreatePlayer();case ErrorCreatePlayerState() when errorCreatePlayer != null:
+return errorCreatePlayer(_that.error);case LoadingDeletePlayerState() when loadingDeletePlayer != null:
+return loadingDeletePlayer();case SuccessDeletePlayerState() when successDeletePlayer != null:
+return successDeletePlayer();case ErrorDeletePlayerState() when errorDeletePlayer != null:
+return errorDeletePlayer(_that.error);case LoadingUpdatePlayerState() when loadingUpdatePlayer != null:
+return loadingUpdatePlayer();case SuccessUpdatePlayerState() when successUpdatePlayer != null:
+return successUpdatePlayer(_that.player);case ErrorUpdatePlayerState() when errorUpdatePlayer != null:
+return errorUpdatePlayer(_that.error);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 

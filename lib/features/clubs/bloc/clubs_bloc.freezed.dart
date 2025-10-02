@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -41,6 +40,160 @@ class $ClubsEventCopyWith<$Res>  {
 $ClubsEventCopyWith(ClubsEvent _, $Res Function(ClubsEvent) __);
 }
 
+
+/// Adds pattern-matching-related methods to [ClubsEvent].
+extension ClubsEventPatterns on ClubsEvent {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( GetClubByIdEvent value)?  getClubById,TResult Function( GetClubByOwnerUserIdEvent value)?  getClubByOwnerUserId,TResult Function( CreateClubEvent value)?  createClub,TResult Function( UpdateClubEvent value)?  updateClub,TResult Function( DeleteClubEvent value)?  deleteClub,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case GetClubByIdEvent() when getClubById != null:
+return getClubById(_that);case GetClubByOwnerUserIdEvent() when getClubByOwnerUserId != null:
+return getClubByOwnerUserId(_that);case CreateClubEvent() when createClub != null:
+return createClub(_that);case UpdateClubEvent() when updateClub != null:
+return updateClub(_that);case DeleteClubEvent() when deleteClub != null:
+return deleteClub(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( GetClubByIdEvent value)  getClubById,required TResult Function( GetClubByOwnerUserIdEvent value)  getClubByOwnerUserId,required TResult Function( CreateClubEvent value)  createClub,required TResult Function( UpdateClubEvent value)  updateClub,required TResult Function( DeleteClubEvent value)  deleteClub,}){
+final _that = this;
+switch (_that) {
+case GetClubByIdEvent():
+return getClubById(_that);case GetClubByOwnerUserIdEvent():
+return getClubByOwnerUserId(_that);case CreateClubEvent():
+return createClub(_that);case UpdateClubEvent():
+return updateClub(_that);case DeleteClubEvent():
+return deleteClub(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( GetClubByIdEvent value)?  getClubById,TResult? Function( GetClubByOwnerUserIdEvent value)?  getClubByOwnerUserId,TResult? Function( CreateClubEvent value)?  createClub,TResult? Function( UpdateClubEvent value)?  updateClub,TResult? Function( DeleteClubEvent value)?  deleteClub,}){
+final _that = this;
+switch (_that) {
+case GetClubByIdEvent() when getClubById != null:
+return getClubById(_that);case GetClubByOwnerUserIdEvent() when getClubByOwnerUserId != null:
+return getClubByOwnerUserId(_that);case CreateClubEvent() when createClub != null:
+return createClub(_that);case UpdateClubEvent() when updateClub != null:
+return updateClub(_that);case DeleteClubEvent() when deleteClub != null:
+return deleteClub(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String clubId)?  getClubById,TResult Function( String userId)?  getClubByOwnerUserId,TResult Function( ClubEntity club)?  createClub,TResult Function( ClubEntity club)?  updateClub,TResult Function( String clubId,  String logoUrl)?  deleteClub,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case GetClubByIdEvent() when getClubById != null:
+return getClubById(_that.clubId);case GetClubByOwnerUserIdEvent() when getClubByOwnerUserId != null:
+return getClubByOwnerUserId(_that.userId);case CreateClubEvent() when createClub != null:
+return createClub(_that.club);case UpdateClubEvent() when updateClub != null:
+return updateClub(_that.club);case DeleteClubEvent() when deleteClub != null:
+return deleteClub(_that.clubId,_that.logoUrl);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String clubId)  getClubById,required TResult Function( String userId)  getClubByOwnerUserId,required TResult Function( ClubEntity club)  createClub,required TResult Function( ClubEntity club)  updateClub,required TResult Function( String clubId,  String logoUrl)  deleteClub,}) {final _that = this;
+switch (_that) {
+case GetClubByIdEvent():
+return getClubById(_that.clubId);case GetClubByOwnerUserIdEvent():
+return getClubByOwnerUserId(_that.userId);case CreateClubEvent():
+return createClub(_that.club);case UpdateClubEvent():
+return updateClub(_that.club);case DeleteClubEvent():
+return deleteClub(_that.clubId,_that.logoUrl);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String clubId)?  getClubById,TResult? Function( String userId)?  getClubByOwnerUserId,TResult? Function( ClubEntity club)?  createClub,TResult? Function( ClubEntity club)?  updateClub,TResult? Function( String clubId,  String logoUrl)?  deleteClub,}) {final _that = this;
+switch (_that) {
+case GetClubByIdEvent() when getClubById != null:
+return getClubById(_that.clubId);case GetClubByOwnerUserIdEvent() when getClubByOwnerUserId != null:
+return getClubByOwnerUserId(_that.userId);case CreateClubEvent() when createClub != null:
+return createClub(_that.club);case UpdateClubEvent() when updateClub != null:
+return updateClub(_that.club);case DeleteClubEvent() when deleteClub != null:
+return deleteClub(_that.clubId,_that.logoUrl);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 
@@ -421,6 +574,220 @@ class $ClubsStateCopyWith<$Res>  {
 $ClubsStateCopyWith(ClubsState _, $Res Function(ClubsState) __);
 }
 
+
+/// Adds pattern-matching-related methods to [ClubsState].
+extension ClubsStatePatterns on ClubsState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( InitialClubState value)?  initial,TResult Function( LoadingClubByIdState value)?  loadingClubById,TResult Function( SuccessClubByIdState value)?  successClubById,TResult Function( ErrorClubByIdState value)?  errorClubById,TResult Function( LoadingClubByOwnerUserIdState value)?  loadingClubByOwnerUserId,TResult Function( SuccessClubByOwnerUserIdState value)?  successClubByOwnerUserId,TResult Function( ErrorClubByOwnerUserIdState value)?  errorClubByOwnerUserId,TResult Function( LoadingCreateClubState value)?  loadingCreateClub,TResult Function( SuccessCreateClubState value)?  successCreateClub,TResult Function( ErrorCreateClubState value)?  errorCreateClub,TResult Function( LoadingUpdateClubState value)?  loadingUpdateClub,TResult Function( SuccessUpdateClubState value)?  successUpdateClub,TResult Function( ErrorUpdateClubState value)?  errorUpdateClub,TResult Function( LoadingDeleteClubState value)?  loadingDeleteClub,TResult Function( SuccessDeleteClubState value)?  successDeleteClub,TResult Function( ErrorDeleteClubState value)?  errorDeleteClub,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case InitialClubState() when initial != null:
+return initial(_that);case LoadingClubByIdState() when loadingClubById != null:
+return loadingClubById(_that);case SuccessClubByIdState() when successClubById != null:
+return successClubById(_that);case ErrorClubByIdState() when errorClubById != null:
+return errorClubById(_that);case LoadingClubByOwnerUserIdState() when loadingClubByOwnerUserId != null:
+return loadingClubByOwnerUserId(_that);case SuccessClubByOwnerUserIdState() when successClubByOwnerUserId != null:
+return successClubByOwnerUserId(_that);case ErrorClubByOwnerUserIdState() when errorClubByOwnerUserId != null:
+return errorClubByOwnerUserId(_that);case LoadingCreateClubState() when loadingCreateClub != null:
+return loadingCreateClub(_that);case SuccessCreateClubState() when successCreateClub != null:
+return successCreateClub(_that);case ErrorCreateClubState() when errorCreateClub != null:
+return errorCreateClub(_that);case LoadingUpdateClubState() when loadingUpdateClub != null:
+return loadingUpdateClub(_that);case SuccessUpdateClubState() when successUpdateClub != null:
+return successUpdateClub(_that);case ErrorUpdateClubState() when errorUpdateClub != null:
+return errorUpdateClub(_that);case LoadingDeleteClubState() when loadingDeleteClub != null:
+return loadingDeleteClub(_that);case SuccessDeleteClubState() when successDeleteClub != null:
+return successDeleteClub(_that);case ErrorDeleteClubState() when errorDeleteClub != null:
+return errorDeleteClub(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( InitialClubState value)  initial,required TResult Function( LoadingClubByIdState value)  loadingClubById,required TResult Function( SuccessClubByIdState value)  successClubById,required TResult Function( ErrorClubByIdState value)  errorClubById,required TResult Function( LoadingClubByOwnerUserIdState value)  loadingClubByOwnerUserId,required TResult Function( SuccessClubByOwnerUserIdState value)  successClubByOwnerUserId,required TResult Function( ErrorClubByOwnerUserIdState value)  errorClubByOwnerUserId,required TResult Function( LoadingCreateClubState value)  loadingCreateClub,required TResult Function( SuccessCreateClubState value)  successCreateClub,required TResult Function( ErrorCreateClubState value)  errorCreateClub,required TResult Function( LoadingUpdateClubState value)  loadingUpdateClub,required TResult Function( SuccessUpdateClubState value)  successUpdateClub,required TResult Function( ErrorUpdateClubState value)  errorUpdateClub,required TResult Function( LoadingDeleteClubState value)  loadingDeleteClub,required TResult Function( SuccessDeleteClubState value)  successDeleteClub,required TResult Function( ErrorDeleteClubState value)  errorDeleteClub,}){
+final _that = this;
+switch (_that) {
+case InitialClubState():
+return initial(_that);case LoadingClubByIdState():
+return loadingClubById(_that);case SuccessClubByIdState():
+return successClubById(_that);case ErrorClubByIdState():
+return errorClubById(_that);case LoadingClubByOwnerUserIdState():
+return loadingClubByOwnerUserId(_that);case SuccessClubByOwnerUserIdState():
+return successClubByOwnerUserId(_that);case ErrorClubByOwnerUserIdState():
+return errorClubByOwnerUserId(_that);case LoadingCreateClubState():
+return loadingCreateClub(_that);case SuccessCreateClubState():
+return successCreateClub(_that);case ErrorCreateClubState():
+return errorCreateClub(_that);case LoadingUpdateClubState():
+return loadingUpdateClub(_that);case SuccessUpdateClubState():
+return successUpdateClub(_that);case ErrorUpdateClubState():
+return errorUpdateClub(_that);case LoadingDeleteClubState():
+return loadingDeleteClub(_that);case SuccessDeleteClubState():
+return successDeleteClub(_that);case ErrorDeleteClubState():
+return errorDeleteClub(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( InitialClubState value)?  initial,TResult? Function( LoadingClubByIdState value)?  loadingClubById,TResult? Function( SuccessClubByIdState value)?  successClubById,TResult? Function( ErrorClubByIdState value)?  errorClubById,TResult? Function( LoadingClubByOwnerUserIdState value)?  loadingClubByOwnerUserId,TResult? Function( SuccessClubByOwnerUserIdState value)?  successClubByOwnerUserId,TResult? Function( ErrorClubByOwnerUserIdState value)?  errorClubByOwnerUserId,TResult? Function( LoadingCreateClubState value)?  loadingCreateClub,TResult? Function( SuccessCreateClubState value)?  successCreateClub,TResult? Function( ErrorCreateClubState value)?  errorCreateClub,TResult? Function( LoadingUpdateClubState value)?  loadingUpdateClub,TResult? Function( SuccessUpdateClubState value)?  successUpdateClub,TResult? Function( ErrorUpdateClubState value)?  errorUpdateClub,TResult? Function( LoadingDeleteClubState value)?  loadingDeleteClub,TResult? Function( SuccessDeleteClubState value)?  successDeleteClub,TResult? Function( ErrorDeleteClubState value)?  errorDeleteClub,}){
+final _that = this;
+switch (_that) {
+case InitialClubState() when initial != null:
+return initial(_that);case LoadingClubByIdState() when loadingClubById != null:
+return loadingClubById(_that);case SuccessClubByIdState() when successClubById != null:
+return successClubById(_that);case ErrorClubByIdState() when errorClubById != null:
+return errorClubById(_that);case LoadingClubByOwnerUserIdState() when loadingClubByOwnerUserId != null:
+return loadingClubByOwnerUserId(_that);case SuccessClubByOwnerUserIdState() when successClubByOwnerUserId != null:
+return successClubByOwnerUserId(_that);case ErrorClubByOwnerUserIdState() when errorClubByOwnerUserId != null:
+return errorClubByOwnerUserId(_that);case LoadingCreateClubState() when loadingCreateClub != null:
+return loadingCreateClub(_that);case SuccessCreateClubState() when successCreateClub != null:
+return successCreateClub(_that);case ErrorCreateClubState() when errorCreateClub != null:
+return errorCreateClub(_that);case LoadingUpdateClubState() when loadingUpdateClub != null:
+return loadingUpdateClub(_that);case SuccessUpdateClubState() when successUpdateClub != null:
+return successUpdateClub(_that);case ErrorUpdateClubState() when errorUpdateClub != null:
+return errorUpdateClub(_that);case LoadingDeleteClubState() when loadingDeleteClub != null:
+return loadingDeleteClub(_that);case SuccessDeleteClubState() when successDeleteClub != null:
+return successDeleteClub(_that);case ErrorDeleteClubState() when errorDeleteClub != null:
+return errorDeleteClub(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loadingClubById,TResult Function( ClubEntity club)?  successClubById,TResult Function( String? error)?  errorClubById,TResult Function()?  loadingClubByOwnerUserId,TResult Function( ClubEntity club)?  successClubByOwnerUserId,TResult Function( String? error)?  errorClubByOwnerUserId,TResult Function()?  loadingCreateClub,TResult Function( ClubEntity club)?  successCreateClub,TResult Function( String? error)?  errorCreateClub,TResult Function()?  loadingUpdateClub,TResult Function( ClubEntity club)?  successUpdateClub,TResult Function( String? error)?  errorUpdateClub,TResult Function()?  loadingDeleteClub,TResult Function()?  successDeleteClub,TResult Function( String? error)?  errorDeleteClub,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case InitialClubState() when initial != null:
+return initial();case LoadingClubByIdState() when loadingClubById != null:
+return loadingClubById();case SuccessClubByIdState() when successClubById != null:
+return successClubById(_that.club);case ErrorClubByIdState() when errorClubById != null:
+return errorClubById(_that.error);case LoadingClubByOwnerUserIdState() when loadingClubByOwnerUserId != null:
+return loadingClubByOwnerUserId();case SuccessClubByOwnerUserIdState() when successClubByOwnerUserId != null:
+return successClubByOwnerUserId(_that.club);case ErrorClubByOwnerUserIdState() when errorClubByOwnerUserId != null:
+return errorClubByOwnerUserId(_that.error);case LoadingCreateClubState() when loadingCreateClub != null:
+return loadingCreateClub();case SuccessCreateClubState() when successCreateClub != null:
+return successCreateClub(_that.club);case ErrorCreateClubState() when errorCreateClub != null:
+return errorCreateClub(_that.error);case LoadingUpdateClubState() when loadingUpdateClub != null:
+return loadingUpdateClub();case SuccessUpdateClubState() when successUpdateClub != null:
+return successUpdateClub(_that.club);case ErrorUpdateClubState() when errorUpdateClub != null:
+return errorUpdateClub(_that.error);case LoadingDeleteClubState() when loadingDeleteClub != null:
+return loadingDeleteClub();case SuccessDeleteClubState() when successDeleteClub != null:
+return successDeleteClub();case ErrorDeleteClubState() when errorDeleteClub != null:
+return errorDeleteClub(_that.error);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loadingClubById,required TResult Function( ClubEntity club)  successClubById,required TResult Function( String? error)  errorClubById,required TResult Function()  loadingClubByOwnerUserId,required TResult Function( ClubEntity club)  successClubByOwnerUserId,required TResult Function( String? error)  errorClubByOwnerUserId,required TResult Function()  loadingCreateClub,required TResult Function( ClubEntity club)  successCreateClub,required TResult Function( String? error)  errorCreateClub,required TResult Function()  loadingUpdateClub,required TResult Function( ClubEntity club)  successUpdateClub,required TResult Function( String? error)  errorUpdateClub,required TResult Function()  loadingDeleteClub,required TResult Function()  successDeleteClub,required TResult Function( String? error)  errorDeleteClub,}) {final _that = this;
+switch (_that) {
+case InitialClubState():
+return initial();case LoadingClubByIdState():
+return loadingClubById();case SuccessClubByIdState():
+return successClubById(_that.club);case ErrorClubByIdState():
+return errorClubById(_that.error);case LoadingClubByOwnerUserIdState():
+return loadingClubByOwnerUserId();case SuccessClubByOwnerUserIdState():
+return successClubByOwnerUserId(_that.club);case ErrorClubByOwnerUserIdState():
+return errorClubByOwnerUserId(_that.error);case LoadingCreateClubState():
+return loadingCreateClub();case SuccessCreateClubState():
+return successCreateClub(_that.club);case ErrorCreateClubState():
+return errorCreateClub(_that.error);case LoadingUpdateClubState():
+return loadingUpdateClub();case SuccessUpdateClubState():
+return successUpdateClub(_that.club);case ErrorUpdateClubState():
+return errorUpdateClub(_that.error);case LoadingDeleteClubState():
+return loadingDeleteClub();case SuccessDeleteClubState():
+return successDeleteClub();case ErrorDeleteClubState():
+return errorDeleteClub(_that.error);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loadingClubById,TResult? Function( ClubEntity club)?  successClubById,TResult? Function( String? error)?  errorClubById,TResult? Function()?  loadingClubByOwnerUserId,TResult? Function( ClubEntity club)?  successClubByOwnerUserId,TResult? Function( String? error)?  errorClubByOwnerUserId,TResult? Function()?  loadingCreateClub,TResult? Function( ClubEntity club)?  successCreateClub,TResult? Function( String? error)?  errorCreateClub,TResult? Function()?  loadingUpdateClub,TResult? Function( ClubEntity club)?  successUpdateClub,TResult? Function( String? error)?  errorUpdateClub,TResult? Function()?  loadingDeleteClub,TResult? Function()?  successDeleteClub,TResult? Function( String? error)?  errorDeleteClub,}) {final _that = this;
+switch (_that) {
+case InitialClubState() when initial != null:
+return initial();case LoadingClubByIdState() when loadingClubById != null:
+return loadingClubById();case SuccessClubByIdState() when successClubById != null:
+return successClubById(_that.club);case ErrorClubByIdState() when errorClubById != null:
+return errorClubById(_that.error);case LoadingClubByOwnerUserIdState() when loadingClubByOwnerUserId != null:
+return loadingClubByOwnerUserId();case SuccessClubByOwnerUserIdState() when successClubByOwnerUserId != null:
+return successClubByOwnerUserId(_that.club);case ErrorClubByOwnerUserIdState() when errorClubByOwnerUserId != null:
+return errorClubByOwnerUserId(_that.error);case LoadingCreateClubState() when loadingCreateClub != null:
+return loadingCreateClub();case SuccessCreateClubState() when successCreateClub != null:
+return successCreateClub(_that.club);case ErrorCreateClubState() when errorCreateClub != null:
+return errorCreateClub(_that.error);case LoadingUpdateClubState() when loadingUpdateClub != null:
+return loadingUpdateClub();case SuccessUpdateClubState() when successUpdateClub != null:
+return successUpdateClub(_that.club);case ErrorUpdateClubState() when errorUpdateClub != null:
+return errorUpdateClub(_that.error);case LoadingDeleteClubState() when loadingDeleteClub != null:
+return loadingDeleteClub();case SuccessDeleteClubState() when successDeleteClub != null:
+return successDeleteClub();case ErrorDeleteClubState() when errorDeleteClub != null:
+return errorDeleteClub(_that.error);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 
