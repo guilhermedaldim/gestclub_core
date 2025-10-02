@@ -16,9 +16,7 @@ class GetClassificationsClassesUsecaseImpl
 
       return result.fold((error) => left(error), (players) => right(players));
     } catch (e) {
-      return left(
-        ClassificationsFailure(message: 'Erro ao carregar classes de tênis.'),
-      );
+      return left(ClassificationsFailure(message: 'Erro ao carregar classes.'));
     }
   }
 }

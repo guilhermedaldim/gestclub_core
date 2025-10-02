@@ -217,6 +217,8 @@ class ClassificationsBloc
 
                 final result = await createClassUsecase.call(classe: classe);
 
+                emit(ClassificationsState.successCreateSport(sport: sport));
+
                 return result.fold(
                   (error) => emit(
                     ClassificationsState.errorCreateClass(error: error.message),
