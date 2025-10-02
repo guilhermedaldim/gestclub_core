@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -41,6 +40,154 @@ class $PaymentsEventCopyWith<$Res>  {
 $PaymentsEventCopyWith(PaymentsEvent _, $Res Function(PaymentsEvent) __);
 }
 
+
+/// Adds pattern-matching-related methods to [PaymentsEvent].
+extension PaymentsEventPatterns on PaymentsEvent {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( GetPaymentsEvent value)?  getPayments,TResult Function( CreatePaymentEvent value)?  createPayment,TResult Function( DeletePaymentEvent value)?  deletePayment,TResult Function( UpdatePaymentEvent value)?  updatePayment,TResult Function( GetPixCodeEvent value)?  getPixCode,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case GetPaymentsEvent() when getPayments != null:
+return getPayments(_that);case CreatePaymentEvent() when createPayment != null:
+return createPayment(_that);case DeletePaymentEvent() when deletePayment != null:
+return deletePayment(_that);case UpdatePaymentEvent() when updatePayment != null:
+return updatePayment(_that);case GetPixCodeEvent() when getPixCode != null:
+return getPixCode(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( GetPaymentsEvent value)  getPayments,required TResult Function( CreatePaymentEvent value)  createPayment,required TResult Function( DeletePaymentEvent value)  deletePayment,required TResult Function( UpdatePaymentEvent value)  updatePayment,required TResult Function( GetPixCodeEvent value)  getPixCode,}){
+final _that = this;
+switch (_that) {
+case GetPaymentsEvent():
+return getPayments(_that);case CreatePaymentEvent():
+return createPayment(_that);case DeletePaymentEvent():
+return deletePayment(_that);case UpdatePaymentEvent():
+return updatePayment(_that);case GetPixCodeEvent():
+return getPixCode(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( GetPaymentsEvent value)?  getPayments,TResult? Function( CreatePaymentEvent value)?  createPayment,TResult? Function( DeletePaymentEvent value)?  deletePayment,TResult? Function( UpdatePaymentEvent value)?  updatePayment,TResult? Function( GetPixCodeEvent value)?  getPixCode,}){
+final _that = this;
+switch (_that) {
+case GetPaymentsEvent() when getPayments != null:
+return getPayments(_that);case CreatePaymentEvent() when createPayment != null:
+return createPayment(_that);case DeletePaymentEvent() when deletePayment != null:
+return deletePayment(_that);case UpdatePaymentEvent() when updatePayment != null:
+return updatePayment(_that);case GetPixCodeEvent() when getPixCode != null:
+return getPixCode(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String userId)?  getPayments,TResult Function( PaymentEntity payment)?  createPayment,TResult Function( String id)?  deletePayment,TResult Function( PaymentEntity payment)?  updatePayment,TResult Function( String pixKey,  String name,  String city,  double amount,  String? description)?  getPixCode,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case GetPaymentsEvent() when getPayments != null:
+return getPayments(_that.userId);case CreatePaymentEvent() when createPayment != null:
+return createPayment(_that.payment);case DeletePaymentEvent() when deletePayment != null:
+return deletePayment(_that.id);case UpdatePaymentEvent() when updatePayment != null:
+return updatePayment(_that.payment);case GetPixCodeEvent() when getPixCode != null:
+return getPixCode(_that.pixKey,_that.name,_that.city,_that.amount,_that.description);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String userId)  getPayments,required TResult Function( PaymentEntity payment)  createPayment,required TResult Function( String id)  deletePayment,required TResult Function( PaymentEntity payment)  updatePayment,required TResult Function( String pixKey,  String name,  String city,  double amount,  String? description)  getPixCode,}) {final _that = this;
+switch (_that) {
+case GetPaymentsEvent():
+return getPayments(_that.userId);case CreatePaymentEvent():
+return createPayment(_that.payment);case DeletePaymentEvent():
+return deletePayment(_that.id);case UpdatePaymentEvent():
+return updatePayment(_that.payment);case GetPixCodeEvent():
+return getPixCode(_that.pixKey,_that.name,_that.city,_that.amount,_that.description);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String userId)?  getPayments,TResult? Function( PaymentEntity payment)?  createPayment,TResult? Function( String id)?  deletePayment,TResult? Function( PaymentEntity payment)?  updatePayment,TResult? Function( String pixKey,  String name,  String city,  double amount,  String? description)?  getPixCode,}) {final _that = this;
+switch (_that) {
+case GetPaymentsEvent() when getPayments != null:
+return getPayments(_that.userId);case CreatePaymentEvent() when createPayment != null:
+return createPayment(_that.payment);case DeletePaymentEvent() when deletePayment != null:
+return deletePayment(_that.id);case UpdatePaymentEvent() when updatePayment != null:
+return updatePayment(_that.payment);case GetPixCodeEvent() when getPixCode != null:
+return getPixCode(_that.pixKey,_that.name,_that.city,_that.amount,_that.description);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 
@@ -427,6 +574,220 @@ class $PaymentsStateCopyWith<$Res>  {
 $PaymentsStateCopyWith(PaymentsState _, $Res Function(PaymentsState) __);
 }
 
+
+/// Adds pattern-matching-related methods to [PaymentsState].
+extension PaymentsStatePatterns on PaymentsState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( InitialPaymentsState value)?  initial,TResult Function( LoadingPaymentsState value)?  loadingPayments,TResult Function( SuccessPaymentsState value)?  successPayments,TResult Function( ErrorPaymentsState value)?  errorPayments,TResult Function( LoadingCreatePaymentState value)?  loadingCreatePayment,TResult Function( SuccessCreatePaymentState value)?  successCreatePayment,TResult Function( ErrorCreatePaymentState value)?  errorCreatePayment,TResult Function( LoadingDeletePaymentState value)?  loadingDeletePayment,TResult Function( SuccessDeletePaymentState value)?  successDeletePayment,TResult Function( ErrorDeletePaymentState value)?  errorDeletePayment,TResult Function( LoadingUpdatePaymentState value)?  loadingUpdatePayment,TResult Function( SuccessUpdatePaymentState value)?  successUpdatePayment,TResult Function( ErrorUpdatePaymentState value)?  errorUpdatePayment,TResult Function( LoadingPixCodeState value)?  loadingPixCode,TResult Function( SuccessPixCodeState value)?  successPixCode,TResult Function( ErrorPixCodeState value)?  errorPixCode,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case InitialPaymentsState() when initial != null:
+return initial(_that);case LoadingPaymentsState() when loadingPayments != null:
+return loadingPayments(_that);case SuccessPaymentsState() when successPayments != null:
+return successPayments(_that);case ErrorPaymentsState() when errorPayments != null:
+return errorPayments(_that);case LoadingCreatePaymentState() when loadingCreatePayment != null:
+return loadingCreatePayment(_that);case SuccessCreatePaymentState() when successCreatePayment != null:
+return successCreatePayment(_that);case ErrorCreatePaymentState() when errorCreatePayment != null:
+return errorCreatePayment(_that);case LoadingDeletePaymentState() when loadingDeletePayment != null:
+return loadingDeletePayment(_that);case SuccessDeletePaymentState() when successDeletePayment != null:
+return successDeletePayment(_that);case ErrorDeletePaymentState() when errorDeletePayment != null:
+return errorDeletePayment(_that);case LoadingUpdatePaymentState() when loadingUpdatePayment != null:
+return loadingUpdatePayment(_that);case SuccessUpdatePaymentState() when successUpdatePayment != null:
+return successUpdatePayment(_that);case ErrorUpdatePaymentState() when errorUpdatePayment != null:
+return errorUpdatePayment(_that);case LoadingPixCodeState() when loadingPixCode != null:
+return loadingPixCode(_that);case SuccessPixCodeState() when successPixCode != null:
+return successPixCode(_that);case ErrorPixCodeState() when errorPixCode != null:
+return errorPixCode(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( InitialPaymentsState value)  initial,required TResult Function( LoadingPaymentsState value)  loadingPayments,required TResult Function( SuccessPaymentsState value)  successPayments,required TResult Function( ErrorPaymentsState value)  errorPayments,required TResult Function( LoadingCreatePaymentState value)  loadingCreatePayment,required TResult Function( SuccessCreatePaymentState value)  successCreatePayment,required TResult Function( ErrorCreatePaymentState value)  errorCreatePayment,required TResult Function( LoadingDeletePaymentState value)  loadingDeletePayment,required TResult Function( SuccessDeletePaymentState value)  successDeletePayment,required TResult Function( ErrorDeletePaymentState value)  errorDeletePayment,required TResult Function( LoadingUpdatePaymentState value)  loadingUpdatePayment,required TResult Function( SuccessUpdatePaymentState value)  successUpdatePayment,required TResult Function( ErrorUpdatePaymentState value)  errorUpdatePayment,required TResult Function( LoadingPixCodeState value)  loadingPixCode,required TResult Function( SuccessPixCodeState value)  successPixCode,required TResult Function( ErrorPixCodeState value)  errorPixCode,}){
+final _that = this;
+switch (_that) {
+case InitialPaymentsState():
+return initial(_that);case LoadingPaymentsState():
+return loadingPayments(_that);case SuccessPaymentsState():
+return successPayments(_that);case ErrorPaymentsState():
+return errorPayments(_that);case LoadingCreatePaymentState():
+return loadingCreatePayment(_that);case SuccessCreatePaymentState():
+return successCreatePayment(_that);case ErrorCreatePaymentState():
+return errorCreatePayment(_that);case LoadingDeletePaymentState():
+return loadingDeletePayment(_that);case SuccessDeletePaymentState():
+return successDeletePayment(_that);case ErrorDeletePaymentState():
+return errorDeletePayment(_that);case LoadingUpdatePaymentState():
+return loadingUpdatePayment(_that);case SuccessUpdatePaymentState():
+return successUpdatePayment(_that);case ErrorUpdatePaymentState():
+return errorUpdatePayment(_that);case LoadingPixCodeState():
+return loadingPixCode(_that);case SuccessPixCodeState():
+return successPixCode(_that);case ErrorPixCodeState():
+return errorPixCode(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( InitialPaymentsState value)?  initial,TResult? Function( LoadingPaymentsState value)?  loadingPayments,TResult? Function( SuccessPaymentsState value)?  successPayments,TResult? Function( ErrorPaymentsState value)?  errorPayments,TResult? Function( LoadingCreatePaymentState value)?  loadingCreatePayment,TResult? Function( SuccessCreatePaymentState value)?  successCreatePayment,TResult? Function( ErrorCreatePaymentState value)?  errorCreatePayment,TResult? Function( LoadingDeletePaymentState value)?  loadingDeletePayment,TResult? Function( SuccessDeletePaymentState value)?  successDeletePayment,TResult? Function( ErrorDeletePaymentState value)?  errorDeletePayment,TResult? Function( LoadingUpdatePaymentState value)?  loadingUpdatePayment,TResult? Function( SuccessUpdatePaymentState value)?  successUpdatePayment,TResult? Function( ErrorUpdatePaymentState value)?  errorUpdatePayment,TResult? Function( LoadingPixCodeState value)?  loadingPixCode,TResult? Function( SuccessPixCodeState value)?  successPixCode,TResult? Function( ErrorPixCodeState value)?  errorPixCode,}){
+final _that = this;
+switch (_that) {
+case InitialPaymentsState() when initial != null:
+return initial(_that);case LoadingPaymentsState() when loadingPayments != null:
+return loadingPayments(_that);case SuccessPaymentsState() when successPayments != null:
+return successPayments(_that);case ErrorPaymentsState() when errorPayments != null:
+return errorPayments(_that);case LoadingCreatePaymentState() when loadingCreatePayment != null:
+return loadingCreatePayment(_that);case SuccessCreatePaymentState() when successCreatePayment != null:
+return successCreatePayment(_that);case ErrorCreatePaymentState() when errorCreatePayment != null:
+return errorCreatePayment(_that);case LoadingDeletePaymentState() when loadingDeletePayment != null:
+return loadingDeletePayment(_that);case SuccessDeletePaymentState() when successDeletePayment != null:
+return successDeletePayment(_that);case ErrorDeletePaymentState() when errorDeletePayment != null:
+return errorDeletePayment(_that);case LoadingUpdatePaymentState() when loadingUpdatePayment != null:
+return loadingUpdatePayment(_that);case SuccessUpdatePaymentState() when successUpdatePayment != null:
+return successUpdatePayment(_that);case ErrorUpdatePaymentState() when errorUpdatePayment != null:
+return errorUpdatePayment(_that);case LoadingPixCodeState() when loadingPixCode != null:
+return loadingPixCode(_that);case SuccessPixCodeState() when successPixCode != null:
+return successPixCode(_that);case ErrorPixCodeState() when errorPixCode != null:
+return errorPixCode(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loadingPayments,TResult Function( List<PaymentEntity> payments)?  successPayments,TResult Function( String? error)?  errorPayments,TResult Function()?  loadingCreatePayment,TResult Function( PaymentEntity payment)?  successCreatePayment,TResult Function( String? error)?  errorCreatePayment,TResult Function()?  loadingDeletePayment,TResult Function()?  successDeletePayment,TResult Function( String? error)?  errorDeletePayment,TResult Function()?  loadingUpdatePayment,TResult Function( PaymentEntity payment)?  successUpdatePayment,TResult Function( String? error)?  errorUpdatePayment,TResult Function()?  loadingPixCode,TResult Function( String pixCode)?  successPixCode,TResult Function( String? error)?  errorPixCode,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case InitialPaymentsState() when initial != null:
+return initial();case LoadingPaymentsState() when loadingPayments != null:
+return loadingPayments();case SuccessPaymentsState() when successPayments != null:
+return successPayments(_that.payments);case ErrorPaymentsState() when errorPayments != null:
+return errorPayments(_that.error);case LoadingCreatePaymentState() when loadingCreatePayment != null:
+return loadingCreatePayment();case SuccessCreatePaymentState() when successCreatePayment != null:
+return successCreatePayment(_that.payment);case ErrorCreatePaymentState() when errorCreatePayment != null:
+return errorCreatePayment(_that.error);case LoadingDeletePaymentState() when loadingDeletePayment != null:
+return loadingDeletePayment();case SuccessDeletePaymentState() when successDeletePayment != null:
+return successDeletePayment();case ErrorDeletePaymentState() when errorDeletePayment != null:
+return errorDeletePayment(_that.error);case LoadingUpdatePaymentState() when loadingUpdatePayment != null:
+return loadingUpdatePayment();case SuccessUpdatePaymentState() when successUpdatePayment != null:
+return successUpdatePayment(_that.payment);case ErrorUpdatePaymentState() when errorUpdatePayment != null:
+return errorUpdatePayment(_that.error);case LoadingPixCodeState() when loadingPixCode != null:
+return loadingPixCode();case SuccessPixCodeState() when successPixCode != null:
+return successPixCode(_that.pixCode);case ErrorPixCodeState() when errorPixCode != null:
+return errorPixCode(_that.error);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loadingPayments,required TResult Function( List<PaymentEntity> payments)  successPayments,required TResult Function( String? error)  errorPayments,required TResult Function()  loadingCreatePayment,required TResult Function( PaymentEntity payment)  successCreatePayment,required TResult Function( String? error)  errorCreatePayment,required TResult Function()  loadingDeletePayment,required TResult Function()  successDeletePayment,required TResult Function( String? error)  errorDeletePayment,required TResult Function()  loadingUpdatePayment,required TResult Function( PaymentEntity payment)  successUpdatePayment,required TResult Function( String? error)  errorUpdatePayment,required TResult Function()  loadingPixCode,required TResult Function( String pixCode)  successPixCode,required TResult Function( String? error)  errorPixCode,}) {final _that = this;
+switch (_that) {
+case InitialPaymentsState():
+return initial();case LoadingPaymentsState():
+return loadingPayments();case SuccessPaymentsState():
+return successPayments(_that.payments);case ErrorPaymentsState():
+return errorPayments(_that.error);case LoadingCreatePaymentState():
+return loadingCreatePayment();case SuccessCreatePaymentState():
+return successCreatePayment(_that.payment);case ErrorCreatePaymentState():
+return errorCreatePayment(_that.error);case LoadingDeletePaymentState():
+return loadingDeletePayment();case SuccessDeletePaymentState():
+return successDeletePayment();case ErrorDeletePaymentState():
+return errorDeletePayment(_that.error);case LoadingUpdatePaymentState():
+return loadingUpdatePayment();case SuccessUpdatePaymentState():
+return successUpdatePayment(_that.payment);case ErrorUpdatePaymentState():
+return errorUpdatePayment(_that.error);case LoadingPixCodeState():
+return loadingPixCode();case SuccessPixCodeState():
+return successPixCode(_that.pixCode);case ErrorPixCodeState():
+return errorPixCode(_that.error);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loadingPayments,TResult? Function( List<PaymentEntity> payments)?  successPayments,TResult? Function( String? error)?  errorPayments,TResult? Function()?  loadingCreatePayment,TResult? Function( PaymentEntity payment)?  successCreatePayment,TResult? Function( String? error)?  errorCreatePayment,TResult? Function()?  loadingDeletePayment,TResult? Function()?  successDeletePayment,TResult? Function( String? error)?  errorDeletePayment,TResult? Function()?  loadingUpdatePayment,TResult? Function( PaymentEntity payment)?  successUpdatePayment,TResult? Function( String? error)?  errorUpdatePayment,TResult? Function()?  loadingPixCode,TResult? Function( String pixCode)?  successPixCode,TResult? Function( String? error)?  errorPixCode,}) {final _that = this;
+switch (_that) {
+case InitialPaymentsState() when initial != null:
+return initial();case LoadingPaymentsState() when loadingPayments != null:
+return loadingPayments();case SuccessPaymentsState() when successPayments != null:
+return successPayments(_that.payments);case ErrorPaymentsState() when errorPayments != null:
+return errorPayments(_that.error);case LoadingCreatePaymentState() when loadingCreatePayment != null:
+return loadingCreatePayment();case SuccessCreatePaymentState() when successCreatePayment != null:
+return successCreatePayment(_that.payment);case ErrorCreatePaymentState() when errorCreatePayment != null:
+return errorCreatePayment(_that.error);case LoadingDeletePaymentState() when loadingDeletePayment != null:
+return loadingDeletePayment();case SuccessDeletePaymentState() when successDeletePayment != null:
+return successDeletePayment();case ErrorDeletePaymentState() when errorDeletePayment != null:
+return errorDeletePayment(_that.error);case LoadingUpdatePaymentState() when loadingUpdatePayment != null:
+return loadingUpdatePayment();case SuccessUpdatePaymentState() when successUpdatePayment != null:
+return successUpdatePayment(_that.payment);case ErrorUpdatePaymentState() when errorUpdatePayment != null:
+return errorUpdatePayment(_that.error);case LoadingPixCodeState() when loadingPixCode != null:
+return loadingPixCode();case SuccessPixCodeState() when successPixCode != null:
+return successPixCode(_that.pixCode);case ErrorPixCodeState() when errorPixCode != null:
+return errorPixCode(_that.error);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 

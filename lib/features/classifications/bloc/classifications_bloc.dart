@@ -201,6 +201,32 @@ class ClassificationsBloc
         case CreateClassEvent():
           emit(const ClassificationsState.loadingCreateClass());
 
+          if (event.sport != null && event.sport?.id == null) {
+            final result = await createSportUsecase.call(sport: event.sport!);
+
+            return result.fold(
+              (error) => emit(
+                ClassificationsState.errorCreateSport(error: error.message),
+              ),
+              (sport) async {
+                final classe = ClassEntity(
+                  name: event.classe.name,
+                  sportId: sport.id,
+                  clubId: event.classe.clubId,
+                );
+
+                final result = await createClassUsecase.call(classe: classe);
+
+                return result.fold(
+                  (error) => emit(
+                    ClassificationsState.errorCreateClass(error: error.message),
+                  ),
+                  (_) => emit(ClassificationsState.successCreateClass()),
+                );
+              },
+            );
+          }
+
           final result = await createClassUsecase.call(classe: event.classe);
 
           return result.fold(

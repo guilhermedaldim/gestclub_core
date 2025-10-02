@@ -713,9 +713,13 @@ class SupabaseServicesImpl implements DatabaseServices {
     required SportEntity sport,
   }) async {
     try {
-      final response = await client.from('sports').insert(sport.toInsertMap());
+      final response = await client
+          .from('sports')
+          .insert(sport.toInsertMap())
+          .select()
+          .maybeSingle();
 
-      if (response != null) {
+      if (response == null) {
         return left(
           ClassificationsFailure(message: 'Erro ao cadastrar esporte.'),
         );

@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -41,6 +40,148 @@ class $EventsEventCopyWith<$Res>  {
 $EventsEventCopyWith(EventsEvent _, $Res Function(EventsEvent) __);
 }
 
+
+/// Adds pattern-matching-related methods to [EventsEvent].
+extension EventsEventPatterns on EventsEvent {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( GetEvents value)?  getEvents,TResult Function( CreateEventEvent value)?  createEvent,TResult Function( UpdateEventEvent value)?  updateEvent,TResult Function( DeleteEventEvent value)?  deleteEvent,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case GetEvents() when getEvents != null:
+return getEvents(_that);case CreateEventEvent() when createEvent != null:
+return createEvent(_that);case UpdateEventEvent() when updateEvent != null:
+return updateEvent(_that);case DeleteEventEvent() when deleteEvent != null:
+return deleteEvent(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( GetEvents value)  getEvents,required TResult Function( CreateEventEvent value)  createEvent,required TResult Function( UpdateEventEvent value)  updateEvent,required TResult Function( DeleteEventEvent value)  deleteEvent,}){
+final _that = this;
+switch (_that) {
+case GetEvents():
+return getEvents(_that);case CreateEventEvent():
+return createEvent(_that);case UpdateEventEvent():
+return updateEvent(_that);case DeleteEventEvent():
+return deleteEvent(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( GetEvents value)?  getEvents,TResult? Function( CreateEventEvent value)?  createEvent,TResult? Function( UpdateEventEvent value)?  updateEvent,TResult? Function( DeleteEventEvent value)?  deleteEvent,}){
+final _that = this;
+switch (_that) {
+case GetEvents() when getEvents != null:
+return getEvents(_that);case CreateEventEvent() when createEvent != null:
+return createEvent(_that);case UpdateEventEvent() when updateEvent != null:
+return updateEvent(_that);case DeleteEventEvent() when deleteEvent != null:
+return deleteEvent(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String clubId)?  getEvents,TResult Function( EventsEntity event,  String clubId)?  createEvent,TResult Function( EventsEntity event)?  updateEvent,TResult Function( String eventId,  String imageUrl)?  deleteEvent,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case GetEvents() when getEvents != null:
+return getEvents(_that.clubId);case CreateEventEvent() when createEvent != null:
+return createEvent(_that.event,_that.clubId);case UpdateEventEvent() when updateEvent != null:
+return updateEvent(_that.event);case DeleteEventEvent() when deleteEvent != null:
+return deleteEvent(_that.eventId,_that.imageUrl);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String clubId)  getEvents,required TResult Function( EventsEntity event,  String clubId)  createEvent,required TResult Function( EventsEntity event)  updateEvent,required TResult Function( String eventId,  String imageUrl)  deleteEvent,}) {final _that = this;
+switch (_that) {
+case GetEvents():
+return getEvents(_that.clubId);case CreateEventEvent():
+return createEvent(_that.event,_that.clubId);case UpdateEventEvent():
+return updateEvent(_that.event);case DeleteEventEvent():
+return deleteEvent(_that.eventId,_that.imageUrl);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String clubId)?  getEvents,TResult? Function( EventsEntity event,  String clubId)?  createEvent,TResult? Function( EventsEntity event)?  updateEvent,TResult? Function( String eventId,  String imageUrl)?  deleteEvent,}) {final _that = this;
+switch (_that) {
+case GetEvents() when getEvents != null:
+return getEvents(_that.clubId);case CreateEventEvent() when createEvent != null:
+return createEvent(_that.event,_that.clubId);case UpdateEventEvent() when updateEvent != null:
+return updateEvent(_that.event);case DeleteEventEvent() when deleteEvent != null:
+return deleteEvent(_that.eventId,_that.imageUrl);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 
@@ -357,6 +498,202 @@ class $EventsStateCopyWith<$Res>  {
 $EventsStateCopyWith(EventsState _, $Res Function(EventsState) __);
 }
 
+
+/// Adds pattern-matching-related methods to [EventsState].
+extension EventsStatePatterns on EventsState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( InitialEventsState value)?  initial,TResult Function( LoadingEventsState value)?  loading,TResult Function( SuccessEventsState value)?  success,TResult Function( ErrorEventsState value)?  error,TResult Function( LoadingCreateEventState value)?  loadingCreateEvents,TResult Function( SuccessCreateEventState value)?  successCreateEvents,TResult Function( ErrorCreateEventState value)?  errorCreateEvents,TResult Function( LoadingUpdateEventState value)?  loadingUpdateEvents,TResult Function( SuccessUpdateEventState value)?  successUpdateEvents,TResult Function( ErrorUpdateEventState value)?  errorUpdateEvents,TResult Function( LoadingDeleteEventState value)?  loadingDeleteEvents,TResult Function( SuccessDeleteEventState value)?  successDeleteEvents,TResult Function( ErrorDeleteEventState value)?  errorDeleteEvents,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case InitialEventsState() when initial != null:
+return initial(_that);case LoadingEventsState() when loading != null:
+return loading(_that);case SuccessEventsState() when success != null:
+return success(_that);case ErrorEventsState() when error != null:
+return error(_that);case LoadingCreateEventState() when loadingCreateEvents != null:
+return loadingCreateEvents(_that);case SuccessCreateEventState() when successCreateEvents != null:
+return successCreateEvents(_that);case ErrorCreateEventState() when errorCreateEvents != null:
+return errorCreateEvents(_that);case LoadingUpdateEventState() when loadingUpdateEvents != null:
+return loadingUpdateEvents(_that);case SuccessUpdateEventState() when successUpdateEvents != null:
+return successUpdateEvents(_that);case ErrorUpdateEventState() when errorUpdateEvents != null:
+return errorUpdateEvents(_that);case LoadingDeleteEventState() when loadingDeleteEvents != null:
+return loadingDeleteEvents(_that);case SuccessDeleteEventState() when successDeleteEvents != null:
+return successDeleteEvents(_that);case ErrorDeleteEventState() when errorDeleteEvents != null:
+return errorDeleteEvents(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( InitialEventsState value)  initial,required TResult Function( LoadingEventsState value)  loading,required TResult Function( SuccessEventsState value)  success,required TResult Function( ErrorEventsState value)  error,required TResult Function( LoadingCreateEventState value)  loadingCreateEvents,required TResult Function( SuccessCreateEventState value)  successCreateEvents,required TResult Function( ErrorCreateEventState value)  errorCreateEvents,required TResult Function( LoadingUpdateEventState value)  loadingUpdateEvents,required TResult Function( SuccessUpdateEventState value)  successUpdateEvents,required TResult Function( ErrorUpdateEventState value)  errorUpdateEvents,required TResult Function( LoadingDeleteEventState value)  loadingDeleteEvents,required TResult Function( SuccessDeleteEventState value)  successDeleteEvents,required TResult Function( ErrorDeleteEventState value)  errorDeleteEvents,}){
+final _that = this;
+switch (_that) {
+case InitialEventsState():
+return initial(_that);case LoadingEventsState():
+return loading(_that);case SuccessEventsState():
+return success(_that);case ErrorEventsState():
+return error(_that);case LoadingCreateEventState():
+return loadingCreateEvents(_that);case SuccessCreateEventState():
+return successCreateEvents(_that);case ErrorCreateEventState():
+return errorCreateEvents(_that);case LoadingUpdateEventState():
+return loadingUpdateEvents(_that);case SuccessUpdateEventState():
+return successUpdateEvents(_that);case ErrorUpdateEventState():
+return errorUpdateEvents(_that);case LoadingDeleteEventState():
+return loadingDeleteEvents(_that);case SuccessDeleteEventState():
+return successDeleteEvents(_that);case ErrorDeleteEventState():
+return errorDeleteEvents(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( InitialEventsState value)?  initial,TResult? Function( LoadingEventsState value)?  loading,TResult? Function( SuccessEventsState value)?  success,TResult? Function( ErrorEventsState value)?  error,TResult? Function( LoadingCreateEventState value)?  loadingCreateEvents,TResult? Function( SuccessCreateEventState value)?  successCreateEvents,TResult? Function( ErrorCreateEventState value)?  errorCreateEvents,TResult? Function( LoadingUpdateEventState value)?  loadingUpdateEvents,TResult? Function( SuccessUpdateEventState value)?  successUpdateEvents,TResult? Function( ErrorUpdateEventState value)?  errorUpdateEvents,TResult? Function( LoadingDeleteEventState value)?  loadingDeleteEvents,TResult? Function( SuccessDeleteEventState value)?  successDeleteEvents,TResult? Function( ErrorDeleteEventState value)?  errorDeleteEvents,}){
+final _that = this;
+switch (_that) {
+case InitialEventsState() when initial != null:
+return initial(_that);case LoadingEventsState() when loading != null:
+return loading(_that);case SuccessEventsState() when success != null:
+return success(_that);case ErrorEventsState() when error != null:
+return error(_that);case LoadingCreateEventState() when loadingCreateEvents != null:
+return loadingCreateEvents(_that);case SuccessCreateEventState() when successCreateEvents != null:
+return successCreateEvents(_that);case ErrorCreateEventState() when errorCreateEvents != null:
+return errorCreateEvents(_that);case LoadingUpdateEventState() when loadingUpdateEvents != null:
+return loadingUpdateEvents(_that);case SuccessUpdateEventState() when successUpdateEvents != null:
+return successUpdateEvents(_that);case ErrorUpdateEventState() when errorUpdateEvents != null:
+return errorUpdateEvents(_that);case LoadingDeleteEventState() when loadingDeleteEvents != null:
+return loadingDeleteEvents(_that);case SuccessDeleteEventState() when successDeleteEvents != null:
+return successDeleteEvents(_that);case ErrorDeleteEventState() when errorDeleteEvents != null:
+return errorDeleteEvents(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( List<EventsEntity> events)?  success,TResult Function( String? error)?  error,TResult Function()?  loadingCreateEvents,TResult Function()?  successCreateEvents,TResult Function( String? error)?  errorCreateEvents,TResult Function()?  loadingUpdateEvents,TResult Function( EventsEntity event)?  successUpdateEvents,TResult Function( String? error)?  errorUpdateEvents,TResult Function()?  loadingDeleteEvents,TResult Function()?  successDeleteEvents,TResult Function( String? error)?  errorDeleteEvents,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case InitialEventsState() when initial != null:
+return initial();case LoadingEventsState() when loading != null:
+return loading();case SuccessEventsState() when success != null:
+return success(_that.events);case ErrorEventsState() when error != null:
+return error(_that.error);case LoadingCreateEventState() when loadingCreateEvents != null:
+return loadingCreateEvents();case SuccessCreateEventState() when successCreateEvents != null:
+return successCreateEvents();case ErrorCreateEventState() when errorCreateEvents != null:
+return errorCreateEvents(_that.error);case LoadingUpdateEventState() when loadingUpdateEvents != null:
+return loadingUpdateEvents();case SuccessUpdateEventState() when successUpdateEvents != null:
+return successUpdateEvents(_that.event);case ErrorUpdateEventState() when errorUpdateEvents != null:
+return errorUpdateEvents(_that.error);case LoadingDeleteEventState() when loadingDeleteEvents != null:
+return loadingDeleteEvents();case SuccessDeleteEventState() when successDeleteEvents != null:
+return successDeleteEvents();case ErrorDeleteEventState() when errorDeleteEvents != null:
+return errorDeleteEvents(_that.error);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( List<EventsEntity> events)  success,required TResult Function( String? error)  error,required TResult Function()  loadingCreateEvents,required TResult Function()  successCreateEvents,required TResult Function( String? error)  errorCreateEvents,required TResult Function()  loadingUpdateEvents,required TResult Function( EventsEntity event)  successUpdateEvents,required TResult Function( String? error)  errorUpdateEvents,required TResult Function()  loadingDeleteEvents,required TResult Function()  successDeleteEvents,required TResult Function( String? error)  errorDeleteEvents,}) {final _that = this;
+switch (_that) {
+case InitialEventsState():
+return initial();case LoadingEventsState():
+return loading();case SuccessEventsState():
+return success(_that.events);case ErrorEventsState():
+return error(_that.error);case LoadingCreateEventState():
+return loadingCreateEvents();case SuccessCreateEventState():
+return successCreateEvents();case ErrorCreateEventState():
+return errorCreateEvents(_that.error);case LoadingUpdateEventState():
+return loadingUpdateEvents();case SuccessUpdateEventState():
+return successUpdateEvents(_that.event);case ErrorUpdateEventState():
+return errorUpdateEvents(_that.error);case LoadingDeleteEventState():
+return loadingDeleteEvents();case SuccessDeleteEventState():
+return successDeleteEvents();case ErrorDeleteEventState():
+return errorDeleteEvents(_that.error);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( List<EventsEntity> events)?  success,TResult? Function( String? error)?  error,TResult? Function()?  loadingCreateEvents,TResult? Function()?  successCreateEvents,TResult? Function( String? error)?  errorCreateEvents,TResult? Function()?  loadingUpdateEvents,TResult? Function( EventsEntity event)?  successUpdateEvents,TResult? Function( String? error)?  errorUpdateEvents,TResult? Function()?  loadingDeleteEvents,TResult? Function()?  successDeleteEvents,TResult? Function( String? error)?  errorDeleteEvents,}) {final _that = this;
+switch (_that) {
+case InitialEventsState() when initial != null:
+return initial();case LoadingEventsState() when loading != null:
+return loading();case SuccessEventsState() when success != null:
+return success(_that.events);case ErrorEventsState() when error != null:
+return error(_that.error);case LoadingCreateEventState() when loadingCreateEvents != null:
+return loadingCreateEvents();case SuccessCreateEventState() when successCreateEvents != null:
+return successCreateEvents();case ErrorCreateEventState() when errorCreateEvents != null:
+return errorCreateEvents(_that.error);case LoadingUpdateEventState() when loadingUpdateEvents != null:
+return loadingUpdateEvents();case SuccessUpdateEventState() when successUpdateEvents != null:
+return successUpdateEvents(_that.event);case ErrorUpdateEventState() when errorUpdateEvents != null:
+return errorUpdateEvents(_that.error);case LoadingDeleteEventState() when loadingDeleteEvents != null:
+return loadingDeleteEvents();case SuccessDeleteEventState() when successDeleteEvents != null:
+return successDeleteEvents();case ErrorDeleteEventState() when errorDeleteEvents != null:
+return errorDeleteEvents(_that.error);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 

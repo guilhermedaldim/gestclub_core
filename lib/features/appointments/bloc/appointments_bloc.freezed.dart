@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -41,6 +40,142 @@ class $AppointmentsEventCopyWith<$Res>  {
 $AppointmentsEventCopyWith(AppointmentsEvent _, $Res Function(AppointmentsEvent) __);
 }
 
+
+/// Adds pattern-matching-related methods to [AppointmentsEvent].
+extension AppointmentsEventPatterns on AppointmentsEvent {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( CreateAppointment value)?  createAppointment,TResult Function( GetUserAppointments value)?  getUserAppointments,TResult Function( GetAppointmentsByDate value)?  getAppointmentsByDate,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case CreateAppointment() when createAppointment != null:
+return createAppointment(_that);case GetUserAppointments() when getUserAppointments != null:
+return getUserAppointments(_that);case GetAppointmentsByDate() when getAppointmentsByDate != null:
+return getAppointmentsByDate(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( CreateAppointment value)  createAppointment,required TResult Function( GetUserAppointments value)  getUserAppointments,required TResult Function( GetAppointmentsByDate value)  getAppointmentsByDate,}){
+final _that = this;
+switch (_that) {
+case CreateAppointment():
+return createAppointment(_that);case GetUserAppointments():
+return getUserAppointments(_that);case GetAppointmentsByDate():
+return getAppointmentsByDate(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( CreateAppointment value)?  createAppointment,TResult? Function( GetUserAppointments value)?  getUserAppointments,TResult? Function( GetAppointmentsByDate value)?  getAppointmentsByDate,}){
+final _that = this;
+switch (_that) {
+case CreateAppointment() when createAppointment != null:
+return createAppointment(_that);case GetUserAppointments() when getUserAppointments != null:
+return getUserAppointments(_that);case GetAppointmentsByDate() when getAppointmentsByDate != null:
+return getAppointmentsByDate(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( AppointmentEntity appointmentEntity)?  createAppointment,TResult Function( String userId)?  getUserAppointments,TResult Function( DateTime date,  String spaceId)?  getAppointmentsByDate,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case CreateAppointment() when createAppointment != null:
+return createAppointment(_that.appointmentEntity);case GetUserAppointments() when getUserAppointments != null:
+return getUserAppointments(_that.userId);case GetAppointmentsByDate() when getAppointmentsByDate != null:
+return getAppointmentsByDate(_that.date,_that.spaceId);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( AppointmentEntity appointmentEntity)  createAppointment,required TResult Function( String userId)  getUserAppointments,required TResult Function( DateTime date,  String spaceId)  getAppointmentsByDate,}) {final _that = this;
+switch (_that) {
+case CreateAppointment():
+return createAppointment(_that.appointmentEntity);case GetUserAppointments():
+return getUserAppointments(_that.userId);case GetAppointmentsByDate():
+return getAppointmentsByDate(_that.date,_that.spaceId);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( AppointmentEntity appointmentEntity)?  createAppointment,TResult? Function( String userId)?  getUserAppointments,TResult? Function( DateTime date,  String spaceId)?  getAppointmentsByDate,}) {final _that = this;
+switch (_that) {
+case CreateAppointment() when createAppointment != null:
+return createAppointment(_that.appointmentEntity);case GetUserAppointments() when getUserAppointments != null:
+return getUserAppointments(_that.userId);case GetAppointmentsByDate() when getAppointmentsByDate != null:
+return getAppointmentsByDate(_that.date,_that.spaceId);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 
@@ -280,6 +415,184 @@ class $AppointmentsStateCopyWith<$Res>  {
 $AppointmentsStateCopyWith(AppointmentsState _, $Res Function(AppointmentsState) __);
 }
 
+
+/// Adds pattern-matching-related methods to [AppointmentsState].
+extension AppointmentsStatePatterns on AppointmentsState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( InitialAppointmentsState value)?  initial,TResult Function( LoadingAppointmentCreateState value)?  loadingCreate,TResult Function( SuccessAppointmentCreateState value)?  successCreate,TResult Function( ErrorAppointmentCreateState value)?  errorCreate,TResult Function( LoadingAppointmentsState value)?  loading,TResult Function( SuccessAppointmentsState value)?  success,TResult Function( ErrorAppointmentsState value)?  error,TResult Function( LoadingAppointmentByDateState value)?  loadingByDate,TResult Function( SuccessAppointmentByDateState value)?  successByDate,TResult Function( ErrorAppointmentByDateState value)?  errorByDate,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case InitialAppointmentsState() when initial != null:
+return initial(_that);case LoadingAppointmentCreateState() when loadingCreate != null:
+return loadingCreate(_that);case SuccessAppointmentCreateState() when successCreate != null:
+return successCreate(_that);case ErrorAppointmentCreateState() when errorCreate != null:
+return errorCreate(_that);case LoadingAppointmentsState() when loading != null:
+return loading(_that);case SuccessAppointmentsState() when success != null:
+return success(_that);case ErrorAppointmentsState() when error != null:
+return error(_that);case LoadingAppointmentByDateState() when loadingByDate != null:
+return loadingByDate(_that);case SuccessAppointmentByDateState() when successByDate != null:
+return successByDate(_that);case ErrorAppointmentByDateState() when errorByDate != null:
+return errorByDate(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( InitialAppointmentsState value)  initial,required TResult Function( LoadingAppointmentCreateState value)  loadingCreate,required TResult Function( SuccessAppointmentCreateState value)  successCreate,required TResult Function( ErrorAppointmentCreateState value)  errorCreate,required TResult Function( LoadingAppointmentsState value)  loading,required TResult Function( SuccessAppointmentsState value)  success,required TResult Function( ErrorAppointmentsState value)  error,required TResult Function( LoadingAppointmentByDateState value)  loadingByDate,required TResult Function( SuccessAppointmentByDateState value)  successByDate,required TResult Function( ErrorAppointmentByDateState value)  errorByDate,}){
+final _that = this;
+switch (_that) {
+case InitialAppointmentsState():
+return initial(_that);case LoadingAppointmentCreateState():
+return loadingCreate(_that);case SuccessAppointmentCreateState():
+return successCreate(_that);case ErrorAppointmentCreateState():
+return errorCreate(_that);case LoadingAppointmentsState():
+return loading(_that);case SuccessAppointmentsState():
+return success(_that);case ErrorAppointmentsState():
+return error(_that);case LoadingAppointmentByDateState():
+return loadingByDate(_that);case SuccessAppointmentByDateState():
+return successByDate(_that);case ErrorAppointmentByDateState():
+return errorByDate(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( InitialAppointmentsState value)?  initial,TResult? Function( LoadingAppointmentCreateState value)?  loadingCreate,TResult? Function( SuccessAppointmentCreateState value)?  successCreate,TResult? Function( ErrorAppointmentCreateState value)?  errorCreate,TResult? Function( LoadingAppointmentsState value)?  loading,TResult? Function( SuccessAppointmentsState value)?  success,TResult? Function( ErrorAppointmentsState value)?  error,TResult? Function( LoadingAppointmentByDateState value)?  loadingByDate,TResult? Function( SuccessAppointmentByDateState value)?  successByDate,TResult? Function( ErrorAppointmentByDateState value)?  errorByDate,}){
+final _that = this;
+switch (_that) {
+case InitialAppointmentsState() when initial != null:
+return initial(_that);case LoadingAppointmentCreateState() when loadingCreate != null:
+return loadingCreate(_that);case SuccessAppointmentCreateState() when successCreate != null:
+return successCreate(_that);case ErrorAppointmentCreateState() when errorCreate != null:
+return errorCreate(_that);case LoadingAppointmentsState() when loading != null:
+return loading(_that);case SuccessAppointmentsState() when success != null:
+return success(_that);case ErrorAppointmentsState() when error != null:
+return error(_that);case LoadingAppointmentByDateState() when loadingByDate != null:
+return loadingByDate(_that);case SuccessAppointmentByDateState() when successByDate != null:
+return successByDate(_that);case ErrorAppointmentByDateState() when errorByDate != null:
+return errorByDate(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loadingCreate,TResult Function()?  successCreate,TResult Function( String? error)?  errorCreate,TResult Function()?  loading,TResult Function( List<AppointmentEntity> appointments)?  success,TResult Function( String? error)?  error,TResult Function()?  loadingByDate,TResult Function( List<AppointmentEntity> appointments)?  successByDate,TResult Function( String? error)?  errorByDate,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case InitialAppointmentsState() when initial != null:
+return initial();case LoadingAppointmentCreateState() when loadingCreate != null:
+return loadingCreate();case SuccessAppointmentCreateState() when successCreate != null:
+return successCreate();case ErrorAppointmentCreateState() when errorCreate != null:
+return errorCreate(_that.error);case LoadingAppointmentsState() when loading != null:
+return loading();case SuccessAppointmentsState() when success != null:
+return success(_that.appointments);case ErrorAppointmentsState() when error != null:
+return error(_that.error);case LoadingAppointmentByDateState() when loadingByDate != null:
+return loadingByDate();case SuccessAppointmentByDateState() when successByDate != null:
+return successByDate(_that.appointments);case ErrorAppointmentByDateState() when errorByDate != null:
+return errorByDate(_that.error);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loadingCreate,required TResult Function()  successCreate,required TResult Function( String? error)  errorCreate,required TResult Function()  loading,required TResult Function( List<AppointmentEntity> appointments)  success,required TResult Function( String? error)  error,required TResult Function()  loadingByDate,required TResult Function( List<AppointmentEntity> appointments)  successByDate,required TResult Function( String? error)  errorByDate,}) {final _that = this;
+switch (_that) {
+case InitialAppointmentsState():
+return initial();case LoadingAppointmentCreateState():
+return loadingCreate();case SuccessAppointmentCreateState():
+return successCreate();case ErrorAppointmentCreateState():
+return errorCreate(_that.error);case LoadingAppointmentsState():
+return loading();case SuccessAppointmentsState():
+return success(_that.appointments);case ErrorAppointmentsState():
+return error(_that.error);case LoadingAppointmentByDateState():
+return loadingByDate();case SuccessAppointmentByDateState():
+return successByDate(_that.appointments);case ErrorAppointmentByDateState():
+return errorByDate(_that.error);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loadingCreate,TResult? Function()?  successCreate,TResult? Function( String? error)?  errorCreate,TResult? Function()?  loading,TResult? Function( List<AppointmentEntity> appointments)?  success,TResult? Function( String? error)?  error,TResult? Function()?  loadingByDate,TResult? Function( List<AppointmentEntity> appointments)?  successByDate,TResult? Function( String? error)?  errorByDate,}) {final _that = this;
+switch (_that) {
+case InitialAppointmentsState() when initial != null:
+return initial();case LoadingAppointmentCreateState() when loadingCreate != null:
+return loadingCreate();case SuccessAppointmentCreateState() when successCreate != null:
+return successCreate();case ErrorAppointmentCreateState() when errorCreate != null:
+return errorCreate(_that.error);case LoadingAppointmentsState() when loading != null:
+return loading();case SuccessAppointmentsState() when success != null:
+return success(_that.appointments);case ErrorAppointmentsState() when error != null:
+return error(_that.error);case LoadingAppointmentByDateState() when loadingByDate != null:
+return loadingByDate();case SuccessAppointmentByDateState() when successByDate != null:
+return successByDate(_that.appointments);case ErrorAppointmentByDateState() when errorByDate != null:
+return errorByDate(_that.error);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 
