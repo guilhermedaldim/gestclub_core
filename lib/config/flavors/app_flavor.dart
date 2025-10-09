@@ -8,9 +8,9 @@ class AppFlavor {
   static String get flavorMessage {
     switch (flavorType) {
       case FlavorTypes.dev:
-        return 'Dev';
+        return 'dev';
       case FlavorTypes.prod:
-        return 'Prod';
+        return 'prod';
     }
   }
 }

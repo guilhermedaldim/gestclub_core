@@ -442,7 +442,7 @@ class SupabaseServicesImpl implements DatabaseServices {
           .from('appointments')
           .select()
           .eq('user_id', userId)
-          .order('date', ascending: false);
+          .order('date', ascending: true);
 
       if (response.isEmpty) {
         return left(
