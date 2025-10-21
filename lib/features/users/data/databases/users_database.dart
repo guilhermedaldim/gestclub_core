@@ -10,6 +10,7 @@ abstract class UsersDatabase {
     String? name,
     String? clubId,
     String? category,
+    String? image,
   });
   Future<Either<Failure, UserEntity?>> updateUser({
     required String id,
@@ -17,6 +18,7 @@ abstract class UsersDatabase {
     String? name,
     String? category,
     String? clubId,
+    String? image,
   });
   Future<Either<Failure, void>> deleteUser({required String userId});
 }

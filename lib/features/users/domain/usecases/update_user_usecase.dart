@@ -8,5 +8,6 @@ abstract class UpdateUserUsecase {
     String? name,
     String? category,
     String? clubId,
+    String? image,
   });
 }

@@ -8,5 +8,6 @@ abstract class CreateUserUsecase {
     String? name,
     String? clubId,
     String? category,
+    String? image,
   });
 }

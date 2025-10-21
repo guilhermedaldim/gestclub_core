@@ -62,6 +62,7 @@ class SupabaseServicesImpl implements DatabaseServices {
     String? name,
     String? clubId,
     String? category,
+    String? image,
   }) async {
     try {
       final response = await client.functions.invoke(
@@ -70,9 +71,9 @@ class SupabaseServicesImpl implements DatabaseServices {
           'email': email,
           'password': password,
           'name': name,
-
           'category': category,
           'club_id': clubId,
+          'image': image,
         },
         headers: {
           'Authorization': 'Bearer ${client.auth.currentSession?.accessToken}',
@@ -84,7 +85,7 @@ class SupabaseServicesImpl implements DatabaseServices {
 
         if (userJson == null) {
           return left(
-            AuthFailure(message: 'Usuário não retornado pela função'),
+            UserFailure(message: 'Usuário não retornado pela função'),
           );
         }
 
@@ -94,6 +95,7 @@ class SupabaseServicesImpl implements DatabaseServices {
           'email': userJson['email'] ?? email,
           'category': userJson['category'] ?? category,
           'club_id': userJson['club_id'] ?? clubId,
+          'image': userJson['image'] ?? image,
         });
 
         return right(user);
@@ -115,6 +117,7 @@ class SupabaseServicesImpl implements DatabaseServices {
     String? name,
     String? category,
     String? clubId,
+    String? image,
   }) async {
     try {
       final response = await client.functions.invoke(
@@ -125,6 +128,7 @@ class SupabaseServicesImpl implements DatabaseServices {
           'name': name,
           'category': category,
           'club_id': clubId,
+          'image': image,
         },
         headers: {
           'Authorization': 'Bearer ${client.auth.currentSession?.accessToken}',

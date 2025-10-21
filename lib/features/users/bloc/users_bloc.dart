@@ -51,6 +51,7 @@ class UsersBloc extends Bloc<UsersEvent, UsersState> {
             name: event.name,
             clubId: event.clubId,
             category: event.category,
+            image: event.image,
           );
 
           return result.fold(
@@ -67,6 +68,7 @@ class UsersBloc extends Bloc<UsersEvent, UsersState> {
             name: event.name,
             category: event.category,
             clubId: event.clubId,
+            image: event.image,
           );
 
           return result.fold(
