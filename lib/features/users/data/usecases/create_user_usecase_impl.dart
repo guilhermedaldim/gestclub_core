@@ -13,6 +13,7 @@ class CreateUserUsecaseImpl implements CreateUserUsecase {
     String? name,
     String? clubId,
     String? category,
+    String? image,
   }) async {
     try {
       final result = await database.createUser(
@@ -21,6 +22,7 @@ class CreateUserUsecaseImpl implements CreateUserUsecase {
         name: name,
         clubId: clubId,
         category: category,
+        image: image,
       );
 
       return result.fold((error) => left(error), (user) => right(user));

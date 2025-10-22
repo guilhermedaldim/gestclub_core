@@ -13,6 +13,7 @@ class UpdateUserUsecaseImpl implements UpdateUserUsecase {
     String? name,
     String? category,
     String? clubId,
+    String? image,
   }) async {
     try {
       final result = await database.updateUser(
@@ -21,6 +22,7 @@ class UpdateUserUsecaseImpl implements UpdateUserUsecase {
         name: name,
         category: category,
         clubId: clubId,
+        image: image,
       );
 
       return result.fold((error) => left(error), (user) => right(user));

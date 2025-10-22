@@ -22,6 +22,7 @@ class SupabaseAuthServicesImpl implements AuthServices {
         'email': currentUser.email,
         'club_id': currentUser.userMetadata?['club_id'],
         'category': currentUser.userMetadata?['category'],
+        'image': currentUser.userMetadata?['image'],
       });
 
       return right(user);
@@ -53,6 +54,7 @@ class SupabaseAuthServicesImpl implements AuthServices {
         'email': response.user?.email,
         'club_id': response.user?.userMetadata?['club_id'],
         'category': response.user?.userMetadata?['category'],
+        'image': response.user?.userMetadata?['image'],
       });
 
       return right(user);

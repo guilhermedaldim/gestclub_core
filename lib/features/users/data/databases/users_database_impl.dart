@@ -20,6 +20,7 @@ class UsersDatabaseImpl implements UsersDatabase {
     String? name,
     String? clubId,
     String? category,
+    String? image,
   }) async {
     return await database.createUser(
       email: email,
@@ -27,6 +28,7 @@ class UsersDatabaseImpl implements UsersDatabase {
       name: name,
       clubId: clubId,
       category: category,
+      image: image,
     );
   }
 
@@ -37,6 +39,7 @@ class UsersDatabaseImpl implements UsersDatabase {
     String? name,
     String? category,
     String? clubId,
+    String? image,
   }) async {
     return await database.updateUser(
       id: id,
@@ -44,6 +47,7 @@ class UsersDatabaseImpl implements UsersDatabase {
       name: name,
       category: category,
       clubId: clubId,
+      image: image,
     );
   }
 

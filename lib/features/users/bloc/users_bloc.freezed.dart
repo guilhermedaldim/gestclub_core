@@ -128,13 +128,13 @@ return deleteUser(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String clubId)?  getUsers,TResult Function( String userId)?  getUserById,TResult Function( String email,  String password,  String? name,  String? clubId,  String? category)?  createUser,TResult Function( String id,  String? email,  String? name,  String? category,  String? clubId)?  updateUser,TResult Function( String userId)?  deleteUser,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String clubId)?  getUsers,TResult Function( String userId)?  getUserById,TResult Function( String email,  String password,  String? name,  String? clubId,  String? category,  String? image)?  createUser,TResult Function( String id,  String? email,  String? name,  String? category,  String? clubId,  String? image)?  updateUser,TResult Function( String userId)?  deleteUser,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case GetUsers() when getUsers != null:
 return getUsers(_that.clubId);case GetUserById() when getUserById != null:
 return getUserById(_that.userId);case CreateUser() when createUser != null:
-return createUser(_that.email,_that.password,_that.name,_that.clubId,_that.category);case UpdateUser() when updateUser != null:
-return updateUser(_that.id,_that.email,_that.name,_that.category,_that.clubId);case DeleteUser() when deleteUser != null:
+return createUser(_that.email,_that.password,_that.name,_that.clubId,_that.category,_that.image);case UpdateUser() when updateUser != null:
+return updateUser(_that.id,_that.email,_that.name,_that.category,_that.clubId,_that.image);case DeleteUser() when deleteUser != null:
 return deleteUser(_that.userId);case _:
   return orElse();
 
@@ -153,13 +153,13 @@ return deleteUser(_that.userId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String clubId)  getUsers,required TResult Function( String userId)  getUserById,required TResult Function( String email,  String password,  String? name,  String? clubId,  String? category)  createUser,required TResult Function( String id,  String? email,  String? name,  String? category,  String? clubId)  updateUser,required TResult Function( String userId)  deleteUser,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String clubId)  getUsers,required TResult Function( String userId)  getUserById,required TResult Function( String email,  String password,  String? name,  String? clubId,  String? category,  String? image)  createUser,required TResult Function( String id,  String? email,  String? name,  String? category,  String? clubId,  String? image)  updateUser,required TResult Function( String userId)  deleteUser,}) {final _that = this;
 switch (_that) {
 case GetUsers():
 return getUsers(_that.clubId);case GetUserById():
 return getUserById(_that.userId);case CreateUser():
-return createUser(_that.email,_that.password,_that.name,_that.clubId,_that.category);case UpdateUser():
-return updateUser(_that.id,_that.email,_that.name,_that.category,_that.clubId);case DeleteUser():
+return createUser(_that.email,_that.password,_that.name,_that.clubId,_that.category,_that.image);case UpdateUser():
+return updateUser(_that.id,_that.email,_that.name,_that.category,_that.clubId,_that.image);case DeleteUser():
 return deleteUser(_that.userId);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -174,13 +174,13 @@ return deleteUser(_that.userId);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String clubId)?  getUsers,TResult? Function( String userId)?  getUserById,TResult? Function( String email,  String password,  String? name,  String? clubId,  String? category)?  createUser,TResult? Function( String id,  String? email,  String? name,  String? category,  String? clubId)?  updateUser,TResult? Function( String userId)?  deleteUser,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String clubId)?  getUsers,TResult? Function( String userId)?  getUserById,TResult? Function( String email,  String password,  String? name,  String? clubId,  String? category,  String? image)?  createUser,TResult? Function( String id,  String? email,  String? name,  String? category,  String? clubId,  String? image)?  updateUser,TResult? Function( String userId)?  deleteUser,}) {final _that = this;
 switch (_that) {
 case GetUsers() when getUsers != null:
 return getUsers(_that.clubId);case GetUserById() when getUserById != null:
 return getUserById(_that.userId);case CreateUser() when createUser != null:
-return createUser(_that.email,_that.password,_that.name,_that.clubId,_that.category);case UpdateUser() when updateUser != null:
-return updateUser(_that.id,_that.email,_that.name,_that.category,_that.clubId);case DeleteUser() when deleteUser != null:
+return createUser(_that.email,_that.password,_that.name,_that.clubId,_that.category,_that.image);case UpdateUser() when updateUser != null:
+return updateUser(_that.id,_that.email,_that.name,_that.category,_that.clubId,_that.image);case DeleteUser() when deleteUser != null:
 return deleteUser(_that.userId);case _:
   return null;
 
@@ -325,7 +325,7 @@ as String,
 
 
 class CreateUser implements UsersEvent {
-  const CreateUser({required this.email, required this.password, this.name, this.clubId, this.category});
+  const CreateUser({required this.email, required this.password, this.name, this.clubId, this.category, this.image});
   
 
  final  String email;
@@ -333,6 +333,7 @@ class CreateUser implements UsersEvent {
  final  String? name;
  final  String? clubId;
  final  String? category;
+ final  String? image;
 
 /// Create a copy of UsersEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -344,16 +345,16 @@ $CreateUserCopyWith<CreateUser> get copyWith => _$CreateUserCopyWithImpl<CreateU
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateUser&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&(identical(other.name, name) || other.name == name)&&(identical(other.clubId, clubId) || other.clubId == clubId)&&(identical(other.category, category) || other.category == category));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateUser&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&(identical(other.name, name) || other.name == name)&&(identical(other.clubId, clubId) || other.clubId == clubId)&&(identical(other.category, category) || other.category == category)&&(identical(other.image, image) || other.image == image));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,email,password,name,clubId,category);
+int get hashCode => Object.hash(runtimeType,email,password,name,clubId,category,image);
 
 @override
 String toString() {
-  return 'UsersEvent.createUser(email: $email, password: $password, name: $name, clubId: $clubId, category: $category)';
+  return 'UsersEvent.createUser(email: $email, password: $password, name: $name, clubId: $clubId, category: $category, image: $image)';
 }
 
 
@@ -364,7 +365,7 @@ abstract mixin class $CreateUserCopyWith<$Res> implements $UsersEventCopyWith<$R
   factory $CreateUserCopyWith(CreateUser value, $Res Function(CreateUser) _then) = _$CreateUserCopyWithImpl;
 @useResult
 $Res call({
- String email, String password, String? name, String? clubId, String? category
+ String email, String password, String? name, String? clubId, String? category, String? image
 });
 
 
@@ -381,13 +382,14 @@ class _$CreateUserCopyWithImpl<$Res>
 
 /// Create a copy of UsersEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? email = null,Object? password = null,Object? name = freezed,Object? clubId = freezed,Object? category = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? email = null,Object? password = null,Object? name = freezed,Object? clubId = freezed,Object? category = freezed,Object? image = freezed,}) {
   return _then(CreateUser(
 email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
 as String,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,clubId: freezed == clubId ? _self.clubId : clubId // ignore: cast_nullable_to_non_nullable
 as String?,category: freezed == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
+as String?,image: freezed == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -399,7 +401,7 @@ as String?,
 
 
 class UpdateUser implements UsersEvent {
-  const UpdateUser({required this.id, this.email, this.name, this.category, this.clubId});
+  const UpdateUser({required this.id, this.email, this.name, this.category, this.clubId, this.image});
   
 
  final  String id;
@@ -407,6 +409,7 @@ class UpdateUser implements UsersEvent {
  final  String? name;
  final  String? category;
  final  String? clubId;
+ final  String? image;
 
 /// Create a copy of UsersEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -418,16 +421,16 @@ $UpdateUserCopyWith<UpdateUser> get copyWith => _$UpdateUserCopyWithImpl<UpdateU
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateUser&&(identical(other.id, id) || other.id == id)&&(identical(other.email, email) || other.email == email)&&(identical(other.name, name) || other.name == name)&&(identical(other.category, category) || other.category == category)&&(identical(other.clubId, clubId) || other.clubId == clubId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateUser&&(identical(other.id, id) || other.id == id)&&(identical(other.email, email) || other.email == email)&&(identical(other.name, name) || other.name == name)&&(identical(other.category, category) || other.category == category)&&(identical(other.clubId, clubId) || other.clubId == clubId)&&(identical(other.image, image) || other.image == image));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,email,name,category,clubId);
+int get hashCode => Object.hash(runtimeType,id,email,name,category,clubId,image);
 
 @override
 String toString() {
-  return 'UsersEvent.updateUser(id: $id, email: $email, name: $name, category: $category, clubId: $clubId)';
+  return 'UsersEvent.updateUser(id: $id, email: $email, name: $name, category: $category, clubId: $clubId, image: $image)';
 }
 
 
@@ -438,7 +441,7 @@ abstract mixin class $UpdateUserCopyWith<$Res> implements $UsersEventCopyWith<$R
   factory $UpdateUserCopyWith(UpdateUser value, $Res Function(UpdateUser) _then) = _$UpdateUserCopyWithImpl;
 @useResult
 $Res call({
- String id, String? email, String? name, String? category, String? clubId
+ String id, String? email, String? name, String? category, String? clubId, String? image
 });
 
 
@@ -455,13 +458,14 @@ class _$UpdateUserCopyWithImpl<$Res>
 
 /// Create a copy of UsersEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? id = null,Object? email = freezed,Object? name = freezed,Object? category = freezed,Object? clubId = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? id = null,Object? email = freezed,Object? name = freezed,Object? category = freezed,Object? clubId = freezed,Object? image = freezed,}) {
   return _then(UpdateUser(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,category: freezed == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
 as String?,clubId: freezed == clubId ? _self.clubId : clubId // ignore: cast_nullable_to_non_nullable
+as String?,image: freezed == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

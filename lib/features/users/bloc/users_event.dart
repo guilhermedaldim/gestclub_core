@@ -10,6 +10,7 @@ sealed class UsersEvent with _$UsersEvent {
     String? name,
     String? clubId,
     String? category,
+    String? image,
   }) = CreateUser;
   const factory UsersEvent.updateUser({
     required String id,
@@ -17,6 +18,7 @@ sealed class UsersEvent with _$UsersEvent {
     String? name,
     String? category,
     String? clubId,
+    String? image,
   }) = UpdateUser;
   const factory UsersEvent.deleteUser({required String userId}) = DeleteUser;
 }

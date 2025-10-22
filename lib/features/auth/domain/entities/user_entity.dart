@@ -46,6 +46,7 @@ abstract class UserEntity with _$UserEntity {
     required String email,
     String? name,
     @JsonKey(name: 'club_id') String? clubId,
+    String? image,
     CategoryType? category,
   }) = _UserEntity;
 
