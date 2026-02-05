@@ -1,6 +1,6 @@
 name: gestclub_core
 description: "GestClub Core - Gerenciador Inteligente de clubes."
-version: 1.0.2
+version: 1.0.3
 homepage:
 resolution: workspace
 publish_to: none
