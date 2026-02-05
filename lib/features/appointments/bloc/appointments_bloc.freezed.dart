@@ -518,12 +518,12 @@ return errorByDate(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loadingCreate,TResult Function()?  successCreate,TResult Function( String? error)?  errorCreate,TResult Function()?  loading,TResult Function( List<AppointmentEntity> appointments)?  success,TResult Function( String? error)?  error,TResult Function()?  loadingByDate,TResult Function( List<AppointmentEntity> appointments)?  successByDate,TResult Function( String? error)?  errorByDate,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loadingCreate,TResult Function( AppointmentEntity appointment)?  successCreate,TResult Function( String? error)?  errorCreate,TResult Function()?  loading,TResult Function( List<AppointmentEntity> appointments)?  success,TResult Function( String? error)?  error,TResult Function()?  loadingByDate,TResult Function( List<AppointmentEntity> appointments)?  successByDate,TResult Function( String? error)?  errorByDate,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case InitialAppointmentsState() when initial != null:
 return initial();case LoadingAppointmentCreateState() when loadingCreate != null:
 return loadingCreate();case SuccessAppointmentCreateState() when successCreate != null:
-return successCreate();case ErrorAppointmentCreateState() when errorCreate != null:
+return successCreate(_that.appointment);case ErrorAppointmentCreateState() when errorCreate != null:
 return errorCreate(_that.error);case LoadingAppointmentsState() when loading != null:
 return loading();case SuccessAppointmentsState() when success != null:
 return success(_that.appointments);case ErrorAppointmentsState() when error != null:
@@ -548,12 +548,12 @@ return errorByDate(_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loadingCreate,required TResult Function()  successCreate,required TResult Function( String? error)  errorCreate,required TResult Function()  loading,required TResult Function( List<AppointmentEntity> appointments)  success,required TResult Function( String? error)  error,required TResult Function()  loadingByDate,required TResult Function( List<AppointmentEntity> appointments)  successByDate,required TResult Function( String? error)  errorByDate,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loadingCreate,required TResult Function( AppointmentEntity appointment)  successCreate,required TResult Function( String? error)  errorCreate,required TResult Function()  loading,required TResult Function( List<AppointmentEntity> appointments)  success,required TResult Function( String? error)  error,required TResult Function()  loadingByDate,required TResult Function( List<AppointmentEntity> appointments)  successByDate,required TResult Function( String? error)  errorByDate,}) {final _that = this;
 switch (_that) {
 case InitialAppointmentsState():
 return initial();case LoadingAppointmentCreateState():
 return loadingCreate();case SuccessAppointmentCreateState():
-return successCreate();case ErrorAppointmentCreateState():
+return successCreate(_that.appointment);case ErrorAppointmentCreateState():
 return errorCreate(_that.error);case LoadingAppointmentsState():
 return loading();case SuccessAppointmentsState():
 return success(_that.appointments);case ErrorAppointmentsState():
@@ -574,12 +574,12 @@ return errorByDate(_that.error);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loadingCreate,TResult? Function()?  successCreate,TResult? Function( String? error)?  errorCreate,TResult? Function()?  loading,TResult? Function( List<AppointmentEntity> appointments)?  success,TResult? Function( String? error)?  error,TResult? Function()?  loadingByDate,TResult? Function( List<AppointmentEntity> appointments)?  successByDate,TResult? Function( String? error)?  errorByDate,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loadingCreate,TResult? Function( AppointmentEntity appointment)?  successCreate,TResult? Function( String? error)?  errorCreate,TResult? Function()?  loading,TResult? Function( List<AppointmentEntity> appointments)?  success,TResult? Function( String? error)?  error,TResult? Function()?  loadingByDate,TResult? Function( List<AppointmentEntity> appointments)?  successByDate,TResult? Function( String? error)?  errorByDate,}) {final _that = this;
 switch (_that) {
 case InitialAppointmentsState() when initial != null:
 return initial();case LoadingAppointmentCreateState() when loadingCreate != null:
 return loadingCreate();case SuccessAppointmentCreateState() when successCreate != null:
-return successCreate();case ErrorAppointmentCreateState() when errorCreate != null:
+return successCreate(_that.appointment);case ErrorAppointmentCreateState() when errorCreate != null:
 return errorCreate(_that.error);case LoadingAppointmentsState() when loading != null:
 return loading();case SuccessAppointmentsState() when success != null:
 return success(_that.appointments);case ErrorAppointmentsState() when error != null:
@@ -662,33 +662,76 @@ String toString() {
 
 
 class SuccessAppointmentCreateState implements AppointmentsState {
-  const SuccessAppointmentCreateState();
+  const SuccessAppointmentCreateState({required this.appointment});
   
 
+ final  AppointmentEntity appointment;
 
-
+/// Create a copy of AppointmentsState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SuccessAppointmentCreateStateCopyWith<SuccessAppointmentCreateState> get copyWith => _$SuccessAppointmentCreateStateCopyWithImpl<SuccessAppointmentCreateState>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuccessAppointmentCreateState);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuccessAppointmentCreateState&&(identical(other.appointment, appointment) || other.appointment == appointment));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,appointment);
 
 @override
 String toString() {
-  return 'AppointmentsState.successCreate()';
+  return 'AppointmentsState.successCreate(appointment: $appointment)';
 }
 
 
 }
 
+/// @nodoc
+abstract mixin class $SuccessAppointmentCreateStateCopyWith<$Res> implements $AppointmentsStateCopyWith<$Res> {
+  factory $SuccessAppointmentCreateStateCopyWith(SuccessAppointmentCreateState value, $Res Function(SuccessAppointmentCreateState) _then) = _$SuccessAppointmentCreateStateCopyWithImpl;
+@useResult
+$Res call({
+ AppointmentEntity appointment
+});
 
 
+$AppointmentEntityCopyWith<$Res> get appointment;
+
+}
+/// @nodoc
+class _$SuccessAppointmentCreateStateCopyWithImpl<$Res>
+    implements $SuccessAppointmentCreateStateCopyWith<$Res> {
+  _$SuccessAppointmentCreateStateCopyWithImpl(this._self, this._then);
+
+  final SuccessAppointmentCreateState _self;
+  final $Res Function(SuccessAppointmentCreateState) _then;
+
+/// Create a copy of AppointmentsState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? appointment = null,}) {
+  return _then(SuccessAppointmentCreateState(
+appointment: null == appointment ? _self.appointment : appointment // ignore: cast_nullable_to_non_nullable
+as AppointmentEntity,
+  ));
+}
+
+/// Create a copy of AppointmentsState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$AppointmentEntityCopyWith<$Res> get appointment {
+  
+  return $AppointmentEntityCopyWith<$Res>(_self.appointment, (value) {
+    return _then(_self.copyWith(appointment: value));
+  });
+}
+}
 
 /// @nodoc
 

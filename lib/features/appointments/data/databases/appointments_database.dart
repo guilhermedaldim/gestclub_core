@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:gestclub_core/gestclub_core.dart';
 
 abstract class AppointmentsDatabase {
-  Future<Either<Failure, void>> createAppointment({
+  Future<Either<Failure, AppointmentEntity>> createAppointment({
     required AppointmentEntity appointmentEntity,
   });
   Future<Either<Failure, List<AppointmentEntity>>> getUserAppointments({

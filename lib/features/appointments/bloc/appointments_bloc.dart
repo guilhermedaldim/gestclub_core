@@ -28,7 +28,8 @@ class AppointmentsBloc extends Bloc<AppointmentsEvent, AppointmentsState> {
           return result.fold(
             (error) =>
                 emit(AppointmentsState.errorCreate(error: error.message)),
-            (_) => emit(const AppointmentsState.successCreate()),
+            (appointment) =>
+                emit(AppointmentsState.successCreate(appointment: appointment)),
           );
 
         case GetUserAppointments():

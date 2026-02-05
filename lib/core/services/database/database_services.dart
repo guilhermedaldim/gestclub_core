@@ -56,7 +56,7 @@ abstract class DatabaseServices {
   });
 
   //APPOINTMENTS
-  Future<Either<Failure, void>> createAppointment({
+  Future<Either<Failure, AppointmentEntity>> createAppointment({
     required AppointmentEntity appointmentEntity,
   });
   Future<Either<Failure, List<AppointmentEntity>>> getUserAppointments({

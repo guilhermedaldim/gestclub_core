@@ -7,7 +7,7 @@ class AppointmentsDatabaseImpl implements AppointmentsDatabase {
   const AppointmentsDatabaseImpl({required this.database});
 
   @override
-  Future<Either<Failure, void>> createAppointment({
+  Future<Either<Failure, AppointmentEntity>> createAppointment({
     required AppointmentEntity appointmentEntity,
   }) async {
     return await database.createAppointment(

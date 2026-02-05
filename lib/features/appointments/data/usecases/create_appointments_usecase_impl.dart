@@ -7,7 +7,7 @@ class CreateAppointmentsUsecaseImpl implements CreateAppointmentsUsecase {
   CreateAppointmentsUsecaseImpl({required this.database});
 
   @override
-  Future<Either<Failure, void>> call({
+  Future<Either<Failure, AppointmentEntity>> call({
     required AppointmentEntity appointmentEntity,
   }) async {
     try {

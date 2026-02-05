@@ -7,8 +7,9 @@ sealed class AppointmentsState with _$AppointmentsState {
   // CREATE
   const factory AppointmentsState.loadingCreate() =
       LoadingAppointmentCreateState;
-  const factory AppointmentsState.successCreate() =
-      SuccessAppointmentCreateState;
+  const factory AppointmentsState.successCreate({
+    required AppointmentEntity appointment,
+  }) = SuccessAppointmentCreateState;
   const factory AppointmentsState.errorCreate({String? error}) =
       ErrorAppointmentCreateState;
 
