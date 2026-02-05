@@ -412,28 +412,63 @@ class SupabaseServicesImpl implements DatabaseServices {
 
   // APPOINTMENTS
   @override
-  Future<Either<Failure, void>> createAppointment({
+  Future<Either<Failure, AppointmentEntity>> createAppointment({
     required AppointmentEntity appointmentEntity,
   }) async {
     try {
-      final data = {
-        'user_id': appointmentEntity.userId,
-        'space_id': appointmentEntity.spaceId,
-        'date': appointmentEntity.date?.toIso8601String(),
-      };
-
-      final response = await client
+      // Cria o appointment
+      final insertResponse = await client
           .from('appointments')
-          .insert(data)
+          .insert({
+            'user_id': appointmentEntity.userId,
+            'space_id': appointmentEntity.spaceId,
+            'date': appointmentEntity.date?.toIso8601String(),
+          })
           .select()
           .single();
 
-      if (response.isEmpty) {
+      if (insertResponse.isEmpty) {
         return left(AppointmentsFailure(message: 'Erro ao criar agendamento.'));
       }
-      return right(null);
+
+      // Busca o usuário
+      final userResponse = await client
+          .from('users')
+          .select()
+          .eq('id', appointmentEntity.userId)
+          .maybeSingle();
+
+      if (userResponse == null) {
+        return left(AppointmentsFailure(message: 'Usuário não encontrado.'));
+      }
+
+      final user = UserEntity.fromJson(userResponse);
+
+      // Busca o espaço
+      final spaceResponse = await client
+          .from('spaces')
+          .select()
+          .eq('id', appointmentEntity.spaceId)
+          .maybeSingle();
+
+      if (spaceResponse == null) {
+        return left(AppointmentsFailure(message: 'Espaço não encontrado.'));
+      }
+
+      final space = SpaceEntity.fromJson(spaceResponse);
+
+      // Monta o objeto final
+      final appointment = AppointmentEntity.fromJson({
+        ...insertResponse,
+        'user': user.toJson(),
+        'space': space.toJson(),
+      });
+
+      return right(appointment);
     } catch (e) {
-      return left(AppointmentsFailure(message: 'Erro desconhecido.'));
+      return left(
+        AppointmentsFailure(message: 'Erro desconhecido ao criar agendamento.'),
+      );
     }
   }
 
